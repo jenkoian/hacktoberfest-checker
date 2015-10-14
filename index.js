@@ -8,6 +8,11 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 app.engine('hbs', exphbs({extname:'hbs'}));
 app.set('view engine', 'hbs');
+app.use('/css', express.static('css'));
+app.use('/js', express.static('js'));
+app.use('/normalize-css', express.static('bower_components/normalize-css'));
+app.use('/foundation/css', express.static('bower_components/foundation/css'));
+app.use('/foundation/js', express.static('bower_components/foundation/js'));
 
 var github = new GitHubApi({
     version: "3.0.0",
@@ -58,15 +63,19 @@ app.get('/', function(req, res) {
 
     var promises = [];
 
+    if (!req.query.username) {
+        return res.render('index');
+    }
+
     for (var i = 1; i <= 10; i++) {
         promises.push(getUserEventForPage(req.query.username, i));
     }
 
     q.all(promises).then(function() {
-        res.render('index', {prs: octoberOpenPrs});
+        res.render('index', {username: req.query.username, prs: octoberOpenPrs});
         octoberOpenPrs = [];
     }).catch(function() {
-        res.render('index', {error: true});
+        res.render('index', {username: req.query.username, error: true});
         octoberOpenPrs = [];
     });
 });

@@ -7,9 +7,58 @@
     <meta name="description" content="Useful app to check how you're getting on in hacktoberfest">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="/normalize-css/normalize.css">
+    <link rel="stylesheet" href="/foundation/css/foundation.min.css">
+
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <p>{{ prs.length }} / 4</p>
+    <div class="wrapper">
+        <div id="title-wrapper">
+            <h1>Hacktoberfest Checker</h1>
+        </div>
+        <form action="/" method="get">
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse">
+                        <div class="small-10 columns">
+                            <input type="text" name="username" placeholder="Github username" value="{{ username }}">
+                        </div>
+                        <div class="small-2 columns">
+                            <button type="submit" class="button postfix">Go</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        {{#if prs}}
+            <div class="row">
+                <div class="large-12 columns">
+                    <h2><strong>{{ prs.length }} / 4</strong> pull requests submitted in Hacktober</h2>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <ul class="pulls">
+                        {{#each prs}}
+                            <li><a href="{{this.repo.url}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if error}}
+            <div class="row">
+                <div class="large-12 columns">
+                    <h2>Couldn't find any open PRs or we hit an error, err try again?</h2>
+                </div>
+            </div>
+        {{/if}}
+    </div>
 </body>
 </html>
