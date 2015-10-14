@@ -29,7 +29,7 @@ a {
     color: white;
 }
 
-a:hover {
+a:hover, a:active, a:visited {
     color: lightgrey;
 }
 
@@ -65,4 +65,8 @@ h2 {
     position: relative;
     width: 100%;
     height: auto;
+}
+
+#title-wrapper a {
+    color: white;
 }
