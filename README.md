@@ -2,7 +2,7 @@
 
 Useful checker web app for seeing how close you are to achieving the requirments for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
-(heroku link here)
+[https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/)
 
 ## Running the app
 
