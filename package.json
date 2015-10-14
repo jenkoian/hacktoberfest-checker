@@ -1,0 +1,20 @@
+{
+  "name": "hacktoberfest-checker",
+  "version": "1.0.0",
+  "description": "Small app to see if you have fulfilled the requriements for a hacktoberfest t-shirt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hacktoberfest"
+  ],
+  "author": "Ian Jenkins",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "github": "^0.2.4",
+    "lodash": "^3.10.1",
+    "q": "^1.4.1"
+  }
+}
