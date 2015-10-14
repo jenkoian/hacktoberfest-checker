@@ -18,6 +18,7 @@ Useful checker web app for seeing how close you are to achieving the requirments
 
 ## TODO
 
+- [ ] Ajax form submission
 - [x] Implement an actual web page using bootstrap or something
 - [x] Add field for entering github username
 - [ ] Cache usernames and etags to make use of `If-None-Match` to reduce risk of reaching rate limit on github API.
