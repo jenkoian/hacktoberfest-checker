@@ -13,8 +13,10 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
     "github": "^0.2.4",
     "lodash": "^3.10.1",
+    "normalize.css": "^3.0.3",
     "q": "^1.4.1"
   }
 }

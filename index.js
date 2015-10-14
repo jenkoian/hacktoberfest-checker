@@ -2,9 +2,12 @@ var express = require('express');
 var GitHubApi = require("github");
 var _ = require('lodash');
 var q = require('q');
+var exphbs  = require('express-handlebars');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
+app.engine('hbs', exphbs({extname:'hbs'}));
+app.set('view engine', 'hbs');
 
 var github = new GitHubApi({
     version: "3.0.0",
@@ -51,7 +54,7 @@ function getUserEventForPage(username, pageNumber) {
     return deferred.promise;
 }
 
-app.get('/', function(req, resp) {
+app.get('/', function(req, res) {
 
     var promises = [];
 
@@ -60,10 +63,11 @@ app.get('/', function(req, resp) {
     }
 
     q.all(promises).then(function() {
-        resp.end(octoberOpenPrs.length.toString() + ' / 4');
+        res.render('index', {prs: octoberOpenPrs});
         octoberOpenPrs = [];
     }).catch(function() {
-        resp.end('Error');
+        res.render('index', {error: true});
+        octoberOpenPrs = [];
     });
 });
 
