@@ -4,7 +4,8 @@
   "description": "Small app to see if you have fulfilled the requriements for a hacktoberfest t-shirt",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "keywords": [
     "hacktoberfest"
@@ -12,6 +13,7 @@
   "author": "Ian Jenkins",
   "license": "MIT",
   "dependencies": {
+    "bower": "^1.5.3",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "github": "^0.2.4",
