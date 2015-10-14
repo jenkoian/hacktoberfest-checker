@@ -4,6 +4,7 @@ var _ = require('lodash');
 var q = require('q');
 
 var app = express();
+app.set('port', (process.env.PORT || 5000));
 
 var github = new GitHubApi({
     version: "3.0.0",
@@ -66,4 +67,6 @@ app.get('/', function(req, resp) {
     });
 });
 
-app.listen(8080);
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
