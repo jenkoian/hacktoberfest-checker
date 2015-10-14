@@ -59,6 +59,16 @@
                     <h2>Couldn't find any open PRs or we hit an error, err try again?</h2>
                 </div>
             </div>
+        {{else}}
+            {{#unless prs}}
+                {{#if username}}
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <h2><strong>0 / 4</strong> pull requests submitted in Hacktober</h2>
+                        </div>
+                    </div>
+                {{/if}}
+            {{/unless}}
         {{/if}}
     </div>
 </body>
