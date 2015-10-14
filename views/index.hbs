@@ -45,7 +45,7 @@
                 <div class="large-12 columns">
                     <ul class="pulls">
                         {{#each prs}}
-                            <li><a href="{{this.repo.url}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
+                            <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
                         {{/each}}
                     </ul>
                 </div>
