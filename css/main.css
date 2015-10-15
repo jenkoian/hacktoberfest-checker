@@ -56,6 +56,15 @@ h2 {
     color: white;
 }
 
+h3 {
+    font-family: 'proxima-nova','helvetica neue', serif;
+    font-size: 2em;
+    line-height: 1.3;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+
 .wrapper {
     width: 100%;
     margin: 0 auto;

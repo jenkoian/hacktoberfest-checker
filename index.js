@@ -72,7 +72,11 @@ app.get('/', function(req, res) {
     }
 
     q.all(promises).then(function() {
-        res.render('index', {username: req.query.username, prs: octoberOpenPrs});
+        var length = octoberOpenPrs.length;
+        var statements = ["It's not too late to start!", "You can do it.", "Half way there.", "Almost there!", "Way to go!", "Now you're just showing off."];
+        if (length > 5) length = 5;
+
+        res.render('index', {username: req.query.username, prs: octoberOpenPrs, statement: statements[length]});
         octoberOpenPrs = [];
     }).catch(function() {
         res.render('index', {username: req.query.username, error: true});
