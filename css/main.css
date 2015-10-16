@@ -13,7 +13,6 @@
 
 body {
     display: block;
-    overflow: hidden;
     background: #dd6123;
     background: -moz-linear-gradient(left, #dd6123 0%, #dd4900 100%);
     background: -webkit-gradient(linear, left top, right top, color-stop(0%, #dd6123), color-stop(100%, #dd4900));
