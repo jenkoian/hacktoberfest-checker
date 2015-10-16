@@ -44,14 +44,14 @@ function getUserEventForPage(username, pageNumber) {
             "If-None-Match": cache.get('ETag?' + username + '&' + pageNumber)
         };
     }
-    console.log(options);
+
     github.events.getFromUserPublic(options, function(err, res) {
 
         if (err) {
             deferred.reject();
         }
 
-        if (res.meta.status.substr(0,3) == "304") {
+        if (res.meta.status.substr(0,3) === "304") {
             var knownPrs = cache.get('PullRequest?' + username + '&' + pageNumber);
             _.filter(knownPrs, function(event) {
                 return event.payload.pull_request.created_at.substr(0, 7) === '2015-10';
