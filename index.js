@@ -49,6 +49,7 @@ function getUserEventForPage(username, pageNumber) {
 
         if (err) {
             deferred.reject();
+            return;
         }
 
         if (res.meta.status.substr(0,3) === "304") {
