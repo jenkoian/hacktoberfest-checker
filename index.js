@@ -3,6 +3,7 @@ var GitHubApi = require("github");
 var _ = require('lodash');
 var q = require('q');
 var exphbs  = require('express-handlebars');
+var cache = require('memory-cache');
 
 var app = express();
 app.set('port', (process.env.PORT || 5000));
@@ -34,18 +35,38 @@ var octoberOpenPrs = [];
 
 function getUserEventForPage(username, pageNumber) {
     var deferred = q.defer();
-
-    github.events.getFromUserPublic({
+    var options = {
         user: username,
         page: pageNumber
-    }, function(err, res) {
+    };
+    if (cache.get('ETag?' + username + '&' + pageNumber) !== null) {
+        options.headers = {
+            "If-None-Match": cache.get('ETag?' + username + '&' + pageNumber)
+        };
+    }
+
+    github.events.getFromUserPublic(options, function(err, res) {
 
         if (err) {
             deferred.reject();
         }
 
+        if (res.meta.status.substr(0,3) === "304") {
+            var knownPrs = cache.get('PullRequest?' + username + '&' + pageNumber);
+            _.filter(knownPrs, function(event) {
+                return event.payload.pull_request.created_at.substr(0, 7) === '2015-10';
+            }).forEach(function(event) {
+                octoberOpenPrs.push(event);
+            });
+            deferred.resolve();
+            return;
+        } else {
+            cache.put('ETag?' + username + '&' + pageNumber, res.meta.etag);
+        }
+
         var prs = _.filter(res, { 'type': 'PullRequestEvent' }),
             openedPrs = _.filter(prs, {'payload': {action: "opened"}});
+        cache.put('PullRequest?' + username + '&' + pageNumber, openedPrs);
 
         _.filter(openedPrs, function(event) {
             return event.payload.pull_request.created_at.substr(0, 7) === '2015-10';
