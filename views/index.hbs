@@ -36,7 +36,9 @@
         {{#if prs}}
             <div class="row">
                 <div class="large-12 columns">
-                    <h2><strong>{{ prs.length }} / 4</strong> pull requests submitted in Hacktober</h2>
+                    <h2><strong>{{ prs.length }} / 4</strong></h2>
+                    <br>
+                    <h3><strong>{{ statement }}</strong></h3>
                 </div>
             </div>
 
@@ -64,7 +66,9 @@
                 {{#if username}}
                     <div class="row">
                         <div class="large-12 columns">
-                            <h2><strong>0 / 4</strong> pull requests submitted in Hacktober</h2>
+                            <h2><strong>{{ prs.length }} / 4</strong></h2>
+                            <br>
+                            <h3><strong>{{ statement }}</strong></h3>
                         </div>
                     </div>
                 {{/if}}
