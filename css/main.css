@@ -13,7 +13,6 @@
 
 body {
     display: block;
-    overflow: hidden;
     background: #dd6123;
     background: -moz-linear-gradient(left, #dd6123 0%, #dd4900 100%);
     background: -webkit-gradient(linear, left top, right top, color-stop(0%, #dd6123), color-stop(100%, #dd4900));
@@ -54,6 +53,16 @@ h2 {
     line-height: 1.3;
     font-weight: 400;
     color: white;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'proxima-nova','helvetica neue', serif;
+    font-size: 2em;
+    line-height: 1.3;
+    font-weight: 400;
+    color: white;
+    text-align: center;
 }
 
 .wrapper {
