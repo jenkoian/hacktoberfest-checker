@@ -10,7 +10,6 @@
     font-style: normal;
 }
 
-
 body {
     display: block;
     background: #dd6123;
@@ -22,6 +21,7 @@ body {
     background: linear-gradient(to right, #dd6123 0%, #dd4900 100%);
     color: white;
     position: relative;
+    font-family: proxima-nova, 'helvetica neue', sans-serif;
 }
 
 a {
@@ -32,13 +32,16 @@ a:hover, a:active, a:visited {
     color: lightgrey;
 }
 
-h1 {
-    font-family: 'squealerregular', 'proxima-nova','helvetica neue', serif;
-    font-size: 7em;
+h1, h2, h3 {
     line-height: 1.3;
     font-weight: 400;
     color: white;
     text-align: center;
+}
+
+h1 {
+    font-family: squealerregular;
+    font-size: 7em;
 }
 
 @media screen and (max-width: 768px) {
@@ -48,21 +51,11 @@ h1 {
 }
 
 h2 {
-    font-family: 'proxima-nova','helvetica neue', serif;
     font-size: 3em;
-    line-height: 1.3;
-    font-weight: 400;
-    color: white;
-    text-align: center;
 }
 
 h3 {
-    font-family: 'proxima-nova','helvetica neue', serif;
     font-size: 2em;
-    line-height: 1.3;
-    font-weight: 400;
-    color: white;
-    text-align: center;
 }
 
 .wrapper {
