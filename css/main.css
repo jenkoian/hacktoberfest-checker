@@ -12,6 +12,7 @@
 
 body {
     display: block;
+    min-width: 320px;
     background: #dd6123;
     background: -moz-linear-gradient(left, #dd6123 0%, #dd4900 100%);
     background: -webkit-gradient(linear, left top, right top, color-stop(0%, #dd6123), color-stop(100%, #dd4900));
@@ -41,21 +42,37 @@ h1, h2, h3 {
 
 h1 {
     font-family: squealerregular;
-    font-size: 7em;
+    font-size: 2.5em;
+    padding-top: 10%;
 }
 
-@media screen and (max-width: 768px) {
+h2, h3 {
+    font-size: 2em;
+}
+
+@media screen and (min-width: 450px) {
     h1 {
+        font-size: 4em;
+        padding-top: 5%;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    h1 {
+        font-size: 5em;
+        padding-top: 4%;
+    }
+
+    h2, h3 {
         font-size: 3em;
     }
 }
 
-h2 {
-    font-size: 3em;
-}
-
-h3 {
-    font-size: 2em;
+@media screen and (min-width: 850px) {
+    h1 {
+        font-size: 6em;
+        padding-top: 2%;
+    }
 }
 
 .wrapper {
