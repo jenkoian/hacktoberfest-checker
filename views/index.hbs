@@ -33,46 +33,7 @@
             </div>
         </form>
 
-        {{#if prs}}
-            <div class="row">
-                <div class="large-12 columns">
-                    <h2><strong>{{ prs.length }} / 4</strong></h2>
-                    <h3><strong>{{ statement }}</strong></h3>
-                </div>
-            </div>
-
-            <hr />
-
-            <div class="row">
-                <div class="large-12 columns">
-                    <ul class="pulls">
-                        {{#each prs}}
-                            <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-        {{/if}}
-
-        {{#if error}}
-            <div class="row">
-                <div class="large-12 columns">
-                    <h2>Couldn't find any open PRs or we hit an error, err try again?</h2>
-                </div>
-            </div>
-        {{else}}
-            {{#unless prs}}
-                {{#if username}}
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <h2><strong>{{ prs.length }} / 4</strong></h2>
-                            <h3><strong>{{ statement }}</strong></h3>
-                        </div>
-                    </div>
-                {{/if}}
-            {{/unless}}
-        {{/if}}
-        <hr />
+        <div id="results"></div>
 
         <footer>
             <div class="large-12 columns text-center">
@@ -80,6 +41,9 @@
             </div>
         </footer>        
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src="/js/script.js"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
