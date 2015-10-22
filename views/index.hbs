@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/foundation/css/foundation.min.css">
 
     <link rel="stylesheet" href="/css/main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src="/js/script.js"></script>
 </head>
 <body>
     <a href="https://github.com/jenkoian/hacktoberfest-checker"><img style="position: absolute; top: -70px; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
@@ -33,46 +36,7 @@
             </div>
         </form>
 
-        {{#if prs}}
-            <div class="row">
-                <div class="large-12 columns">
-                    <h2><strong>{{ prs.length }} / 4</strong></h2>
-                    <h3><strong>{{ statement }}</strong></h3>
-                </div>
-            </div>
-
-            <hr />
-
-            <div class="row">
-                <div class="large-12 columns">
-                    <ul class="pulls">
-                        {{#each prs}}
-                            <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-        {{/if}}
-
-        {{#if error}}
-            <div class="row">
-                <div class="large-12 columns">
-                    <h2>Couldn't find any open PRs or we hit an error, err try again?</h2>
-                </div>
-            </div>
-        {{else}}
-            {{#unless prs}}
-                {{#if username}}
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <h2><strong>{{ prs.length }} / 4</strong></h2>
-                            <h3><strong>{{ statement }}</strong></h3>
-                        </div>
-                    </div>
-                {{/if}}
-            {{/unless}}
-        {{/if}}
-        <hr />
+        <div id="results"></div>
 
         <footer>
             <div class="large-12 columns text-center">

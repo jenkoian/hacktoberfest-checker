@@ -14,6 +14,7 @@ app.use('/js', express.static('js'));
 app.use('/normalize-css', express.static('bower_components/normalize-css'));
 app.use('/foundation/css', express.static('bower_components/foundation/css'));
 app.use('/foundation/js', express.static('bower_components/foundation/js'));
+app.use(express.static('public'));
 
 var github = new GitHubApi({
     version: "3.0.0",
@@ -98,10 +99,10 @@ app.get('/', function(req, res) {
         var statements = ["It's not too late to start!", "You can do it.", "Half way there.", "Almost there!", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
 
-        res.render('index', {username: req.query.username, prs: octoberOpenPrs, statement: statements[length]});
+        res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length]});
         octoberOpenPrs = [];
     }).catch(function() {
-        res.render('index', {username: req.query.username, error: true});
+        res.render('partials/error');
         octoberOpenPrs = [];
     });
 });
