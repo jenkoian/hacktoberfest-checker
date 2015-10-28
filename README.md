@@ -17,7 +17,7 @@ Useful checker web app for seeing how close you are to achieving the requirement
 
 * `node index.js`
 
-* Point browser to [localhost:5000?username=YOUR_GITHUB_USERNAME](http://localhost:5000?username=jenkoian)
+* Point browser to [localhost:5000](http://localhost:5000)
 
 ## TODO
 
