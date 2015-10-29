@@ -22,6 +22,7 @@ Useful checker web app for seeing how close you are to achieving the requirement
 ## TODO
 
 - [x] Ajax form submission
+- [ ] Fix ability to link to users that ajax fix above broke (e.g. http://localhost:5000/?username=jenkoian)
 - [x] Implement an actual web page using Bootstrap or something
 - [x] Add field for entering GitHub username
 - [x] Cache usernames and etags to make use of `If-None-Match` to reduce risk of reaching rate limit on github API.
