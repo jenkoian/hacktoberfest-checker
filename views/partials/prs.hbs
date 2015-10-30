@@ -1,3 +1,4 @@
+{{#exists prs}}
   <div class="row">
     <div class="large-12 columns">
       <h2><strong>{{ prs.length }} / 4</strong></h2>
@@ -5,16 +6,15 @@
     </div>
   </div>
 
-  {{#if prs}}
-    <hr />
+  <hr />
 
-    <div class="row">
-      <div class="large-12 columns">
-        <ul class="pulls">
-          {{#each prs}}
-            <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
-          {{/each}}
-        </ul>
-      </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <ul class="pulls">
+        {{#each prs}}
+          <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
+        {{/each}}
+      </ul>
     </div>
-  {{/if}}
+  </div>
+{{/exists}}

@@ -5,9 +5,20 @@ var q = require('q');
 var exphbs  = require('express-handlebars');
 var cache = require('memory-cache');
 
+var hbs = exphbs.create({
+    helpers: {
+        exists: function (variable, options) {
+            if (typeof variable !== 'undefined') {
+                return options.fn(this);
+            }
+        }
+    },
+    extname: 'hbs'
+});
+
 var app = express();
 app.set('port', (process.env.PORT || 5000));
-app.engine('hbs', exphbs({extname:'hbs'}));
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.use('/normalize-css', express.static('bower_components/normalize-css'));
 app.use('/foundation/css', express.static('bower_components/foundation/css'));
