@@ -42,47 +42,40 @@ github.authenticate({
 });
 
 var octoberOpenPrs = [];
+var userImage;
 
-function getUserEventForPage(username, pageNumber) {
-    var deferred = q.defer();
-    var options = {
-        user: username,
-        page: pageNumber
+function getPullRequests(username) {
+    var deferred,
+        options;
+
+    deferred = q.defer();
+
+    options = {
+        q: 'created:2015-10-01..2015-10-31+type:pr+is:public+author:' + username
     };
-    if (cache.get('ETag?' + username + '&' + pageNumber) !== null) {
-        options.headers = {
-            "If-None-Match": cache.get('ETag?' + username + '&' + pageNumber)
-        };
-    }
 
-    github.events.getFromUserPublic(options, function(err, res) {
-
+    github.search.issues(options, function(err, res) {
         if (err) {
             deferred.reject();
             return;
         }
 
-        if (res.meta.status.substr(0,3) === "304") {
-            var knownPrs = cache.get('PullRequest?' + username + '&' + pageNumber);
-            _.filter(knownPrs, function(event) {
-                return event.payload.pull_request.created_at.substr(0, 7) === '2015-10';
-            }).forEach(function(event) {
-                octoberOpenPrs.push(event);
-            });
-            deferred.resolve();
-            return;
-        } else {
-            cache.put('ETag?' + username + '&' + pageNumber, res.meta.etag);
-        }
+        userImage = null;
 
-        var prs = _.filter(res, { 'type': 'PullRequestEvent' }),
-            openedPrs = _.filter(prs, {'payload': {action: "opened"}});
-        cache.put('PullRequest?' + username + '&' + pageNumber, openedPrs);
+        _.each(res.items, function(event) {
+            var repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull'));
 
-        _.filter(openedPrs, function(event) {
-            return event.payload.pull_request.created_at.substr(0, 7) === '2015-10';
-        }).forEach(function(event) {
-            octoberOpenPrs.push(event);
+            if (userImage == null) {
+                userImage = event.user.avatar_url;
+            }
+
+            returnedEvent = {
+                repo_name: repo,
+                title: event.title,
+                url: event.html_url,
+                state: event.state
+            }
+            octoberOpenPrs.push(returnedEvent);
         });
 
         deferred.resolve();
@@ -99,20 +92,20 @@ app.get('/', function(req, res) {
         return res.render('index');
     }
 
-    for (var i = 1; i <= 10; i++) {
-        promises.push(getUserEventForPage(req.query.username, i));
-    }
+    getPullRequests(req.query.username).then(function() {
+        var length,
+            statements;
 
-    q.all(promises).then(function() {
-        var length = octoberOpenPrs.length;
-        var statements = ["It's not too late to start!", "You can do it.", "Half way there.", "Almost there!", "Way to go!", "Now you're just showing off."];
+        length = octoberOpenPrs.length;
+        statements = ["It's not too late to start!", "You can do it.", "Half way there.", "Almost there!", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
 
         if (req.xhr) {
-          res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length]});
+          res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length], userImage: userImage});
         } else {
-          res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username});
+          res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userImage});
         }
+
         octoberOpenPrs = [];
     }).catch(function() {
         //res.render('partials/error');
