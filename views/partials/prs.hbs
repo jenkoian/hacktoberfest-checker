@@ -1,20 +1,20 @@
-{{#if prs}}
-<div class="row">
-  <div class="large-12 columns">
-    <h2><strong>{{ prs.length }} / 4</strong></h2>
-    <h3><strong>{{ statement }}</strong></h3>
+  <div class="row">
+    <div class="large-12 columns">
+      <h2><strong>{{ prs.length }} / 4</strong></h2>
+      <h3><strong>{{ statement }}</strong></h3>
+    </div>
   </div>
-</div>
 
-<hr />
+  {{#if prs}}
+    <hr />
 
-<div class="row">
-  <div class="large-12 columns">
-    <ul class="pulls">
-      {{#each prs}}
-        <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
-{{/if}}
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="pulls">
+          {{#each prs}}
+            <li><a href="http://github.com/{{this.repo.name}}/pull/{{this.payload.number}}">{{this.repo.name}} - #{{this.payload.number}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  {{/if}}

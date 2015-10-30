@@ -99,13 +99,19 @@ app.get('/', function(req, res) {
 
         if (req.xhr) {
           res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length]});
-        }
-        else {
+        } else {
           res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username});
         }
         octoberOpenPrs = [];
     }).catch(function() {
-        res.render('partials/error');
+        //res.render('partials/error');
+
+        if (req.xhr) {
+            res.render('partials/error');
+        } else {
+            res.render('index', {error: true, username: req.query.username});
+        }
+
         octoberOpenPrs = [];
     });
 });

@@ -33,7 +33,15 @@
             </div>
         </form>
 
-        <div id="results">{{> prs}}</div>
+        <div id="results">
+            {{#if error}}
+                {{#if username}}
+                    {{> error}}
+                {{/if}}
+            {{else}}
+                {{> prs}}
+            {{/if}}
+        </div>
 
         <footer>
             <div class="large-12 columns text-center">
