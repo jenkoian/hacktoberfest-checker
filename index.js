@@ -97,7 +97,12 @@ app.get('/', function(req, res) {
         var statements = ["It's not too late to start!", "You can do it.", "Half way there.", "Almost there!", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
 
-        res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length]});
+        if (req.xhr) {
+          res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length]});
+        }
+        else {
+          res.render('index', {prs: octoberOpenPrs, statement: statements[length]});
+        }
         octoberOpenPrs = [];
     }).catch(function() {
         res.render('partials/error');
