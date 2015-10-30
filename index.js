@@ -101,7 +101,7 @@ app.get('/', function(req, res) {
           res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length]});
         }
         else {
-          res.render('index', {prs: octoberOpenPrs, statement: statements[length]});
+          res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username});
         }
         octoberOpenPrs = [];
     }).catch(function() {
