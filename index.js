@@ -97,7 +97,7 @@ app.get('/', function(req, res) {
             statements;
 
         length = octoberOpenPrs.length;
-        statements = ["It's not too late to start!", "You can do it.", "Half way there.", "Almost there!", "Way to go!", "Now you're just showing off."];
+        statements = ["It's now too late to start!", "Next time.", "Half way there, maybe next time.", "So close! Maybe next time.", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
 
         if (req.xhr) {
