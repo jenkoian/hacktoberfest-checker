@@ -96,3 +96,14 @@ h2, h3 {
 #title-wrapper a {
     color: white;
 }
+
+#avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
