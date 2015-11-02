@@ -51,7 +51,7 @@ function getPullRequests(username) {
     deferred = q.defer();
 
     options = {
-        q: 'created:2015-10-01..2015-10-31+type:pr+is:public+author:' + username
+        q: 'created:2015-09-30T00:00:00-12:00..2015-10-31T23:59:59-12:00+type:pr+is:public+author:' + username
     };
 
     github.search.issues(options, function(err, res) {
