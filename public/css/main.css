@@ -13,13 +13,13 @@
 body {
     display: block;
     min-width: 320px;
-    background: #dd6123;
-    background: -moz-linear-gradient(left, #dd6123 0%, #dd4900 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #dd6123), color-stop(100%, #dd4900));
-    background: -webkit-linear-gradient(left, #dd6123 0%, #dd4900 100%);
-    background: -o-linear-gradient(left, #dd6123 0%, #dd4900 100%);
-    background: -ms-linear-gradient(left, #dd6123 0%, #dd4900 100%);
-    background: linear-gradient(to right, #dd6123 0%, #dd4900 100%);
+    background: #1b1716;
+    background: -moz-linear-gradient(left, #252420 0%, #1b1716 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #252420), color-stop(100%, #1b1716));
+    background: -webkit-linear-gradient(left, #252420 0%, #1b1716 100%);
+    background: -o-linear-gradient(left, #252420 0%, #1b1716 100%);
+    background: -ms-linear-gradient(left, #252420 0%, #1b1716 100%);
+    background: linear-gradient(to right, #252420 0%, #1b1716 100%);
     color: white;
     position: relative;
     font-family: proxima-nova, 'helvetica neue', sans-serif;
@@ -30,7 +30,7 @@ a {
 }
 
 a:hover, a:active, a:visited {
-    color: lightgrey;
+    color: #a8a8a8;
 }
 
 h1, h2, h3 {
@@ -94,7 +94,7 @@ h2, h3 {
 }
 
 #title-wrapper a {
-    color: white;
+    color: #d3853d;
 }
 
 #avatar {
@@ -106,4 +106,8 @@ h2, h3 {
     display: block;
     margin-left: auto;
     margin-right: auto
+}
+
+.postfix.button {
+    background-color: #b0581d;
 }

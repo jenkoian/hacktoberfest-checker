@@ -51,7 +51,7 @@ function getPullRequests(username) {
     deferred = q.defer();
 
     options = {
-        q: 'created:2015-09-30T00:00:00-12:00..2015-10-31T23:59:59-12:00+type:pr+is:public+author:' + username
+        q: 'created:2016-09-30T00:00:00-12:00..2016-10-31T23:59:59-12:00+type:pr+is:public+author:' + username
     };
 
     github.search.issues(options, function(err, res) {
@@ -69,12 +69,18 @@ function getPullRequests(username) {
                 userImage = event.user.avatar_url;
             }
 
-            returnedEvent = {
+            var hacktoberFestLabels = _.filter(event.labels, function(label) {
+                return label.name.toLowerCase() === 'hacktoberfest';
+            });
+
+            var returnedEvent = {
                 repo_name: repo,
                 title: event.title,
                 url: event.html_url,
-                state: event.state
-            }
+                state: event.state,
+                hasHacktoberFestLabel: hacktoberFestLabels.length > 0
+            };
+
             octoberOpenPrs.push(returnedEvent);
         });
 
@@ -86,8 +92,6 @@ function getPullRequests(username) {
 
 app.get('/', function(req, res) {
 
-    var promises = [];
-
     if (!req.query.username) {
         return res.render('index');
     }
@@ -97,7 +101,7 @@ app.get('/', function(req, res) {
             statements;
 
         length = octoberOpenPrs.length;
-        statements = ["It's now too late to start!", "Next time.", "Half way there, maybe next time.", "So close! Maybe next time.", "Way to go!", "Now you're just showing off."];
+        statements = ["It's not too late to start!", "Keep going.", "Half way there.", "So close!", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
 
         if (req.xhr) {
