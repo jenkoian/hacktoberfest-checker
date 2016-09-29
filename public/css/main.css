@@ -110,3 +110,10 @@ h2, h3 {
 .postfix.button {
     background-color: #b0581d;
 }
+
+.fork-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
