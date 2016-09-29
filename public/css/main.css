@@ -84,8 +84,7 @@ h2, h3 {
 }
 
 #title-wrapper {
-    margin-top: 70px;
-    margin-bottom: 40px;
+    padding: 70px 0 40px 0;    
     display: block;
     z-index: 100;
     position: relative;
