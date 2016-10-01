@@ -111,3 +111,36 @@ h2, h3 {
 .postfix.button {
     background-color: #b0581d;
 }
+
+.btn-searchIssues{
+    display: block;
+    margin: 0 auto;
+    background-color: #607d8b;
+}
+
+#issues-result > h3{
+     color:#b0581d;
+ }
+
+.issue-list .issue-list-item{
+    margin: 10px 0;
+}
+
+.labels{
+    list-style: none;
+    margin-left: 0;
+}
+
+.labels li{
+    float: left;
+    margin-left: 15px;
+    text-align: center;
+    padding: 5px;
+}
+.labels li:first-child{
+    margin-left: 0;
+}
+
+.repo-name{
+    color: #a8a8a8;
+}
