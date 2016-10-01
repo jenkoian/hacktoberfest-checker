@@ -84,7 +84,7 @@ h2, h3 {
 }
 
 #title-wrapper {
-    padding: 70px 0 40px 0;    
+    padding: 70px 0 40px 0;
     display: block;
     z-index: 100;
     position: relative;
@@ -125,4 +125,37 @@ h2, h3 {
 
 .disclaimer {
     font-size: 0.8rem;
+}
+
+.btn-searchIssues{
+    display: block;
+    margin: 0 auto;
+    background-color: #607d8b;
+}
+
+#issues-result > h3{
+     color:#b0581d;
+ }
+
+.issue-list .issue-list-item{
+    margin: 10px 0;
+}
+
+.labels{
+    list-style: none;
+    margin-left: 0;
+}
+
+.labels li{
+    float: left;
+    margin-left: 15px;
+    text-align: center;
+    padding: 5px;
+}
+.labels li:first-child{
+    margin-left: 0;
+}
+
+.repo-name{
+    color: #a8a8a8;
 }
