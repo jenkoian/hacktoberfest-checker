@@ -46,17 +46,17 @@ h1 {
     padding-top: 10%;
 }
 
+
+
 h2, h3 {
     font-size: 2em;
 }
-
 @media screen and (min-width: 450px) {
     h1 {
         font-size: 4em;
         padding-top: 5%;
     }
 }
-
 @media screen and (min-width: 750px) {
     h1 {
         font-size: 5em;
@@ -100,7 +100,7 @@ h2, h3 {
 #avatar {
     width: 100px;
     height: 100px;
-    border-radius: 150px;
+    border-radius: 150px;	
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
     display: block;
@@ -111,3 +111,7 @@ h2, h3 {
 .postfix.button {
     background-color: #b0581d;
 }
+
+
+
+underground like harriet tubman.	
