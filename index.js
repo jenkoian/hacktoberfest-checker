@@ -161,15 +161,11 @@ app.get('/issues', function(req, res) {
         if (req.xhr) {
           res.render('partials/issues', {issues: octoberOpenIssues});
         } else {
-          res.send("");
+          res.render('partials/error');
         }
         octoberOpenIssues = [];
     }).catch(function() {
-        if (req.xhr) {
-            res.render('partials/error');
-        } else {
-            res.render('index', {error: true, username: ""});
-        }
+        res.render('partials/error');
         octoberOpenIssues = [];
     });
 });
