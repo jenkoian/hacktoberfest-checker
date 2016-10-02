@@ -28,6 +28,14 @@ Get involved by picking up some of the issues labelled [hacktoberfest](https://g
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
+### Running the app within docker
+
+As an alternative to the section above, you can run the app within a docker container.
+
+* `docker build -t hacktoberfest-checker .`
+
+* `docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
+
 ## TODO (2015)
 
 - [x] Ajax form submission
