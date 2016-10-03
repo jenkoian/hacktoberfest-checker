@@ -84,8 +84,7 @@ h2, h3 {
 }
 
 #title-wrapper {
-    margin-top: 70px;
-    margin-bottom: 40px;
+    padding: 70px 0 40px 0;
     display: block;
     z-index: 100;
     position: relative;
@@ -112,35 +111,28 @@ h2, h3 {
     background-color: #b0581d;
 }
 
-.btn-searchIssues{
-    display: block;
-    margin: 0 auto;
-    background-color: #607d8b;
+.fork-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
 }
 
-#issues-result > h3{
-     color:#b0581d;
- }
-
-.issue-list .issue-list-item{
-    margin: 10px 0;
+.issue h4 {
+    color: #2b81af;
 }
 
-.labels{
-    list-style: none;
-    margin-left: 0;
+.issue-title {
+    color: #d3853d;
 }
 
-.labels li{
-    float: left;
-    margin-left: 15px;
-    text-align: center;
-    padding: 5px;
-}
-.labels li:first-child{
-    margin-left: 0;
+.issue img {
+    width: 64px;
+    height: 64px;
 }
 
-.repo-name{
-    color: #a8a8a8;
+.issue .label {
+    /*Make the label text more readable from the background*/
+    font-weight: bold;
+    color: black;
 }

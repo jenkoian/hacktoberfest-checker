@@ -11,7 +11,9 @@ var hbs = exphbs.create({
             if (typeof variable !== 'undefined') {
                 return options.fn(this);
             }
-        }
+        },
+
+        timeago: require('helper-timeago')
     },
     extname: 'hbs'
 });
@@ -90,6 +92,7 @@ function getPullRequests(username) {
     return deferred.promise;
 }
 
+var totalIssues = 0;
 var octoberOpenIssues = [];
 
 function getIssues(){
@@ -98,7 +101,7 @@ function getIssues(){
     var options = {
         q : 'type:issue+label:hacktoberfest+state:open',
         sort : 'created',
-        order : 'asc'
+        order : 'desc'
     };
 
     github.search.issues(options, function(err, res) {
@@ -106,18 +109,35 @@ function getIssues(){
             deferred.reject();
             return;
         }
+
+        totalIssues = res.total_count;
+
         _.each(res.items, function(issue) {
-            var repo = issue.repository_url.substring(issue.repository_url.lastIndexOf("/") + 1);
+            var issueUrl = issue.html_url;
+
+            var repo_url = issueUrl.replace(/\/(issues)\/\d+/, "");
+            var lastSlash = repo_url.lastIndexOf("/");
+            var repo = repo_url.substring(repo_url.lastIndexOf("/", lastSlash - 1) + 1);
+
+            var description = issue.body;
+            if (description.length > 500) {
+                description = description.substring(0, 120) + "...";
+            }
+
             var returnedIssue = {
-                repo_name : repo, 
+                repo_url: repo_url,
+                repo_name: repo,
                 title: issue.title,
                 url: issue.html_url,
-                state: issue.state,
-                labels: issue.labels
+                labels: issue.labels,
+                description: description,
+                created: issue.created_at,
+                avatar: issue.user.avatar_url
             };
 
             octoberOpenIssues.push(returnedIssue);
         });
+
         deferred.resolve();
     });
 
@@ -125,7 +145,6 @@ function getIssues(){
 }
 
 app.get('/', function(req, res) {
-
     if (!req.query.username) {
         return res.render('index');
     }
@@ -156,20 +175,20 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/issues', function(req, res) {
-     getIssues().then(function() {
+app.get('/issues', function (req, res) {
+    getIssues().then(function () {
         if (req.xhr) {
-          res.render('partials/issues', {issues: octoberOpenIssues});
+            res.render('partials/issues', {issues: octoberOpenIssues, total: totalIssues});
         } else {
-          res.render('partials/error');
+            res.render('partials/error');
         }
+
         octoberOpenIssues = [];
-    }).catch(function() {
+    }).catch(function () {
         res.render('partials/error');
         octoberOpenIssues = [];
     });
 });
-
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
