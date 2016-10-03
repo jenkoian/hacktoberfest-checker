@@ -127,35 +127,21 @@ h2, h3 {
     font-size: 0.8rem;
 }
 
-.btn-searchIssues{
-    display: block;
-    margin: 0 auto;
-    background-color: #607d8b;
+.issue h4 {
+    color: #2b81af;
 }
 
-#issues-result > h3{
-     color:#b0581d;
- }
-
-.issue-list .issue-list-item{
-    margin: 10px 0;
+.issue-title {
+    color: #d3853d;
 }
 
-.labels{
-    list-style: none;
-    margin-left: 0;
+.issue img {
+    width: 64px;
+    height: 64px;
 }
 
-.labels li{
-    float: left;
-    margin-left: 15px;
-    text-align: center;
-    padding: 5px;
-}
-.labels li:first-child{
-    margin-left: 0;
-}
-
-.repo-name{
-    color: #a8a8a8;
+.issue .label {
+    /*Make the label text more readable from the background*/
+    font-weight: bold;
+    color: black;
 }
