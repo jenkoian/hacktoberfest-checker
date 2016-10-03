@@ -84,8 +84,7 @@ h2, h3 {
 }
 
 #title-wrapper {
-    margin-top: 70px;
-    margin-bottom: 40px;
+    padding: 70px 0 40px 0;    
     display: block;
     z-index: 100;
     position: relative;
@@ -110,4 +109,11 @@ h2, h3 {
 
 .postfix.button {
     background-color: #b0581d;
+}
+
+.fork-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
 }
