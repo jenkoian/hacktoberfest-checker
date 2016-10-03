@@ -90,6 +90,40 @@ function getPullRequests(username) {
     return deferred.promise;
 }
 
+var octoberOpenIssues = [];
+
+function getIssues(){
+    var deferred = q.defer();
+
+    var options = {
+        q : 'type:issue+label:hacktoberfest+state:open',
+        sort : 'created',
+        order : 'asc'
+    };
+
+    github.search.issues(options, function(err, res) {
+        if (err) {
+            deferred.reject();
+            return;
+        }
+        _.each(res.items, function(issue) {
+            var repo = issue.repository_url.substring(issue.repository_url.lastIndexOf("/") + 1);
+            var returnedIssue = {
+                repo_name : repo, 
+                title: issue.title,
+                url: issue.html_url,
+                state: issue.state,
+                labels: issue.labels
+            };
+
+            octoberOpenIssues.push(returnedIssue);
+        });
+        deferred.resolve();
+    });
+
+    return deferred.promise;
+}
+
 app.get('/', function(req, res) {
 
     if (!req.query.username) {
@@ -112,8 +146,6 @@ app.get('/', function(req, res) {
 
         octoberOpenPrs = [];
     }).catch(function() {
-        //res.render('partials/error');
-
         if (req.xhr) {
             res.render('partials/error');
         } else {
@@ -123,6 +155,21 @@ app.get('/', function(req, res) {
         octoberOpenPrs = [];
     });
 });
+
+app.get('/issues', function(req, res) {
+     getIssues().then(function() {
+        if (req.xhr) {
+          res.render('partials/issues', {issues: octoberOpenIssues});
+        } else {
+          res.render('partials/error');
+        }
+        octoberOpenIssues = [];
+    }).catch(function() {
+        res.render('partials/error');
+        octoberOpenIssues = [];
+    });
+});
+
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));

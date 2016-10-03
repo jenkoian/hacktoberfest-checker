@@ -1,0 +1,18 @@
+{{#exists issues}}
+    <hr/>
+    <h3> Projects looking for help</h3>
+    <div class="row issue-list">
+        {{#each issues}}
+            <div class="large-12 columns issue-list-item">
+                <h4 class="repo-name"> {{this.repo_name}} </h4>
+                <a href="{{this.url}}">{{this.title}}</a>
+                <ul class="labels">
+                    {{#each labels}}
+                        <li style="background-color:#{{this.color}}">{{this.name}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+    </div>
+    <hr/>
+{{/exists}}
