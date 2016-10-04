@@ -8,14 +8,21 @@
                     <h5>{{this.repo_name}}</h5>
                 </a>
 
-                <img class="avatar" src="{{this.avatar}}" />
-                <a class="issue-title" href="{{this.url}}">{{this.title}} - {{timeago this.created}}</a>
+                <div class="row">
+                    <div class="large-1 columns">
+                        <img class="avatar" src="{{this.avatar}}"/>
+                    </div>
+                    <div class="large-11">
+                        <a class="issue-title" href="{{this.url}}">{{this.title}} - {{timeago this.created}}</a>
+                        <ul>
+                            {{#each labels}}
+                                <span class="label" style="background-color:#{{this.color}}">{{this.name}}</span>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
                 <p>{{this.description}}</p>
-                <ul>
-                    {{#each labels}}
-                        <span class="label" style="background-color:#{{this.color}}">{{this.name}}</span>
-                    {{/each}}
-                </ul>
             </div>
         {{/each}}
     </div>

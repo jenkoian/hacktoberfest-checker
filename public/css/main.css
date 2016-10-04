@@ -134,13 +134,10 @@ h2, h3 {
     color: #d3853d;
 }
 
-.issue p {
-    font-size: 1em;
-}
-
 .issue .avatar {
-    width: 32px;
-    height: 32px;
+    /*width: 32px;*/
+    height: 100%;
+    vertical-align: middle;
 }
 
 .issue .label {
