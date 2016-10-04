@@ -135,12 +135,16 @@ h2, h3 {
     font-size: 2.0em;
 }
 
-.issue h4 {
+.issue h5 {
     color: #2b81af;
 }
 
 .issue-title {
     color: #d3853d;
+}
+
+.issue p {
+    font-size: 1em;
 }
 
 .issue .avatar {
