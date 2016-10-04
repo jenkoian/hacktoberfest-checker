@@ -118,6 +118,11 @@ h2, h3 {
     border: 0;
 }
 
+#open-issues h3 {
+    font-family: squealerregular;
+    font-size: 2.0em;
+}
+
 .issue h4 {
     color: #2b81af;
 }
