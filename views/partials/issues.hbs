@@ -16,7 +16,9 @@
                         <a class="issue-title" href="{{this.url}}">{{this.title}} - {{timeago this.created}}</a>
                         <ul>
                             {{#each labels}}
-                                <span class="label" style="background-color:#{{this.color}}">{{this.name}}</span>
+                                <a href="{{../repo_url}}/issues?q=is%3Aissue+is%3Aopen+label%3A%22{{this.name}}%22">
+                                    <span class="label" style="background-color:#{{this.color}}">{{this.name}}</span>
+                                </a>
                             {{/each}}
                         </ul>
                     </div>
