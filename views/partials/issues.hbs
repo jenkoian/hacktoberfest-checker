@@ -5,17 +5,26 @@
         {{#each issues}}
             <div class="large-12 columns issue">
                 <a href="{{this.repo_url}}">
-                    <h4>{{this.repo_name}}</h4>
+                    <h5>{{this.repo_name}}</h5>
                 </a>
 
-                <img src="{{this.avatar}}" />
-                <a class="issue-title" href="{{this.url}}">{{this.title}} - {{timeago this.created}}</a>
+                <div class="row">
+                    <div class="large-1 columns">
+                        <img class="avatar" src="{{this.avatar}}"/>
+                    </div>
+                    <div class="large-11">
+                        <a class="issue-title" href="{{this.url}}">{{this.title}} - {{timeago this.created}}</a>
+                        <ul>
+                            {{#each labels}}
+                                <a href="{{../repo_url}}/issues?q=is%3Aissue+is%3Aopen+label%3A%22{{this.name}}%22">
+                                    <span class="label" style="background-color:#{{this.color}}">{{this.name}}</span>
+                                </a>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
                 <p>{{this.description}}</p>
-                <ul>
-                    {{#each labels}}
-                        <span class="label" style="background-color:#{{this.color}}">{{this.name}}</span>
-                    {{/each}}
-                </ul>
             </div>
         {{/each}}
     </div>
