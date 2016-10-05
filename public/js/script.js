@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    $('input[name=username]').focus();
+
     $('form').on('submit', function(e) {
         var name = $('input[name=username]').val();
 
