@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     //start fetching new issue once the page is loaded
-    $('#issues-result').html('<div class="row"><div class="large-12 columns"><h2><img src="/img/ajax-loader.gif" alt="loading" /></h2></div></div>');
+    $('#open-issues').html('<div class="row"><div class="large-12 columns"><h2><img src="/img/ajax-loader.gif" alt="loading" /></h2></div></div>');
     $.get('/issues', function (html) {
         $('#open-issues').html(html);
     });

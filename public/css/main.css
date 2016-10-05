@@ -135,7 +135,7 @@ h2, h3 {
     font-size: 2.0em;
 }
 
-.issue h5 {
+.issue h5 a {
     color: #2b81af;
 }
 
@@ -144,7 +144,7 @@ h2, h3 {
 }
 
 .issue .avatar {
-    /*width: 32px;*/
+    width: 64px;
     height: 100%;
     vertical-align: middle;
 }
