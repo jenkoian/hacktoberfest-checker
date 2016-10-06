@@ -122,3 +122,7 @@ h2, h3 {
     right: 0;
     border: 0;
 }
+
+.disclaimer {
+    font-size: 0.8rem;
+}
