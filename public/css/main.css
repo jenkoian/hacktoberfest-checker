@@ -111,6 +111,11 @@ h2, h3 {
     background-color: #b0581d;
 }
 
+.postfix.button:focus,
+.postfix.button:hover {
+    background-color: #8c4618;
+}
+
 .fork-link {
     position: absolute;
     top: 0;
