@@ -84,7 +84,7 @@ h2, h3 {
 }
 
 #title-wrapper {
-    padding: 70px 0 40px 0;    
+    padding: 70px 0 40px 0;
     display: block;
     z-index: 100;
     position: relative;
@@ -96,15 +96,18 @@ h2, h3 {
     color: #d3853d;
 }
 
-#avatar {
+.avatar {
     width: 100px;
     height: 100px;
     border-radius: 150px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
-    display: block;
+}
+
+#results .avatar {
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+    display: block;
 }
 
 .postfix.button {
@@ -121,4 +124,29 @@ h2, h3 {
     top: 0;
     right: 0;
     border: 0;
+}
+
+#open-issues h3 {
+    font-family: squealerregular;
+    font-size: 2.0em;
+}
+
+.issue h5 {
+    color: #2b81af;
+}
+
+.issue-title {
+    color: #d3853d;
+}
+
+.issue .avatar {
+    /*width: 32px;*/
+    height: 100%;
+    vertical-align: middle;
+}
+
+.issue .label {
+    /*Make the label text more readable from the background*/
+    font-weight: bold;
+    color: black;
 }
