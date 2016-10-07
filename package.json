@@ -17,6 +17,7 @@
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "github": "^0.2.4",
+    "helper-timeago": "^0.1.0",
     "lodash": "^3.10.1",
     "memory-cache": "^0.1.4",
     "q": "^1.4.1"
