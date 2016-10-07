@@ -150,7 +150,5 @@ h2, h3 {
 }
 
 .issue .label {
-    /*Make the label text more readable from the background*/
-    font-weight: bold;
     color: black;
 }
