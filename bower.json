@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "normalize-css": "~3.0.3",
-    "foundation": "~5.5.3"
+    "foundation": "~5.5.3",
+    "d3": "^4.2.6"
   }
 }
