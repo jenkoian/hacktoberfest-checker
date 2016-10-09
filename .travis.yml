@@ -4,4 +4,4 @@ node_js:
   - "4.6"
 before_script:
   - npm install grunt-cli -g
-script: grunt lint
+script: grunt lint --force
