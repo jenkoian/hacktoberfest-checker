@@ -23,6 +23,7 @@ app.set('view engine', 'hbs');
 app.use('/normalize-css', express.static('bower_components/normalize-css'));
 app.use('/foundation/css', express.static('bower_components/foundation/css'));
 app.use('/foundation/js', express.static('bower_components/foundation/js'));
+app.use('/d3', express.static('bower_components/d3'));
 app.use(express.static('public'));
 
 var github = new GitHubApi({
@@ -90,6 +91,38 @@ function getPullRequests(username) {
     return deferred.promise;
 }
 
+
+function getGraphData(startDate, endDate) {
+  var deferred,
+      options;
+
+  deferred = q.defer();
+  var endDate =  endDate < 10 ? "0"+endDate : endDate;
+  var date = '2016-10-'+ endDate + 'T23:59:59-12:00'
+  var startMonth = startDate == 30 ? "09" : "10";
+  options = {
+    q: 'created:2016-'+ startMonth + '-'+ startDate +'T00:00:00-12:00..'+ date,
+    sort: 'created',
+    order: 'asc',
+    type: 'pr',
+    per_page: '1'
+  }
+    
+  github.search.issues(options, function(err, res) {
+    if (err) {
+      deferred.reject();
+      return;
+    }
+  
+    var obj = {
+      data: res.total_count,
+      date: res.items[0].created_at
+    };
+    deferred.resolve(obj);
+  });
+  return deferred.promise;
+}
+
 app.get('/', function(req, res) {
 
     if (!req.query.username) {
@@ -122,6 +155,16 @@ app.get('/', function(req, res) {
 
         octoberOpenPrs = [];
     });
+});
+
+app.get('/graph', function(req, res) {
+  getGraphData(req.query.start, req.query.end).then(function(val) {
+    res.json(val);
+  })
+  .catch(function(err) {
+    console.log(err);
+    res.json(err);
+  });
 });
 
 app.listen(app.get('port'), function() {

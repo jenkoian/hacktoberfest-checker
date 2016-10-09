@@ -43,7 +43,7 @@
                 {{> prs}}
             {{/if}}
         </div>
-
+          {{> graph}}
         <footer>
             <div class="large-12 columns text-center">
                 <p>Unaffiliated with <a href="https://hacktoberfest.digitalocean.com/" target="_blank">Hacktoberfest</a>, <em>you</em> should sign up and try and get a free t-shirt though!</p>
@@ -52,7 +52,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src='/d3/d3.min.js'></script>
     <script src="/js/script.js"></script>
+    <script src="/js/graph.js"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
