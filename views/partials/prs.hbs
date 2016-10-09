@@ -2,12 +2,26 @@
   {{#if userImage}}
     <img class="avatar" src="{{userImage}}"/>
   {{/if}}
-  
+
   <div class="row">
     <div class="large-12 columns">
       <h2><strong>{{ prs.length }} / 4</strong></h2>
       <h3><strong>{{ statement }}</strong></h3>
     </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+      <div class="large-12 columns">
+          <div class="social">
+              <ul>
+                  <li><a href="https://twitter.com/intent/tweet?button_hashtag=hacktoberfest" class="twitter-hashtag-button" data-show-count="false">Tweet #hacktoberfest</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+                  <li><div class="fb-share-button" data-href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%2F&amp;" data-layout="button_count"></div></li>
+                  <li><div class="g-plus" data-action="share" data-annotation="none" data-href="https://hacktoberfestchecker.herokuapp.com/"></div></li>
+              </ul>
+          </div>
+      </div>
   </div>
 
   <hr />

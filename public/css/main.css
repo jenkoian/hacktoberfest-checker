@@ -152,3 +152,24 @@ h2, h3 {
 .issue .label {
     color: black;
 }
+
+.social {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.social ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social li {
+    display: block;
+    float: left;
+    padding-right: 5px;
+}
+
+.social span {
+    vertical-align: top !important;
+}
