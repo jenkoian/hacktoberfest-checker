@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
-		eslint: {
-			target :['**/*.js']
+		jshint: {
+			all :['**/*.js']
 		}
 	});
 
