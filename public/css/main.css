@@ -305,6 +305,17 @@ h2, h3 {
   border-color: #c23321;
 }
 
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
 .resp-sharing-button--email {
   background-color: #777777;
   border-color: #777777;
@@ -314,6 +325,17 @@ h2, h3 {
 .resp-sharing-button--email:active {
   background-color: #5e5e5e;
   border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
 }
 
 .resp-sharing-button--linkedin {
@@ -327,6 +349,17 @@ h2, h3 {
   border-color: #046293;
 }
 
+.resp-sharing-button--reddit {
+  background-color: #5f99cf;
+  border-color: #5f99cf;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #3a80c1;
+  border-color: #3a80c1;
+}
+
 .resp-sharing-button--whatsapp {
   background-color: #25D366;
   border-color: #25D366;
@@ -337,8 +370,7 @@ h2, h3 {
   background-color: #1DA851;
   border-color: #1DA851;
 }
-
 #sharing {
-    width: 50%;
+    display: table;
     margin: 0 auto;
 }
