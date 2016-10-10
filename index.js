@@ -1,8 +1,8 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var cache = require('memory-cache');
-var userInfo = require('./userInfo');
-var hacktoberfest = require('./hacktoberfest');
+var userInfo = require('./modules/userInfo');
+var hacktoberfestInfo = require('./modules/hacktoberfestInfo');
 
 var hbs = exphbs.create({
     helpers: {
@@ -58,17 +58,17 @@ app.get('/', function(req, res) {
 });
 
 app.get('/issues', function (req, res) {
-    hacktoberfest.populateOpenIssues().then(function () {
+    hacktoberfestInfo.populateOpenIssues().then(function () {
         if (req.xhr) {
-            res.render('partials/issues', {issues: hacktoberfest.octoberOpenIssues, total: hacktoberfest.totalIssues});
+            res.render('partials/issues', {issues: hacktoberfestInfo.octoberOpenIssues, total: hacktoberfestInfo.totalIssues});
         } else {
             res.render('partials/error');
         }
 
-        hacktoberfest.resetToDefault();
+        hacktoberfestInfo.resetToDefault();
     }).catch(function () {
         res.render('partials/error');
-        hacktoberfest.resetToDefault();
+        hacktoberfestInfo.resetToDefault();
     });
 });
 
