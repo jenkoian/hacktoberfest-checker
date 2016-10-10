@@ -121,8 +121,19 @@ function getIssues(){
             var repo = repo_url.substring(repo_url.lastIndexOf("/", lastSlash - 1) + 1);
 
             var description = issue.body;
+            var temp_desc = description;
             if (description.length > 500) {
-                description = description.substring(0, 120) + "...";
+                // Check if there is a link in the description
+                // if it starts before 120 chars, we include the
+                // whole link.
+                var link_match = /\[.+\]\(.+\)/;
+                var matched = description.match(link_match);
+                var match_index = description.search(link_match);
+                if (matched && match_index < 120) {
+                    description = description.substring(0, match_index) + matched + "...";
+                } else {
+                    description = description.substring(0, 120) + "...";
+                }
             }
 
             var returnedIssue = {
