@@ -4,6 +4,7 @@ var _ = require('lodash');
 var q = require('q');
 var exphbs  = require('express-handlebars');
 var cache = require('memory-cache');
+var marked = require('marked');
 
 var hbs = exphbs.create({
     helpers: {
@@ -130,7 +131,7 @@ function getIssues(){
                 title: issue.title,
                 url: issue.html_url,
                 labels: issue.labels,
-                description: description,
+                description: marked(description),
                 created: issue.created_at,
                 avatar: issue.user.avatar_url
             };
