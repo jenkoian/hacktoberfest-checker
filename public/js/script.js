@@ -13,14 +13,14 @@ function HacktoberfestChecker() {
         emptyUsername: "Username cannot be blank.",
         API: {
             issue: "An error occurred while fetching new issues, have you set your github token? ",
-            username: "An error occurred while fetching issue for the given username, have you set your github token? "
+            username: "An error occurred while fetching issues for the given username, have you set your github token? "
         }
     };
     //the path for the spinner
     this.loader = "/img/ajax-loader.gif";
 }
 /**
- * in the constructor we'll everything that needs to fire when we new this object up
+ * in the constructor we'll initialize/retrieve everything that needs to fire when we new this object up
  */
 HacktoberfestChecker.prototype.constructor = function() {
     this.setFocus();
