@@ -1,6 +1,6 @@
 # Hacktoberfest Checker
 
-Useful checker web app for seeing how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
+Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
 [https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/)
 
@@ -11,7 +11,7 @@ Useful checker web app for seeing how close you are to achieving the requirement
 * Updated design
 * Hacktoberfest label support
 
-Get involved by picking up some of the issues labelled [hacktoberfest](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest) to help toward your tally.
+You can get involved by picking up some of the issues labelled [hacktoberfest](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest) to help toward your tally!
 
 ## Running the app
 
