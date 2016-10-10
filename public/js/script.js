@@ -111,7 +111,7 @@ HacktoberfestChecker.prototype.getName = function() {
 HacktoberfestChecker.prototype.makeSpinner = function() {
     return $("<div/>", {
         class: "row"
-    }).append(
+    }).addClass('loading').append(
         $("<div/>", {
             class: "large-12 columns"
         }).append(
