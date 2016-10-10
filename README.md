@@ -15,7 +15,7 @@ You can get involved by picking up some of the issues labelled [hacktoberfest](h
 
 ## Running the app
 
-* [Generate a GitHub personal access token](https://github.com/settings/tokens) to ensure you don't get rate limited easily.
+* [Generate a GitHub personal access token](https://github.com/settings/tokens) to ensure you don't get rate limited as often.
 
 * Export the GitHub token as an environment variable for Node.js to use.
     * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
