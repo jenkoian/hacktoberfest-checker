@@ -130,9 +130,9 @@ function getIssues(){
                 var matched = description.match(link_match);
                 var match_index = description.search(link_match);
                 if (matched && match_index < 120) {
-                    description = description.substring(0, match_index) + matched + "...";
+                    description = description.substring(0, match_index) + matched + "&hellip;";
                 } else {
-                    description = description.substring(0, 120) + "...";
+                    description = description.substring(0, 120) + "&hellip;";
                 }
             }
 
