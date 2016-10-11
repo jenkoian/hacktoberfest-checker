@@ -113,7 +113,8 @@ function getIssues(){
 
         totalIssues = res.total_count;
 
-        _.each(res.items, function(issue) {
+        var issuesLen = res.items.length;
+        _.forEach(res.items, function(issue, k) {
             var issueUrl = issue.html_url;
 
             var repo_url = issueUrl.replace(/\/(issues)\/\d+/, "");
@@ -147,13 +148,37 @@ function getIssues(){
                 avatar: issue.user.avatar_url
             };
 
-            octoberOpenIssues.push(returnedIssue);
+            addRepoLanguages(returnedIssue, (k === issuesLen - 1) ? deferred : false).then(function(readyissue) {
+                octoberOpenIssues.push(readyissue);
+            });
         });
 
-        deferred.resolve();
     });
 
     return deferred.promise;
+}
+
+function addRepoLanguages(issue, parentPromise) {
+    var deferred = q.defer();
+
+    var repo = issue.repo_name.split("/");
+
+    github.repos.get({
+        user: repo[0],
+        repo: repo[1]
+    }, function(err, res) {
+        if (err) {
+            issue.language = false;
+        } else {
+            issue.language = res.language;
+        }
+        deferred.resolve(issue);
+        if (parentPromise) {
+            parentPromise.resolve();
+        }
+    });
+    return deferred.promise;
+
 }
 
 app.get('/', function(req, res) {
