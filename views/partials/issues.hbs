@@ -28,6 +28,12 @@
         <div class="large-12 columns">
             <br />
             <p>{{{this.description}}}</p>
+            {{#if this.language}}
+                <br />
+                <p>
+                    Language: <span class="label round">{{this.language}}</span>
+                </p>
+            {{/if}}
         </div>
     </div>
     {{/each}}
