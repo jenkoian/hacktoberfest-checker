@@ -37,17 +37,21 @@ h1, h2, h3 {
     line-height: 1.3;
     font-weight: 400;
     color: white;
-    text-align: center;
 }
 
 h1 {
     font-family: squealerregular;
     font-size: 2.5em;
     padding-top: 10%;
+    text-align: center;
 }
 
-h2, h3 {
+h2 {
     font-size: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
 }
 
 @media screen and (min-width: 450px) {
@@ -63,7 +67,7 @@ h2, h3 {
         padding-top: 4%;
     }
 
-    h2, h3 {
+    h2 {
         font-size: 3em;
     }
 }
@@ -104,6 +108,14 @@ h2, h3 {
     -moz-border-radius: 150px;
 }
 
+.pulls {
+    text-align: left;
+}
+
+#results {
+    text-align: center;
+}
+
 #results .avatar {
     margin-left: auto;
     margin-right: auto;
@@ -130,7 +142,11 @@ h2, h3 {
     font-size: 0.8rem;
 }
 
-#open-issues h3 {
+#open-issues .loading {
+    text-align: center;
+}
+
+#open-issues h3.other-issues {
     font-family: squealerregular;
     font-size: 2.0em;
 }

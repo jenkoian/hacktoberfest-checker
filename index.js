@@ -4,6 +4,7 @@ var _ = require('lodash');
 var q = require('q');
 var exphbs  = require('express-handlebars');
 var cache = require('memory-cache');
+var marked = require('marked');
 
 var hbs = exphbs.create({
     helpers: {
@@ -112,7 +113,8 @@ function getIssues(){
 
         totalIssues = res.total_count;
 
-        _.each(res.items, function(issue) {
+        var issuesLen = res.items.length;
+        _.forEach(res.items, function(issue, k) {
             var issueUrl = issue.html_url;
 
             var repo_url = issueUrl.replace(/\/(issues)\/\d+/, "");
@@ -120,8 +122,19 @@ function getIssues(){
             var repo = repo_url.substring(repo_url.lastIndexOf("/", lastSlash - 1) + 1);
 
             var description = issue.body;
+            var temp_desc = description;
             if (description.length > 500) {
-                description = description.substring(0, 120) + "...";
+                // Check if there is a link in the description
+                // if it starts before 120 chars, we include the
+                // whole link.
+                var link_match = /\[.+\]\(.+\)/;
+                var matched = description.match(link_match);
+                var match_index = description.search(link_match);
+                if (matched && match_index < 120) {
+                    description = description.substring(0, match_index) + matched + "&hellip;";
+                } else {
+                    description = description.substring(0, 120) + "&hellip;";
+                }
             }
 
             var returnedIssue = {
@@ -130,18 +143,42 @@ function getIssues(){
                 title: issue.title,
                 url: issue.html_url,
                 labels: issue.labels,
-                description: description,
+                description: marked(description),
                 created: issue.created_at,
                 avatar: issue.user.avatar_url
             };
 
-            octoberOpenIssues.push(returnedIssue);
+            addRepoLanguages(returnedIssue, (k === issuesLen - 1) ? deferred : false).then(function(readyissue) {
+                octoberOpenIssues.push(readyissue);
+            });
         });
 
-        deferred.resolve();
     });
 
     return deferred.promise;
+}
+
+function addRepoLanguages(issue, parentPromise) {
+    var deferred = q.defer();
+
+    var repo = issue.repo_name.split("/");
+
+    github.repos.get({
+        user: repo[0],
+        repo: repo[1]
+    }, function(err, res) {
+        if (err) {
+            issue.language = false;
+        } else {
+            issue.language = res.language;
+        }
+        deferred.resolve(issue);
+        if (parentPromise) {
+            parentPromise.resolve();
+        }
+    });
+    return deferred.promise;
+
 }
 
 app.get('/', function(req, res) {
