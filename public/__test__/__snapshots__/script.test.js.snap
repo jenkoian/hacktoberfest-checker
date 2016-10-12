@@ -1,0 +1,46 @@
+exports[`API October PRs error message 1`] = `"<div class=\"row\"><div class=\"large-12 columns\"><h2>An error occurred while fetching new issues, have you set your github token? </h2></div></div>"`;
+
+exports[`API October PRs success message 1`] = `"Testing!"`;
+
+exports[`API Username PRs error message 1`] = `"<div class=\"row\"><div class=\"large-12 columns\"><h2>An error occurred while fetching new issues, have you set your github token? </h2></div></div>"`;
+
+exports[`API Username PRs success message 1`] = `"<div class=\"row\"><div class=\"large-12 columns\"><h2>An error occurred while fetching new issues, have you set your github token? </h2></div></div>"`;
+
+exports[`HTML Error markup is approved markup 1`] = `"<div class=\"large-12 columns\"><h2></h2></div>"`;
+
+exports[`HTML Spinner markup is approved markup 1`] = `"<div class=\"large-12 columns\"><h2><img src=\"/img/ajax-loader.gif\" alt=\"loading\"></h2></div>"`;
+
+exports[`HacktoberfestChecker default properies are set 1`] = `
+Array [
+  Object {
+    "username": Object {
+      "isjQuery": true,
+      "length": 1,
+    },
+  },
+  Object {
+    "openIssues": Object {
+      "isjQuery": true,
+      "length": 1,
+    },
+  },
+  Object {
+    "form": Object {
+      "isjQuery": true,
+      "length": 1,
+    },
+  },
+  Object {
+    "results": Object {
+      "isjQuery": true,
+      "length": 1,
+    },
+  },
+  Object {
+    "errors": "{\"emptyUsername\":\"Username cannot be blank.\",\"API\":{\"issue\":\"An error occurred while fetching new issues, have you set your github token? \",\"username\":\"An error occurred while fetching issues for the given username, have you set your github token? \"}}",
+  },
+  Object {
+    "loader": "\"/img/ajax-loader.gif\"",
+  },
+]
+`;
