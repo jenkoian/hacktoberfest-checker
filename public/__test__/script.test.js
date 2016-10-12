@@ -1,4 +1,4 @@
-const html = require('fs').readFileSync('./../views/index.hbs').toString();
+const html = require('fs').readFileSync('./views/index.hbs').toString();
 document.documentElement.innerHTML = html;
 const HacktoberfestChecker = require("../js/script");
 const $ = require('./../../bower_components/jquery/dist/jquery.min');
@@ -9,7 +9,7 @@ describe('HacktoberfestChecker', function() {
     it('Function Exists', function() {
         expect(typeof HacktoberfestChecker === "function").toBeTruthy();
     });
-    it("default properies are set", function() {
+    it("default properties are set", function() {
         var objProperties = Object.getOwnPropertyNames(instance);
         var properties = objProperties.map(function(v) {
             var out = {};
