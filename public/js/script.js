@@ -1,6 +1,10 @@
-$(document).ready(function() {
-    new HacktoberfestChecker().constructor();
-});
+if (typeof module === "object" && typeof module.exports === "object") {
+    module.exports = HacktoberfestChecker;
+} else {
+    $(document).ready(function() {
+        new HacktoberfestChecker().constructor();
+    });
+}
 
 function HacktoberfestChecker() {
     // DOM nodes cache
