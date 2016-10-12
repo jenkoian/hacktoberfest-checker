@@ -29,9 +29,13 @@ var hacktoberfestInfo = {
 
             hacktoberfestInfo.totalIssues = res.total_count;
 
-            _.each(res.items, function(issue) {
+            var issuesLen = res.items.length;
+            _.forEach(res.items, function(issue, k) {
                 returnedIssue = hacktoberfestInfo.formatIssue(issue);
-                hacktoberfestInfo.octoberOpenIssues.push(returnedIssue);
+
+                hacktoberfestInfo.addRepoLanguages(returnedIssue, (k === issuesLen - 1) ? deferred : false).then(function(readyissue) {
+                    hacktoberfestInfo.octoberOpenIssues.push(readyissue);
+                });
             });
 
             deferred.resolve();
@@ -59,6 +63,29 @@ var hacktoberfestInfo = {
             created: issue.created_at,
             avatar: issue.user.avatar_url
         }
+    },
+
+    addRepoLanguages: function(issue, parentPromise) {
+        var deferred = q.defer();
+
+        var repo = issue.repo_name.split("/");
+
+        github.repos.get({
+            user: repo[0],
+            repo: repo[1]
+        }, function(err, res) {
+            if (err) {
+                issue.language = false;
+            } else {
+                issue.language = res.language;
+            }
+            deferred.resolve(issue);
+            if (parentPromise) {
+                parentPromise.resolve();
+            }
+        });
+        return deferred.promise;
+
     }
 }
 
