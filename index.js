@@ -3,6 +3,8 @@ var exphbs  = require('express-handlebars');
 var cache = require('memory-cache');
 var userInfo = require('./modules/userInfo');
 var hacktoberfestInfo = require('./modules/hacktoberfestInfo');
+var marked = require('marked');
+
 
 var hbs = exphbs.create({
     helpers: {
