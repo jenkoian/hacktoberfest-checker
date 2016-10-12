@@ -95,34 +95,35 @@ function getPullRequests(username) {
 
 
 function getGraphData(startDate, endDate) {
-  var deferred,
-      options;
+    var deferred,
+        options;
 
-  deferred = q.defer();
-  var endDate =  endDate < 10 ? "0"+endDate : endDate;
-  var date = '2016-10-'+ endDate + 'T23:59:59-12:00'
-  var startMonth = startDate == 30 ? "09" : "10";
-  options = {
-    q: 'created:2016-'+ startMonth + '-'+ startDate +'T00:00:00-12:00..'+ date,
-    sort: 'created',
-    order: 'asc',
-    type: 'pr',
-    per_page: '1'
-  }
-    
-  github.search.issues(options, function(err, res) {
-    if (err) {
-      deferred.reject();
-      return;
+    deferred = q.defer();
+    var endDate =  endDate < 10 ? "0"+endDate : endDate;
+    var date = '2016-10-'+ endDate + 'T23:59:59-12:00'
+    var startMonth = startDate == 30 ? "09" : "10";
+    options = {
+        q: 'created:2016-'+ startMonth + '-'+ startDate +'T00:00:00-12:00..'+ date,
+        sort: 'created',
+        order: 'asc',
+        type: 'pr',
+        per_page: '1'
     }
-  
-    var obj = {
-      data: res.total_count,
-      date: res.items[0].created_at
-    };
-    deferred.resolve(obj);
-  });
-  return deferred.promise;
+      
+    github.search.issues(options, function(err, res) {
+        if (err) {
+            deferred.reject();
+            return;
+        }
+      
+        var obj = {
+            data: res.total_count,
+            date: res.items[0].created_at
+        };
+        deferred.resolve(obj);
+    });
+
+    return deferred.promise;
 }
 
 var totalIssues = 0;
@@ -209,12 +210,12 @@ app.get('/', function(req, res) {
 });
 
 app.get('/graph', function(req, res) {
-  getGraphData(req.query.start, req.query.end).then(function(val) {
-      res.json(val);
-  })
-  .catch(function(err) {
-    res.render('partials/error');
-  });
+    getGraphData(req.query.start, req.query.end).then(function(val) {
+        res.json(val);
+    })
+    .catch(function(err) {
+      res.render('partials/error');
+    });
 });
 
 app.get('/issues', function (req, res) {
