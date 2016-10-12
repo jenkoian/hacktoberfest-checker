@@ -154,8 +154,8 @@ h2, h3 {
 }
 
 .social {
-    width: 300px;
-    margin: 0 auto;
+  margin: 0 auto;
+  width: 195px;
 }
 
 .social ul {
@@ -168,8 +168,32 @@ h2, h3 {
     display: block;
     float: left;
     padding-right: 5px;
+    padding-bottom: 5px;
 }
 
-.social span {
-    vertical-align: top !important;
+.social-head h4 {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.social div a {
+    color: #FFFFFF;
+}
+
+.twitter {
+    background-color: #00aced;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+}
+
+.facebook {
+    background-color: #3b5998;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+}
+
+.googleplus {
+    background-color: #dd4b39;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
 }
