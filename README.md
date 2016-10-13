@@ -44,7 +44,7 @@ Jest can be installed both locally (package.json) or globally:
 * globally you can install it by using `npm install -g jest-cli`
 * (BONUS) you can also use [Yarn](https://yarnpkg.com/) as npm alternative, just install Yarn with `npm install -g yarn` and then use `yarn` to install dependencies
 
-once jest is installed you're ready to start testing, to ease everything up we provided some pre-build commands in the package.json:
+Once jest is installed you're ready to start testing, to ease everything up we provided some pre-build commands in the package.json:
 
 * `npm run test` or `npm t` will run all the test suites
 * `npm run test:watch` will run jest in watch mode
