@@ -32,7 +32,7 @@ app.use(express.static('public'));
 
 var github = new GitHubApi({
     version: "3.0.0",
-    debug: true,
+    debug: false,
     protocol: "https",
     host: "api.github.com",
     timeout: 5000,
@@ -193,7 +193,7 @@ function addRepoLanguages(issue, parentPromise) {
 
 app.get('/', function(req, res) {
     if (!req.query.username) {
-        return res.render('index');
+        return res.render('index', {issues: octoberOpenIssues, total: totalIssues});
     }
 
     getPullRequests(req.query.username).then(function() {
@@ -210,7 +210,7 @@ app.get('/', function(req, res) {
           res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userImage});
         }
 
-        octoberOpenPrs = [];
+        //octoberOpenPrs = [];
     }).catch(function() {
         if (req.xhr) {
             res.render('partials/error');
@@ -218,7 +218,7 @@ app.get('/', function(req, res) {
             res.render('index', {error: true, username: req.query.username});
         }
 
-        octoberOpenPrs = [];
+        //octoberOpenPrs = [];
     });
 });
 
