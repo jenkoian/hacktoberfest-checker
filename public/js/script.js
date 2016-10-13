@@ -17,7 +17,9 @@ function HacktoberfestChecker() {
         emptyUsername: "Username cannot be blank.",
         API: {
             issue: "An error occurred while fetching new issues, have you set your github token? ",
-            username: "An error occurred while fetching issues for the given username, have you set your github token? "
+            username: "An error occurred while fetching issues for the given username, have you set your github token? ",
+            socket: "An error occured with the socket. Please try again.",
+            socketConnection: "An error occured while establishing a socket connection. Is the server running? "
         }
     };
     //the path for the spinner
@@ -48,20 +50,44 @@ HacktoberfestChecker.prototype.setFocus = function() {
  * Initializes the socket for receiving live issue updates.
  */
 HacktoberfestChecker.prototype.initSocket = function() {
-  // Get host for the socket.
   var socket = io();
-  var openIssues = this.openIssues;
-  openIssues.html(this.makeSpinner());
+  // Bind this to variables here. `this` is different when needed.
+  var newIssuesSuccess = this.newIssuesSuccess.bind(this);
+  var newIssuesError = this.newIssuesError.bind(this);
+  var newSocketError = this.newSocketError.bind(this);
+  var newSocketConnectError = this.newSocketConnectError.bind(this);
+
+  this.openIssues.html(this.makeSpinner());
+
   socket.on('connect', function() {
     socket.on('github-issues', function(data) {
-      openIssues.html(data.html);
-      console.log(data);
+      newIssuesSuccess(data.html);
     });
+
     socket.on('github-error', function(err) {
-      // TODO: Handle error
-      console.log(err);
+      newIssuesError();
+    });
+
+    socket.on('error', function(err) {
+      newSocketError();
+    });
+
+    socket.on('connect_error', function(err) {
+      newSocketConnectError();
     });
   });
+};
+/**
+ * In case of an error during API call, display an error message
+ */
+HacktoberfestChecker.prototype.newSocketConnectError = function() {
+    this.openIssues.html(this.makeError(this.errors.API.socketConnection));
+};
+/**
+ * In case of an error during API call, display an error message
+ */
+HacktoberfestChecker.prototype.newSocketError = function() {
+    this.openIssues.html(this.makeError(this.errors.API.socket));
 };
 /**
  * API call to the backend to featch new issues
