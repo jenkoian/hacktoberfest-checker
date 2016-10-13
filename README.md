@@ -8,6 +8,10 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 **Updated for 2016**
 
+NOT IN ANYWAY AFFLILIATED WITH HACKTOBER FEST------
+
+
+
 * Updated design
 * Hacktoberfest label support
 
