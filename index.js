@@ -20,6 +20,8 @@ var hbs = exphbs.create({
 });
 
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 app.set('port', (process.env.PORT || 5000));
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -30,7 +32,7 @@ app.use(express.static('public'));
 
 var github = new GitHubApi({
     version: "3.0.0",
-    debug: true,
+    debug: false,
     protocol: "https",
     host: "api.github.com",
     timeout: 5000,
@@ -46,6 +48,8 @@ github.authenticate({
 
 var octoberOpenPrs = [];
 var userImage;
+var ISSUES_UPDATE_INTERVAL = 5000;
+var clientList = [];
 
 function getPullRequests(username) {
     var deferred,
@@ -104,6 +108,8 @@ function getIssues(){
         sort : 'created',
         order : 'desc'
     };
+
+    octoberOpenIssues = [];
 
     github.search.issues(options, function(err, res) {
         if (err) {
@@ -227,6 +233,41 @@ app.get('/issues', function (req, res) {
     });
 });
 
-app.listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
+
+io.on('connection', function (socket) {
+  // Add new connection too client list
+  clientList.push(socket);
+
+  socket.on('disconnect', function() {
+    // remove client from the list
+    clientList.splice(clientList.indexOf(socket), 1);
+  });
+
+  socket.on('error', function() {
+    // remove client from the list
+    clientList.splice(clientList.indexOf(socket), 1);
+  });
+});
+
+function getIssuesCycle() {
+  console.log('Getting New Issues');
+  getIssues().then(function() {
+    // Render the partial then send the html through the socket.
+    // Optimize this too only send the object.
+    hbs.render('./views/partials/issues.hbs', {issues: octoberOpenIssues, total: totalIssues})
+      .then(function(html) {
+        // Update all clients
+        io.sockets.emit('github-issues', {html: html});
+      })
+  }).catch(function() {
+    io.sockets.emit('github-error', {error: true});
+  });
+
+  setTimeout(getIssuesCycle, ISSUES_UPDATE_INTERVAL);
+}
+
+// Get initial data
+getIssuesCycle();
