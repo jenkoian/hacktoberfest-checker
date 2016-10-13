@@ -29,7 +29,8 @@ function HacktoberfestChecker() {
 HacktoberfestChecker.prototype.constructor = function() {
     this.setFocus();
     this.bindEvents();
-    this.getNewIssues();
+    //this.getNewIssues();
+    this.initSocket();
 };
 /**
  * the bind events function can be extended as the app grows
@@ -42,6 +43,25 @@ HacktoberfestChecker.prototype.bindEvents = function() {
  */
 HacktoberfestChecker.prototype.setFocus = function() {
     this.username.focus();
+};
+/**
+ * Initializes the socket for receiving live issue updates.
+ */
+HacktoberfestChecker.prototype.initSocket = function() {
+  // Get host for the socket.
+  var socket = io();
+  var openIssues = this.openIssues;
+  openIssues.html(this.makeSpinner());
+  socket.on('connect', function() {
+    socket.on('github-issues', function(data) {
+      openIssues.html(data.html);
+      console.log(data);
+    });
+    socket.on('github-error', function(err) {
+      // TODO: Handle error
+      console.log(err);
+    });
+  });
 };
 /**
  * API call to the backend to featch new issues
