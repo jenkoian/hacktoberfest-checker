@@ -57,7 +57,7 @@ HacktoberfestChecker.prototype.initSocket = function() {
   var newSocketError = this.newSocketError.bind(this);
   var newSocketConnectError = this.newSocketConnectError.bind(this);
 
-  this.openIssues.html(this.makeSpinner());
+  //this.openIssues.html(this.makeSpinner());
 
   socket.on('connect', function() {
     socket.on('github-issues', function(data) {

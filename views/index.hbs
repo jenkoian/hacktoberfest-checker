@@ -50,7 +50,11 @@
             {{/if}}
         </div>
 
-        <div id="open-issues"></div>
+        <div id="open-issues">
+          {{#if issues}}
+            {{> issues}}
+          {{/if}}
+        </div>
 
         <footer>
             <div class="large-12 columns text-center">
