@@ -193,11 +193,17 @@ app.get('/', function(req, res) {
         length = octoberOpenPrs.length;
         statements = ["It's not too late to start!", "Keep going.", "Half way there.", "So close!", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
+        var socialSharingObject = {};
+        socialSharingObject.Url = req.protocol+'://'+req.headers.host+'?username='+req.query.username;
+        socialSharingObject.UrlEncoded = encodeURIComponent(socialSharingObject.Url);
+        socialSharingObject.sharingString = 'I\'ve done my bit for #OpenSource. Created '+length+' pull requests for #hacktoberfest! You should too. Track my progress at ';
+        socialSharingObject.sharingStringEncoded = encodeURIComponent(socialSharingObject.sharingString);
+        console.log(socialSharingObject.sharingStringEncoded);
 
         if (req.xhr) {
-          res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length], userImage: userImage});
+          res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length], userImage: userImage,socialSharingObject:socialSharingObject});
         } else {
-          res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userImage});
+          res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userImage,socialSharingObject:socialSharingObject});
         }
 
         octoberOpenPrs = [];

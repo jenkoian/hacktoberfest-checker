@@ -2,11 +2,12 @@
   {{#if userImage}}
     <img class="avatar" src="{{userImage}}"/>
   {{/if}}
-  
+
   <div class="row">
     <div class="large-12 columns">
       <h2><strong>{{ prs.length }} / 4</strong></h2>
       <h3><strong>{{ statement }}</strong></h3>
+      {{> sharingIcons}}
     </div>
   </div>
 
