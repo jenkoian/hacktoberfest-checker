@@ -168,3 +168,48 @@ h3 {
 .issue .label {
     color: black;
 }
+
+.social {
+  margin: 0 auto;
+  width: 195px;
+}
+
+.social ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social li {
+    display: block;
+    float: left;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.social-head h4 {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.social div a {
+    color: #FFFFFF;
+}
+
+.twitter {
+    background-color: #00aced;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+}
+
+.facebook {
+    background-color: #3b5998;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+}
+
+.googleplus {
+    background-color: #dd4b39;
+    border-radius: 5px;
+    padding: 2px 5px 2px 5px;
+}
