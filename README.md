@@ -36,6 +36,23 @@ As an alternative to the section above, you can run the app within a docker cont
 
 * `docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
 
+### Testing
+The chosen test runner is [Jest](https://facebook.github.io/jest/) a Facebook project, you can learn more about Jest in series of videos on [Egghead.io](https://egghead.io/lessons/javascript-test-javascript-with-jest).
+
+Jest can be installed both locally (package.json) or globally:
+* locally it will be installed when you run `npm install`
+* globally you can install it by using `npm install -g jest-cli`
+* (BONUS) you can also use [Yarn](https://yarnpkg.com/) as npm alternative, just install Yarn with `npm install -g yarn` and then use `yarn` to install dependencies
+
+Once jest is installed you're ready to start testing, to ease everything up we provided some pre-build commands in the package.json:
+
+* `npm run test` or `npm t` will run all the test suites
+* `npm run test:watch` will run jest in watch mode
+* `npm run test:coverage` will run all the test suites and it will provide code coverage
+* `npm run test:updateSnapshot` will run all the test suites and it will update obsolete or unused snapshot (for more info on snapshots see [this video](https://egghead.io/lessons/javascript-use-jest-s-snapshot-testing-feature))
+* `npm run test:full` it will run jest in watch mode and will provide code coverage
+
+
 ## TODO (2015)
 
 - [x] Ajax form submission
