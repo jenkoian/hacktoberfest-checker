@@ -106,7 +106,7 @@ HacktoberfestChecker.prototype.usernameIssuesError = function(html) {
 };
 
 HacktoberfestChecker.prototype.getName = function() {
-    return this.username.val() || false;
+    return this.username.val().trim() || false;
 };
 /**
  * HTML Helper makeSpinner
