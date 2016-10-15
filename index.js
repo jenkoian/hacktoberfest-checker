@@ -48,7 +48,7 @@ github.authenticate({
 
 var octoberOpenPrs = [];
 var userImage;
-var ISSUES_UPDATE_INTERVAL = 10000;
+var ISSUES_UPDATE_INTERVAL = 60000;
 var ISSUES_DISPLAY_LIMIT = 20;
 var clientList = [];
 
@@ -264,6 +264,15 @@ function getIssuesCycle() {
     octoberOpenIssues = tempIssues.concat(octoberOpenIssues);
     octoberOpenIssues.sort(createdAtSort);
 
+    console.log('before', octoberOpenIssues.length);
+    octoberOpenIssues = octoberOpenIssues.filter(function (val, index, arr) {
+      if (index < arr.length - 1) {
+        //console.log(val.url === arr[index+1].url);
+        return val.url !== arr[index+1].url;
+      }
+      return true;
+    });
+    console.log('after',octoberOpenIssues.length);
     // Limit issues to be rendered
     if (octoberOpenIssues.length > ISSUES_DISPLAY_LIMIT) {
       octoberOpenIssues.splice(ISSUES_DISPLAY_LIMIT - 1);
