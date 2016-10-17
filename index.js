@@ -1,10 +1,10 @@
 var express = require('express');
-var GitHubApi = require("github");
-var _ = require('lodash');
-var q = require('q');
 var exphbs  = require('express-handlebars');
 var cache = require('memory-cache');
+var userInfo = require('./modules/userInfo');
+var hacktoberfestInfo = require('./modules/hacktoberfestInfo');
 var marked = require('marked');
+
 
 var hbs = exphbs.create({
     helpers: {
@@ -28,202 +28,49 @@ app.use('/foundation/css', express.static('bower_components/foundation/css'));
 app.use('/foundation/js', express.static('bower_components/foundation/js'));
 app.use(express.static('public'));
 
-var github = new GitHubApi({
-    version: "3.0.0",
-    debug: true,
-    protocol: "https",
-    host: "api.github.com",
-    timeout: 5000,
-    headers: {
-        "user-agent": "Hacktoberfest Checker"
-    }
-});
-
-github.authenticate({
-    type: "oauth",
-    token: process.env.GITHUB_TOKEN
-});
-
-var octoberOpenPrs = [];
-var userImage;
-
-function getPullRequests(username) {
-    var deferred,
-        options;
-
-    deferred = q.defer();
-
-    options = {
-        q: '-label:invalid+created:2016-09-30T00:00:00-12:00..2016-10-31T23:59:59-12:00+type:pr+is:public+author:' + username
-    };
-
-    github.search.issues(options, function(err, res) {
-        if (err) {
-            deferred.reject();
-            return;
-        }
-
-        userImage = null;
-
-        _.each(res.items, function(event) {
-            var repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull'));
-
-            if (userImage == null) {
-                userImage = event.user.avatar_url;
-            }
-
-            var hacktoberFestLabels = _.filter(event.labels, function(label) {
-                return label.name.toLowerCase() === 'hacktoberfest';
-            });
-
-            var returnedEvent = {
-                repo_name: repo,
-                title: event.title,
-                url: event.html_url,
-                state: event.state,
-                hasHacktoberFestLabel: hacktoberFestLabels.length > 0
-            };
-
-            octoberOpenPrs.push(returnedEvent);
-        });
-
-        deferred.resolve();
-    });
-
-    return deferred.promise;
-}
-
-var totalIssues = 0;
-var octoberOpenIssues = [];
-
-function getIssues(){
-    var deferred = q.defer();
-
-    var options = {
-        q : 'type:issue+label:hacktoberfest+state:open',
-        sort : 'created',
-        order : 'desc'
-    };
-
-    github.search.issues(options, function(err, res) {
-        if (err) {
-            deferred.reject();
-            return;
-        }
-
-        totalIssues = res.total_count;
-
-        var issuesLen = res.items.length;
-        _.forEach(res.items, function(issue, k) {
-            var issueUrl = issue.html_url;
-
-            var repo_url = issueUrl.replace(/\/(issues)\/\d+/, "");
-            var lastSlash = repo_url.lastIndexOf("/");
-            var repo = repo_url.substring(repo_url.lastIndexOf("/", lastSlash - 1) + 1);
-
-            var description = issue.body;
-            var temp_desc = description;
-            if (description.length > 500) {
-                // Check if there is a link in the description
-                // if it starts before 120 chars, we include the
-                // whole link.
-                var link_match = /\[.+\]\(.+\)/;
-                var matched = description.match(link_match);
-                var match_index = description.search(link_match);
-                if (matched && match_index < 120) {
-                    description = description.substring(0, match_index) + matched + "&hellip;";
-                } else {
-                    description = description.substring(0, 120) + "&hellip;";
-                }
-            }
-
-            var returnedIssue = {
-                repo_url: repo_url,
-                repo_name: repo,
-                title: issue.title,
-                url: issue.html_url,
-                labels: issue.labels,
-                description: marked(description),
-                created: issue.created_at,
-                avatar: issue.user.avatar_url
-            };
-
-            addRepoLanguages(returnedIssue, (k === issuesLen - 1) ? deferred : false).then(function(readyissue) {
-                octoberOpenIssues.push(readyissue);
-            });
-        });
-
-    });
-
-    return deferred.promise;
-}
-
-function addRepoLanguages(issue, parentPromise) {
-    var deferred = q.defer();
-
-    var repo = issue.repo_name.split("/");
-
-    github.repos.get({
-        user: repo[0],
-        repo: repo[1]
-    }, function(err, res) {
-        if (err) {
-            issue.language = false;
-        } else {
-            issue.language = res.language;
-        }
-        deferred.resolve(issue);
-        if (parentPromise) {
-            parentPromise.resolve();
-        }
-    });
-    return deferred.promise;
-
-}
-
 app.get('/', function(req, res) {
     if (!req.query.username) {
         return res.render('index');
     }
 
-    getPullRequests(req.query.username).then(function() {
+    userInfo.setUserName(req.query.username);
+    userInfo.populateOpenPrs(req.query.username).then(function() {
         var length,
-            statements;
+        statements;
 
-        length = octoberOpenPrs.length;
+        length = userInfo.octoberOpenPrs.length;
         statements = ["It's not too late to start!", "Keep going.", "Half way there.", "So close!", "Way to go!", "Now you're just showing off."];
         if (length > 5) length = 5;
 
         if (req.xhr) {
-          res.render('partials/prs', {prs: octoberOpenPrs, statement: statements[length], userImage: userImage});
-        } else {
-          res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userImage});
-        }
+          res.render('partials/prs', {prs: userInfo.octoberOpenPrs, statement: statements[length], userImage: userInfo.userImage});
+      } else {
+          res.render('index', {prs: userInfo.octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userInfo.userImage});
+      }
 
-        octoberOpenPrs = [];
+      userInfo.resetToDefault();
     }).catch(function() {
         if (req.xhr) {
             res.render('partials/error');
         } else {
             res.render('index', {error: true, username: req.query.username});
         }
-
-        octoberOpenPrs = [];
+        userInfo.resetToDefault();
     });
 });
 
 app.get('/issues', function (req, res) {
-    getIssues().then(function () {
+    hacktoberfestInfo.populateOpenIssues().then(function () {
         if (req.xhr) {
-            res.render('partials/issues', {issues: octoberOpenIssues, total: totalIssues});
+            res.render('partials/issues', {issues: hacktoberfestInfo.octoberOpenIssues, total: hacktoberfestInfo.totalIssues});
         } else {
             res.render('partials/error');
         }
 
-        octoberOpenIssues = [];
+        hacktoberfestInfo.resetToDefault();
     }).catch(function () {
         res.render('partials/error');
-        octoberOpenIssues = [];
+        hacktoberfestInfo.resetToDefault();
     });
 });
 
