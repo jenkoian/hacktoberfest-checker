@@ -16,8 +16,8 @@ function HacktoberfestChecker() {
     this.errors = {
         emptyUsername: "Username cannot be blank.",
         API: {
-            issue: "An error occurred while fetching new issues, have you set your github token? ",
-            username: "An error occurred while fetching issues for the given username, have you set your github token? "
+            issue: "An error occurred while fetching new issues, have you set your github token?",
+            username: "An error occurred while fetching issues for the given username, have you set your github token?"
         }
     };
     //the path for the spinner
@@ -35,8 +35,35 @@ HacktoberfestChecker.prototype.constructor = function() {
  * the bind events function can be extended as the app grows
  */
 HacktoberfestChecker.prototype.bindEvents = function() {
-    this.form.on("submit", this.getUsernameIssues.bind(this));
+    this.form.on("submit", this.onFormSubmit.bind(this));
+    window.addEventListener('popstate', this.onPopState.bind(this));
 };
+
+HacktoberfestChecker.prototype.onFormSubmit = function (e) {
+    e.preventDefault();
+
+    var name = this.getName();
+
+    if (!name) {
+        this.results.html(this.makeError(this.errors.emptyUsername));
+
+        return;
+    }
+
+    this.getUsernameIssues(name, true);
+}
+
+HacktoberfestChecker.prototype.onPopState = function (e) {
+    var name = e.state ? e.state.name : '';
+
+    this.username.val(name);
+    this.results.html('');
+
+    if (name) {
+        this.getUsernameIssues(name, false);
+    }
+}
+
 /**
  * Set the focus on the username field
  */
@@ -47,7 +74,6 @@ HacktoberfestChecker.prototype.setFocus = function() {
  * API call to the backend to featch new issues
  */
 HacktoberfestChecker.prototype.getNewIssues = function() {
-    this.openIssues.html(this.makeSpinner());
     $.ajax({
         url: '/issues',
         type: "GET",
@@ -69,16 +95,7 @@ HacktoberfestChecker.prototype.newIssuesError = function(html) {
     this.openIssues.html(this.makeError(this.errors.API.issue));
 };
 
-HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
-    if (e) {
-        e.preventDefault();
-    }
-    var name = this.getName();
-
-    if (!name) {
-        this.results.html(this.makeError(this.errors.emptyUsername));
-        return;
-    }
+HacktoberfestChecker.prototype.getUsernameIssues = function(name, updateHistory) {
     this.results.html(this.makeSpinner());
 
     $.ajax({
@@ -87,9 +104,8 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
         success: this.usernameIssuesSuccess.bind(this),
         //new: add error handler in case of failure during the API call
         error: this.usernameIssuesError.bind(this),
-        always: this.updateHistory.apply(this, [name])
+        always: this.updateHistory.apply(this, [name, updateHistory])
     });
-
 };
 
 /**
@@ -114,18 +130,12 @@ HacktoberfestChecker.prototype.getName = function() {
  */
 HacktoberfestChecker.prototype.makeSpinner = function() {
     return $("<div/>", {
-        class: "row"
-    }).addClass('loading').append(
-        $("<div/>", {
-            class: "large-12 columns"
-        }).append(
-            $("<h2/>").append(
-                $("<img/>", {
-                    src: this.loader,
-                    alt: "loading"
-                })
-            )
-        )
+        class: "text-center"
+    }).append(
+        $("<img/>", {
+            src: this.loader,
+            alt: "loading"
+        })
     );
 };
 /**
@@ -149,8 +159,8 @@ HacktoberfestChecker.prototype.makeError = function(error) {
  * History state helper, checks if the replaceState is available
  * before updating the username in the query string.
  */
-HacktoberfestChecker.prototype.updateHistory = function(name) {
-    if (window.history && window.history.replaceState) {
-        history.replaceState({}, name, '?username=' + name);
+HacktoberfestChecker.prototype.updateHistory = function(name, updateHistory) {
+    if (updateHistory && window.history && window.history.pushState) {
+        history.pushState({ name: name }, name, '?username=' + name);
     }
 };

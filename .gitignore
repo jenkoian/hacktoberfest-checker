@@ -30,3 +30,5 @@ bower_components
 # Visual Studio Node.js projects
 *.njsproj
 
+# Editor files
+.idea
