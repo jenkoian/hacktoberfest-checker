@@ -45,6 +45,10 @@ h1 {
     padding-top: 10%;
     text-align: center;
 }
+h2 {
+    font-family: squealerregular;
+    font-size: 2.5em;
+}
 
 h2 {
     font-size: 2em;
@@ -136,6 +140,41 @@ h3 {
     top: 0;
     right: 0;
     border: 0;
+}
+
+.line {
+  fill: none;
+  stroke: #D3853D;
+  stroke-width: 2px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdages;
+}
+
+.axis text {
+  fill: grey;
+}
+
+.dot {
+  fill: #b0581d;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  height: 30px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: #D3853D;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }
 
 .disclaimer {
