@@ -28,7 +28,7 @@
     "memory-cache": "^0.1.4",
     "q": "^1.4.1"
   },
-    "jest": {
-        "preprocessorIgnorePatterns": ["node_modules", "bower_components"]
-    }
+  "jest": {
+    "preprocessorIgnorePatterns": ["node_modules", "bower_components"]
+  }
 }
