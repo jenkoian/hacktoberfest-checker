@@ -50,32 +50,30 @@ HacktoberfestChecker.prototype.setFocus = function() {
  * Initializes the socket for receiving live issue updates.
  */
 HacktoberfestChecker.prototype.initSocket = function() {
-  var socket = io();
-  // Bind this to variables here. `this` is different when needed.
-  var newIssuesSuccess = this.newIssuesSuccess.bind(this);
-  var newIssuesError = this.newIssuesError.bind(this);
-  var newSocketError = this.newSocketError.bind(this);
-  var newSocketConnectError = this.newSocketConnectError.bind(this);
+    var socket = io();
+    // Bind this to variables here. `this` is different when needed.
+    var newIssuesSuccess = this.newIssuesSuccess.bind(this);
+    var newIssuesError = this.newIssuesError.bind(this);
+    var newSocketError = this.newSocketError.bind(this);
+    var newSocketConnectError = this.newSocketConnectError.bind(this);
 
-  //this.openIssues.html(this.makeSpinner());
+    socket.on('connect', function() {
+        socket.on('github-issues', function(data) {
+            newIssuesSuccess(data.html);
+        });
 
-  socket.on('connect', function() {
-    socket.on('github-issues', function(data) {
-      newIssuesSuccess(data.html);
+        socket.on('github-error', function(err) {
+            newIssuesError();
+        });
+
+        socket.on('error', function(err) {
+            newSocketError();
+        });
+
+        socket.on('connect_error', function(err) {
+            newSocketConnectError();
+        });
     });
-
-    socket.on('github-error', function(err) {
-      newIssuesError();
-    });
-
-    socket.on('error', function(err) {
-      newSocketError();
-    });
-
-    socket.on('connect_error', function(err) {
-      newSocketConnectError();
-    });
-  });
 };
 /**
  * In case of an error during API call, display an error message

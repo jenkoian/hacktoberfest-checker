@@ -101,7 +101,6 @@ function getPullRequests(username) {
 var totalIssues = 0;
 var octoberOpenIssues = [];
 var tempIssues = [];
-var prevQueryTime = '';
 
 function getIssues(){
     var deferred = q.defer();
@@ -242,55 +241,54 @@ server.listen(app.get('port'), function() {
 });
 
 io.on('connection', function (socket) {
-  // Add new connection too client list
-  clientList.push(socket);
+    // Add new connection too client list
+    clientList.push(socket);
 
-  socket.on('disconnect', function() {
-    // remove client from the list
-    clientList.splice(clientList.indexOf(socket), 1);
-  });
+    socket.on('disconnect', function() {
+        // remove client from the list
+        clientList.splice(clientList.indexOf(socket), 1);
+    });
 
-  socket.on('error', function() {
-    // remove client from the list
-    clientList.splice(clientList.indexOf(socket), 1);
-  });
+    socket.on('error', function() {
+        // remove client from the list
+        clientList.splice(clientList.indexOf(socket), 1);
+    });
 });
 
 function getIssuesCycle() {
-  getIssues().then(function() {
-    // Render the partial then send the html through the socket.
-    // Optimize this too only send the object.
-    // Insert the newer list of issues in front.
-    octoberOpenIssues = tempIssues.concat(octoberOpenIssues);
-    octoberOpenIssues.sort(createdAtSort);
+    getIssues().then(function() {
+        // Render the partial then send the html through the socket.
+        // Optimize this too only send the object.
+        // Insert the newer list of issues in front.
+        octoberOpenIssues = tempIssues.concat(octoberOpenIssues);
+        octoberOpenIssues.sort(createdAtSort);
 
-    console.log('before', octoberOpenIssues.length);
-    octoberOpenIssues = octoberOpenIssues.filter(function (val, index, arr) {
-      if (index < arr.length - 1) {
-        //console.log(val.url === arr[index+1].url);
-        return val.url !== arr[index+1].url;
-      }
-      return true;
+        octoberOpenIssues = octoberOpenIssues.filter(function (val, index, arr) {
+            if (index < arr.length - 1) {
+                //console.log(val.url === arr[index+1].url);
+                return val.url !== arr[index+1].url;
+            }
+            return true;
+        });
+
+        // Limit issues to be rendered
+        if (octoberOpenIssues.length > ISSUES_DISPLAY_LIMIT) {
+            octoberOpenIssues.splice(ISSUES_DISPLAY_LIMIT - 1);
+        }
+        hbs.render('./views/partials/issues.hbs', {issues: octoberOpenIssues, total: totalIssues})
+            .then(function(html) {
+                // Update all clients
+                io.sockets.emit('github-issues', {html: html});
+            });
+    }).catch(function(err) {
+        io.sockets.emit('github-error', {error: true});
     });
-    console.log('after',octoberOpenIssues.length);
-    // Limit issues to be rendered
-    if (octoberOpenIssues.length > ISSUES_DISPLAY_LIMIT) {
-      octoberOpenIssues.splice(ISSUES_DISPLAY_LIMIT - 1);
-    }
-    hbs.render('./views/partials/issues.hbs', {issues: octoberOpenIssues, total: totalIssues})
-      .then(function(html) {
-        // Update all clients
-        io.sockets.emit('github-issues', {html: html});
-      })
-  }).catch(function(err) {
-    io.sockets.emit('github-error', {error: true});
-  });
 
-  setTimeout(getIssuesCycle, ISSUES_UPDATE_INTERVAL);
+    setTimeout(getIssuesCycle, ISSUES_UPDATE_INTERVAL);
 }
 
 function createdAtSort(a, b) {
-  return new Date(a.created).valueOf() < new Date(b.created).valueOf() ? 1 : -1;
+    return new Date(a.created).valueOf() < new Date(b.created).valueOf() ? 1 : -1;
 }
 
 // Get initial data
