@@ -20,6 +20,8 @@ var hbs = exphbs.create({
 });
 
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 app.set('port', (process.env.PORT || 5000));
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -30,7 +32,7 @@ app.use(express.static('public'));
 
 var github = new GitHubApi({
     version: "3.0.0",
-    debug: true,
+    debug: false,
     protocol: "https",
     host: "api.github.com",
     timeout: 5000,
@@ -46,6 +48,9 @@ github.authenticate({
 
 var octoberOpenPrs = [];
 var userImage;
+var ISSUES_UPDATE_INTERVAL = 60000;
+var ISSUES_DISPLAY_LIMIT = 20;
+var clientList = [];
 
 function getPullRequests(username) {
     var deferred,
@@ -95,6 +100,7 @@ function getPullRequests(username) {
 
 var totalIssues = 0;
 var octoberOpenIssues = [];
+var tempIssues = [];
 
 function getIssues(){
     var deferred = q.defer();
@@ -105,6 +111,7 @@ function getIssues(){
         order : 'desc'
     };
 
+    tempIssues = [];
     github.search.issues(options, function(err, res) {
         if (err) {
             deferred.reject();
@@ -114,6 +121,7 @@ function getIssues(){
         totalIssues = res.total_count;
 
         var issuesLen = res.items.length;
+
         _.forEach(res.items, function(issue, k) {
             var issueUrl = issue.html_url;
 
@@ -149,9 +157,10 @@ function getIssues(){
             };
 
             addRepoLanguages(returnedIssue, (k === issuesLen - 1) ? deferred : false).then(function(readyissue) {
-                octoberOpenIssues.push(readyissue);
+                tempIssues.push(readyissue);
             });
         });
+
 
     });
 
@@ -183,7 +192,7 @@ function addRepoLanguages(issue, parentPromise) {
 
 app.get('/', function(req, res) {
     if (!req.query.username) {
-        return res.render('index');
+        return res.render('index', {issues: octoberOpenIssues, total: totalIssues});
     }
 
     getPullRequests(req.query.username).then(function() {
@@ -227,6 +236,60 @@ app.get('/issues', function (req, res) {
     });
 });
 
-app.listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
+
+io.on('connection', function (socket) {
+    // Add new connection too client list
+    clientList.push(socket);
+
+    socket.on('disconnect', function() {
+        // remove client from the list
+        clientList.splice(clientList.indexOf(socket), 1);
+    });
+
+    socket.on('error', function() {
+        // remove client from the list
+        clientList.splice(clientList.indexOf(socket), 1);
+    });
+});
+
+function getIssuesCycle() {
+    getIssues().then(function() {
+        // Render the partial then send the html through the socket.
+        // Optimize this too only send the object.
+        // Insert the newer list of issues in front.
+        octoberOpenIssues = tempIssues.concat(octoberOpenIssues);
+        octoberOpenIssues.sort(createdAtSort);
+
+        octoberOpenIssues = octoberOpenIssues.filter(function (val, index, arr) {
+            if (index < arr.length - 1) {
+                //console.log(val.url === arr[index+1].url);
+                return val.url !== arr[index+1].url;
+            }
+            return true;
+        });
+
+        // Limit issues to be rendered
+        if (octoberOpenIssues.length > ISSUES_DISPLAY_LIMIT) {
+            octoberOpenIssues.splice(ISSUES_DISPLAY_LIMIT - 1);
+        }
+        hbs.render('./views/partials/issues.hbs', {issues: octoberOpenIssues, total: totalIssues})
+            .then(function(html) {
+                // Update all clients
+                io.sockets.emit('github-issues', {html: html});
+            });
+    }).catch(function(err) {
+        io.sockets.emit('github-error', {error: true});
+    });
+
+    setTimeout(getIssuesCycle, ISSUES_UPDATE_INTERVAL);
+}
+
+function createdAtSort(a, b) {
+    return new Date(a.created).valueOf() < new Date(b.created).valueOf() ? 1 : -1;
+}
+
+// Get initial data
+getIssuesCycle();
