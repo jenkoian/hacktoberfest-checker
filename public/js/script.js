@@ -17,7 +17,9 @@ function HacktoberfestChecker() {
         emptyUsername: "Username cannot be blank.",
         API: {
             issue: "An error occurred while fetching new issues, have you set your github token? ",
-            username: "An error occurred while fetching issues for the given username, have you set your github token? "
+            username: "An error occurred while fetching issues for the given username, have you set your github token? ",
+            socket: "An error occured with the socket. Please try again.",
+            socketConnection: "An error occured while establishing a socket connection. Is the server running? "
         }
     };
     //the path for the spinner
@@ -29,7 +31,8 @@ function HacktoberfestChecker() {
 HacktoberfestChecker.prototype.constructor = function() {
     this.setFocus();
     this.bindEvents();
-    this.getNewIssues();
+    //this.getNewIssues();
+    this.initSocket();
 };
 /**
  * the bind events function can be extended as the app grows
@@ -42,6 +45,47 @@ HacktoberfestChecker.prototype.bindEvents = function() {
  */
 HacktoberfestChecker.prototype.setFocus = function() {
     this.username.focus();
+};
+/**
+ * Initializes the socket for receiving live issue updates.
+ */
+HacktoberfestChecker.prototype.initSocket = function() {
+    var socket = io();
+    // Bind this to variables here. `this` is different when needed.
+    var newIssuesSuccess = this.newIssuesSuccess.bind(this);
+    var newIssuesError = this.newIssuesError.bind(this);
+    var newSocketError = this.newSocketError.bind(this);
+    var newSocketConnectError = this.newSocketConnectError.bind(this);
+
+    socket.on('connect', function() {
+        socket.on('github-issues', function(data) {
+            newIssuesSuccess(data.html);
+        });
+
+        socket.on('github-error', function(err) {
+            newIssuesError();
+        });
+
+        socket.on('error', function(err) {
+            newSocketError();
+        });
+
+        socket.on('connect_error', function(err) {
+            newSocketConnectError();
+        });
+    });
+};
+/**
+ * In case of an error during API call, display an error message
+ */
+HacktoberfestChecker.prototype.newSocketConnectError = function() {
+    this.openIssues.html(this.makeError(this.errors.API.socketConnection));
+};
+/**
+ * In case of an error during API call, display an error message
+ */
+HacktoberfestChecker.prototype.newSocketError = function() {
+    this.openIssues.html(this.makeError(this.errors.API.socket));
 };
 /**
  * API call to the backend to featch new issues

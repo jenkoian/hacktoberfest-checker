@@ -60,7 +60,11 @@
             {{/if}}
         </div>
 
-        <div id="open-issues"></div>
+        <div id="open-issues">
+            {{#if issues}}
+                {{> issues}}
+            {{/if}}
+        </div>
 
         <footer>
             <div class="large-12 columns text-center">
@@ -70,6 +74,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="/js/script.js"></script>
 
     <script>
