@@ -209,7 +209,7 @@ app.get('/', function(req, res) {
           res.render('index', {prs: octoberOpenPrs, statement: statements[length], username: req.query.username, userImage: userImage});
         }
 
-        //octoberOpenPrs = [];
+        octoberOpenPrs = [];
     }).catch(function() {
         if (req.xhr) {
             res.render('partials/error');
@@ -217,7 +217,7 @@ app.get('/', function(req, res) {
             res.render('index', {error: true, username: req.query.username});
         }
 
-        //octoberOpenPrs = [];
+        octoberOpenPrs = [];
     });
 });
 
