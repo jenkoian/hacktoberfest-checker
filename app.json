@@ -10,7 +10,7 @@
   "success_url": "/",
   "env": {
     "GITHUB_TOKEN": {
-      "description": "Check public_repo, link: https://github.com/settings/tokens/new",
+      "description": "Link: https://github.com/settings/tokens/new",
       "required": true
     }
   }
