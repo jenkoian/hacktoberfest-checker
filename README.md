@@ -1,4 +1,4 @@
-# Hacktoberfest Checker
+# Hacktoberfest Checker [![Deploy your own](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
