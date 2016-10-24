@@ -6,7 +6,7 @@
   ],
   "website": "https://hacktoberfestchecker.herokuapp.com",
   "repository": "https://github.com/jenkoian/hacktoberfest-checker",
-  "logo": "https://github.com/jenkoian/hacktoberfest-checker/blob/master/public/img/og.png",
+  "logo": "https://github.com/jenkoian/hacktoberfest-checker/blob/master/public/img/og.png?raw=true",
   "success_url": "/",
   "env": {
     "GITHUB_TOKEN": {
