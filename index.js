@@ -41,13 +41,13 @@ var github = new GitHubApi({
     }
 });
 
-if(process.env.GITHUB_TOKEN){
-  github.authenticate({
-      type: "oauth",
-      token: process.env.GITHUB_TOKEN
-  });
-}else {
-  console.log('No GITHUB_TOKEN specified, do so to increase rate limit');
+if (process.env.GITHUB_TOKEN) {
+    github.authenticate({
+        type: "oauth",
+        token: process.env.GITHUB_TOKEN
+    });
+} else {
+    console.log('No GITHUB_TOKEN specified, do so to increase rate limit');
 }
 
 var octoberOpenPrs = [];
