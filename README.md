@@ -62,7 +62,7 @@ Once Jest is installed, you're ready to start testing. To make everything easier
 - [x] Cache usernames and etags to make use of `If-None-Match` to reduce risk of reaching rate limit on github API.
 - [x] Show a list of pull requests in question
 - [x] Add disclaimer (GitHub API only allows max of 300 events, so if you're a busy github bee, it probably won't do you justice)
-- [x] *or* even better than the above disclaimer, use the search API rather than the event API
+- [x] *or*, even better than the above disclaimer, use the search API rather than the event API
 - [x] Add contextual message, e.g. 2/4 PRs done "Half way there", 4/4 PRs done "Way to go", 12/4 PRs done "Now you're showing off"
 
 ## License
