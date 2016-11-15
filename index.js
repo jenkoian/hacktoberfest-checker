@@ -240,6 +240,10 @@ app.get('/issues', function (req, res) {
     });
 });
 
+app.get('/2016', function (req, res) {
+    res.render('2016');
+});
+
 server.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
