@@ -11,7 +11,7 @@ Useful checker web app to see how close you are to achieving the requirements fo
 * Updated design
 * Hacktoberfest label support
 
-You can get involved by picking up some of the issues labelled [hacktoberfest](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest) to help toward your tally!
+You can get involved by picking up some of the issues labelled [hacktoberfest](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest) and make Pull Requests to increase your score!
 
 ## Running the app
 
