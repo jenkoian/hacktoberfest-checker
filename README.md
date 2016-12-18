@@ -67,4 +67,4 @@ Once Jest is installed, you're ready to start testing. To make everything easier
 
 ## License
 
-MIT © 2015-2016 [Ian Jenkins](https://github.com/jenkoian)
+MIT (C) 2015-2016 [Ian Jenkins](https://github.com/jenkoian)
