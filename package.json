@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
+  "engines": {
+    "node": "^6.11.1"
+  },
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest ",
     "test:watch": "node ./node_modules/jest/bin/jest --watch",
