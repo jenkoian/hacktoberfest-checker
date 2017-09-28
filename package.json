@@ -1,18 +1,13 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
     "node": "^6.11.1"
   },
   "scripts": {
-    "test": "node ./node_modules/jest/bin/jest ",
-    "test:watch": "node ./node_modules/jest/bin/jest --watch",
-    "test:coverage": "node ./node_modules/jest/bin/jest --coverage",
-    "test:updateSnapshot": "node ./node_modules/jest/bin/jest --updateSnapshot",
-    "test:full": "node ./node_modules/jest/bin/jest --watch --coverage",
-    "postinstall": "node ./node_modules/bower/bin/bower install"
+    "start": "node index.js"
   },
   "keywords": [
     "hacktoberfest"
@@ -20,19 +15,18 @@
   "author": "Ian Jenkins",
   "license": "MIT",
   "dependencies": {
-    "bower": "^1.5.3",
-    "express": "^4.13.3",
-    "express-handlebars": "^2.0.1",
-    "github": "^0.2.4",
+    "body-parser": "^1.15.1",
+    "compression": "^1.6.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "github": "^11.0.0",
     "helper-timeago": "^0.1.0",
-    "jest": "^16.0.1",
-    "lodash": "^3.10.1",
-    "marked": "^0.3.6",
-    "memory-cache": "^0.1.4",
-    "q": "^1.4.1",
-    "socket.io": "^1.5.0"
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.5",
+    "morgan": "^1.7.0",
+    "q": "^1.5.0"
   },
-  "jest": {
-    "preprocessorIgnorePatterns": ["node_modules", "bower_components"]
-  }
+  "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
 }

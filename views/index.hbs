@@ -1,91 +1,18 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hacktoberfest Checker</title>
-    <meta name="description" content="Useful app to check how you're getting on in hacktoberfest">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="Hacktoberfest Checker">
-    <meta property="og:description" content="Useful app to check how you're getting on in hacktoberfest">
-    <link rel="canonical" href="https://hacktoberfestchecker.herokuapp.com/">
-    <meta property="og:url" content="https://hacktoberfestchecker.herokuapp.com/">
-    <meta property="og:site_name" content="Hacktoberfest Checker" />
-    <meta property="og:image" content="https://hacktoberfestchecker.herokuapp.com/img/og.png" />
-    <link rel='icon' type='image/x-icon' href='img/favicon.ico' />
+﻿<h1 class="f1 f-6-ns orange tc"><a class="orange no-underline" href="/">Hacktoberfest Checker</a></h1>
 
-    <link rel="stylesheet" href="/normalize-css/normalize.css">
-    <link rel="stylesheet" href="/foundation/css/foundation.min.css">
+<div class="tc">
+    <form action="/" method="get">
+        <input class="f5 f5-ns fw4 ba b--white-20 ph2 ph2-ns pv2 pv2-ns w-30" type="text" name="username" placeholder="Github username" value="{{ username }}">
+        <button type="submit" class="f5 f5-ns fw4 dib ba b--black-20 bg-orange white ph2 ph2-ns pv2 pv2-ns br2 no-underline pointer">Check</button>
+    </form>
+</div>
 
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <a href="https://github.com/jenkoian/hacktoberfest-checker" target="_blank" class="fork-link"><img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
-    <div class="wrapper">
-        <div id="title-wrapper">
-            <h1><a href="/">Hacktoberfest Checker</a></h1>
-        </div>
-        <form action="/" method="get">
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse">
-                        <div class="small-10 columns">
-                            <input type="text" name="username" placeholder="Github username" value="{{ username }}">
-                        </div>
-                        <div class="small-2 columns">
-                            <button type="submit" class="button postfix">Check</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-        <div id="results">
-            {{#if error}}
-                {{#if username}}
-                    {{> error}}
-                {{/if}}
-            {{else}}
-                {{> prs}}
-            {{/if}}
-        </div>
-
-        <div id="open-issues">
-            {{#if issues}}
-                {{> issues}}
-            {{/if}}
-        </div>
-
-        <footer>
-            <div class="large-12 columns text-center">
-                <p class="disclaimer">Disclaimer: This site is fan made and not affiliated with <a href="https://hacktoberfest.digitalocean.com/" target="_blank">Hacktoberfest</a>.</p>
-            </div>
-        </footer>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-    <script src="/js/script.js"></script>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-68877006-1', 'auto');
-      ga('send', 'pageview');
-
-    </script>
-</body>
-</html>
+<div class="tc pv4" id="results">
+    {{#if error}}
+        {{#if username}}
+            {{> error}}
+        {{/if}}
+    {{else}}
+        {{> prs}}
+    {{/if}}
+</div>

@@ -8,8 +8,6 @@ USER octocat
 
 # With this npm install will only ever be run when building if the application's package.json changes!
 COPY package.json /app
-# Copy bower.json as well otherwise post install will fail
-COPY bower.json /app
 
 RUN npm install --production
 

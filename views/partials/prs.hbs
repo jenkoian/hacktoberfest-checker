@@ -1,44 +1,15 @@
 {{#exists prs}}
-  {{#if userImage}}
-    <img class="avatar" src="{{userImage}}"/>
-  {{/if}}
+    {{#if userImage}}
+        <img class="tc br-100 w4" src="{{userImage}}"/>
+    {{/if}}
 
-  <div class="row">
-    <div class="large-12 columns">
-      <h2><strong>{{ prs.length }} / 4</strong></h2>
-      <h3><strong>{{ statement }}</strong></h3>
-    </div>
-  </div>
 
-  <hr />
+    <h2 class="white"><strong>{{ prs.length }} / 4</strong></h2>
+    <h3 class="white"><strong>{{ statement }}</strong></h3>
 
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="social-head">
-        <h4><strong>Share:</strong></h4>
-        <div class="social">
-          <ul>
-            <li><div class="twitter"><a href="https://twitter.com/intent/tweet?button_hashtag=hacktoberfest&text=I'm on {{ prs.length }}/4 pull requests, how about you? https://hacktoberfestchecker.herokuapp.com" target="_blank">Twitter</a></div></li>
-            <li><div class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%2F&amp;" target="_blank">Facebook</a></div></li>
-            <li><div class="googleplus"><a href="https://plus.google.com/share?url=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%3A" target="_blank">G+</a></div></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr />
-
-  <div class="row">
-    <div class="large-12 columns">
-      <ul class="pulls">
-        {{#each prs}}
-          <li>
-            <a href="{{this.url}}">{{this.repo_name}} - #{{this.title}} ({{this.state}})</a>
-            {{#if hasHacktoberFestLabel}}<span class="label">hacktoberfest</span>{{/if}}
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
+    {{#each prs}}
+      <a href="{{this.url}}" class="center db pa3 bg-white bb br1 w-50 grey dim pointer no-underline {{#if hasHacktoberFestLabel}}b--orange{{/if}}">
+        {{this.repo_name}} - #{{this.title}} ({{this.state}})
+      </a>
+    {{/each}}
 {{/exists}}
