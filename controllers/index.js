@@ -19,7 +19,7 @@ exports.index = function (req, res) {
         deferred = q.defer();
 
         options = {
-            q: '-label:invalid+created:2016-09-30T00:00:00-12:00..2016-10-31T23:59:59-12:00+type:pr+is:public+author:' + username
+            q: '-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:' + username
         };
 
         github.search.issues(options, function (err, res) {
