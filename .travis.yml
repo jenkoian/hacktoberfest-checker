@@ -6,3 +6,11 @@ sudo: false
 
 install:
  - npm install
+
+deploy:
+ provider: heroku
+ api_key: ...
+ on:
+  branch: master
+ skip_cleanup: true
+
