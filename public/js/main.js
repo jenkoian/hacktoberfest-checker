@@ -1,4 +1,4 @@
-if (typeof module === "object" && typeof module.exports === "object") {
+if (typeof module === 'object' && typeof module.exports === 'object') {
     module.exports = HacktoberfestChecker;
 } else {
     $(document).ready(function() {
@@ -13,14 +13,14 @@ function HacktoberfestChecker() {
     this.results = $('#results');
     // some configurable error messages
     this.errors = {
-        emptyUsername: "Username cannot be blank.",
+        emptyUsername: 'Username cannot be blank.',
         API: {
-            issue: "An error occurred while fetching new issues, have you set your github token? ",
-            username: "An error occurred while fetching issues for the given username, have you set your github token? ",
+            issue: 'An error occurred while fetching new issues, have you set your github token? ',
+            username: 'An error occurred while fetching issues for the given username, have you set your github token? ',
         }
     };
     //the path for the spinner
-    this.loader = "/img/ajax-loader.gif";
+    this.loader = '/img/ajax-loader.gif';
 }
 /**
  * in the constructor we'll initialize/retrieve everything that needs to fire when we new this object up
@@ -33,7 +33,7 @@ HacktoberfestChecker.prototype.constructor = function() {
  * the bind events function can be extended as the app grows
  */
 HacktoberfestChecker.prototype.bindEvents = function() {
-    this.form.on("submit", this.getUsernameIssues.bind(this));
+    this.form.on('submit', this.getUsernameIssues.bind(this));
 };
 /**
  * Set the focus on the username field
@@ -56,7 +56,7 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
 
     $.ajax({
         url: '/?username=' + name,
-        type: "GET",
+        type: 'GET',
         success: this.usernameIssuesSuccess.bind(this),
         //new: add error handler in case of failure during the API call
         error: this.usernameIssuesError.bind(this),
@@ -74,7 +74,7 @@ HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html) {
 /**
  * In case of an error during API call, display an error message
  */
-HacktoberfestChecker.prototype.usernameIssuesError = function(html) {
+HacktoberfestChecker.prototype.usernameIssuesError = function() {
     this.results.html(this.makeError(this.errors.API.username));
 };
 
@@ -86,11 +86,11 @@ HacktoberfestChecker.prototype.getName = function() {
  * create the necessary HTML to show the spinner using fluent syntax
  */
 HacktoberfestChecker.prototype.makeSpinner = function() {
-    return $("<div/>").addClass('loading').append(
-        $("<h2/>").append(
-            $("<img/>", {
+    return $('<div/>').addClass('loading').append(
+        $('<h2/>').append(
+            $('<img/>', {
                 src: this.loader,
-                alt: "loading"
+                alt: 'loading'
             })
         )
     );
@@ -100,8 +100,8 @@ HacktoberfestChecker.prototype.makeSpinner = function() {
  * create the necessary HTML to show an error message using fluent syntax
  */
 HacktoberfestChecker.prototype.makeError = function(error) {
-    return $("<div/>").append(
-        $("<h2/>", {
+    return $('<div/>').append(
+        $('<h2/>', {
             text: error
         })
     );

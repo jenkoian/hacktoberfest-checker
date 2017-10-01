@@ -7,7 +7,9 @@
     "node": "^6.11.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
+    "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
   },
   "keywords": [
     "hacktoberfest"
@@ -26,7 +28,8 @@
     "lodash": "^4.17.4",
     "method-override": "^2.3.5",
     "morgan": "^1.7.0",
-    "q": "^1.5.0"
+    "q": "^1.5.0",
+    "eslint": "^4.8.0"
   },
   "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
 }
