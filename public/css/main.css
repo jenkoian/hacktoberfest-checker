@@ -23,20 +23,13 @@ h1 {
 }
 
 .pr {
-  display: grid;
-  grid-template-columns: 80% 20%;
-  justify-items: center;
+  min-height: 64px;
 }
 
-.pr > .label {
-  padding: 1em;
-  border-radius: 1em;
+.pr > .open > svg {
+  fill: #2cbe4e;
 }
 
-.pr > .label.open {
-  background: #2cbe4e;
-}
-
-.pr > .label.closed {
-  background: #6f42c1;
+.pr > .closed > svg {
+  fill: #6f42c1;
 }
