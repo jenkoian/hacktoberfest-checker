@@ -8,7 +8,7 @@
     <h3 class="white"><strong>{{ statement }}</strong></h3>
 
     {{#each prs}}
-      <a href="{{this.url}}" class="center db pa3 bg-white bb br1 w-50 grey dim pointer no-underline {{#if hasHacktoberFestLabel}}b--orange{{/if}}">
+      <a href="{{this.url}}" class="center db pa3 bg-white bb br1 w-75 w-50-ns grey dim pointer no-underline {{#if hasHacktoberFestLabel}}b--orange{{/if}}">
         {{this.repo_name}} - #{{this.title}} ({{this.state}})
       </a>
     {{/each}}
