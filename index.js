@@ -42,14 +42,14 @@ const hbs = exphbs.create({
 });
 
 const github = new GitHubApi({
-    version: "3.0.0",
-    debug: false,
-    protocol: "https",
-    host: "api.github.com",
-    timeout: 5000,
-    headers: {
-        "user-agent": "Hacktoberfest Checker"
-    }
+	version: '3.0.0',
+	debug: false,
+	protocol: 'https',
+	host: 'api.github.com',
+	timeout: 5000,
+	headers: {
+		'user-agent': 'Hacktoberfest Checker'
+	}
 });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -68,7 +68,7 @@ app.get('/', IndexController.index);
 
 // Production error handler
 if (app.get('env') === 'production') {
-    app.use((err, req, res, next) => {
+    app.use((err, req, res) => {
         console.error(err.stack);
         res.sendStatus(err.status || 500);
     });
