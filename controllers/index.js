@@ -39,7 +39,7 @@ exports.index = (req, res) => {
                     repo_name: repo.replace('https://github.com/', ''),
                     title: event.title,
                     url: event.html_url,
-                    state: event.state,
+                    open: event.state === 'open',
                     hasHacktoberFestLabel: hacktoberFestLabels.length > 0
                 };
 
