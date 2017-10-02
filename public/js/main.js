@@ -103,7 +103,7 @@ HacktoberfestChecker.prototype.makeError = function(error) {
     return $('<div/>').append(
         $('<h2/>', {
             text: error,
-            class: "white"
+            class: 'white'
         })
     );
 };
