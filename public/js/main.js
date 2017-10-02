@@ -102,7 +102,8 @@ HacktoberfestChecker.prototype.makeSpinner = function() {
 HacktoberfestChecker.prototype.makeError = function(error) {
     return $('<div/>').append(
         $('<h2/>', {
-            text: error
+            text: error,
+            class: "white"
         })
     );
 };
