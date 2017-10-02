@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 
-Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
+Useful checker web app to see how close you are to achieve the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
 [https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/)
 
@@ -11,7 +11,7 @@ Useful checker web app to see how close you are to achieving the requirements fo
 ## 2017!
 
 I've stripped the app right back this year with a small lick of paint to match the new colour scheme. 
-I really like the idea of it being a basic project that beginners can contribute to so wanted to keep it simple. 
+I really like the idea of it being a basic project that beginners can contribute to and wanted to keep it simple. 
 
 I have added [some tickets](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest) 
 so please take a look if you'd like to contribute or feel free to propose any ideas you may have. 
