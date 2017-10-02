@@ -1,5 +1,7 @@
-# Fixes :shipit
+# Fixes
 - https://github.com/jenkoian/hacktoberfest-checker/issues/XX
+:shipit: :shipit: :shipit:
 
-# Summary :1st_place_medal
+# Summary
 Lorem ipsum dolar sit amet 
+:1st_place_medal: :1st_place_medal: :1st_place_medal:
