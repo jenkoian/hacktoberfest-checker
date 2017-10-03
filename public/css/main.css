@@ -33,3 +33,9 @@ h1 {
 .pr > .closed > svg {
   fill: #6f42c1;
 }
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+}
