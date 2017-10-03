@@ -26,6 +26,39 @@ svg {
   fill: currentColor;
 }
 
+.form {
+  display: flex;
+  height: 40px;
+  margin: 0 auto;
+  max-width: 420px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.form .input {
+  border: none;
+  flex: 1;
+  padding: 0 10px;
+
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.form .button {
+  border: none;
+  padding: 0 10px;
+
+  background-color: #ff625f;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form .button:hover {
+  background-color: #ff4946;
+}
+
 .pr {
   display: flex;
   line-height: 1.5;
