@@ -75,7 +75,7 @@ exports.index = (req, res) => {
                 layout: false
             });
         } else {
-            data.render('index', {
+            res.render('index', {
                 prs: data.prs,
                 statement: statements[length],
                 username: req.query.username,
