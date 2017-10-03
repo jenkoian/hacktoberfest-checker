@@ -82,8 +82,7 @@ exports.index = (req, res) => {
                 userImage: data.user.data.avatar_url
             });
         }
-    }).catch((e) => {
-        console.log(e);
+    }).catch(() => {
         if (req.xhr) {
             res.render('partials/error', {layout: false});
         } else {
