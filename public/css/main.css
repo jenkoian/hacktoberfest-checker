@@ -22,92 +22,24 @@ h1 {
   font-weight: normal;
 }
 
-svg {
-  fill: currentColor;
-}
-
 .form {
   display: flex;
-  height: 40px;
-  margin: 0 auto;
-  max-width: 420px;
-  padding: 0 20px;
-  width: 100%;
 }
 
 .form .input {
-  border: none;
   flex: 1;
-  padding: 0 10px;
-
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
 }
 
-.form .button {
-  border: none;
-  padding: 0 10px;
-
-  background-color: #ff625f;
-  border-bottom-right-radius: 3px;
-  border-top-right-radius: 3px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.form .button:hover {
-  background-color: #ff4946;
+.prs {
+  box-shadow: 0 2px 30px rgba(9, 11, 29, .3);
+  overflow: hidden;
 }
 
 .pr {
   display: flex;
-  line-height: 1.5;
-  margin-bottom: 32px;
-  min-height: 64px;
-  padding: 15px;
-
-  background-color: #fff;
-  border-radius: .125rem;
-  box-shadow: 0 2px 30px rgba(9, 11, 29, .3);
-  color: #4f5b66;
 }
 
-.pr.hacktoberfest {
-  border-bottom: 2px solid #ff625f;
-}
-
-.pr a {
-  text-decoration: none;
-}
-
-.pr a:hover {
-  text-decoration: underline;
-}
-
-.pr .icon {
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-  height: 30px;
-  justify-content: center;
-  margin-right: 15px;
-  width: 30px;
-
-  background-color: #e6ebf1;
-  border-radius: 50%;
-  color: #586069;
-}
-
-.pr .username {
-  font-weight: 600;
-
-  color: inherit;
-}
-
-.pr .repo {
-  color: #0366d6;
-}
-
-.pr .title {
-  color: #959da5;
+.hacktoberfest {
+  border-left: 4px solid #ff6300;
+  padding-left: calc(1rem - 4px);
 }
