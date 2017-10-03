@@ -61,7 +61,7 @@ exports.index = (req, res) => {
         let length = prs.length;
 
         const statements = [
-            'It \'s not too late to start!',
+            'It\'s not too late to start!',
             'Off to a great start, keep going!',
             'Half way there, keep it up!',
             'So close!',
