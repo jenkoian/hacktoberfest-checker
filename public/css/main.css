@@ -22,14 +22,59 @@ h1 {
   font-weight: normal;
 }
 
+svg {
+  fill: currentColor;
+}
+
 .pr {
+  display: flex;
+  line-height: 1.5;
+  margin-bottom: 32px;
   min-height: 64px;
+  padding: 15px;
+
+  background-color: #fff;
+  border-radius: .125rem;
+  box-shadow: 0 2px 30px rgba(9, 11, 29, .3);
+  color: #4f5b66;
 }
 
-.pr > .open > svg {
-  fill: #2cbe4e;
+.pr.hacktoberfest {
+  border-bottom: 2px solid #ff625f;
 }
 
-.pr > .closed > svg {
-  fill: #6f42c1;
+.pr a {
+  text-decoration: none;
+}
+
+.pr a:hover {
+  text-decoration: underline;
+}
+
+.pr .icon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 30px;
+  justify-content: center;
+  margin-right: 15px;
+  width: 30px;
+
+  background-color: #e6ebf1;
+  border-radius: 50%;
+  color: #586069;
+}
+
+.pr .username {
+  font-weight: 600;
+
+  color: inherit;
+}
+
+.pr .repo {
+  color: #0366d6;
+}
+
+.pr .title {
+  color: #959da5;
 }
