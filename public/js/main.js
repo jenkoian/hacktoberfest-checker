@@ -15,8 +15,8 @@ function HacktoberfestChecker() {
     this.errors = {
         emptyUsername: 'Username cannot be blank.',
         API: {
-            issue: 'An error occurred while fetching new issues, have you set your github token? ',
-            username: 'An error occurred while fetching issues for the given username, have you set your github token? ',
+            issue: 'An error occurred while fetching new issues. Have you set your GitHub token? ',
+            username: 'An error occurred while fetching issues for the given username. Have you set your GitHub token? ',
         }
     };
     //the path for the spinner
