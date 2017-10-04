@@ -65,7 +65,14 @@ exports.index = (req, res) => {
     findPrs(req.query.username).then(() => {
         let length = prs.length;
 
-        const statements = ['It\'s not too late to start!', 'Keep going.', 'Half way there.', 'So close!', 'Way to go!', 'Now you\'re just showing off.'];
+        const statements = [
+            'It\'s not too late to start!',
+            'Off to a great start, keep going!',
+            'Half way there, keep it up!',
+            'So close!',
+            'Way to go!',
+            'Now you\'re just showing off!'
+        ];
 
         if (length > 5) length = 5;
 
