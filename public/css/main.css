@@ -10,10 +10,6 @@
   font-style: normal;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
   font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
