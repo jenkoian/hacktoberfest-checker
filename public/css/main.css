@@ -23,8 +23,6 @@ body {
   min-height: 100vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-direction: column;
 }
 
 h1 {
@@ -40,9 +38,4 @@ h1 {
 .main-content {
   flex-grow: 1;
   flex-shrink: 0;
-  margin: 0;
-}
-
-.footer {
-  flex: none;
 }
