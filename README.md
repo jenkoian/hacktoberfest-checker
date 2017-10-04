@@ -20,14 +20,12 @@ Happy hacking!
 
 ## Running the app
 
-* [Generate a GitHub personal access token](https://github.com/settings/tokens) to ensure you don't get rate limited as often.
+* [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest) to ensure you don't get rate limited as often.
 
-* Create a `.env` file containing the token (see `.env.dist`) or...
-
-* Export the GitHub token as an environment variable for Node.js to use.
-    * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
-    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
-    * Windows (Powershell): `$env:GITHUB_TOKEN=YOUR TOKEN`
+* Create a `.env` file using `.env.dist` as an example. Or export the GitHub token as an environment variable for Node.js to use:
+   * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
+   * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
+   * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
 
 * `$ npm install`
 
@@ -35,9 +33,9 @@ Happy hacking!
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
-### Running the app within docker
+### Running the app within Docker
 
-As an alternative to the section above, you can run the app within a docker container.
+As an alternative to the section above, you can run the app within a Docker container:
 
 * `$ docker build -t hacktoberfest-checker .`
 
