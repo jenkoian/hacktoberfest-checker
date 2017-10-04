@@ -21,6 +21,7 @@ exports.index = (req, res) => {
         ]).then(gitData => {
             const foundPrs = gitData[0];
             const user     = gitData[1];
+            console.log('API calls remaining: ' + user.meta['x-ratelimit-remaining']);
 
             const prs = [];
 
@@ -44,8 +45,42 @@ exports.index = (req, res) => {
 
                 prs.push(returnedEvent);
             });
+
+            const requests = [];
+            _.forEach(prs, pr => {
+                const repoDetails = pr.repo_name.split('/');
+                const pullDetails = {
+                    owner: repoDetails[0],
+                    repo: repoDetails[1],
+                    number: pr.number
+                };
+                requests.push(github.pullRequests.checkMerged(pullDetails));
+            });
+
+            if(prs.length === 0) deferred.resolve({ prs, user });
+
+            let resolvedCounter = 0;
+            for(let i=0; i<requests.length; i++){
+                requests[i].then(res => {
+                    console.log('API calls remaining: ' + res.meta['x-ratelimit-remaining']);
+                    if (res.meta.status === '204 No Content'){
+                        prs[i].merged = true;
+                    }
+                    else prs[i].merged = false;
+                }).catch(err => {
+                    //404 means there wasn't a merge
+                    if (err.code === 404){
+                        prs[i].merged = false;
+                    }
+                    else deferred.reject(err);
+                }).then(function(){
+                    resolvedCounter++;
+                    if (resolvedCounter === requests.length) {
+                        deferred.resolve({ prs, user });
+                    }
+                });
+            }
             
-            deferred.resolve({ prs, user });
         }).catch(err => {
             deferred.reject(err);
         });
