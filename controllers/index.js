@@ -57,9 +57,12 @@ exports.index = (req, res) => {
         return deferred.promise;
     }
 
-
     if (!req.query.username) {
-        return res.render('index');
+        if (req.xhr) {
+            return res.render('partials/error', { layout: false });
+        }
+
+        return res.render('index', { error: req.xhr });
     }
 
     findPrs(req.query.username).then(() => {
