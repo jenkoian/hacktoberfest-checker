@@ -44,8 +44,38 @@ exports.index = (req, res) => {
 
                 prs.push(returnedEvent);
             });
+
+            const requests = [];
+            _.forEach(prs, pr => {
+                const [repoOwner, repoName]= pr.repo_name.split("/");
+                const pullDetails = {
+                    owner: repoOwner,
+                    repo: repoName,
+                    number: pr.number
+                }
+                requests.push(github.pullRequests.checkMerged(pullDetails));
+            });
+
+            if(prs.length === 0) deferred.resolve({ prs, user });
+
+            let resolvedCounter = 0;
+            for(let i=0; i<requests.length; i++){
+                requests[i].then(res => {
+                    prs[i].merged = true;
+                }).catch(err => {
+					//404 means there wasn't a merge
+                    if (err.code === 404){
+                        prs[i].merged = false;
+                    }
+                    else deferred.reject(err);
+                }).then(function(){
+                    resolvedCounter++;
+                    if (resolvedCounter === requests.length) {
+                        deferred.resolve({ prs, user });
+                    }
+                });
+            }
             
-            deferred.resolve({ prs, user });
         }).catch(err => {
             deferred.reject(err);
         });
