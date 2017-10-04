@@ -1,16 +1,28 @@
+/**
+ * Main JS File
+ *
+ * @since  1.0.0
+ */
 if (typeof module === 'object' && typeof module.exports === 'object') {
+    // Export a module.
     module.exports = HacktoberfestChecker;
 } else {
+    // Or be there when DOM's ready.
     $(document).ready(function() {
         new HacktoberfestChecker().constructor();
     });
 }
 
+/**
+ * Main Function.
+ *
+ * @since 1.0.0
+ */
 function HacktoberfestChecker() {
     // DOM nodes cache
     this.username = $('input[name=username]');
-    this.form = $('form');
-    this.results = $('#results');
+    this.form     = $('form');
+    this.results  = $('#results');
     // some configurable error messages
     this.errors = {
         emptyUsername: 'Username cannot be blank.',
