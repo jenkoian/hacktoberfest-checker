@@ -63,7 +63,7 @@ exports.index = (req, res) => {
                 requests[i].then(res => {
                     prs[i].merged = true;
                 }).catch(err => {
-					//404 means there wasn't a merge
+                    //404 means there wasn't a merge
                     if (err.code === 404){
                         prs[i].merged = false;
                     }
