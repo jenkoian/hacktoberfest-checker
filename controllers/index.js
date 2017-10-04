@@ -30,11 +30,16 @@ exports.index = (req, res) => {
                 const hacktoberFestLabels = _.filter(event.labels, label => label.name.toLowerCase() === 'hacktoberfest');
 
                 const returnedEvent = {
+                    has_hacktoberfest_label: hacktoberFestLabels.length > 0,
+                    number: event.number,
+                    open: event.state === 'open',
                     repo_name: repo.replace('https://github.com/', ''),
                     title: event.title,
                     url: event.html_url,
-                    open: event.state === 'open',
-                    hasHacktoberFestLabel: hacktoberFestLabels.length > 0
+                    user: {
+                        login: event.user.login,
+                        url: event.user.html_url
+                    }
                 };
 
                 prs.push(returnedEvent);
@@ -48,8 +53,11 @@ exports.index = (req, res) => {
         return deferred.promise;
     }
 
-
     if (!req.query.username) {
+        if (req.xhr) {
+            return res.render('partials/error', { layout: false });
+        }
+
         return res.render('index');
     }
 
