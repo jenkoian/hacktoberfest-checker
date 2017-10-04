@@ -47,12 +47,12 @@ exports.index = (req, res) => {
 
             const requests = [];
             _.forEach(prs, pr => {
-                const [repoOwner, repoName]= pr.repo_name.split("/");
+                const [repoOwner, repoName] = pr.repo_name.split('/');
                 const pullDetails = {
                     owner: repoOwner,
                     repo: repoName,
                     number: pr.number
-                }
+                };
                 requests.push(github.pullRequests.checkMerged(pullDetails));
             });
 
@@ -61,7 +61,10 @@ exports.index = (req, res) => {
             let resolvedCounter = 0;
             for(let i=0; i<requests.length; i++){
                 requests[i].then(res => {
-                    prs[i].merged = true;
+                    if (res.meta.status === '204 No Content'){
+                        prs[i].merged = true;
+                    }
+                    else prs[i].merged = false;
                 }).catch(err => {
                     //404 means there wasn't a merge
                     if (err.code === 404){
