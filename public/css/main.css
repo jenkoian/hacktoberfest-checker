@@ -31,3 +31,35 @@ h1 {
   flex-grow: 1;
   flex-shrink: 0;
 }
+
+.profile{
+  display: flex;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 4px;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.profile-img{
+  margin: 0 1em;
+}
+
+.profile-stats h3{
+  font-weight: 300;
+  color: #8c8c8c;
+  margin: 10px 0 0 0;
+}
+
+.profile-stats span{
+  font-size: 3em;
+  color: #ffffff;
+  display: block;
+  border-radius: 6px;
+  padding: 5px 0;
+  background-color: #ff6406;
+  min-width: 200px;
+
+.
