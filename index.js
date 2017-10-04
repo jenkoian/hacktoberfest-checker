@@ -51,6 +51,16 @@ const github = new GitHubApi({
 		'user-agent': 'Hacktoberfest Checker'
 	}
 });
+
+if (process.env.GITHUB_TOKEN) {
+    github.authenticate({
+        type: 'oauth',
+        token: process.env.GITHUB_TOKEN
+    });
+} else {
+    console.log('No GITHUB_TOKEN specified, do so to increase rate limit');
+}
+
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 5000);
