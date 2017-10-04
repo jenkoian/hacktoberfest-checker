@@ -86,13 +86,11 @@ HacktoberfestChecker.prototype.getName = function() {
  * create the necessary HTML to show the spinner using fluent syntax
  */
 HacktoberfestChecker.prototype.makeSpinner = function() {
-    return $('<div/>').addClass('loading').append(
-        $('<h2/>').append(
-            $('<img/>', {
-                src: this.loader,
-                alt: 'loading'
-            })
-        )
+    return $('<div/>').addClass('tc').append(
+        $('<img/>', {
+            src: this.loader,
+            alt: 'Loading...'
+        })
     );
 };
 /**
@@ -100,9 +98,10 @@ HacktoberfestChecker.prototype.makeSpinner = function() {
  * create the necessary HTML to show an error message using fluent syntax
  */
 HacktoberfestChecker.prototype.makeError = function(error) {
-    return $('<div/>').append(
+    return $('<div/>').addClass('tc').append(
         $('<h2/>', {
-            text: error
+            text: error,
+            class: 'white'
         })
     );
 };

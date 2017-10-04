@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,22 +18,23 @@
     <meta name="twitter:title" content="Hacktoberfest Checker">
     <meta name="twitter:description" content="Check how you're doing in hacktoberfest">
     <meta name="twitter:image" content="https://hacktoberfestchecker.herokuapp.com/img/og.png">
+    <meta name="theme-color" content="#202a6b">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
     <title>Hacktoberfest Checker</title>
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.8.0/css/tachyons.min.css"/>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="relative">
-
+<body class="h-100 min-vh-100 overflow-y-auto flex flex-column">
     <a href="https://github.com/jenkoian/hacktoberfest-checker" target="_blank" class="absolute top-0 right-0"><img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
-    <div class="mw9 center ph3-ns">
+    <div class="ph3-ns main-content">
         <div class="cf ph2-ns">
             {{> header}}
             {{{body}}}
-            {{> footer}}
         </div>
     </div>
+
+    {{> footer}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
     <script src="/js/main.js"></script>
