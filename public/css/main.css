@@ -26,3 +26,8 @@ h1 {
   border-left: 4px solid #ff6300;
   padding-left: calc(1rem - 4px);
 }
+
+.main-content {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
