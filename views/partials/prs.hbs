@@ -8,9 +8,9 @@
         <h3>{{ statement }}</h3>
     </div>
 
-    <div class="br2 center mt5 prs w-50-ns w-80-m w-90">
+    <div class="br2 center mt5 shadow-1 overflow-hidden w-50-ns w-80-m w-90">
         {{#each prs}}
-            <div class="bg-white {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}lh-copy pa3 pr">
+            <div class="bg-white {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}lh-copy pa3 flex bb b--gray">
                 <div class="br-100 h2 mr3 mt1 tc w2">
                     {{#if this.open}}
                         <svg aria-hidden="true" fill="#2cbe4e" height="18" version="1.1" viewBox="0 0 12 16" width="24">
