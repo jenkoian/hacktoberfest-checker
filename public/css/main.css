@@ -22,14 +22,24 @@ h1 {
   font-weight: normal;
 }
 
+.form {
+  display: flex;
+}
+
+.form .input {
+  flex: 1;
+}
+
+.prs {
+  box-shadow: 0 2px 30px rgba(9, 11, 29, .3);
+  overflow: hidden;
+}
+
 .pr {
-  min-height: 64px;
+  display: flex;
 }
 
-.pr > .open > svg {
-  fill: #2cbe4e;
-}
-
-.pr > .closed > svg {
-  fill: #6f42c1;
+.hacktoberfest {
+  border-left: 4px solid #ff6300;
+  padding-left: calc(1rem - 4px);
 }

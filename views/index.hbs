@@ -1,13 +1,13 @@
 ﻿<h1 class="f1 f-6-ns orange tc"><a class="orange no-underline" href="/">Hacktoberfest Checker</a></h1>
 
 <div class="tc">
-    <form action="/" method="get">
-        <input class="f5 f5-ns fw4 ba b--white-20 ph2 ph2-ns pv2 pv2-ns w-70 w-30-ns" type="text" name="username" placeholder="GitHub username" value="{{ username }}">
-        <button type="submit" class="f5 f5-ns fw4 dib ba b--black-20 bg-orange white ph2 ph2-ns pv2 pv2-ns br2 no-underline pointer">Check</button>
+    <form action="/" class="center form h2 w-30-ns w-60-m w-80" method="get">
+        <input class="bn br--left br1 ph2 input" type="text" name="username" placeholder="GitHub username" value="{{ username }}">
+        <button class="bg-orange bn br--right br1 pv0 ph3 pointer white" type="submit">Check</button>
     </form>
 </div>
 
-<div class="tc pv4" id="results">
+<div class="pv4" id="results">
     {{#if error}}
         {{#if username}}
             {{> error}}
