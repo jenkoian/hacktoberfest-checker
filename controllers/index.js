@@ -47,10 +47,10 @@ exports.index = (req, res) => {
 
             const requests = [];
             _.forEach(prs, pr => {
-                const [repoOwner, repoName] = pr.repo_name.split('/');
+                const repoDetails = pr.repo_name.split('/');
                 const pullDetails = {
-                    owner: repoOwner,
-                    repo: repoName,
+                    owner: repoDetails[0],
+                    repo: repoDetails[1],
                     number: pr.number
                 };
                 requests.push(github.pullRequests.checkMerged(pullDetails));
