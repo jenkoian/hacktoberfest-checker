@@ -21,7 +21,7 @@ exports.index = (req, res) => {
         ]).then(gitData => {
             const foundPrs = gitData[0];
             const user     = gitData[1];
-            console.log("API calls remaining: " + user.meta['x-ratelimit-remaining']);
+            console.log('API calls remaining: ' + user.meta['x-ratelimit-remaining']);
 
             const prs = [];
 
@@ -62,7 +62,7 @@ exports.index = (req, res) => {
             let resolvedCounter = 0;
             for(let i=0; i<requests.length; i++){
                 requests[i].then(res => {
-                    console.log("API calls remaining: " + res.meta['x-ratelimit-remaining']);
+                    console.log('API calls remaining: ' + res.meta['x-ratelimit-remaining']);
                     if (res.meta.status === '204 No Content'){
                         prs[i].merged = true;
                     }
