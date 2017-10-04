@@ -1,7 +1,9 @@
 {{#exists prs}}
     <div class="tc white">
         {{#if userImage}}
-            <img class="br-100 w4" height="128" src="{{userImage}}" width="128">
+            <a href = "https://github.com/{{username}}" target="_blank">
+                <img class="tc br-100 w4" src="{{userImage}}"/>
+            </a>
         {{/if}}
 
         <h2>{{ prs.length }} / 4</h2>

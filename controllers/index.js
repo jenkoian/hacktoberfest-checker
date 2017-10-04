@@ -76,9 +76,11 @@ exports.index = (req, res) => {
         if (length > 5) length = 5;
 
         if (req.xhr) {
+
             res.render('partials/prs', {
                 prs: data.prs,
                 statement: statements[length],
+                username: req.query.username,
                 userImage: data.user.data.avatar_url,
                 layout: false
             });
