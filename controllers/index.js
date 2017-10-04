@@ -73,8 +73,9 @@ exports.index = (req, res) => {
 
         if (req.xhr) {
             console.log(prs);
-            res.render('partials/prs', {prs, statement: statements[length], userImage, layout: false});
+            res.render('partials/prs', {prs, statement: statements[length], username: req.query.username, userImage, layout: false});
         } else {
+
             res.render('index', {
                 prs,
                 statement: statements[length],
