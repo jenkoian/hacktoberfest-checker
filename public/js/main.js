@@ -98,7 +98,7 @@ HacktoberfestChecker.prototype.makeSpinner = function() {
  * create the necessary HTML to show an error message using fluent syntax
  */
 HacktoberfestChecker.prototype.makeError = function(error) {
-    return $('<div/>').append(
+    return $('<div/>').addClass('tc').append(
         $('<h2/>', {
             text: error,
             class: 'white'
