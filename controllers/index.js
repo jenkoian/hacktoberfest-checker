@@ -62,7 +62,7 @@ exports.index = (req, res) => {
             return res.render('partials/error', { layout: false });
         }
 
-        return res.render('index', { error: req.xhr });
+        return res.render('index');
     }
 
     findPrs(req.query.username).then(() => {
