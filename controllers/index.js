@@ -44,7 +44,7 @@ exports.index = (req, res) => {
                     url: event.html_url,
                     user: {
                         login: event.user.login,
-                        url: event.user.url
+                        url: event.user.html_url
                     }
                 };
 
