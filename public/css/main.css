@@ -31,7 +31,3 @@ h1 {
   flex-grow: 1;
   flex-shrink: 0;
 }
-
-.profile-stats span{
-  min-width: 200px;
-}
