@@ -9,7 +9,7 @@ USER octocat
 # With this npm install will only ever be run when building if the application's package.json changes!
 COPY package.json /app
 
-RUN npm install --production
+RUN npm install -g yarn && yarn install --production
 
 COPY . /app
 

@@ -2,10 +2,6 @@
 npm-debug.log
 node_modules
 
-# Lock files
-yarn.lock
-package-lock.json
-
 # API keys
 .env
 
