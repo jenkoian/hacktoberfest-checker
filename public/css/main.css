@@ -31,3 +31,7 @@ h1 {
   flex-grow: 1;
   flex-shrink: 0;
 }
+
+.pr-item {
+  word-break: break-word;  
+}
