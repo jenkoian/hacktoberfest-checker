@@ -7,25 +7,20 @@
 }
 
 body {
-  /*background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);*/
-  /*I changed the backgroun to black instead of the radial gradint*/
-  background: black;
+  background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
   font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
   padding: 0;
   margin: 0;
 }
 
 
-/*Changed style of title*/
-
-.hackTitle {
-  font-family: 'Griffy', cursive;
-}
+/*Cover removed as it required the background to be black*/
 
 
 /*Style the cover*/
 
-.cover {
+
+/*.cover {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -33,7 +28,7 @@ body {
   right: 0;
   height: 100%;
   width: 100%;
-  /*background: rgba(0, 0, 0, 0.1);*/
+  background: rgba(0, 0, 0, 0.1);
   display: block;
   z-index: -1;
   background: transparent url(../img/cover.png) repeat top center;
@@ -41,12 +36,13 @@ body {
   -moz-animation: moveCover 75s linear infinite;
   -ms-animation: moveCover 75s linear infinite;
   -webkit-animation: moveCover 75s linear infinite;
-}
+}*/
 
 
 /*Move Cover*/
 
-@keyframes moveCover {
+
+/*@keyframes moveCover {
   from {
     background-position: 0 0;
   }
@@ -80,7 +76,7 @@ body {
   to {
     background-position: -10000px 5000px;
   }
-}
+}*/
 
 
 /*Style stars*/
@@ -95,9 +91,207 @@ body {
   width: 100%;
   /*background: rgba(0, 0, 0, 0.1);*/
   display: block;
+  background: transparent url(../img/stars.png) repeat top center;
   z-index: -1;
-  background: black url(../img/stars.png) repeat top center;
-  z-index: -2;
+  animation: moveStars 20s linear infinite;
+  -ms-animation: moveStars 20s linear infinite;
+  -moz-animation: moveStars 20s linear infinite;
+  -webkit-animation: moveStars 20s linear infinite;
+}
+
+
+/*Had to add more stars and offset them*/
+
+.starsTwo {
+  position: absolute;
+  top: 20%;
+  /*bottom: 0;*/
+  left: 20%;
+  /*right: 0;*/
+  height: 100%;
+  width: 100%;
+  /*background: rgba(0, 0, 0, 0.1);*/
+  display: block;
+  background: transparent url(../img/stars.png) repeat top center;
+  z-index: -1;
+  animation: moveStarsTwo 10s linear infinite;
+  -ms-animation: moveStarsTwo 10s linear infinite;
+  -moz-animation: moveStarsTwo 10s linear infinite;
+  -webkit-animation: moveStarsTwo 10s linear infinite;
+}
+
+
+/*Had to add more stars and offset them*/
+
+.starsThree {
+  position: absolute;
+  top: -20%;
+  /*bottom: 0;*/
+  left: -20%;
+  /*right: 0;*/
+  height: 100%;
+  width: 100%;
+  /*background: rgba(0, 0, 0, 0.1);*/
+  display: block;
+  background: transparent url(../img/stars.png) repeat top center;
+  z-index: -1;
+  animation: moveStarsThree 30s linear infinite;
+  -ms-animation: moveStarsThree 30s linear infinite;
+  -moz-animation: moveStarsThree 30s linear infinite;
+  -webkit-animation: moveStarsThree 30s linear infinite;
+}
+
+
+/*Animate stars group one*/
+
+@keyframes moveStars {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes moveStars {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes moveStars {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes moveStars {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/*Animate stars group two*/
+
+@keyframes moveStarsTwo {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes moveStarsTwo {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes moveStarsTwo {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes moveStarsTwo {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/*Animate stars group three*/
+
+@keyframes moveStarsThree {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes moveStarsThree {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes moveStarsThree {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes moveStarsThree {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -114,7 +308,7 @@ body {
   /*background: rgba(0, 0, 0, 0.1);*/
   display: block;
   z-index: -1;
-  background: transparent url(../img/clouds2.png) repeat top center;
+  background: transparent url(../img/clouds.png) repeat top center;
   animation: moveCloud 200s linear infinite;
   -moz-animation: moveCloud 200s linear infinite;
   -ms-animation: moveCloud 200s linear infinite;
