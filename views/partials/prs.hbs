@@ -1,17 +1,22 @@
 {{#exists prs}}
     <div class="tc white">
-        {{#if userImage}}
-            <a href = "https://github.com/{{username}}" target="_blank">
-                <img class="tc br-100 w4" src="{{userImage}}"/>
-            </a>
-        {{/if}}
-
-        <h2>{{ prs.length }} / 4</h2>
-        <h3>{{ statement }}</h3>
+        <div class="lh-copy pa3 flex flex-wrap justify-center content-center-ns br2 center mt2 overflow-hidden w-50-ns w-80-m w-90">
+            <div class="mh3">
+                {{#if userImage}}
+                    <a href = "https://github.com/{{username}}" target="_blank">
+                        <img class="tc br-100 w4 bw2 b--solid b--near-white" src="{{userImage}}"/>
+                    </a>
+                {{/if}}
+            </div>
+            <div class="flex flex-wrap  justify-center content-center flex-column">
+                <span class="db br2 f1 fw5 white w5">{{ prs.length }} / 4</span>
+                <h3 class="mv1 fw3 light-gray">{{ statement }}</h3>
+            </div>
+        </div>
     </div>
 
     {{#if prs.length}}
-        <div class="br2 center mt5 shadow-1 overflow-hidden w-50-ns w-80-m w-90">
+        <div class="br2 center mt3 shadow-1 overflow-hidden w-50-ns w-80-m w-90">
             {{#each prs}}
                 <div class="bg-white {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}lh-copy pa3 flex bb b--gray">
                     <div class="br-100 h2 mr3 mt1 tc w2">
