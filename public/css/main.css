@@ -31,3 +31,27 @@ h1 {
   flex-grow: 1;
   flex-shrink: 0;
 }
+
+#hfc-axis .hover-up {
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 0.3s ease-in-out; /** Firefox **/
+  -o-transition: all 0.3s ease-in-out; /** Opera **/
+}
+#hfc-axis:hover .hover-up{
+    color: #ec5c00;
+    transform: translate(0,-8px);
+    -webkit-transform: translate(0,-8px);
+    -o-transform: translate(0,-8px); 
+    -moz-transform: translate(0,-8px);
+}
+
+.bg-orange.bn.br--right.br1.pv0.ph3.pointer.white{
+  transition: all 0.6s ease-in-out;
+  -webkit-transition: all 0.6s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 0.6s ease-in-out; /** Firefox **/
+  -o-transition: all 0.6s ease-in-out; /** Opera **/
+}
+.bg-orange.bn.br--right.br1.pv0.ph3.pointer.white:hover {
+  color: #26347A;
+}
