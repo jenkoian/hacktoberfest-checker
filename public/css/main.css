@@ -32,10 +32,6 @@ h1 {
   flex-shrink: 0;
 }
 
-.username-form {
-  padding: 20px 0 0;
-}
-
 .pr-item {
   word-break: break-word;
 }
