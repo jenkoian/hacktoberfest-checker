@@ -27,9 +27,9 @@ Happy hacking!
    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
    * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
 
-* `$ npm install`
+* `$ yarn install`
 
-* `$ npm start`
+* `$ yarn start`
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
