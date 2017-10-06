@@ -1,20 +1,163 @@
 @font-face {
   font-family: 'squealerregular';
   src: url('fonts/squealer-webfont.eot');
-  src: url('fonts/squealer-webfont.eot?#iefix') format('embedded-opentype'),
-    url('fonts/squealer-webfont.woff2') format('woff2'),
-    url('fonts/squealer-webfont.woff') format('woff'),
-    url('fonts/squealer-webfont.ttf') format('truetype'),
-    url('fonts/squealer-webfont.svg#squealerregular') format('svg');
+  src: url('fonts/squealer-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/squealer-webfont.woff2') format('woff2'), url('fonts/squealer-webfont.woff') format('woff'), url('fonts/squealer-webfont.ttf') format('truetype'), url('fonts/squealer-webfont.svg#squealerregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
-  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue",
-    "Arial", sans-serif;
+  /*background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);*/
+  /*I changed the backgroun to black instead of the radial gradint*/
+  background: black;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+
+/*Changed style of title*/
+
+.hackTitle {
+  font-family: 'Griffy', cursive;
+}
+
+
+/*Style the cover*/
+
+.cover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  /*background: rgba(0, 0, 0, 0.1);*/
+  display: block;
+  z-index: -1;
+  background: transparent url(../img/cover.png) repeat top center;
+  animation: moveCover 75s linear infinite;
+  -moz-animation: moveCover 75s linear infinite;
+  -ms-animation: moveCover 75s linear infinite;
+  -webkit-animation: moveCover 75s linear infinite;
+}
+
+
+/*Move Cover*/
+
+@keyframes moveCover {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-ms-keyframes moveCover {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-moz-keyframes moveCover {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-webkit-keyframes moveCover {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+
+/*Style stars*/
+
+.stars {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  /*background: rgba(0, 0, 0, 0.1);*/
+  display: block;
+  z-index: -1;
+  background: black url(../img/stars.png) repeat top center;
+  z-index: -2;
+}
+
+
+/*Style clouds*/
+
+.cloud {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  /*background: rgba(0, 0, 0, 0.1);*/
+  display: block;
+  z-index: -1;
+  background: transparent url(../img/clouds2.png) repeat top center;
+  animation: moveCloud 200s linear infinite;
+  -moz-animation: moveCloud 200s linear infinite;
+  -ms-animation: moveCloud 200s linear infinite;
+  -webkit-animation: moveCloud 200s linear infinite;
+}
+
+
+/*Move clouds*/
+
+@keyframes moveCloud {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@-ms-keyframes moveCloud {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@-moz-keyframes moveCloud {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@-webkit-keyframes moveCloud {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
 }
 
 h1 {
