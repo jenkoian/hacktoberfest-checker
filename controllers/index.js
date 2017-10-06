@@ -118,9 +118,8 @@ exports.index = (req, res) => {
         ];
 
         if (length > 5) length = 5;
-
-        if (req.xhr) {
-
+        
+        if (req.query['plain-data']) {
             res.render('partials/prs', {
                 prs: data.prs,
                 statement: statements[length],
