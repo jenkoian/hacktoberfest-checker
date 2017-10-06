@@ -28,7 +28,9 @@
     "lodash": "^4.17.4",
     "method-override": "^2.3.5",
     "morgan": "^1.7.0",
-    "q": "^1.5.0"
+    "q": "^1.5.0",
+    "tachyons": "^4.8.1",
+    "zepto": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^4.8.0"
