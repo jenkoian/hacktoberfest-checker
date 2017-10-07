@@ -35,3 +35,16 @@ h1 {
 .pr-item {
   word-break: break-word;
 }
+
+
+
+.Image {
+  width: auto;
+}
+.Image--small {
+  width: 128px;
+  height: 128px;
+}
+.u-bgc--f4f4f4 {
+  background-color: #f4f4f4;
+}
