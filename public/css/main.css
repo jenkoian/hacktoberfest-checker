@@ -36,7 +36,18 @@ h1 {
   word-break: break-word;
 }
 
-
+.u-bgc--f4f4f4 {
+  background-color: #f4f4f4;
+}
+.u-overflow--hidden {
+  overflow: hidden;
+}
+.u-opacity--disable {
+  opacity: 0;
+}
+.u-opacity--enable {
+  opacity: 1;
+}
 
 .Image {
   width: auto;
@@ -45,6 +56,6 @@ h1 {
   width: 128px;
   height: 128px;
 }
-.u-bgc--f4f4f4 {
-  background-color: #f4f4f4;
+.Image--transition {
+  transition: all 1s ease;
 }

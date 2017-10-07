@@ -140,9 +140,9 @@ exports.index = (req, res) => {
         }
     }).catch(() => {
         if (req.xhr) {
-            res.render('partials/error', {layout: false});
+            res.status(404).render('partials/error', {layout: false});
         } else {
-            res.render('index', {error: true, username: req.query.username});
+            res.render('index',  {error: true, username: req.query.username});
         }
     });
 };
