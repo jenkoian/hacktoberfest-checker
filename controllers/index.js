@@ -143,3 +143,7 @@ exports.index = (req, res) => {
         }
     });
 };
+
+exports.me = (req, res) => {
+    res.render('me');
+};
