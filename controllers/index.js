@@ -122,6 +122,7 @@ exports.index = (req, res) => {
         if (req.query['plain-data']) {
             res.render('partials/prs', {
                 prs: data.prs,
+                isNotComplete: data.prs.length < 4,
                 statement: statements[length],
                 username: req.query.username,
                 userImage: data.user.data.avatar_url,
@@ -130,6 +131,7 @@ exports.index = (req, res) => {
         } else {
             res.render('index', {
                 prs: data.prs,
+                isNotComplete: data.prs.length < 4,
                 statement: statements[length],
                 username: req.query.username,
                 userImage: data.user.data.avatar_url
