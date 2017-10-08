@@ -157,7 +157,6 @@ body {
 /*Style clouds*/
 
 .cloud {
-  display: block;
   z-index: -1;
   background: transparent url(../img/clouds.png) repeat top center;
   animation: moveCloud 200s linear infinite;
