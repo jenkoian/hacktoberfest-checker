@@ -55,7 +55,7 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
     this.results.html(this.makeSpinner());
 
     $.ajax({
-        url: '/?username=' + name,
+        url: `/?username=${name}&plain-data=true`,
         type: 'GET',
         success: this.usernameIssuesSuccess.bind(this),
         //new: add error handler in case of failure during the API call
