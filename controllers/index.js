@@ -1,5 +1,5 @@
 'use strict';
-
+const moment = require('moment');
 /**
  * GET /
  */
@@ -37,6 +37,7 @@ exports.index = (req, res) => {
                     repo_name: repo.replace('https://github.com/', ''),
                     title: event.title,
                     url: event.html_url,
+                    created_at: moment(event.created_at).format('MMMM Do YYYY'),
                     user: {
                         login: event.user.login,
                         url: event.user.html_url
