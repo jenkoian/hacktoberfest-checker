@@ -30,6 +30,14 @@ exports.index = (req, res) => {
 
                 const hacktoberFestLabels = _.filter(event.labels, label => label.name.toLowerCase() === 'hacktoberfest');
 
+
+                //ignore pull requests on own repos
+                const repoOwner = repo.replace('https://github.com/', '').split('/')[0];
+
+                if (username.toUpperCase() === repoOwner.toUpperCase()) {
+                    return;
+                }
+
                 const returnedEvent = {
                     has_hacktoberfest_label: hacktoberFestLabels.length > 0,
                     number: event.number,
