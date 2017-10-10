@@ -39,12 +39,6 @@ h1 {
 .u-bgc--f4f4f4 {
   background-color: #f4f4f4;
 }
-.u-opacity--disable {
-  opacity: 0;
-}
-.u-opacity--enable {
-  opacity: 1;
-}
 
 .Image {
   width: auto;

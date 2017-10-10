@@ -41,7 +41,7 @@ HacktoberfestChecker.prototype.userImageLazyLoad = function() {
   const imageNode = $('#userImage');
   const imageElementInstance = new Image();
   imageElementInstance.onload = function () {
-    imageNode.addClass('u-opacity--enable');
+    imageNode.removeClass('o-0');
   };
   imageElementInstance.src = imageNode.attr('src');
 };
