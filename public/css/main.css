@@ -40,13 +40,6 @@ h1 {
   background-color: #f4f4f4;
 }
 
-.Image {
-  width: auto;
-}
-.Image--small {
-  width: 128px;
-  height: 128px;
-}
 .Image--transition {
   transition: all 1s ease;
 }
