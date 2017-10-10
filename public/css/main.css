@@ -17,44 +17,44 @@ body {
 .stars {
   background: transparent url(../img/stars.png) repeat top center;
   z-index: -1;
-  animation: moveStars 15s linear infinite;
-  -ms-animation: moveStars 15s linear infinite;
-  -moz-animation: moveStars 15s linear infinite;
-  -webkit-animation: moveStars 15s linear infinite;
+  animation: move-stars 15s linear infinite;
+  -ms-animation: move-stars 15s linear infinite;
+  -moz-animation: move-stars 15s linear infinite;
+  -webkit-animation: move-stars 15s linear infinite;
 }
 
 
 /*Had to add more stars and offset them*/
 
-.starsTwo {
+.stars-two {
   top: -20%;
   left: -20%;
   background: transparent url(../img/stars.png) repeat top center;
   z-index: -1;
-  animation: moveStarsTwo 20s linear infinite;
-  -ms-animation: moveStarsTwo 20s linear infinite;
-  -moz-animation: moveStarsTwo 20s linear infinite;
-  -webkit-animation: moveStarsTwo 20s linear infinite;
+  animation: move-stars-two 20s linear infinite;
+  -ms-animation: move-stars-two 20s linear infinite;
+  -moz-animation: move-stars-two 20s linear infinite;
+  -webkit-animation: move-stars-two 20s linear infinite;
 }
 
 
 /*Had to add more stars and offset them*/
 
-.starsThree {
+.stars-three {
   top: 20%;
   left: 20%;
   background: transparent url(../img/stars.png) repeat top center;
   z-index: -1;
-  animation: moveStarsTwo 10s linear infinite;
-  -ms-animation: moveStarsTwo 10s linear infinite;
-  -moz-animation: moveStarsTwo 10s linear infinite;
-  -webkit-animation: moveStarsTwo 10s linear infinite;
+  animation: move-stars-two 10s linear infinite;
+  -ms-animation: move-stars-two 10s linear infinite;
+  -moz-animation: move-stars-two 10s linear infinite;
+  -webkit-animation: move-stars-two 10s linear infinite;
 }
 
 
 /*Animate stars group one*/
 
-@keyframes moveStars {
+@keyframes move-stars {
   0% {
     opacity: 1;
   }
@@ -66,7 +66,7 @@ body {
   }
 }
 
-@-ms-keyframes moveStars {
+@-ms-keyframes move-stars {
   0% {
     opacity: 1;
   }
@@ -78,7 +78,7 @@ body {
   }
 }
 
-@-moz-keyframes moveStars {
+@-moz-keyframes move-stars {
   0% {
     opacity: 1;
   }
@@ -90,7 +90,7 @@ body {
   }
 }
 
-@-webkit-keyframes moveStars {
+@-webkit-keyframes move-stars {
   0% {
     opacity: 1;
   }
@@ -105,7 +105,7 @@ body {
 
 /*Animate stars group two and three*/
 
-@keyframes moveStarsTwo {
+@keyframes move-stars-two {
   0% {
     opacity: 0;
   }
@@ -117,7 +117,7 @@ body {
   }
 }
 
-@-ms-keyframes moveStarsTwo {
+@-ms-keyframes move-stars-two {
   0% {
     opacity: 0;
   }
@@ -129,7 +129,7 @@ body {
   }
 }
 
-@-moz-keyframes moveStarsTwo {
+@-moz-keyframes move-stars-two {
   0% {
     opacity: 0;
   }
@@ -141,7 +141,7 @@ body {
   }
 }
 
-@-webkit-keyframes moveStarsTwo {
+@-webkit-keyframes move-stars-two {
   0% {
     opacity: 0;
   }
@@ -159,16 +159,16 @@ body {
 .cloud {
   z-index: -1;
   background: transparent url(../img/clouds.png) repeat top center;
-  animation: moveCloud 200s linear infinite;
-  -moz-animation: moveCloud 200s linear infinite;
-  -ms-animation: moveCloud 200s linear infinite;
-  -webkit-animation: moveCloud 200s linear infinite;
+  animation: move-cloud 200s linear infinite;
+  -moz-animation: move-cloud 200s linear infinite;
+  -ms-animation: move-cloud 200s linear infinite;
+  -webkit-animation: move-cloud 200s linear infinite;
 }
 
 
 /*Animate clouds*/
 
-@keyframes moveCloud {
+@keyframes move-cloud {
   from {
     background-position: 0 0;
   }
@@ -177,7 +177,7 @@ body {
   }
 }
 
-@-ms-keyframes moveCloud {
+@-ms-keyframes move-cloud {
   from {
     background-position: 0 0;
   }
@@ -186,7 +186,7 @@ body {
   }
 }
 
-@-moz-keyframes moveCloud {
+@-moz-keyframes move-cloud {
   from {
     background-position: 0 0;
   }
@@ -195,7 +195,7 @@ body {
   }
 }
 
-@-webkit-keyframes moveCloud {
+@-webkit-keyframes move-cloud {
   from {
     background-position: 0 0;
   }
@@ -219,3 +219,10 @@ h1 {
   flex-shrink: 0;
 }
 
+@@ -32, 6+220, 3 @@ h1 {
+  flex-shrink: 0;
+}
+
+.pr-item {
+  word-break: break-word;
+}
