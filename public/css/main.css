@@ -35,3 +35,14 @@ h1 {
 .pr-item {
   word-break: break-word;
 }
+
+#results {
+    background: #f9fafb;
+    color: #ff6300;
+    border-radius: 2px;
+}
+
+
+/*
+I tried to create a card behind the user image and its pull requests to get the feeling of misalignment
+ps: i don't how to use docker, so i use my experience with css */
