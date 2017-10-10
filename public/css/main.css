@@ -35,3 +35,7 @@ h1 {
 .pr-item {
   word-break: break-word;
 }
+
+.re-size {
+  max-width: 15vh;
+}
