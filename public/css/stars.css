@@ -27,8 +27,6 @@
 /*Had to add more stars and offset them*/
 
 .stars-three {
-    top: 20%;
-    left: 20%;
     background: transparent url(../img/stars.png) repeat top center;
     z-index: -1;
     animation: move-stars-two 10s linear infinite;
