@@ -87,7 +87,7 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
 HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus, xhr) {
     this.results.html(html);
     window.twttr.widgets.load();
-
+    window.FB.XFBML.parse();
     if (xhr.status === 200) {
       this.userImageLazyLoad();
     }

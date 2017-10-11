@@ -1,13 +1,21 @@
 {{#exists prs}}
     <div class="tc white">
-        <a class="twitter-share-button"
-            href="https://twitter.com/share"
-            data-size="large"
-            data-text="My progress on hacktoberfest {{ prs.length }} / 4"
-            data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
-            data-hashtags="hacktoberfest, hacktoberfestchecker">
-            Tweet
-        </a>
+        <div class="social-buttons">
+            <a class="twitter-share-button"
+                href="https://twitter.com/share"
+                data-size="large"
+                data-text="My progress on hacktoberfest {{ prs.length }} / 4"
+                data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
+                data-hashtags="hacktoberfest, hacktoberfestchecker">
+                Tweet
+            </a>
+            <div class="fb-share-button"
+                data-href="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
+                data-layout="button"
+                data-size="large">
+                    <a class="fb-xfbml-parse-ignore" href="https://www.facebook.com/sharer/sharer.php">Share</a>
+            </div>
+        </div>
         <div class="lh-copy pa3 flex flex-wrap justify-center content-center-ns br2 center mt2 overflow-hidden w-50-ns w-80-m w-90">
             <div class="mh3">
                 {{#if userImage}}
