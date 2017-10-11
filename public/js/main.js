@@ -28,6 +28,22 @@ function HacktoberfestChecker() {
 HacktoberfestChecker.prototype.constructor = function() {
     this.setFocus();
     this.bindEvents();
+    this.initialize();
+};
+
+HacktoberfestChecker.prototype.initialize = function() {
+  if ($('#userImage').length) {
+    this.userImageLazyLoad();
+  }
+};
+
+HacktoberfestChecker.prototype.userImageLazyLoad = function() {
+  const imageNode = $('#userImage');
+  const imageElementInstance = new Image();
+  imageElementInstance.onload = function () {
+    imageNode.removeClass('o-0');
+  };
+  imageElementInstance.src = imageNode.attr('src');
 };
 /**
  * the bind events function can be extended as the app grows
@@ -68,15 +84,24 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
 /**
  * In case of success during API call, display the HTML
  */
-HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html) {
+HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus, xhr) {
     this.results.html(html);
     window.twttr.widgets.load();
+
+    if (xhr.status === 200) {
+      this.userImageLazyLoad();
+    }
 };
+
 /**
  * In case of an error during API call, display an error message
  */
-HacktoberfestChecker.prototype.usernameIssuesError = function() {
-    this.results.html(this.makeError(this.errors.API.username));
+HacktoberfestChecker.prototype.usernameIssuesError = function(xhr) {
+    if (xhr.status === 404) {
+      this.results.html(xhr.response);
+    } else {
+      this.results.html(this.makeError(this.errors.API.username));
+    }
 };
 
 HacktoberfestChecker.prototype.getName = function() {

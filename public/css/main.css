@@ -35,3 +35,7 @@ h1 {
 .pr-item {
   word-break: break-word;
 }
+
+.u-bgc--f4f4f4 {
+  background-color: #f4f4f4;
+}
