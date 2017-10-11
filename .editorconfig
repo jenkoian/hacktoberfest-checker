@@ -1,0 +1,7 @@
+# Top-most EditorConfig file
+root = true
+
+# 4-column tab indentation for every file
+[*]
+indent_style = tab
+tab_width = 4
