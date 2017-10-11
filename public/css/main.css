@@ -39,10 +39,3 @@ h1 {
 .u-bgc--f4f4f4 {
   background-color: #f4f4f4;
 }
-
-.social-buttons {
-  display: flex;
-  width: 180px;
-  margin: auto;
-  justify-content: space-around;
-}
