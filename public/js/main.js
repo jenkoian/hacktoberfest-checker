@@ -84,13 +84,15 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
 /**
  * In case of success during API call, display the HTML
  */
- 
 HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus, xhr) {
     this.results.html(html);
+    window.twttr.widgets.load();
+
     if (xhr.status === 200) {
       this.userImageLazyLoad();
     }
 };
+
 /**
  * In case of an error during API call, display an error message
  */
