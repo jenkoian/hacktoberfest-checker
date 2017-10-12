@@ -26,7 +26,7 @@ exports.index = (req, res) => {
             console.log('API calls remaining: ' + user.meta['x-ratelimit-remaining']);
 
             _.each(foundPrs.data.items, event => {
-                const repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull'));
+                const repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull/'));
 
                 const hacktoberFestLabels = _.filter(event.labels, label => label.name.toLowerCase() === 'hacktoberfest');
 
@@ -90,7 +90,7 @@ exports.index = (req, res) => {
                     }
                 });
             }
-            
+
         }).catch(err => {
             deferred.reject(err);
         });
@@ -119,7 +119,7 @@ exports.index = (req, res) => {
         ];
 
         if (length > 5) length = 5;
-        
+
         if (req.query['plain-data']) {
             res.render('partials/prs', {
                 prs: data.prs,
@@ -138,7 +138,8 @@ exports.index = (req, res) => {
                 userImage: data.user.data.avatar_url
             });
         }
-    }).catch(() => {
+    }).catch((err) => {
+        console.log(err);
         if (req.xhr) {
             res.status(404).render('partials/error', {layout: false});
         } else {
