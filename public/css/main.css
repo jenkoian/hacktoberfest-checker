@@ -41,3 +41,6 @@ h1 {
     font-size:.875rem;
 }
 
+.bg {
+	position: fixed;
+}
