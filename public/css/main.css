@@ -41,3 +41,12 @@ h1 {
     font-size:.875rem;
 }
 
+.bn.br--left.br1.ph2 {
+    transition: box-shadow ease-in-out .2s;
+}
+
+.bn.br--left.br1.ph2:focus {
+    outline: none;
+    box-shadow: inset 0px 0px 0px 2px #ff6300;
+}
+
