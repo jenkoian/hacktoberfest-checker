@@ -8,6 +8,16 @@
             data-hashtags="hacktoberfest, hacktoberfestchecker">
             Tweet
         </a>
+        <div class="fb-share-button" 
+        data-href="https://hacktoberfestchecker.herokuapp.com/?username={{username}}" 
+        data-layout="button"
+         data-size="large" 
+         data-text="My progress on hacktoberfest {{ prs.length }} / 4"
+         data-mobile-iframe="true">
+            <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%2F%3Fusername%3DSoumyadeepJana&amp;src=sdkpreparse">
+            Share
+            </a>
+         </div>
         <div class="lh-copy pa3 flex flex-wrap justify-center content-center-ns br2 center mt2 overflow-hidden w-50-ns w-80-m w-90">
             <div class="mh3">
                 {{#if userImage}}
