@@ -81,12 +81,17 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
 
 };
 
+HacktoberfestChecker.prototype.loadSocialWidgets = function() {
+    window.twttr.widgets.load();
+    window.FB.XFBML.parse();
+};
+
 /**
  * In case of success during API call, display the HTML
  */
 HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus, xhr) {
     this.results.html(html);
-    window.twttr.widgets.load();
+    this.loadSocialWidgets();
 
     if (xhr.status === 200) {
       this.userImageLazyLoad();
