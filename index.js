@@ -57,6 +57,7 @@ if (process.env.GITHUB_TOKEN) {
         type: 'oauth',
         token: process.env.GITHUB_TOKEN
     });
+    console.log(process.env.GITHUB_TOKEN);
 } else {
     console.log('No GITHUB_TOKEN specified, do so to increase rate limit');
 }
