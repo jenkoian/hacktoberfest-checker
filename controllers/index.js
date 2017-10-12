@@ -98,7 +98,9 @@ exports.index = (req, res) => {
         return deferred.promise;
     }
 
-    if (!req.query.username) {
+    //if cookie is not set and username not filled,the show error page
+    if (!req.query.username && !req.cookies.username) {
+        
         if (req.xhr) {
             return res.render('partials/error', { layout: false });
         }
@@ -106,6 +108,57 @@ exports.index = (req, res) => {
         return res.render('index');
     }
 
+    else if(req.cookies.username) //check if the cookie is set,then serve the page using cookie's username
+    {
+        console.log(req.cookies.username);
+        console.log(moment());
+        
+    findPrs(req.cookies.username).then(data => {
+        let length = data.prs.length;
+
+        const statements = [
+            'It\'s not too late to start!',
+            'Off to a great start, keep going!',
+            'Half way there, keep it up!',
+            'So close!',
+            'Way to go!',
+            'Now you\'re just showing off!'
+        ];
+
+        if (length > 5) length = 5;
+        
+        if (req.query['plain-data']) {
+            res.render('partials/prs', {
+                prs: data.prs,
+                isNotComplete: data.prs.length < 4,
+                statement: statements[length],
+                username: req.query.username,
+                userImage: data.user.data.avatar_url,
+                layout: false
+            });
+            res.cookie("username", req.query.username, { expires: moment('2017-10-31 24:00:00').subtract(moment()), httpOnly: true }); //set cookie
+        } else {
+            res.render('index', {
+                prs: data.prs,
+                isNotComplete: data.prs.length < 4,
+                statement: statements[length],
+                username: req.query.username,
+                userImage: data.user.data.avatar_url
+            });
+        }
+    }).catch(() => {
+        if (req.xhr) {
+            res.status(404).render('partials/error', {layout: false});
+        } else {
+            res.render('index',  {error: true, username: req.query.username});
+        }
+    });
+
+    }
+
+    else
+    {
+        
     findPrs(req.query.username).then(data => {
         let length = data.prs.length;
 
@@ -129,6 +182,7 @@ exports.index = (req, res) => {
                 userImage: data.user.data.avatar_url,
                 layout: false
             });
+            res.cookie("username", req.query.username, { expires: new Date(Date.now() + 900000), httpOnly: true });
         } else {
             res.render('index', {
                 prs: data.prs,
@@ -145,4 +199,46 @@ exports.index = (req, res) => {
             res.render('index',  {error: true, username: req.query.username});
         }
     });
+    }
+
+    // findPrs(req.query.username).then(data => {
+    //     let length = data.prs.length;
+
+    //     const statements = [
+    //         'It\'s not too late to start!',
+    //         'Off to a great start, keep going!',
+    //         'Half way there, keep it up!',
+    //         'So close!',
+    //         'Way to go!',
+    //         'Now you\'re just showing off!'
+    //     ];
+
+    //     if (length > 5) length = 5;
+        
+    //     if (req.query['plain-data']) {
+    //         res.render('partials/prs', {
+    //             prs: data.prs,
+    //             isNotComplete: data.prs.length < 4,
+    //             statement: statements[length],
+    //             username: req.query.username,
+    //             userImage: data.user.data.avatar_url,
+    //             layout: false
+    //         });
+    //         res.cookie("username", req.query.username, { expires: new Date(Date.now() + 900000), httpOnly: true });
+    //     } else {
+    //         res.render('index', {
+    //             prs: data.prs,
+    //             isNotComplete: data.prs.length < 4,
+    //             statement: statements[length],
+    //             username: req.query.username,
+    //             userImage: data.user.data.avatar_url
+    //         });
+    //     }
+    // }).catch(() => {
+    //     if (req.xhr) {
+    //         res.status(404).render('partials/error', {layout: false});
+    //     } else {
+    //         res.render('index',  {error: true, username: req.query.username});
+    //     }
+    // });
 };

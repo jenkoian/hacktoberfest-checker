@@ -35,6 +35,7 @@
     "zepto": "^1.2.0"
   },
   "devDependencies": {
+    "cookie-parser": "^1.4.3",
     "eslint": "^4.8.0"
   },
   "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
