@@ -1,13 +1,24 @@
 {{#exists prs}}
     <div class="tc white">
-        <a class="twitter-share-button"
-            href="https://twitter.com/share"
-            data-size="large"
-            data-text="My progress on hacktoberfest {{ prs.length }} / 4"
-            data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
-            data-hashtags="hacktoberfest, hacktoberfestchecker">
-            Tweet
-        </a>
+        <div class="social-area">
+            <a class="twitter-share-button"
+                href="https://twitter.com/share"
+                data-size="large"
+                data-text="My progress on hacktoberfest {{ prs.length }} / 4"
+                data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
+                data-hashtags="hacktoberfest, hacktoberfestchecker">
+                Tweet
+            </a>
+            <div class="fb-share-button"
+                data-href="https://hacktoberfestchecker.herokuapp.com/?username=biigpongsatorn"
+                data-layout="button" data-size="large" data-mobile-iframe="true">
+                <a class="fb-xfbml-parse-ignore"
+                    target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%2F%3Fusername%3Dbiigpongsatorn&amp;src=sdkpreparse">
+                    Share
+                </a>
+            </div>
+        </div>
         <div class="lh-copy pa3 flex flex-wrap justify-center content-center-ns br2 center mt2 overflow-hidden w-50-ns w-80-m w-90">
             <div class="mh3">
                 {{#if userImage}}
@@ -23,7 +34,7 @@
         </div>
     </div>
 
-    {{#if isNotComplete }} 
+    {{#if isNotComplete }}
         <div class="flex flex-wrap justify-center content-center">
             <div class="light-gray">
                 Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="light-gray" target="_blank">issues</a> and get hacking!</a>
@@ -63,4 +74,3 @@
         </div>
     {{/if}}
 {{/exists}}
-
