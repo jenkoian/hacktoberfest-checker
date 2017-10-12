@@ -2,6 +2,7 @@
 
 .stars {
     background: transparent url(../img/stars.png) repeat top center;
+    background-attachment: fixed;
     z-index: -1;
     animation: move-stars 15s linear infinite;
     -ms-animation: move-stars 15s linear infinite;
@@ -16,6 +17,7 @@
     top: -20%;
     left: -20%;
     background: transparent url(../img/stars.png) repeat top center;
+    background-attachment: fixed;
     z-index: -1;
     animation: move-stars-two 20s linear infinite;
     -ms-animation: move-stars-two 20s linear infinite;
@@ -32,6 +34,7 @@
     top: 20%;
     left: 20%;
     background: transparent url(../img/stars.png) repeat top center;
+    background-attachment: fixed;
     z-index: -1;
     animation: move-stars-two 10s linear infinite;
     -ms-animation: move-stars-two 10s linear infinite;
@@ -39,6 +42,10 @@
     -webkit-animation: move-stars-two 10s linear infinite;
 }
 
+#bkg{
+    background-attachment: fixed;
+    position: fixed;
+}
 
 /*Animate stars group one*/
 
