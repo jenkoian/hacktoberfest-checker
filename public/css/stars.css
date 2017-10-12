@@ -27,6 +27,8 @@
 /*Had to add more stars and offset them*/
 
 .stars-three {
+    width: auto !important;
+    height: auto !important;
     top: 20%;
     left: 20%;
     background: transparent url(../img/stars.png) repeat top center;
