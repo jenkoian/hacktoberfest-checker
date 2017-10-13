@@ -132,3 +132,10 @@ function saveUserPage() {
     // Provide some sort of visual feedback. Redirect to that page.
     window.location.href='/me';
 }
+
+$(document).on('ready', () => {
+    // Works with /me or /me/
+    if (window.location.pathname.startsWith('/me')) {
+        redirectToUserPage();
+    }
+});
