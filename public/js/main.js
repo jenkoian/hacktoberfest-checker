@@ -135,7 +135,11 @@ function saveUserPage() {
 
 $(document).on('ready', () => {
     // Save is bound to button press
+<<<<<<< HEAD
     $('#saveUser').on('click', () => saveUserPage());
+=======
+    $('#saveUser').on('click', e => saveUserPage());
+>>>>>>> f9d0612b3517c4a4d95d2410d80d569276e6f2bf
     // Works with /me or /me/
     if (window.location.pathname.startsWith('/me')) {
         redirectToUserPage();
