@@ -159,7 +159,7 @@ function redirectToUserPage() {
 
 function saveUserPage() {
     // Save username into localStorage. Recall username by visiting /me.
-    localStorage.myGitHub = $('[name="username"').val();
+    localStorage.myGitHub = $('[name="username"]').val();
     // Provide some sort of visual feedback. Redirect to that page.
     window.location.href='/me';
 }
