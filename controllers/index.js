@@ -145,10 +145,12 @@ exports.index = (req, res) => {
         }
     }).catch((err) => {
         console.log(err);
-        if (err === 'notUser') {
-            res.status(400).render('partials/error-user', {layout: false});
-        } else if (req.xhr) {
-            res.status(404).render('partials/error', {layout: false});
+        if (req.xhr) {
+            if (err === 'notUser') {
+                res.status(400).render('partials/error-user', {layout: false});
+            } else {
+                res.status(404).render('partials/error', {layout: false});
+            }
         } else {
             res.render('index',  {error: true, username: req.query.username});
         }
