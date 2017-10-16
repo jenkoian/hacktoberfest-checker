@@ -40,6 +40,7 @@ exports.index = (req, res) => {
                 statement: statements[prs.length < 5 ? prs.length : 5 ],
                 username,
                 userImage: user.data.avatar_url,
+                hostname: `${req.protocol}://${req.headers.host}`
             };
             
             if (req.query['plain-data']) {
