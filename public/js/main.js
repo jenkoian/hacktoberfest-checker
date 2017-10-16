@@ -145,3 +145,30 @@ HacktoberfestChecker.prototype.updateHistory = function(name) {
         history.replaceState({}, name, '?username=' + name);
     }
 };
+
+// Functions related to the personalization functions
+function redirectToUserPage() {
+    // Get the cached user.
+    const me = localStorage.myGitHub;
+    if (me) {
+        window.location.href = `/?username=${me}`;
+    } else {
+        window.location.href = '/'; // Username not saved, go to main page.
+    }
+}
+
+function saveUserPage() {
+    // Save username into localStorage. Recall username by visiting /me.
+    localStorage.myGitHub = $('[name="username"').val();
+    // Provide some sort of visual feedback. Redirect to that page.
+    window.location.href='/me';
+}
+
+$(document).on('ready', () => {
+    // Save is bound to button press
+    $('#saveUser').on('click', () => saveUserPage());
+    // Works with /me or /me/
+    if (window.location.pathname.startsWith('/me')) {
+        redirectToUserPage();
+    }
+});

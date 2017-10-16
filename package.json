@@ -1,6 +1,6 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {

@@ -127,7 +127,8 @@ exports.index = (req, res) => {
                 statement: statements[length],
                 username: req.query.username,
                 userImage: data.user.data.avatar_url,
-                layout: false
+                layout: false,
+                hostname: req.headers.host
             });
         } else {
             res.render('index', {
@@ -146,4 +147,8 @@ exports.index = (req, res) => {
             res.render('index',  {error: true, username: req.query.username});
         }
     });
+};
+
+exports.me = (req, res) => {
+    res.render('me');
 };
