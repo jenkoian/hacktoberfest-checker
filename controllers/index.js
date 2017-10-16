@@ -23,6 +23,11 @@ exports.index = (req, res) => {
             const user = gitData[1];
             const prs = [];
 
+            if (user.data.type !== 'User') {
+                deferred.reject('not user');
+                return;
+            }
+
             console.log('API calls remaining: ' + user.meta['x-ratelimit-remaining']);
 
             _.each(foundPrs.data.items, event => {
@@ -140,7 +145,9 @@ exports.index = (req, res) => {
         }
     }).catch((err) => {
         console.log(err);
-        if (req.xhr) {
+        if (err === 'not user') {
+            res.status(400).render('partials/error-user', {layout: false});
+        } else if (req.xhr) {
             res.status(404).render('partials/error', {layout: false});
         } else {
             res.render('index',  {error: true, username: req.query.username});

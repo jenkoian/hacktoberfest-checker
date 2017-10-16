@@ -14,6 +14,7 @@ function HacktoberfestChecker() {
     // some configurable error messages
     this.errors = {
         emptyUsername: 'Username cannot be blank.',
+        notUser: 'Username must belong to a user account.',
         API: {
             issue: 'An error occurred while fetching new issues. Have you set your GitHub token? ',
             username: 'An error occurred while fetching issues for the given username. Have you set your GitHub token? ',
@@ -102,7 +103,9 @@ HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus
  * In case of an error during API call, display an error message
  */
 HacktoberfestChecker.prototype.usernameIssuesError = function(xhr) {
-    if (xhr.status === 404) {
+    if (xhr.status === 400) {
+      this.results.html(this.makeError(this.errors.notUser));
+    } else if (xhr.status === 404) {
       this.results.html(xhr.response);
     } else {
       this.results.html(this.makeError(this.errors.API.username));
