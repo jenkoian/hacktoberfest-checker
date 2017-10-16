@@ -114,3 +114,7 @@ const logCallsRemaining = res => {
 
     return res;
 };
+
+exports.me = (req, res) => {
+    res.render('me');
+};

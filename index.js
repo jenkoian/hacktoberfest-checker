@@ -72,6 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static(path.join(__dirname, './node_modules')));
 
 app.get('/', IndexController.index);
+app.get('/me', IndexController.me);
 
 // Production error handler
 if (app.get('env') === 'production') {
