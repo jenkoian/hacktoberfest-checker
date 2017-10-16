@@ -7,8 +7,6 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const exphbs = require('express-handlebars');
-const _ = require('lodash');
-const q = require('q');
 const GitHubApi = require('github');
 
 // Load environment variables from .env file
@@ -64,8 +62,6 @@ if (process.env.GITHUB_TOKEN) {
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 5000);
-app.set('q', q);
-app.set('_', _);
 app.set('github', github);
 
 app.use(compression());
