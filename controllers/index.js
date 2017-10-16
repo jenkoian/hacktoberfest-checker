@@ -24,7 +24,7 @@ exports.index = (req, res) => {
             const prs = [];
 
             if (user.data.type !== 'User') {
-                deferred.reject('not user');
+                deferred.reject('notUser');
                 return;
             }
 
@@ -145,7 +145,7 @@ exports.index = (req, res) => {
         }
     }).catch((err) => {
         console.log(err);
-        if (err === 'not user') {
+        if (err === 'notUser') {
             res.status(400).render('partials/error-user', {layout: false});
         } else if (req.xhr) {
             res.status(404).render('partials/error', {layout: false});
