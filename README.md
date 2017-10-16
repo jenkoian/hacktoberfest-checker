@@ -33,6 +33,8 @@ Happy hacking!
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
+* Note: the project overrides your Node version using .nvmrc which points to the latest Node LTS version.
+
 ### Running the app within Docker
 
 As an alternative to the section above, you can run the app within a Docker container:
