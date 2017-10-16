@@ -128,7 +128,7 @@ exports.index = (req, res) => {
                 username: req.query.username,
                 userImage: data.user.data.avatar_url,
                 layout: false,
-                hostname: req.headers.host
+                hostname: `${req.protocol}://${req.headers.host}`
             });
         } else {
             res.render('index', {
