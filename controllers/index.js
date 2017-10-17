@@ -23,7 +23,6 @@ exports.index = (req, res) => {
     if (!username) {
         if (req.xhr) {
             return res.render('partials/error', { layout: false });
-            console.log("DOING A");  // FIXME
         }
 
         return res.render('index');
@@ -60,7 +59,6 @@ exports.index = (req, res) => {
                 if (err === 'notUser') {
                     res.status(400).render('partials/error-user', {layout: false});
                 } else {
-                    console.log("DOING B");  // FIXME
                     res.status(404).render('partials/error', {layout: false});
                 }
             } else {
