@@ -18,6 +18,11 @@ so please take a look if you'd like to contribute or feel free to propose any id
 
 Happy hacking!
 
+## Requirements
+
+* Node v6.11.4 (LTS)
+> Recommended to use [NVM](https://github.com/creationix/nvm)
+
 ## Running the app
 
 * [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
@@ -32,8 +37,6 @@ Happy hacking!
 * `$ yarn start`
 
 * Point browser to [localhost:5000](http://localhost:5000)
-
-* Note: the project overrides your Node version using .nvmrc which points to the latest Node LTS version.
 
 ### Running the app within Docker
 
