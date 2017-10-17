@@ -22,7 +22,7 @@
             <div class="mh3">
                 {{#if userImage}}
                     <a href = "https://github.com/{{username}}" target="_blank">
-                        <img id="userImage" class="tc br-100 w4 h4 bw2 b--solid b--near-white u-bgc--f4f4f4 overflow-hidden o-0 glow" src="{{userImage}}" />
+                        <img id="userImage" alt="GitHub profile image for {{ username }}" class="tc br-100 w4 h4 bw2 b--solid b--near-white u-bgc--f4f4f4 overflow-hidden o-0 glow" src="{{userImage}}" />
                     </a>
                 {{/if}}
             </div>
@@ -72,5 +72,9 @@
             {{/each}}
         </div>
     {{/if}}
-{{/exists}}
 
+    <div class="br2 center mt5 overflow-hidden w-50-ns w-80-m w-90 mt2">
+        <button class="bg-orange white center mt2 h2 bn pointer br1 pv0 ph3 db-ns" id="saveUser">This is Me</button>
+        <p class='light-silver center tc-ns'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link white underline-hover'>{{ hostname }}/me</a> on this device.</p>
+    </div>
+{{/exists}}

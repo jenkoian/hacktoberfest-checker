@@ -1,6 +1,6 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
     "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
   },
@@ -34,7 +35,8 @@
     "zepto": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.8.0"
+    "eslint": "^4.8.0",
+    "nodemon": "^1.12.1"
   },
   "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
 }
