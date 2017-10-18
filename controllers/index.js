@@ -13,6 +13,14 @@ const statements = [
     'Now you\'re just showing off!'
 ];
 
+const errors = {
+    notUser: 'Username must belong to a user account.'
+};
+
+const errorCodes = {
+    notUser: 400
+};
+
 /**
  * GET /
  */
@@ -56,14 +64,13 @@ exports.index = (req, res) => {
         }).catch((err) => {
             console.log(err);
             if (req.xhr) {
-                if (err === 'notUser') {
-                    res.status(400).render('partials/error-user', {layout: false});
-                } else {
-                    res.status(404).render('partials/error', {layout: false});
-                }
+                const code = errorCodes[err] || 404;
+                res.status(code).render('partials/error', {
+                    layout: false, errorMsg: errors[err]
+                });
             } else {
                 res.render('index', {
-                  error: true, errorUser: err === 'notUser', username
+                  error: true, errorMsg: errors[err], username
                 });
             }
         });

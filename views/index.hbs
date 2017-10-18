@@ -9,11 +9,7 @@
 
 <div class="pv4" id="results">
     {{#if error}}
-        {{#if errorUser}}
-            {{> error-user}}
-        {{else if username}}
-            {{> error}}
-        {{/if}}
+        {{> error}}
     {{else}}
         {{> prs}}
     {{/if}}
