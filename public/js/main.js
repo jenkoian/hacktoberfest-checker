@@ -102,7 +102,7 @@ HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus
  * In case of an error during API call, display an error message
  */
 HacktoberfestChecker.prototype.usernameIssuesError = function(xhr) {
-    if (xhr.status === 404) {
+    if (xhr.status >= 400) {
       this.results.html(xhr.response);
     } else {
       this.results.html(this.makeError(this.errors.API.username));

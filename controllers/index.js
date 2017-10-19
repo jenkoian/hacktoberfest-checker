@@ -13,6 +13,14 @@ const statements = [
     'Now you\'re just showing off!'
 ];
 
+const errors = {
+    notUser: 'Username must belong to a user account.'
+};
+
+const errorCodes = {
+    notUser: 400
+};
+
 /**
  * GET /
  */
@@ -33,7 +41,12 @@ exports.index = (req, res) => {
         github.users.getForUser({username})
             .then(logCallsRemaining)
     ])
-        .then(([prs, user]) => { 
+        .then(([prs, user]) => {
+            
+            if (user.data.type !== 'User') {
+              return Promise.reject('notUser');
+            }
+            
             const data = {
                 prs,
                 isNotComplete: prs.length < 4,
@@ -51,9 +64,14 @@ exports.index = (req, res) => {
         }).catch((err) => {
             console.log(err);
             if (req.xhr) {
-                res.status(404).render('partials/error', {layout: false});
+                const code = errorCodes[err] || 404;
+                res.status(code).render('partials/error', {
+                    layout: false, errorMsg: errors[err]
+                });
             } else {
-                res.render('index', {error: true, username});
+                res.render('index', {
+                  error: true, errorMsg: errors[err], username
+                });
             }
         });
 };
@@ -104,7 +122,7 @@ function findPrs(github, username) {
 
             return Promise
                 .all(checkMergeStatus)
-                .then(mergeStatus => 
+                .then(mergeStatus =>
                     _.zipWith(prs, mergeStatus, (pr, merged) => _.assign(pr, {merged})));
         });
 
