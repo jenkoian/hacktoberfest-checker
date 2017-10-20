@@ -32,18 +32,18 @@ HacktoberfestChecker.prototype.constructor = function() {
 };
 
 HacktoberfestChecker.prototype.initialize = function() {
-  if ($('#userImage').length) {
-    this.userImageLazyLoad();
-  }
+    if ($('#userImage').length) {
+        this.userImageLazyLoad();
+    }
 };
 
 HacktoberfestChecker.prototype.userImageLazyLoad = function() {
-  const imageNode = $('#userImage');
-  const imageElementInstance = new Image();
-  imageElementInstance.onload = function () {
-    imageNode.removeClass('o-0');
-  };
-  imageElementInstance.src = imageNode.attr('src');
+    const imageNode = $('#userImage');
+    const imageElementInstance = new Image();
+    imageElementInstance.onload = function () {
+        imageNode.removeClass('o-0');
+    };
+    imageElementInstance.src = imageNode.attr('src');
 };
 /**
  * the bind events function can be extended as the app grows
@@ -94,7 +94,7 @@ HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus
     this.loadSocialWidgets();
 
     if (xhr.status === 200) {
-      this.userImageLazyLoad();
+        this.userImageLazyLoad();
     }
 };
 
@@ -103,9 +103,9 @@ HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus
  */
 HacktoberfestChecker.prototype.usernameIssuesError = function(xhr) {
     if (xhr.status >= 400) {
-      this.results.html(xhr.response);
+        this.results.html(xhr.response);
     } else {
-      this.results.html(this.makeError(this.errors.API.username));
+        this.results.html(this.makeError(this.errors.API.username));
     }
 };
 
