@@ -1,6 +1,6 @@
 {{#exists prs}}
     <div class="tc white">
-        <div class="flex justify-center">
+        <div class="pb4 flex justify-center">
             <div class="pa1">
                 <a class="twitter-share-button white no-underline f6"
                     href="https://twitter.com/share"
@@ -18,7 +18,7 @@
                     <a class="fb-xfbml-parse-ignore" href="https://www.facebook.com/sharer/sharer.php">Share</a>
             </div>
         </div>
-        <div class="lh-copy pa3 flex flex-wrap justify-center content-center-ns br2 center mt2 overflow-hidden w-50-ns w-80-m w-90">
+        <div class="lh-copy pb1 flex flex-wrap justify-center content-center-ns br2 center overflow-hidden w-50-ns w-80-m w-90">
             <div class="mh3">
                 {{#if userImage}}
                     <a href = "https://github.com/{{username}}" target="_blank">
@@ -35,14 +35,14 @@
 
     {{#if isNotComplete }}
         <div class="flex flex-wrap justify-center content-center">
-            <div class="light-gray">
+            <div class="light-gray pb3">
                 Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="light-gray" target="_blank">issues</a> and get hacking!</a>
             </div>
         </div>
     {{/if}}
 
     {{#if prs.length}}
-        <div class="br2 center mt3 shadow-1 overflow-hidden w-50-ns w-80-m w-90">
+        <div class="br2 center shadow-1 overflow-hidden w-50-ns w-80-m w-90 mb4">
             {{#each prs}}
                 <div class="bg-white {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}lh-copy pa3 flex bb b--gray pr-item">
                     <div class="br-100 h2 mr3 mt1 tc w2">

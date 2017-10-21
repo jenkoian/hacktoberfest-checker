@@ -1,13 +1,13 @@
-﻿<h1 class="f1 f-6-ns orange tc"><a class="orange no-underline" href="/">Hacktoberfest Checker</a></h1>
+﻿<h1 class="f1 f-6-ns orange tc pb4"><a class="orange no-underline" href="/">Hacktoberfest Checker</a></h1>
 
-<div class="tc pt4">
+<div class="tc pb4">
     <form action="/" class="center h2 w-30-ns w-60-m w-80 flex" method="get">
         <input class="bn br--left br1 ph2 flex-auto" type="text" name="username" placeholder="GitHub username" value="{{ username }}" spellcheck="false">
         <button class="bg-orange bn br--right br1 pv0 ph3 pointer white" type="submit">Check</button>
     </form>
 </div>
 
-<div class="pv4" id="results">
+<div class="pb4" id="results">
     {{#if error}}
         {{> error}}
     {{else}}
