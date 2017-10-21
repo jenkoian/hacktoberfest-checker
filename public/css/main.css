@@ -50,3 +50,11 @@ h1 {
     box-shadow: inset 0px 0px 0px 2px #ff6300;
 }
 
+.base-button {
+    padding: 0 1rem;
+    border: none;
+    background-color: #ff6300;
+    color: #fff;
+    cursor: pointer;
+}
+
