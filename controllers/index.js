@@ -42,11 +42,11 @@ exports.index = (req, res) => {
             .then(logCallsRemaining)
     ])
         .then(([prs, user]) => {
-            
+
             if (user.data.type !== 'User') {
-              return Promise.reject('notUser');
+                return Promise.reject('notUser');
             }
-            
+
             const data = {
                 prs,
                 isNotComplete: prs.length < 4,
@@ -55,7 +55,7 @@ exports.index = (req, res) => {
                 userImage: user.data.avatar_url,
                 hostname: `${req.protocol}://${req.headers.host}`
             };
-            
+
             if (req.query['plain-data']) {
                 res.render('partials/prs', _.assign(data, {layout: false}));
             } else {
@@ -70,7 +70,7 @@ exports.index = (req, res) => {
                 });
             } else {
                 res.render('index', {
-                  error: true, errorMsg: errors[err], username
+                    error: true, errorMsg: errors[err], username
                 });
             }
         });
@@ -106,7 +106,7 @@ function findPrs(github, username) {
                     repo: repoDetails[1],
                     number: pr.number
                 };
-    
+
                 return github.pullRequests.checkMerged(pullDetails)
                     .then(logCallsRemaining)
                     .then(res => res.meta.status === '204 No Content')
@@ -115,7 +115,7 @@ function findPrs(github, username) {
                         if (err.code === 404) {
                             return false;
                         }
-    
+
                         throw err;
                     });
             });

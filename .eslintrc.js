@@ -1,24 +1,41 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "jquery": true,
-        "node": true
+    root: true,
+    env: {
+        commonjs: true,
+        es6: true,
+        node: true,
     },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "sourceType": "module"
+    extends: 'eslint:recommended',
+    parserOptions: {
+        sourceType: 'module',
     },
-    "rules": {
-        "quotes": [
-            "error",
-            "single"
+    rules: {
+        quotes: ['error', 'single'],
+        semi: ['error', 'always'],
+        'no-console': ['warn', { allow: ['log', 'error'] }],
+        indent: [
+            'error',
+            4,
+            {
+                SwitchCase: 1,
+                VariableDeclarator: 1,
+                outerIIFEBody: 1,
+                FunctionDeclaration: {
+                    parameters: 1,
+                    body: 1,
+                },
+                FunctionExpression: {
+                    parameters: 1,
+                    body: 1,
+                },
+                CallExpression: {
+                    arguments: 1,
+                },
+                ArrayExpression: 1,
+                ObjectExpression: 1,
+                ImportDeclaration: 1,
+                flatTernaryExpressions: false,
+            },
         ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-console": ["warn"]
-    }
+    },
 };
