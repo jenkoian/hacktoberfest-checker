@@ -42,7 +42,6 @@ exports.index = (req, res) => {
             .then(logCallsRemaining)
     ])
         .then(([prs, user]) => {
-
             if (user.data.type !== 'User') {
                 return Promise.reject('notUser');
             }
@@ -76,29 +75,79 @@ exports.index = (req, res) => {
         });
 };
 
-function findPrs(github, username) {
-    return github.search.issues({
-        q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`
-    })
-        .then(prs => _.map(prs.data.items, event => {
-            const repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull/'));
-            const hacktoberFestLabels = _.some(event.labels, label => label.name.toLowerCase() === 'hacktoberfest');
 
-            return {
-                has_hacktoberfest_label: hacktoberFestLabels,
-                number: event.number,
-                open: event.state === 'open',
-                repo_name: repo.replace('https://github.com/', ''),
-                title: event.title,
-                url: event.html_url,
-                created_at: moment(event.created_at).format('MMMM Do YYYY'),
-                user: {
-                    login: event.user.login,
-                    url: event.user.html_url
-                },
-            };
-        }))
-        .then(prs => {
+let pullRequestData = [];
+
+function getNextPage(response, github) {
+    const deferred = Promise.defer();
+    github.getNextPage(response, function(err, res) {
+        if (err) {
+            deferred.reject();
+            return false;
+        }
+
+        pullRequestData = pullRequestData.concat(res['data'].items);
+        if (github.hasNextPage(res)) {
+            getNextPage(res, github).then(function () {
+                deferred.resolve();
+            });
+        } else {
+            console.log('Found ' + pullRequestData.length + ' pull requests.');
+            deferred.resolve();
+        }
+    });
+    return deferred.promise;
+}
+
+function loadPrs(github, username) {
+    const deferred = Promise.defer();
+    github.search.issues({
+        q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+        per_page: 30  // 30 is the default but this makes it clearer/allows it to be tweaked
+    }, function(err, res) {
+        if (err) {
+            deferred.reject();
+            return false;
+        }
+
+        pullRequestData = pullRequestData.concat(res['data'].items);
+        if (github.hasNextPage(res)) {
+            getNextPage(res, github).then(function () {
+                deferred.resolve();
+            });
+        } else {
+            console.log('Found ' + pullRequestData.length + ' pull requests.');
+            deferred.resolve();
+        }
+    });
+
+    return deferred.promise;
+}
+
+function findPrs(github, username) {
+    pullRequestData = [];
+    return loadPrs(github, username, pullRequestData)
+        .then(function() {
+            pullRequestData = _.map(pullRequestData, event => {
+                const repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull/'));
+                const hacktoberFestLabels = _.some(event.labels, label => label.name.toLowerCase() === 'hacktoberfest');
+
+                return {
+                    has_hacktoberfest_label: hacktoberFestLabels,
+                    number: event.number,
+                    open: event.state === 'open',
+                    repo_name: repo.replace('https://github.com/', ''),
+                    title: event.title,
+                    url: event.html_url,
+                    created_at: moment(event.created_at).format('MMMM Do YYYY'),
+                    user: {
+                        login: event.user.login,
+                        url: event.user.html_url
+                    },
+                };
+            });
+            return Promise.resolve(pullRequestData);
+        }).then(prs => {
             const checkMergeStatus = _.map(prs, pr => {
                 const repoDetails = pr.repo_name.split('/');
                 const pullDetails = {
@@ -122,15 +171,12 @@ function findPrs(github, username) {
 
             return Promise
                 .all(checkMergeStatus)
-                .then(mergeStatus =>
-                    _.zipWith(prs, mergeStatus, (pr, merged) => _.assign(pr, {merged})));
+                .then(mergeStatus => Promise.resolve(_.zipWith(prs, mergeStatus, (pr, merged) => _.assign(pr, {merged}))));
         });
-
 }
 
 const logCallsRemaining = res => {
     console.log('API calls remaining: ' + res.meta['x-ratelimit-remaining']);
-
     return res;
 };
 
