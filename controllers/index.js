@@ -78,7 +78,8 @@ exports.index = (req, res) => {
 
 function findPrs(github, username) {
     return github.search.issues({
-        q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`
+        q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+        per_page: 100
     })
         .then(prs => _.map(prs.data.items, event => {
             const repo = event.pull_request.html_url.substring(0, event.pull_request.html_url.search('/pull/'));
