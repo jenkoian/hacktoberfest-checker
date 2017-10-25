@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Useful app to check how you're getting on in hacktoberfest">
+    <meta property="og:title" content="Hacktoberfest Checker">
+    <meta property="og:description" content="Useful app to check how you're getting on in hacktoberfest">
+    <link rel="canonical" href="https://hacktoberfestchecker.herokuapp.com/">
+    <meta property="og:url" content="https://hacktoberfestchecker.herokuapp.com/">
+    <meta property="og:site_name" content="Hacktoberfest Checker">
+    <meta property="og:image" content="https://hacktoberfestchecker.herokuapp.com/img/og.png">
+    <meta property="og:description" content="Check how you're doing in hacktoberfest">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@jenko">
+    <meta name="twitter:title" content="Hacktoberfest Checker">
+    <meta name="twitter:description" content="Check how you're doing in hacktoberfest">
+    <meta name="twitter:image" content="https://hacktoberfestchecker.herokuapp.com/img/og.png">
+    <meta name="theme-color" content="#202a6b">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <title>Hacktoberfest Checker</title>
+    <link rel="stylesheet" href="/vendor/tachyons/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/stars.css">
+</head>
+<body class="h-100 min-vh-100 overflow-y-auto flex flex-column">
+    {{> github_corner}}
+
+    <div class="ph3-ns main-content">
+      <div class="db fixed aspect-ratio--object stars-three">
+
+      </div>
+      <div class="db fixed aspect-ratio--object stars">
+
+      </div>
+      <div class="db fixed aspect-ratio--object cloud">
+
+      </div>
+      <div class="db fixed aspect-ratio--object stars-two">
+
+      </div>
+        <div class="cf ph2-ns">
+            {{> header}}
+            {{{body}}}
+        </div>
+    </div>
+
+    {{> footer}}
+
+    <script src="/vendor/zepto/dist/zepto.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-68877006-1','auto');ga('send','pageview');
+    </script>
+    <!-- Twitter -->
+    <script>
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+     <!-- Facebook -->
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+            fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+</body>
+</html>

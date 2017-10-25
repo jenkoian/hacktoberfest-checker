@@ -1,44 +1,80 @@
 {{#exists prs}}
-  {{#if userImage}}
-    <img class="avatar" src="{{userImage}}"/>
-  {{/if}}
-
-  <div class="row">
-    <div class="large-12 columns">
-      <h2><strong>{{ prs.length }} / 4</strong></h2>
-      <h3><strong>{{ statement }}</strong></h3>
-    </div>
-  </div>
-
-  <hr />
-
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="social-head">
-        <h4><strong>Share:</strong></h4>
-        <div class="social">
-          <ul>
-            <li><div class="twitter"><a href="https://twitter.com/intent/tweet?button_hashtag=hacktoberfest&text=I'm on {{ prs.length }}/4 pull requests, how about you? https://hacktoberfestchecker.herokuapp.com" target="_blank">Twitter</a></div></li>
-            <li><div class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%2F&amp;" target="_blank">Facebook</a></div></li>
-            <li><div class="googleplus"><a href="https://plus.google.com/share?url=https%3A%2F%2Fhacktoberfestchecker.herokuapp.com%3A" target="_blank">G+</a></div></li>
-          </ul>
+    <div class="tc white">
+        <div class="flex justify-center">
+            <div class="pa1">
+                <a class="twitter-share-button white no-underline f6"
+                    href="https://twitter.com/share"
+                    data-size="large"
+                    data-text="My progress on hacktoberfest {{ prs.length }} / 4"
+                    data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
+                    data-hashtags="hacktoberfest, hacktoberfestchecker">
+                    Tweet
+                </a>
+            </div>
+            <div class="fb-share-button pa1"
+                data-href="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
+                data-layout="button"
+                data-size="large">
+                    <a class="fb-xfbml-parse-ignore" href="https://www.facebook.com/sharer/sharer.php">Share</a>
+            </div>
         </div>
-      </div>
+        <div class="lh-copy pa3 flex flex-wrap justify-center content-center-ns br2 center mt2 overflow-hidden w-50-ns w-80-m w-90">
+            <div class="mh3">
+                {{#if userImage}}
+                    <a href = "https://github.com/{{username}}" target="_blank">
+                        <img id="userImage" alt="GitHub profile image for {{ username }}" class="tc br-100 w4 h4 bw2 b--solid b--near-white u-bgc--f4f4f4 overflow-hidden o-0 glow" src="{{userImage}}" />
+                    </a>
+                {{/if}}
+            </div>
+            <div class="flex flex-wrap  justify-center content-center flex-column">
+                <span class="db br2 f1 fw5 white w5">{{ prs.length }} / 4</span>
+                <h3 class="mv1 fw3 light-gray">{{ statement }}</h3>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <hr />
+    {{#if isNotComplete }}
+        <div class="flex flex-wrap justify-center content-center">
+            <div class="light-gray">
+                Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="light-gray" target="_blank">issues</a> and get hacking!</a>
+            </div>
+        </div>
+    {{/if}}
 
-  <div class="row">
-    <div class="large-12 columns">
-      <ul class="pulls">
-        {{#each prs}}
-          <li>
-            <a href="{{this.url}}">{{this.repo_name}} - #{{this.title}} ({{this.state}})</a>
-            {{#if hasHacktoberFestLabel}}<span class="label">hacktoberfest</span>{{/if}}
-          </li>
-        {{/each}}
-      </ul>
+    {{#if prs.length}}
+        <div class="br2 center mt3 shadow-1 overflow-hidden w-50-ns w-80-m w-90">
+            {{#each prs}}
+                <div class="bg-white {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}lh-copy pa3 flex bb b--gray pr-item">
+                    <div class="br-100 h2 mr3 mt1 tc w2">
+                        {{#if this.open}}
+                            <svg aria-hidden="true" fill="#2cbe4e" height="18" version="1.1" viewBox="0 0 12 16" width="24">
+                                <path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
+                            </svg>
+                        {{else if this.merged}}
+                            <svg aria-hidden="true" fill="#6f42c1" height="18" version="1.1" viewBox="0 0 12 16" width="24">
+                                <path fill-rule="evenodd" d="M10 7c-.73 0-1.38.41-1.73 1.02V8C7.22 7.98 6 7.64 5.14 6.98c-.75-.58-1.5-1.61-1.89-2.44A1.993 1.993 0 0 0 2 .99C.89.99 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2a1.993 1.993 0 0 0 1-3.72V7.67c.67.7 1.44 1.27 2.3 1.69.86.42 2.03.63 2.97.64v-.02c.36.61 1 1.02 1.73 1.02 1.11 0 2-.89 2-2 0-1.11-.89-2-2-2zm-6.8 6c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm8 6c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
+                            </svg>
+                        {{else}}
+                            <svg aria-hidden="true" fill="#cb2431" height="18" version="1.1" viewBox="0 0 12 16" width="24">
+                                <path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
+                            </svg>
+                        {{/if}}
+                    </div>
+                    <div>
+                        <div class="mid-gray">
+                            <a class="color-inherit fw6 link underline-hover" href="{{ this.user.url }}">{{ this.user.login }}</a>
+                            submitted a pull request
+                            <a class="blue link underline-hover" href="{{ this.url }}">{{ this.repo_name }}#{{ this.number }}</a>
+                        </div>
+                        <div class="light-silver">{{ this.title }} on {{ this.created_at }}</div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <div class="br2 center mt5 overflow-hidden w-50-ns w-80-m w-90 mt2">
+        <button class="bg-orange white center mt2 h2 bn pointer br1 pv0 ph3 db-ns saveUser">This is Me</button>
+        <p class='light-silver center tc-ns'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link white underline-hover saveUser'>{{ hostname }}/me</a> on this device.</p>
     </div>
-  </div>
 {{/exists}}
