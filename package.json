@@ -10,7 +10,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
-    "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
+    "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix",
+    "test": "jasmine tests.spec.js"
   },
   "keywords": [
     "hacktoberfest"
@@ -36,6 +37,10 @@
   },
   "devDependencies": {
     "eslint": "^4.8.0",
+    "gulp": "^3.9.1",
+    "gulp-jasmine-browser": "^1.7.1",
+    "jasmine": "^2.8.0",
+    "jsdom": "^11.3.0",
     "nodemon": "^1.12.1"
   },
   "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"

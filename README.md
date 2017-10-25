@@ -38,6 +38,12 @@ Happy hacking!
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
+## Running tests
+
+* Run the server with ```yarn start``` or ```npm start```
+* Open another terminal window and run ```npm test```
+* To add more tests, apend them to the end of ```tests.spec.js```
+
 ### Running the app within Docker
 
 As an alternative to the section above, you can run the app within a Docker container:
