@@ -103,7 +103,7 @@ function loadPrs(github, username) {
     const deferred = Promise.defer();
     github.search.issues({
         q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
-        per_page: 30  // 30 is the default but this makes it clearer/allows it to be tweaked
+        per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
     }, function(err, res) {
         if (err) {
             deferred.reject();
