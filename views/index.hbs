@@ -1,5 +1,12 @@
 ﻿<h1 class="f1 f-6-ns orange tc"><a class="orange no-underline" href="/">Hacktoberfest Checker</a></h1>
 
+<div>
+    <h1 class="f1 f-5-ns orange tc" style="margin-bottom: 0px;font-family: monospace;"><a class="orange no-underline" id="countdown-event">00:00:00:00</a></h1>
+    <h1 class="f-3 tc" style="margin-top: 0px;font-family: monospace;">
+        <p class="orange">Days : Hours : Minutes : Seconds</p>
+    </h1>
+</div>
+
 <div class="tc pt4">
     <form action="/" class="center h2 w-30-ns w-60-m w-80 flex" method="get">
         <input class="bn br--left br1 ph2 flex-auto" type="text" name="username" placeholder="GitHub username" value="{{ username }}" spellcheck="false">
@@ -14,3 +21,36 @@
         {{> prs}}
     {{/if}}
 </div>
+<script>
+    const end = new Date('10/30/2017 00:00 AM');
+
+    let _second = 1000;
+    let _minute = _second * 60;
+    let _hour = _minute * 60;
+    let _day = _hour * 24;
+    let timer;
+
+    function showRemaining() {
+        let now = new Date();
+        let distance = end - now;
+        if (distance < 0) {
+
+            clearInterval(timer);
+            document.getElementById('countdown-event').innerHTML = 'EXPIRED!';
+
+            return;
+        }
+        let days = Math.floor(distance / _day);
+        let hours = Math.floor((distance % _day) / _hour);
+        let minutes = Math.floor((distance % _hour) / _minute);
+        let seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('countdown-event').innerHTML = `${days}:` 
+        document.getElementById('countdown-event').innerHTML += `${hours}:` 
+        document.getElementById('countdown-event').innerHTML += `${minutes}:` 
+        document.getElementById('countdown-event').innerHTML += `${seconds}` 
+    }
+
+    timer = setInterval(showRemaining, 1000);
+
+</script>
