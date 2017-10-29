@@ -46,6 +46,9 @@ As an alternative to the section above, you can run the app within a Docker cont
 
 * `$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
 
+## Link
+Check your progress on [Hacktoberfest official site](https://hacktoberfest.digitalocean.com/stats/)
+
 ## License
 
 MIT © 2015-2017 [Ian Jenkins](https://github.com/jenkoian)
