@@ -1,0 +1,13 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": false,
+        "es6": true,
+        "jquery": true,
+        "node": true
+    },
+    "rules": {
+        "no-console": ["warn"],
+        "prefer-template": ["error"]
+    }
+}

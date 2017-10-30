@@ -1,7 +1,11 @@
-if (typeof module === 'object' && typeof module.exports === 'object') {
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && _typeof(module.exports) === 'object') {
     module.exports = HacktoberfestChecker;
 } else {
-    $(document).ready(function() {
+    $(document).ready(function () {
         new HacktoberfestChecker().constructor();
     });
 }
@@ -16,7 +20,7 @@ function HacktoberfestChecker() {
         emptyUsername: 'Username cannot be blank.',
         API: {
             issue: 'An error occurred while fetching new issues. Have you set your GitHub token? ',
-            username: 'An error occurred while fetching issues for the given username. Have you set your GitHub token? ',
+            username: 'An error occurred while fetching issues for the given username. Have you set your GitHub token? '
         }
     };
     //the path for the spinner
@@ -25,21 +29,21 @@ function HacktoberfestChecker() {
 /**
  * in the constructor we'll initialize/retrieve everything that needs to fire when we new this object up
  */
-HacktoberfestChecker.prototype.constructor = function() {
+HacktoberfestChecker.prototype.constructor = function () {
     this.setFocus();
     this.bindEvents();
     this.initialize();
 };
 
-HacktoberfestChecker.prototype.initialize = function() {
+HacktoberfestChecker.prototype.initialize = function () {
     if ($('#userImage').length) {
         this.userImageLazyLoad();
     }
 };
 
-HacktoberfestChecker.prototype.userImageLazyLoad = function() {
-    const imageNode = $('#userImage');
-    const imageElementInstance = new Image();
+HacktoberfestChecker.prototype.userImageLazyLoad = function () {
+    var imageNode = $('#userImage');
+    var imageElementInstance = new Image();
     imageElementInstance.onload = function () {
         imageNode.removeClass('o-0');
     };
@@ -48,21 +52,21 @@ HacktoberfestChecker.prototype.userImageLazyLoad = function() {
 /**
  * the bind events function can be extended as the app grows
  */
-HacktoberfestChecker.prototype.bindEvents = function() {
+HacktoberfestChecker.prototype.bindEvents = function () {
     this.form.on('submit', this.getUsernameIssues.bind(this));
 };
 /**
  * Set the focus on the username field
  */
-HacktoberfestChecker.prototype.setFocus = function() {
+HacktoberfestChecker.prototype.setFocus = function () {
     this.username.focus();
 };
 
-HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
+HacktoberfestChecker.prototype.getUsernameIssues = function (e) {
     if (e) {
         e.preventDefault();
     }
-    const name = this.getName();
+    var name = this.getName();
 
     if (!name) {
         this.results.html(this.makeError(this.errors.emptyUsername));
@@ -71,17 +75,16 @@ HacktoberfestChecker.prototype.getUsernameIssues = function(e) {
     this.results.html(this.makeSpinner());
 
     $.ajax({
-        url: `/?username=${name}&plain-data=true`,
+        url: '/?username=' + name + '&plain-data=true',
         type: 'GET',
         success: this.usernameIssuesSuccess.bind(this),
         //new: add error handler in case of failure during the API call
         error: this.usernameIssuesError.bind(this),
         always: this.updateHistory.apply(this, [name])
     });
-
 };
 
-HacktoberfestChecker.prototype.loadSocialWidgets = function() {
+HacktoberfestChecker.prototype.loadSocialWidgets = function () {
     window.twttr.widgets.load();
     window.FB.XFBML.parse();
 };
@@ -89,7 +92,7 @@ HacktoberfestChecker.prototype.loadSocialWidgets = function() {
 /**
  * In case of success during API call, display the HTML
  */
-HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus, xhr) {
+HacktoberfestChecker.prototype.usernameIssuesSuccess = function (html, textStatus, xhr) {
     this.results.html(html);
     this.loadSocialWidgets();
 
@@ -101,7 +104,7 @@ HacktoberfestChecker.prototype.usernameIssuesSuccess = function(html, textStatus
 /**
  * In case of an error during API call, display an error message
  */
-HacktoberfestChecker.prototype.usernameIssuesError = function(xhr) {
+HacktoberfestChecker.prototype.usernameIssuesError = function (xhr) {
     if (xhr.status >= 400) {
         this.results.html(xhr.response);
     } else {
@@ -109,49 +112,45 @@ HacktoberfestChecker.prototype.usernameIssuesError = function(xhr) {
     }
 };
 
-HacktoberfestChecker.prototype.getName = function() {
+HacktoberfestChecker.prototype.getName = function () {
     return this.username.val().trim() || false;
 };
 /**
  * HTML Helper makeSpinner
  * create the necessary HTML to show the spinner using fluent syntax
  */
-HacktoberfestChecker.prototype.makeSpinner = function() {
-    return $('<div/>').addClass('tc').append(
-        $('<img/>', {
-            src: this.loader,
-            alt: 'Loading...'
-        })
-    );
+HacktoberfestChecker.prototype.makeSpinner = function () {
+    return $('<div/>').addClass('tc').append($('<img/>', {
+        src: this.loader,
+        alt: 'Loading...'
+    }));
 };
 /**
  * HTML Helper makeSpinner
  * create the necessary HTML to show an error message using fluent syntax
  */
-HacktoberfestChecker.prototype.makeError = function(error) {
-    return $('<div/>').addClass('tc').append(
-        $('<h2/>', {
-            text: error,
-            class: 'white'
-        })
-    );
+HacktoberfestChecker.prototype.makeError = function (error) {
+    return $('<div/>').addClass('tc').append($('<h2/>', {
+        text: error,
+        class: 'white'
+    }));
 };
 /**
  * History state helper, checks if the replaceState is available
  * before updating the username in the query string.
  */
-HacktoberfestChecker.prototype.updateHistory = function(name) {
+HacktoberfestChecker.prototype.updateHistory = function (name) {
     if (window.history && window.history.replaceState) {
-        history.replaceState({}, name, `?username=${name}`);
+        history.replaceState({}, name, '?username=' + name);
     }
 };
 
 // Functions related to the personalization functions
 function redirectToUserPage() {
     // Get the cached user.
-    const me = localStorage.myGitHub;
+    var me = localStorage.myGitHub;
     if (me) {
-        window.location.href = `/?username=${me}`;
+        window.location.href = '/?username=' + me;
     } else {
         window.location.href = '/'; // Username not saved, go to main page.
     }
@@ -161,14 +160,18 @@ function saveUserPage() {
     // Save username into localStorage. Recall username by visiting /me.
     localStorage.myGitHub = $('[name="username"]').val();
     // Provide some sort of visual feedback. Redirect to that page.
-    window.location.href='/me';
+    window.location.href = '/me';
 }
 
-$(document).on('ready', () => {
+$(document).on('ready', function () {
     // Save is bound to button press
-    $(document).on('click', '.saveUser', () => saveUserPage());
+    $(document).on('click', '.saveUser', function () {
+        return saveUserPage();
+    });
     // Works with /me or /me/
     if (window.location.pathname.startsWith('/me')) {
         redirectToUserPage();
     }
 });
+
+//# sourceMappingURL=main-compiled.js.map
