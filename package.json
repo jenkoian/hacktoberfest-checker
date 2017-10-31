@@ -7,12 +7,13 @@
     "node": "^6.11.1"
   },
   "scripts": {
-    "prestart": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js",
+    "prestart": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js && npm run update-node-version",
     "start": "node index.js",
     "babel-dev": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js --watch",
     "dev": "nodemon index.js",
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
-    "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
+    "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix",
+    "update-node-version": "sed -i '' 's/v[^0-9]*[0-9]*[.][0-9]*[.][0-9]*[0-9A-Za-z-]*/'$(node -v)'/g' README.md"
   },
   "keywords": [
     "hacktoberfest"
