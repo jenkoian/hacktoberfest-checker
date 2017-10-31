@@ -28,6 +28,10 @@ exports.index = (req, res) => {
     const github = req.app.get('github');
     const username = req.query.username;
 
+    if (username.charAt(0) == '@') {
+        username = username.substring(1);
+    }
+
     if (!username) {
         if (req.xhr) {
             return res.render('partials/error', { layout: false });
