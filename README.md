@@ -30,7 +30,7 @@ Happy hacking!
 * Create a `.env` file using `.env.example` as an example. Or export the GitHub token as an environment variable for Node.js to use:
    * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
-   * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
+   * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN` //token
 
 * `$ yarn install`
 
