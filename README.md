@@ -1,4 +1,4 @@
-# Hacktoberfest Checker
+﻿# Hacktoberfest Checker
 
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 
@@ -11,6 +11,7 @@ Useful checker web app to see how close you are to achieving the requirements fo
 ## 2017!
 
 I've stripped the app right back this year with a small lick of paint to match the new colour scheme.
+It is really helpful
 I really like the idea of it being a basic project that beginners can contribute to so wanted to keep it simple.
 
 I have added [some tickets](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)
