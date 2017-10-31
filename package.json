@@ -14,7 +14,7 @@
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
     "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix",
     "copy-githooks": "cp -R scripts/githooks/. .git/hooks/",
-    "update-node-version": "sed -i '' 's/v[^0-9]*[0-9]*[.][0-9]*[.][0-9]*[0-9A-Za-z-]*/'\"$(node -v)\"'/g' README.md"
+    "update-node-version": "node scripts/npm/update-node-version.js"
   },
   "keywords": [
     "hacktoberfest"
