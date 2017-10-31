@@ -1,0 +1,11 @@
+#!/bin/sh
+# Pre-commit hook to check if Node.js versions match
+
+readme_node_version="$(sed -n 's/.*\(v[^0-9]*[0-9]*[.][0-9]*[.][0-9]*[0-9A-Za-z-]*\).*/\1/p' README.md)"
+node_version="$(node -v)"
+
+if [ "$readme_node_version" != "$node_version" ];
+then
+  echo "Node version found in README.md is $readme_node_version while actual node version is $node_version.\nPlease run 'npm run update-node-version' or 'yarn update-node-version'."
+  exit 1
+fi
