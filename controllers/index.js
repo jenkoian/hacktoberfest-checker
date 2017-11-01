@@ -26,7 +26,11 @@ const errorCodes = {
  */
 exports.index = (req, res) => {
     const github = req.app.get('github');
-    const username = req.query.username;
+    const username = typeof req.query.username !== 'undefined'
+        ? req.query.username.length > 1 && req.query.username.charAt(0) === '@'
+            ? req.query.username.substring(1)
+            : req.query.username
+        : null;
 
     if (!username) {
         if (req.xhr) {
