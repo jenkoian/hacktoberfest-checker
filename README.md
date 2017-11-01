@@ -20,7 +20,7 @@ Happy hacking!
 
 ## Requirements
 
-* Node v6.11.4 (LTS)
+* Node v6.11.5 (LTS)
 > Recommended to use [NVM](https://github.com/creationix/nvm)
 
 ## Running the app
