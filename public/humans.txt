@@ -13,3 +13,5 @@
 [pjhampton](https://github.com/pjhampton)
 [aj07](https://github.com/aj07)
 [David Castillo](https://github.com/davcs86)
+
+Contributed but missing from this list? Open a PR! https://github.com/jenkoian/hacktoberfest-checker

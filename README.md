@@ -6,21 +6,22 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 [https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/)
 
-![Screenshot](hacktoberfest-checker-2017.png)
+![Screenshot](hacktoberfest-checker-2018.png)
 
-## 2017!
+## 2018!
 
-I've stripped the app right back this year with a small lick of paint to match the new colour scheme.
-I really like the idea of it being a basic project that beginners can contribute to so wanted to keep it simple.
+I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
+React on the front end. I did make a start, and may look to release it midway through Hacktoberfest. If you fancy hacking
+along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
+kept it as it were last year (obviously updated the year and new PR requirement).
 
-I have added [some tickets](https://github.com/jenkoian/hacktoberfest-checker/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)
-so please take a look if you'd like to contribute or feel free to propose any ideas you may have.
+I will add some ticket when I think of them of improvements etc. feel free to suggest any you can think of though too. 
 
 Happy hacking!
 
 ## Requirements
 
-* Node v6.11.4 (LTS)
+* Node v10.0.0
 > Recommended to use [NVM](https://github.com/creationix/nvm)
 
 ## Running the app

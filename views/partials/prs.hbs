@@ -36,7 +36,7 @@
     {{#if isNotComplete }}
         <div class="flex flex-wrap justify-center content-center">
             <div class="light-gray pb3">
-                Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="light-gray" target="_blank">issues</a> and get hacking!</a>
+                Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="orange" target="_blank">issues</a> and get hacking!</a>
             </div>
         </div>
     {{/if}}
@@ -64,7 +64,7 @@
                         <div class="mid-gray">
                             <a class="color-inherit fw6 link underline-hover" href="{{ this.user.url }}">{{ this.user.login }}</a>
                             submitted a pull request
-                            <a class="blue link underline-hover" href="{{ this.url }}">{{ this.repo_name }}#{{ this.number }}</a>
+                            <a class="orange link underline-hover" href="{{ this.url }}">{{ this.repo_name }}#{{ this.number }}</a>
                         </div>
                         <div class="light-silver">{{ this.title }} on {{ this.created_at }}</div>
                     </div>
@@ -74,7 +74,7 @@
     {{/if}}
 
     <div class="br2 center mt5 overflow-hidden w-50-ns w-80-m w-90 mt2">
-        <button class="bg-orange white center mt2 h2 bn pointer br1 pv0 ph3 db saveUser">This is Me</button>
-        <p class='light-silver center tc-ns'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link white underline-hover saveUser'>{{ hostname }}/me</a> on this device.</p>
+        <button class="u-bgc-21ffff u-c-411e2f center mt2 h2 bn pointer br1 pv0 ph3 db saveUser">This is Me</button>
+        <p class='light-silver center tc-ns'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link orange underline-hover saveUser'>{{ hostname }}/me</a> on this device.</p>
     </div>
 {{/exists}}

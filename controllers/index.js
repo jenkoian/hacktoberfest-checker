@@ -3,6 +3,8 @@
 const _ = require('lodash');
 const moment = require('moment');
 
+const year = 2018;
+const prAmount = 5;
 
 const statements = [
     'It\'s not too late to start!',
@@ -49,8 +51,8 @@ exports.index = (req, res) => {
 
             const data = {
                 prs,
-                isNotComplete: prs.length < 5,
-                statement: statements[prs.length < 6 ? prs.length : 6 ],
+                isNotComplete: prs.length < prAmount,
+                statement: statements[prs.length < prAmount+1 ? prs.length : prAmount+1 ],
                 username,
                 userImage: user.data.avatar_url,
                 hostname: `${req.protocol}://${req.headers.host}`
@@ -103,7 +105,7 @@ function getNextPage(response, github) {
 function loadPrs(github, username) {
     const promise = new Promise(function(resolve, reject) {
         github.search.issues({
-            q: `-label:invalid+created:2018-09-30T00:00:00-12:00..2018-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+            q: `-label:invalid+created:${year}-09-30T00:00:00-12:00..${year}-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
             per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
         }, function(err, res) {
             if (err) {

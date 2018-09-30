@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
+  background-color: #412B3B;
   font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "Arial", sans-serif;
 }
 
@@ -35,6 +35,18 @@ h1 {
   background-color: #f4f4f4;
 }
 
+.u-bgc-21ffff {
+    background-color: #21ffff;
+}
+
+.u-c-411e2f {
+    color: #411e2f;
+}
+
+.u-c-ff9a56 {
+    color: #FF4F12;
+}
+
 .fb-share-button a {
     color: white;
     text-decoration: none;
@@ -47,5 +59,4 @@ h1 {
 
 .bn.br--left.br1.ph2:focus {
     outline: none;
-    box-shadow: inset 0px 0px 0px 2px #ff6300;
 }
