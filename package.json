@@ -4,7 +4,7 @@
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
-    "node": "^10.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "prestart": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js",
