@@ -1,10 +1,10 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
-    "node": "^6.11.1"
+    "node": "^10.0.0"
   },
   "scripts": {
     "prestart": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js",

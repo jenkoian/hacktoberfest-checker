@@ -7,7 +7,8 @@ const moment = require('moment');
 const statements = [
     'It\'s not too late to start!',
     'Off to a great start, keep going!',
-    'Half way there, keep it up!',
+    'Keep it up!',
+    'Nice! Now, don\'t stop!',
     'So close!',
     'Way to go!',
     'Now you\'re just showing off!'
@@ -48,8 +49,8 @@ exports.index = (req, res) => {
 
             const data = {
                 prs,
-                isNotComplete: prs.length < 4,
-                statement: statements[prs.length < 5 ? prs.length : 5 ],
+                isNotComplete: prs.length < 5,
+                statement: statements[prs.length < 6 ? prs.length : 6 ],
                 username,
                 userImage: user.data.avatar_url,
                 hostname: `${req.protocol}://${req.headers.host}`
@@ -100,28 +101,29 @@ function getNextPage(response, github) {
 }
 
 function loadPrs(github, username) {
-    const deferred = Promise.defer();
-    github.search.issues({
-        q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
-        per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
-    }, function(err, res) {
-        if (err) {
-            deferred.reject();
-            return false;
-        }
+    const promise = new Promise(function(resolve, reject) {
+        github.search.issues({
+            q: `-label:invalid+created:2018-09-30T00:00:00-12:00..2018-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+            per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
+        }, function(err, res) {
+            if (err) {
+                reject();
+                return false;
+            }
 
-        pullRequestData = pullRequestData.concat(res['data'].items);
-        if (github.hasNextPage(res)) {
-            getNextPage(res, github).then(function () {
-                deferred.resolve();
-            });
-        } else {
-            console.log('Found ' + pullRequestData.length + ' pull requests.');
-            deferred.resolve();
-        }
+            pullRequestData = pullRequestData.concat(res['data'].items);
+            if (github.hasNextPage(res)) {
+                getNextPage(res, github).then(function () {
+                    resolve();
+                });
+            } else {
+                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                resolve();
+            }
+        });
     });
 
-    return deferred.promise;
+    return promise;
 }
 
 function findPrs(github, username) {
