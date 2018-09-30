@@ -7,7 +7,8 @@ const moment = require('moment');
 const statements = [
     'It\'s not too late to start!',
     'Off to a great start, keep going!',
-    'Half way there, keep it up!',
+    'Keep it up!',
+    'Nice! Now, don\'t stop!',
     'So close!',
     'Way to go!',
     'Now you\'re just showing off!'
@@ -48,8 +49,8 @@ exports.index = (req, res) => {
 
             const data = {
                 prs,
-                isNotComplete: prs.length < 4,
-                statement: statements[prs.length < 5 ? prs.length : 5 ],
+                isNotComplete: prs.length < 5,
+                statement: statements[prs.length < 6 ? prs.length : 6 ],
                 username,
                 userImage: user.data.avatar_url,
                 hostname: `${req.protocol}://${req.headers.host}`
