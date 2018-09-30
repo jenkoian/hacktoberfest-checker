@@ -100,28 +100,29 @@ function getNextPage(response, github) {
 }
 
 function loadPrs(github, username) {
-    const deferred = Promise.defer();
-    github.search.issues({
-        q: `-label:invalid+created:2017-09-30T00:00:00-12:00..2017-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
-        per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
-    }, function(err, res) {
-        if (err) {
-            deferred.reject();
-            return false;
-        }
+    const promise = new Promise(function(resolve, reject) {
+        github.search.issues({
+            q: `-label:invalid+created:2018-09-30T00:00:00-12:00..2018-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+            per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
+        }, function(err, res) {
+            if (err) {
+                reject();
+                return false;
+            }
 
-        pullRequestData = pullRequestData.concat(res['data'].items);
-        if (github.hasNextPage(res)) {
-            getNextPage(res, github).then(function () {
-                deferred.resolve();
-            });
-        } else {
-            console.log('Found ' + pullRequestData.length + ' pull requests.');
-            deferred.resolve();
-        }
+            pullRequestData = pullRequestData.concat(res['data'].items);
+            if (github.hasNextPage(res)) {
+                getNextPage(res, github).then(function () {
+                    resolve();
+                });
+            } else {
+                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                resolve();
+            }
+        });
     });
 
-    return deferred.promise;
+    return promise;
 }
 
 function findPrs(github, username) {

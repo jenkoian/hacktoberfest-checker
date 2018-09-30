@@ -48,4 +48,4 @@ As an alternative to the section above, you can run the app within a Docker cont
 
 ## License
 
-MIT © 2015-2017 [Ian Jenkins](https://github.com/jenkoian)
+MIT © 2015-2018 [Ian Jenkins](https://github.com/jenkoian)
