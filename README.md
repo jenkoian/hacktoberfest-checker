@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 
-Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
+Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/). This page is also much quicker than digital oceans page the only difference is this page is not associated with hacktoberfest.
 
 [https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/)
 
