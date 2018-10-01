@@ -63,6 +63,11 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 5000);
 app.set('github', github);
+app.locals = {
+    config: {
+        'ga': process.env.GA_CODE
+    }
+};
 
 app.use(compression());
 app.use(logger('dev'));
