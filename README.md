@@ -16,7 +16,7 @@ React on the front end. I did make a start, and may look to release it midway th
 along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
 kept it as it were last year (obviously updated the year and new PR requirement).
 
-I will add some ticket when I think of them of improvements etc. feel free to suggest any you can think of though too.
+I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
 
 You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on 
 digital ocean as they were kind enough to offer me some hosting vouchers. 
