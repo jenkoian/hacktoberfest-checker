@@ -1,3 +1,9 @@
+{{#exists openedPrs}}
+<div class="f6 ph2 tc flex-none">
+    <p class="white">PRs already open for 2018: <strong>{{ openedPrs }}</strong>.</p>
+</div>
+{{/exists}}
+
 {{#exists prs}}
     <div class="tc white">
         <div class="pb4 flex justify-center">

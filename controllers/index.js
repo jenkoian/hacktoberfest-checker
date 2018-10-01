@@ -54,16 +54,18 @@ exports.index = (req, res) => {
 
     Promise.all([
         findPrs(github, username),
+        loadPrsOpened(github),
         github.users.getForUser({username})
             .then(logCallsRemaining)
     ])
-        .then(([prs, user]) => {
+        .then(([prs, openedPrs, user]) => {
             if (user.data.type !== 'User') {
                 return Promise.reject('notUser');
             }
 
             const data = {
                 prs,
+                openedPrs: openedPrs.prs_already_opened,
                 isNotComplete: prs.length < prAmount,
                 statement: getStatement(prs),
                 username,
@@ -148,6 +150,23 @@ function loadPrs(github, username) {
     });
 
     return promise;
+}
+
+function loadPrsOpened(github) {
+    return new Promise((resolve, reject) => {
+        github.search.issues({
+            q: 'type:pr+label:hacktoberfest+created:>2018-09-30+created:<2018-11-01'
+        }, (err, res) => {
+            if (err) {
+                reject(err);
+                return false;
+            }
+
+            const counter = res.data.total_count;
+            console.log(`Found ${counter} pull requests opened for Hacktoberfest 2018.`);
+            resolve({ prs_already_opened: counter });
+        });
+    });
 }
 
 function findPrs(github, username) {
