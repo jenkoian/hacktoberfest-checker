@@ -30,6 +30,7 @@ const errorCodes = {
 exports.index = (req, res) => {
     const github = req.app.get('github');
     const username = req.query.username;
+    const hostname = `${req.protocol}://${req.headers.host}`;
 
     var today = new Date();
     var curmonth = today.getMonth();
@@ -39,7 +40,7 @@ exports.index = (req, res) => {
             return res.render('partials/error', { layout: false });
         }
 
-        return res.render('index');
+        return res.render('index', {hostname: hostname});
     }
     function getStatement(prs) {
         if (curmonth < 9) {
@@ -67,7 +68,7 @@ exports.index = (req, res) => {
                 statement: getStatement(prs),
                 username,
                 userImage: user.data.avatar_url,
-                hostname: `${req.protocol}://${req.headers.host}`,
+                hostname: hostname,
                 prAmount
             };
 
