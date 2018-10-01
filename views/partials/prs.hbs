@@ -5,7 +5,7 @@
                 <a class="twitter-share-button white no-underline f6"
                     href="https://twitter.com/share"
                     data-size="large"
-                    data-text="My progress on hacktoberfest {{ prs.length }} / 5"
+                    data-text="My progress on hacktoberfest {{ prs.length }} / {{prAmount}}"
                     data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
                     data-hashtags="hacktoberfest, hacktoberfestchecker">
                     Tweet
@@ -27,7 +27,7 @@
                 {{/if}}
             </div>
             <div class="flex flex-wrap  justify-center content-center flex-column">
-                <span class="db br2 f1 fw5 white w5">{{ prs.length }} / 5</span>
+                <span class="db br2 f1 fw5 white w5">{{ prs.length }} / {{prAmount}}</span>
                 <h3 class="mv1 fw3 light-gray">{{ statement }}</h3>
             </div>
         </div>

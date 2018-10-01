@@ -3,7 +3,6 @@
 const _ = require('lodash');
 const moment = require('moment');
 
-const year = 2018;
 const prAmount = 5;
 
 const statements = [
@@ -24,6 +23,7 @@ const errorCodes = {
     notUser: 400
 };
 
+
 /**
  * GET /
  */
@@ -31,12 +31,24 @@ exports.index = (req, res) => {
     const github = req.app.get('github');
     const username = req.query.username;
 
+    var today = new Date();
+    var curmonth = today.getMonth();
+
     if (!username) {
         if (req.xhr) {
             return res.render('partials/error', { layout: false });
         }
 
         return res.render('index');
+    }
+    function getStatement(prs) {
+        if (curmonth < 9) {
+            return 'Last year\'s result.';
+        } else if (curmonth == 9) {
+            return statements[prs.length < prAmount+1 ? prs.length : prAmount+1 ];
+        } else {
+            return 'This year\'s result.';
+        }
     }
 
     Promise.all([
@@ -52,10 +64,11 @@ exports.index = (req, res) => {
             const data = {
                 prs,
                 isNotComplete: prs.length < prAmount,
-                statement: statements[prs.length < prAmount+1 ? prs.length : prAmount+1 ],
+                statement: getStatement(prs),
                 username,
                 userImage: user.data.avatar_url,
-                hostname: `${req.protocol}://${req.headers.host}`
+                hostname: `${req.protocol}://${req.headers.host}`,
+                prAmount
             };
 
             if (req.query['plain-data']) {
@@ -82,30 +95,38 @@ exports.index = (req, res) => {
 let pullRequestData = [];
 
 function getNextPage(response, github) {
-    const deferred = Promise.defer();
-    github.getNextPage(response, function(err, res) {
-        if (err) {
-            deferred.reject();
-            return false;
-        }
+    const promise = new Promise(function(resolve, reject) {
+        github.getNextPage(response, function(err, res) {
+            if (err) {
+                reject();
+                return false;
+            }
 
-        pullRequestData = pullRequestData.concat(res['data'].items);
-        if (github.hasNextPage(res)) {
-            getNextPage(res, github).then(function () {
-                deferred.resolve();
-            });
-        } else {
-            console.log('Found ' + pullRequestData.length + ' pull requests.');
-            deferred.resolve();
-        }
+            pullRequestData = pullRequestData.concat(res['data'].items);
+            if (github.hasNextPage(res)) {
+                getNextPage(res, github).then(function () {
+                    resolve();
+                });
+            } else {
+                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                resolve();
+            }
+        });
     });
-    return deferred.promise;
+    return promise;
 }
 
 function loadPrs(github, username) {
     const promise = new Promise(function(resolve, reject) {
+        var today = new Date();
+        var curmonth = today.getMonth();
+        var curyear = today.getFullYear();
+        var searchyear = curyear;
+        if (curmonth < 9) {
+            searchyear = curyear - 1;
+        }
         github.search.issues({
-            q: `-label:invalid+created:${year}-09-30T00:00:00-12:00..${year}-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+            q: `-label:invalid+created:${searchyear}-09-30T00:00:00-12:00..${searchyear}-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
             per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
         }, function(err, res) {
             if (err) {
