@@ -30,7 +30,6 @@ const errorCodes = {
 exports.index = (req, res) => {
     const github = req.app.get('github');
     const username = req.query.username;
-    const hostname = `${req.protocol}://${req.headers.host}`;
 
     var today = new Date();
     var curmonth = today.getMonth();
@@ -46,6 +45,27 @@ exports.index = (req, res) => {
         } else {
             timemessage = 'There\'s ' + timeleft + ' days remaining!';
         }
+    }
+
+    // in a reverse proxy situation we have to use the referer to retrieve
+    // the correct protocol, hostname, and path
+    // unfortunately this won't work, when accessng the page directly:
+    // e.g.: http://example.com/hacktoberfest/?username=XXX
+    // in such a case we set hostname to an empty string and create the link
+    // with js after the page has loaded
+    if (req.headers['x-forwarded-for']) {
+        //console.log(JSON.stringify(req.headers));
+        const referer = req.headers.referer;
+        if (referer) {
+            var hostname = referer.split("?")[0].slice(0, -1);
+            if (hostname.endsWith('/m')) {
+                hostname = hostname.slice(0, -2);
+            }
+        } else {
+            var hostname = '';
+        }
+    } else {
+        var hostname = `${req.protocol}://${req.headers.host}`;
     }
 
     if (!username) {

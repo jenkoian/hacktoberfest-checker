@@ -24,7 +24,7 @@ function HacktoberfestChecker() {
         }
     };
     //the path for the spinner
-    this.loader = '/img/ajax-loader.gif';
+    this.loader = 'img/ajax-loader.gif';
 }
 /**
  * in the constructor we'll initialize/retrieve everything that needs to fire when we new this object up
@@ -75,7 +75,7 @@ HacktoberfestChecker.prototype.getUsernameIssues = function (e) {
     this.results.html(this.makeSpinner());
 
     $.ajax({
-        url: '/?username=' + name + '&plain-data=true',
+        url: './?username=' + name + '&plain-data=true',
         type: 'GET',
         success: this.usernameIssuesSuccess.bind(this),
         //new: add error handler in case of failure during the API call
@@ -150,9 +150,9 @@ function redirectToUserPage() {
     // Get the cached user.
     var me = localStorage.myGitHub;
     if (me) {
-        window.location.href = '/?username=' + me;
+        window.location.href = './?username=' + me;
     } else {
-        window.location.href = '/'; // Username not saved, go to main page.
+        window.location.href = './'; // Username not saved, go to main page.
     }
 }
 
@@ -160,7 +160,7 @@ function saveUserPage() {
     // Save username into localStorage. Recall username by visiting /me.
     localStorage.myGitHub = $('[name="username"]').val();
     // Provide some sort of visual feedback. Redirect to that page.
-    window.location.href = '/me';
+    window.location.href = './me';
 }
 
 $(document).on('ready', function () {
@@ -169,8 +169,16 @@ $(document).on('ready', function () {
         return saveUserPage();
     });
     // Works with /me or /me/
-    if (window.location.pathname.startsWith('/me')) {
+    if (window.location.pathname.endsWith('/me')) {
         redirectToUserPage();
+    }
+    // if hostname is empty, use location to build the link
+    // needed for reverse proxy setup
+    if (document.getElementById("melink").innerHTML == '/me') {
+
+        var link = window.location.href.split("?")[0] + 'me';
+        document.getElementById("melink").innerHTML = link;
+        document.getElementById('melink').href = link;
     }
 });
 
