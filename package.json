@@ -11,6 +11,7 @@
     "start": "node index.js",
     "babel-dev": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js --watch",
     "dev": "nodemon index.js",
+    "tailwind-gen": "./node_modules/.bin/tailwind.cmd build ./tailwind-gen.css -c ./tailwind.js -o ./public/css/tailwind.css",
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
     "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
   },
@@ -35,12 +36,12 @@
     "moment": "^2.18.1",
     "morgan": "^1.7.0",
     "q": "^1.5.0",
-    "tachyons": "^4.8.1",
     "zepto": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^4.8.0",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "tailwindcss": "^0.6.6"
   },
   "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
 }

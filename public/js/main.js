@@ -117,7 +117,7 @@ HacktoberfestChecker.prototype.getName = function() {
  * create the necessary HTML to show the spinner using fluent syntax
  */
 HacktoberfestChecker.prototype.makeSpinner = function() {
-    return $('<div/>').addClass('tc').append(
+    return $('<div/>').addClass('text-center').append(
         $('<img/>', {
             src: this.loader,
             alt: 'Loading...'
@@ -129,7 +129,7 @@ HacktoberfestChecker.prototype.makeSpinner = function() {
  * create the necessary HTML to show an error message using fluent syntax
  */
 HacktoberfestChecker.prototype.makeError = function(error) {
-    return $('<div/>').addClass('tc').append(
+    return $('<div/>').addClass('text-center').append(
         $('<h2/>', {
             text: error,
             class: 'white'
