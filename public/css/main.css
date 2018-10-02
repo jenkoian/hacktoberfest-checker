@@ -17,6 +17,10 @@ h1 {
   font-weight: normal;
 }
 
+.logo {
+  max-width: 80%;
+}
+
 .hacktoberfest {
   border-left: 4px solid #ff6300;
   padding-left: calc(1rem - 4px);
