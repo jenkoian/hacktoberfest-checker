@@ -827,7 +827,7 @@ table {
 }
 
 .bg-teal-lighter {
-  background-color: #a0f0ed;
+  background-color: #21ffff;
 }
 
 .bg-teal-lightest {
@@ -919,7 +919,7 @@ table {
 }
 
 .bg-pink-darkest {
-  background-color: #451225;
+  background-color: #411e2f;
 }
 
 .bg-pink-darker {
@@ -1119,7 +1119,7 @@ table {
 }
 
 .hover\:bg-teal-lighter:hover {
-  background-color: #a0f0ed;
+  background-color: #21ffff;
 }
 
 .hover\:bg-teal-lightest:hover {
@@ -1211,7 +1211,7 @@ table {
 }
 
 .hover\:bg-pink-darkest:hover {
-  background-color: #451225;
+  background-color: #411e2f;
 }
 
 .hover\:bg-pink-darker:hover {
@@ -1411,7 +1411,7 @@ table {
 }
 
 .focus\:bg-teal-lighter:focus {
-  background-color: #a0f0ed;
+  background-color: #21ffff;
 }
 
 .focus\:bg-teal-lightest:focus {
@@ -1503,7 +1503,7 @@ table {
 }
 
 .focus\:bg-pink-darkest:focus {
-  background-color: #451225;
+  background-color: #411e2f;
 }
 
 .focus\:bg-pink-darker:focus {
@@ -1775,7 +1775,7 @@ table {
 }
 
 .border-teal-lighter {
-  border-color: #a0f0ed;
+  border-color: #21ffff;
 }
 
 .border-teal-lightest {
@@ -1867,7 +1867,7 @@ table {
 }
 
 .border-pink-darkest {
-  border-color: #451225;
+  border-color: #411e2f;
 }
 
 .border-pink-darker {
@@ -2067,7 +2067,7 @@ table {
 }
 
 .hover\:border-teal-lighter:hover {
-  border-color: #a0f0ed;
+  border-color: #21ffff;
 }
 
 .hover\:border-teal-lightest:hover {
@@ -2159,7 +2159,7 @@ table {
 }
 
 .hover\:border-pink-darkest:hover {
-  border-color: #451225;
+  border-color: #411e2f;
 }
 
 .hover\:border-pink-darker:hover {
@@ -2359,7 +2359,7 @@ table {
 }
 
 .focus\:border-teal-lighter:focus {
-  border-color: #a0f0ed;
+  border-color: #21ffff;
 }
 
 .focus\:border-teal-lightest:focus {
@@ -2451,7 +2451,7 @@ table {
 }
 
 .focus\:border-pink-darkest:focus {
-  border-color: #451225;
+  border-color: #411e2f;
 }
 
 .focus\:border-pink-darker:focus {
@@ -5113,7 +5113,7 @@ table {
 }
 
 .text-teal-lighter {
-  color: #a0f0ed;
+  color: #21ffff;
 }
 
 .text-teal-lightest {
@@ -5205,7 +5205,7 @@ table {
 }
 
 .text-pink-darkest {
-  color: #451225;
+  color: #411e2f;
 }
 
 .text-pink-darker {
@@ -5405,7 +5405,7 @@ table {
 }
 
 .hover\:text-teal-lighter:hover {
-  color: #a0f0ed;
+  color: #21ffff;
 }
 
 .hover\:text-teal-lightest:hover {
@@ -5497,7 +5497,7 @@ table {
 }
 
 .hover\:text-pink-darkest:hover {
-  color: #451225;
+  color: #411e2f;
 }
 
 .hover\:text-pink-darker:hover {
@@ -5697,7 +5697,7 @@ table {
 }
 
 .focus\:text-teal-lighter:focus {
-  color: #a0f0ed;
+  color: #21ffff;
 }
 
 .focus\:text-teal-lightest:focus {
@@ -5789,7 +5789,7 @@ table {
 }
 
 .focus\:text-pink-darkest:focus {
-  color: #451225;
+  color: #411e2f;
 }
 
 .focus\:text-pink-darker:focus {
@@ -6419,7 +6419,7 @@ table {
   }
 
   .sm\:bg-teal-lighter {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .sm\:bg-teal-lightest {
@@ -6511,7 +6511,7 @@ table {
   }
 
   .sm\:bg-pink-darkest {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .sm\:bg-pink-darker {
@@ -6711,7 +6711,7 @@ table {
   }
 
   .sm\:hover\:bg-teal-lighter:hover {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .sm\:hover\:bg-teal-lightest:hover {
@@ -6803,7 +6803,7 @@ table {
   }
 
   .sm\:hover\:bg-pink-darkest:hover {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .sm\:hover\:bg-pink-darker:hover {
@@ -7003,7 +7003,7 @@ table {
   }
 
   .sm\:focus\:bg-teal-lighter:focus {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .sm\:focus\:bg-teal-lightest:focus {
@@ -7095,7 +7095,7 @@ table {
   }
 
   .sm\:focus\:bg-pink-darkest:focus {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .sm\:focus\:bg-pink-darker:focus {
@@ -7359,7 +7359,7 @@ table {
   }
 
   .sm\:border-teal-lighter {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .sm\:border-teal-lightest {
@@ -7451,7 +7451,7 @@ table {
   }
 
   .sm\:border-pink-darkest {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .sm\:border-pink-darker {
@@ -7651,7 +7651,7 @@ table {
   }
 
   .sm\:hover\:border-teal-lighter:hover {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .sm\:hover\:border-teal-lightest:hover {
@@ -7743,7 +7743,7 @@ table {
   }
 
   .sm\:hover\:border-pink-darkest:hover {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .sm\:hover\:border-pink-darker:hover {
@@ -7943,7 +7943,7 @@ table {
   }
 
   .sm\:focus\:border-teal-lighter:focus {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .sm\:focus\:border-teal-lightest:focus {
@@ -8035,7 +8035,7 @@ table {
   }
 
   .sm\:focus\:border-pink-darkest:focus {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .sm\:focus\:border-pink-darker:focus {
@@ -10681,7 +10681,7 @@ table {
   }
 
   .sm\:text-teal-lighter {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .sm\:text-teal-lightest {
@@ -10773,7 +10773,7 @@ table {
   }
 
   .sm\:text-pink-darkest {
-    color: #451225;
+    color: #411e2f;
   }
 
   .sm\:text-pink-darker {
@@ -10973,7 +10973,7 @@ table {
   }
 
   .sm\:hover\:text-teal-lighter:hover {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .sm\:hover\:text-teal-lightest:hover {
@@ -11065,7 +11065,7 @@ table {
   }
 
   .sm\:hover\:text-pink-darkest:hover {
-    color: #451225;
+    color: #411e2f;
   }
 
   .sm\:hover\:text-pink-darker:hover {
@@ -11265,7 +11265,7 @@ table {
   }
 
   .sm\:focus\:text-teal-lighter:focus {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .sm\:focus\:text-teal-lightest:focus {
@@ -11357,7 +11357,7 @@ table {
   }
 
   .sm\:focus\:text-pink-darkest:focus {
-    color: #451225;
+    color: #411e2f;
   }
 
   .sm\:focus\:text-pink-darker:focus {
@@ -11988,7 +11988,7 @@ table {
   }
 
   .md\:bg-teal-lighter {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .md\:bg-teal-lightest {
@@ -12080,7 +12080,7 @@ table {
   }
 
   .md\:bg-pink-darkest {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .md\:bg-pink-darker {
@@ -12280,7 +12280,7 @@ table {
   }
 
   .md\:hover\:bg-teal-lighter:hover {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .md\:hover\:bg-teal-lightest:hover {
@@ -12372,7 +12372,7 @@ table {
   }
 
   .md\:hover\:bg-pink-darkest:hover {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .md\:hover\:bg-pink-darker:hover {
@@ -12572,7 +12572,7 @@ table {
   }
 
   .md\:focus\:bg-teal-lighter:focus {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .md\:focus\:bg-teal-lightest:focus {
@@ -12664,7 +12664,7 @@ table {
   }
 
   .md\:focus\:bg-pink-darkest:focus {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .md\:focus\:bg-pink-darker:focus {
@@ -12928,7 +12928,7 @@ table {
   }
 
   .md\:border-teal-lighter {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .md\:border-teal-lightest {
@@ -13020,7 +13020,7 @@ table {
   }
 
   .md\:border-pink-darkest {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .md\:border-pink-darker {
@@ -13220,7 +13220,7 @@ table {
   }
 
   .md\:hover\:border-teal-lighter:hover {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .md\:hover\:border-teal-lightest:hover {
@@ -13312,7 +13312,7 @@ table {
   }
 
   .md\:hover\:border-pink-darkest:hover {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .md\:hover\:border-pink-darker:hover {
@@ -13512,7 +13512,7 @@ table {
   }
 
   .md\:focus\:border-teal-lighter:focus {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .md\:focus\:border-teal-lightest:focus {
@@ -13604,7 +13604,7 @@ table {
   }
 
   .md\:focus\:border-pink-darkest:focus {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .md\:focus\:border-pink-darker:focus {
@@ -16250,7 +16250,7 @@ table {
   }
 
   .md\:text-teal-lighter {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .md\:text-teal-lightest {
@@ -16342,7 +16342,7 @@ table {
   }
 
   .md\:text-pink-darkest {
-    color: #451225;
+    color: #411e2f;
   }
 
   .md\:text-pink-darker {
@@ -16542,7 +16542,7 @@ table {
   }
 
   .md\:hover\:text-teal-lighter:hover {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .md\:hover\:text-teal-lightest:hover {
@@ -16634,7 +16634,7 @@ table {
   }
 
   .md\:hover\:text-pink-darkest:hover {
-    color: #451225;
+    color: #411e2f;
   }
 
   .md\:hover\:text-pink-darker:hover {
@@ -16834,7 +16834,7 @@ table {
   }
 
   .md\:focus\:text-teal-lighter:focus {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .md\:focus\:text-teal-lightest:focus {
@@ -16926,7 +16926,7 @@ table {
   }
 
   .md\:focus\:text-pink-darkest:focus {
-    color: #451225;
+    color: #411e2f;
   }
 
   .md\:focus\:text-pink-darker:focus {
@@ -17557,7 +17557,7 @@ table {
   }
 
   .lg\:bg-teal-lighter {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .lg\:bg-teal-lightest {
@@ -17649,7 +17649,7 @@ table {
   }
 
   .lg\:bg-pink-darkest {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .lg\:bg-pink-darker {
@@ -17849,7 +17849,7 @@ table {
   }
 
   .lg\:hover\:bg-teal-lighter:hover {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .lg\:hover\:bg-teal-lightest:hover {
@@ -17941,7 +17941,7 @@ table {
   }
 
   .lg\:hover\:bg-pink-darkest:hover {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .lg\:hover\:bg-pink-darker:hover {
@@ -18141,7 +18141,7 @@ table {
   }
 
   .lg\:focus\:bg-teal-lighter:focus {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .lg\:focus\:bg-teal-lightest:focus {
@@ -18233,7 +18233,7 @@ table {
   }
 
   .lg\:focus\:bg-pink-darkest:focus {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .lg\:focus\:bg-pink-darker:focus {
@@ -18497,7 +18497,7 @@ table {
   }
 
   .lg\:border-teal-lighter {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .lg\:border-teal-lightest {
@@ -18589,7 +18589,7 @@ table {
   }
 
   .lg\:border-pink-darkest {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .lg\:border-pink-darker {
@@ -18789,7 +18789,7 @@ table {
   }
 
   .lg\:hover\:border-teal-lighter:hover {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .lg\:hover\:border-teal-lightest:hover {
@@ -18881,7 +18881,7 @@ table {
   }
 
   .lg\:hover\:border-pink-darkest:hover {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .lg\:hover\:border-pink-darker:hover {
@@ -19081,7 +19081,7 @@ table {
   }
 
   .lg\:focus\:border-teal-lighter:focus {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .lg\:focus\:border-teal-lightest:focus {
@@ -19173,7 +19173,7 @@ table {
   }
 
   .lg\:focus\:border-pink-darkest:focus {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .lg\:focus\:border-pink-darker:focus {
@@ -21819,7 +21819,7 @@ table {
   }
 
   .lg\:text-teal-lighter {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .lg\:text-teal-lightest {
@@ -21911,7 +21911,7 @@ table {
   }
 
   .lg\:text-pink-darkest {
-    color: #451225;
+    color: #411e2f;
   }
 
   .lg\:text-pink-darker {
@@ -22111,7 +22111,7 @@ table {
   }
 
   .lg\:hover\:text-teal-lighter:hover {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .lg\:hover\:text-teal-lightest:hover {
@@ -22203,7 +22203,7 @@ table {
   }
 
   .lg\:hover\:text-pink-darkest:hover {
-    color: #451225;
+    color: #411e2f;
   }
 
   .lg\:hover\:text-pink-darker:hover {
@@ -22403,7 +22403,7 @@ table {
   }
 
   .lg\:focus\:text-teal-lighter:focus {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .lg\:focus\:text-teal-lightest:focus {
@@ -22495,7 +22495,7 @@ table {
   }
 
   .lg\:focus\:text-pink-darkest:focus {
-    color: #451225;
+    color: #411e2f;
   }
 
   .lg\:focus\:text-pink-darker:focus {
@@ -23126,7 +23126,7 @@ table {
   }
 
   .xl\:bg-teal-lighter {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .xl\:bg-teal-lightest {
@@ -23218,7 +23218,7 @@ table {
   }
 
   .xl\:bg-pink-darkest {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .xl\:bg-pink-darker {
@@ -23418,7 +23418,7 @@ table {
   }
 
   .xl\:hover\:bg-teal-lighter:hover {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .xl\:hover\:bg-teal-lightest:hover {
@@ -23510,7 +23510,7 @@ table {
   }
 
   .xl\:hover\:bg-pink-darkest:hover {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .xl\:hover\:bg-pink-darker:hover {
@@ -23710,7 +23710,7 @@ table {
   }
 
   .xl\:focus\:bg-teal-lighter:focus {
-    background-color: #a0f0ed;
+    background-color: #21ffff;
   }
 
   .xl\:focus\:bg-teal-lightest:focus {
@@ -23802,7 +23802,7 @@ table {
   }
 
   .xl\:focus\:bg-pink-darkest:focus {
-    background-color: #451225;
+    background-color: #411e2f;
   }
 
   .xl\:focus\:bg-pink-darker:focus {
@@ -24066,7 +24066,7 @@ table {
   }
 
   .xl\:border-teal-lighter {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .xl\:border-teal-lightest {
@@ -24158,7 +24158,7 @@ table {
   }
 
   .xl\:border-pink-darkest {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .xl\:border-pink-darker {
@@ -24358,7 +24358,7 @@ table {
   }
 
   .xl\:hover\:border-teal-lighter:hover {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .xl\:hover\:border-teal-lightest:hover {
@@ -24450,7 +24450,7 @@ table {
   }
 
   .xl\:hover\:border-pink-darkest:hover {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .xl\:hover\:border-pink-darker:hover {
@@ -24650,7 +24650,7 @@ table {
   }
 
   .xl\:focus\:border-teal-lighter:focus {
-    border-color: #a0f0ed;
+    border-color: #21ffff;
   }
 
   .xl\:focus\:border-teal-lightest:focus {
@@ -24742,7 +24742,7 @@ table {
   }
 
   .xl\:focus\:border-pink-darkest:focus {
-    border-color: #451225;
+    border-color: #411e2f;
   }
 
   .xl\:focus\:border-pink-darker:focus {
@@ -27388,7 +27388,7 @@ table {
   }
 
   .xl\:text-teal-lighter {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .xl\:text-teal-lightest {
@@ -27480,7 +27480,7 @@ table {
   }
 
   .xl\:text-pink-darkest {
-    color: #451225;
+    color: #411e2f;
   }
 
   .xl\:text-pink-darker {
@@ -27680,7 +27680,7 @@ table {
   }
 
   .xl\:hover\:text-teal-lighter:hover {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .xl\:hover\:text-teal-lightest:hover {
@@ -27772,7 +27772,7 @@ table {
   }
 
   .xl\:hover\:text-pink-darkest:hover {
-    color: #451225;
+    color: #411e2f;
   }
 
   .xl\:hover\:text-pink-darker:hover {
@@ -27972,7 +27972,7 @@ table {
   }
 
   .xl\:focus\:text-teal-lighter:focus {
-    color: #a0f0ed;
+    color: #21ffff;
   }
 
   .xl\:focus\:text-teal-lightest:focus {
@@ -28064,7 +28064,7 @@ table {
   }
 
   .xl\:focus\:text-pink-darkest:focus {
-    color: #451225;
+    color: #411e2f;
   }
 
   .xl\:focus\:text-pink-darker:focus {

@@ -11,18 +11,18 @@
                     Tweet
                 </a>
             </div>
-            <div class="fb-share-button p-2"
+            <div class="p-2"
                 data-href="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
                 data-layout="button"
                 data-size="large">
-                    <a class="fb-xfbml-parse-ignore" href="https://www.facebook.com/sharer/sharer.php">Share</a>
+                    <a class="fb-xfbml-parse-ignore text-white no-underline text-sm" href="https://www.facebook.com/sharer/sharer.php">Share</a>
             </div>
         </div>
         <div class="pb-2 flex flex-wrap justify-center content-center rounded mx-auto overflow-hidden w-5/6 lg:w-1/2">
             <div class="mx-4">
                 {{#if userImage}}
                     <a href = "https://github.com/{{username}}" target="_blank">
-                        <img id="userImage" alt="GitHub profile image for {{ username }}" class="text-center rounded-full w-32 h-32 border-4 border-solid border-white u-bgc--f4f4f4 overflow-hidden" src="{{userImage}}" />
+                        <img id="userImage" alt="GitHub profile image for {{ username }}" class="text-center rounded-full w-32 h-32 border-4 border-solid border-white bg-white overflow-hidden" src="{{userImage}}" />
                     </a>
                 {{/if}}
             </div>
@@ -44,7 +44,7 @@
     {{#if prs.length}}
         <div class="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
             {{#each prs}}
-                <div class="bg-white leading-normal {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}p-4 flex border-b border-grey pr-item">
+                <div class="bg-white leading-normal {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}p-4 flex border-b border-grey break-words">
                     <div class="rounded-full mr-4 mt-1 text-center h-8 w-8">
                         {{#if this.open}}
                             <svg aria-hidden="true" fill="#2cbe4e" height="18" version="1.1" viewBox="0 0 12 16" width="24">
@@ -74,7 +74,7 @@
     {{/if}}
 
     <div class="rounded mx-auto mt-16 overflow-hidden w-5/6 lg:w-1/2 mt-4">
-        <button class="u-bgc-21ffff u-c-411e2f mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser">This is Me</button>
+        <button class="bg-teal-lighter text-pink-darkest mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser">This is Me</button>
         <p class='text-grey-dark mx-auto text-center my-4'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link text-orange underline-hover saveUser'>{{ hostname }}/me</a> on this device.</p>
     </div>
 {{/exists}}

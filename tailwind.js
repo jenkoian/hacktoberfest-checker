@@ -93,8 +93,9 @@ let colors = {
   'teal-dark': '#38a89d',
   'teal': '#4dc0b5',
   'teal-light': '#64d5ca',
-  'teal-lighter': '#a0f0ed',
+  'teal-lighter': '#21ffff',
   'teal-lightest': '#e8fffe',
+  
 
   'blue-darkest': '#12283a',
   'blue-darker': '#1c3d5a',
@@ -120,7 +121,7 @@ let colors = {
   'purple-lighter': '#d6bbfc',
   'purple-lightest': '#f3ebff',
 
-  'pink-darkest': '#451225',
+  'pink-darkest': '#411e2f',
   'pink-darker': '#6f213f',
   'pink-dark': '#eb5286',
   'pink': '#f66d9b',
