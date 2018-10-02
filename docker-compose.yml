@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  hacktoberfest:
+    build: .
+    environment:
+      GITHUB_TOKEN: YOUR_TOKEN
+      NODE_ENV: production
+      GA_CODE: YOUR_CODE
+    ports:
+      - 5000:5000

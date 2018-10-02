@@ -51,6 +51,10 @@ As an alternative to the section above, you can run the app within a Docker cont
 
 * `$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
 
+or use the docker-compose
+
+* `$ docker-compose up --build`
+
 ## License
 
 MIT © 2015-2018 [Ian Jenkins](https://github.com/jenkoian)
