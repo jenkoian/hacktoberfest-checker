@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 
-Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
+Useful web analyzer app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
 [https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
 ([https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/) will still work)
@@ -50,6 +50,12 @@ As an alternative to the section above, you can run the app within a Docker cont
 * `$ docker build -t hacktoberfest-checker .`
 
 * `$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
+
+## Running the app using node and npm 
+
+* `$ npm install`
+
+* `$ node index.js`
 
 ## License
 
