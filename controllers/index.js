@@ -34,13 +34,26 @@ exports.index = (req, res) => {
 
     var today = new Date();
     var curmonth = today.getMonth();
+    var timeleft = 31 - today.getDate();
+    var timemessage = '';
+    if (curmonth == 9) {
+        if (timeleft == 0) {
+            timemessage = 'It\'s the very last day! Get your last PRs in!';
+        } else if (timeleft == 1) {
+            timemessage = 'One more day, keep it going!';
+        } else if (timeleft < 10) {
+            timemessage = 'There\'s only ' + timeleft + ' days left! You can do it!';
+        } else {
+            timemessage = 'There\'s ' + timeleft + ' days remaining!';
+        }
+    }
 
     if (!username) {
         if (req.xhr) {
             return res.render('partials/error', { layout: false });
         }
 
-        return res.render('index', {hostname: hostname});
+        return res.render('index', {hostname: hostname, timemessage: timemessage});
     }
     function getStatement(prs) {
         if (curmonth < 9) {
