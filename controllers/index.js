@@ -30,6 +30,7 @@ const errorCodes = {
 exports.index = (req, res) => {
     const github = req.app.get('github');
     const username = req.query.username;
+    const statsLink = '/me';
 
     var today = new Date();
     var curmonth = today.getMonth();
@@ -57,8 +58,8 @@ exports.index = (req, res) => {
         const referer = req.headers.referer;
         if (referer) {
             var hostname = referer.split("?")[0].slice(0, -1);
-            if (hostname.endsWith('/m')) {
-                hostname = hostname.slice(0, -2);
+            if (hostname.endsWith(statsLink.slice(0, -1))) {
+                hostname = hostname.slice(0, -1*(statsLink.slice(0, -1).length));
             }
         } else {
             var hostname = '';
