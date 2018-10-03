@@ -54,7 +54,6 @@ exports.index = (req, res) => {
     // in such a case we set hostname to an empty string and create the link
     // with js after the page has loaded
     if (req.headers['x-forwarded-for']) {
-        //console.log(JSON.stringify(req.headers));
         const referer = req.headers.referer;
         if (referer) {
             var hostname = referer.split("?")[0].slice(0, -1);
