@@ -57,7 +57,7 @@ exports.index = (req, res) => {
     if (req.headers['x-forwarded-for']) {
         const referer = req.headers.referer;
         if (referer) {
-            var hostname = referer.split("?")[0].slice(0, -1);
+            var hostname = referer.split('?')[0].slice(0, -1);
             if (hostname.endsWith(statsLink.slice(0, -1))) {
                 hostname = hostname.slice(0, -1*(statsLink.slice(0, -1).length));
             }

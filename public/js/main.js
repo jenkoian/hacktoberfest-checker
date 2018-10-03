@@ -173,10 +173,9 @@ $(document).on('ready', () => {
     }
     // if hostname is empty, use location to build the link
     // needed for reverse proxy setup
-    if (document.getElementById("melink").innerHTML == '/me') {
-
-        var link = window.location.href.split("?")[0] + 'me';
-        document.getElementById("melink").innerHTML = link;
+    if (document.getElementById('melink').innerHTML == '/me') {
+        var link = `${window.location.href.split('?')[0]}me`;
+        document.getElementById('melink').innerHTML = link;
         document.getElementById('melink').href = link;
     }
 });
