@@ -60,3 +60,7 @@ h1 {
 .bn.br--left.br1.ph2:focus {
     outline: none;
 }
+
+.orange {
+    color: #a52607;
+}
