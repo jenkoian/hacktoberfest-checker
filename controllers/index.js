@@ -209,3 +209,7 @@ const logCallsRemaining = res => {
 exports.me = (req, res) => {
     res.render('me');
 };
+
+exports.notfound = (req, res) => {
+    res.render('404');
+};
