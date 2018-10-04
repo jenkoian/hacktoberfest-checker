@@ -7,12 +7,12 @@ RUN adduser -D octocat && \
 USER octocat
 
 # With this npm install will only ever be run when building if the application's package.json changes!
-COPY package.json /app
+COPY --chown=octocat:octocat package.json /app
 
 # The latest offical nodejs image already includes yarn.
 RUN yarn install --production --pure-lockfile
 
-COPY . /app
+COPY --chown=octocat:octocat . /app
 
 EXPOSE 5000
 
