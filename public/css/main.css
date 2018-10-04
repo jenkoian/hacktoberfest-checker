@@ -16,6 +16,12 @@ h1 {
   font-weight: normal;
 }
 
+.dim {
+  opacity: 1;
+  transition: 0.3s;
+}
+.dim:hover {opacity: 0.6}
+
 .bn.br--left.br1.ph2 {
     transition: box-shadow ease-in-out .2s;
 }
