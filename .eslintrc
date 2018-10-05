@@ -13,6 +13,7 @@
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
         "no-console": ["warn", { "allow": ["log", "error"] }],
+        "no-unused-vars": ["error", { "args": "none" }],
         "indent": [
             "error",
             4,
