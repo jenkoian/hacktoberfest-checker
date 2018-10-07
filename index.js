@@ -1,5 +1,6 @@
 'use strict';
 
+// Module dependencies
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -92,4 +93,5 @@ app.listen(app.get('port'), () => {
     console.log(`Express server listening on port ${app.get('port')}`);
 });
 
+// export module
 module.exports = app;
