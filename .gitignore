@@ -1,6 +1,7 @@
 # Node stuff
 npm-debug.log
 node_modules
+# Favour yarn.lock, heroku fails if both included
 package-lock.json
 
 # API keys
