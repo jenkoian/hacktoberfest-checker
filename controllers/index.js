@@ -141,7 +141,9 @@ function getNextPage(response, github) {
                     resolve();
                 });
             } else {
-                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                if (process.env.NODE_ENV != 'production') {
+                    console.log('Found ' + pullRequestData.length + ' pull requests.');
+                }
                 resolve();
             }
         });
@@ -173,7 +175,9 @@ function loadPrs(github, username) {
                     resolve();
                 });
             } else {
-                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                if (process.env.NODE_ENV != 'production') {
+                    console.log('Found ' + pullRequestData.length + ' pull requests.');
+                }
                 resolve();
             }
         });
@@ -234,7 +238,12 @@ function findPrs(github, username) {
 }
 
 const logCallsRemaining = res => {
-    console.log('API calls remaining: ' + res.meta['x-ratelimit-remaining']);
+    var callsRemaining = res.meta['x-ratelimit-remaining'];
+    if (process.env.NODE_ENV != 'production') {
+        console.log('API calls remaining: ' + callsRemaining);
+    } else if (callsRemaining < 100) {
+        console.log('API calls remaining: ' + callsRemaining);
+    }
     return res;
 };
 
