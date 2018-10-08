@@ -83,7 +83,7 @@ app.get('*', IndexController.notfound);
 
 // Production error handler
 if (app.get('env') === 'production') {
-    app.use((err, req, res) => {
+    app.use((err, req, res, next) => {
         console.error(err.stack);
         res.sendStatus(err.status || 500);
     });
