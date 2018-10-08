@@ -61,6 +61,6 @@ h1 {
     outline: none;
 }
 
-.bg-white .orange {
+.bg-white.orange, .bg-white .orange {
     color: #a52607;
 }
