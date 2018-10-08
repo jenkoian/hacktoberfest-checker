@@ -30,8 +30,9 @@ const errorCodes = {
 exports.index = (req, res) => {
     const github = req.app.get('github');
     const username = req.query.username;
-    const hostname = `${req.protocol}://${req.headers.host}`;
+    const statsLink = '/me';
 
+    var hostname = `${req.protocol}://${req.headers.host}`;
     var today = new Date();
     var curmonth = today.getMonth();
     var timeleft = 31 - today.getDate();
@@ -45,6 +46,24 @@ exports.index = (req, res) => {
             timemessage = 'There\'s only ' + timeleft + ' days left! You can do it!';
         } else {
             timemessage = 'There\'s ' + timeleft + ' days remaining!';
+        }
+    }
+
+    // in a reverse proxy situation we have to use the referer to retrieve
+    // the correct protocol, hostname, and path
+    // unfortunately this won't work, when accessng the page directly:
+    // e.g.: http://example.com/hacktoberfest/?username=XXX
+    // in such a case we set hostname to an empty string and create the link
+    // with js after the page has loaded
+    if (req.headers['x-forwarded-for']) {
+        const referer = req.headers.referer;
+        if (referer) {
+            hostname = referer.split('?')[0].slice(0, -1);
+            if (hostname.endsWith(statsLink.slice(0, -1))) {
+                hostname = hostname.slice(0, -1*(statsLink.slice(0, -1).length));
+            }
+        } else {
+            hostname = '';
         }
     }
 
@@ -122,7 +141,9 @@ function getNextPage(response, github) {
                     resolve();
                 });
             } else {
-                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                if (process.env.NODE_ENV != 'production') {
+                    console.log('Found ' + pullRequestData.length + ' pull requests.');
+                }
                 resolve();
             }
         });
@@ -154,7 +175,9 @@ function loadPrs(github, username) {
                     resolve();
                 });
             } else {
-                console.log('Found ' + pullRequestData.length + ' pull requests.');
+                if (process.env.NODE_ENV != 'production') {
+                    console.log('Found ' + pullRequestData.length + ' pull requests.');
+                }
                 resolve();
             }
         });
@@ -215,7 +238,12 @@ function findPrs(github, username) {
 }
 
 const logCallsRemaining = res => {
-    console.log('API calls remaining: ' + res.meta['x-ratelimit-remaining']);
+    var callsRemaining = res.meta['x-ratelimit-remaining'];
+    if (process.env.NODE_ENV != 'production') {
+        console.log('API calls remaining: ' + callsRemaining);
+    } else if (callsRemaining < 100) {
+        console.log('API calls remaining: ' + callsRemaining);
+    }
     return res;
 };
 

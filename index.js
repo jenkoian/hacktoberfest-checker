@@ -1,5 +1,6 @@
 'use strict';
 
+// Module dependencies
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -69,8 +70,17 @@ app.locals = {
     }
 };
 
+// Production error handler
+if (process.env.NODE_ENV == 'production') {
+    app.use((err, req, res, next) => {
+        console.error(err.stack);
+        res.sendStatus(err.status || 500);
+    });
+} else {
+    app.use(logger('dev'));
+}
+
 app.use(compression());
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -80,16 +90,9 @@ app.get('/', IndexController.index);
 app.get('/me', IndexController.me);
 app.get('*', IndexController.notfound);
 
-// Production error handler
-if (app.get('env') === 'production') {
-    app.use((err, req, res) => {
-        console.error(err.stack);
-        res.sendStatus(err.status || 500);
-    });
-}
-
 app.listen(app.get('port'), () => {
     console.log(`Express server listening on port ${app.get('port')}`);
 });
 
+// export module
 module.exports = app;
