@@ -29,3 +29,7 @@ h1 {
 .bn.br--left.br1.ph2:focus {
     outline: none;
 }
+
+.bg-white.orange, .bg-white .text-orange, .bg-white.text-orange {
+    color: #a52607;
+}
