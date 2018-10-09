@@ -1,14 +1,14 @@
-﻿<h1 class="f1 f-6-ns tc pb4"><a class="white no-underline" href="">Hacktoberfest Checker</a></h1>
+<h1 class="text-center text-5xl md:text-xxl py-12 md:py-8"><a class="text-white no-underline" href="">Hacktoberfest Checker</a></h1>
 
-<div class="tc pb4">
-    <p class="white">{{ timemessage }}</p>
-    <form action="/" class="center h2 w-30-ns w-60-m w-80 flex" method="get">
-        <input class="bn br--left br1 ph2 flex-auto" type="text" name="username" aria-label="GitHub username" placeholder="GitHub username" value="{{ username }}" spellcheck="false">
-        <button class="u-bgc-21ffff u-c-411e2f bn br--right br1 pv0 ph3 pointer white" type="submit">Check</button>
+<div class="pb-4 md:pt-16">
+    <p class="text-center text-white pb-2">{{ timemessage }}</p>
+    <form action="/" class="flex h-8 mx-auto w-5/6 md:w-3/5 lg:w-1/3" method="get">
+        <input class="bn br--left rounded-l-sm px-2 flex-auto" type="text" name="username" aria-label="GitHub username" placeholder="GitHub username" value="{{ username }}" spellcheck="false">
+        <button class="bn br--right bg-teal-lighter text-pink-darkest rounded-r-sm px-4 pointer text-white" type="submit">Check</button>
     </form>
 </div>
 
-<div class="pb4" id="results">
+<div class="pb-4" id="results">
     {{#if error}}
         {{> error}}
     {{else}}

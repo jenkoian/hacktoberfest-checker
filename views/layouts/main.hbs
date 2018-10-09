@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" class="h-100">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -21,24 +22,27 @@
     <meta name="theme-color" content="#202a6b">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <title>Hacktoberfest Checker</title>
-    <link rel="stylesheet" href="vendor/tachyons/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="h-100 min-vh-100 overflow-y-auto flex flex-column">
+
+<body class="h-screen overflow-y-auto flex flex-col">
     {{> github_corner}}
 
-    <div class="flex flex-none items-center justify-center pa2-ns pa3 bg-white orange">
-        <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
+    <div class="flex flex-none items-center justify-center p-2 bg-white text-orange">
+        <svg class="w-4 h-4" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
             <title>info</title>
             <path d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6"></path>
         </svg>
-        <span class="lh-title ml3 mr4">
-            Remember to <a href="https://hacktoberfest.digitalocean.com/sign_up/register" target="_blank" class="orange underline">register</a> to be eligible for the tee!
+        <span class="text-md leading-tight ml-4 mr-16 md:mr-8">
+            Remember to <a href="https://hacktoberfest.digitalocean.com/sign_up/register" target="_blank" class="text-orange underline">register</a>
+            to be eligible for the tee!
         </span>
     </div>
 
-    <div class="ph3-ns main-content">
-        <div class="cf ph2-ns">
+    <div class="md:py-4 flex-grow flex-no-shrink">
+        <div class="md:py-4">
             {{> header}}
             {{{body}}}
         </div>
@@ -51,41 +55,43 @@
 
     <!-- Google Analytics -->
     <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','{{ config.ga }}','auto');ga('send','pageview');
+        (function (b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+            function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+            e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', '{{ config.ga }}', 'auto'); ga('send', 'pageview');
     </script>
     <!-- Twitter -->
     <script>
-        window.twttr = (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-          if (d.getElementById(id)) return t;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "https://platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js, fjs);
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
 
-          t._e = [];
-          t.ready = function(f) {
-            t._e.push(f);
-          };
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
             return t;
         }(document, "script", "twitter-wjs"));
     </script>
-     <!-- Facebook -->
+    <!-- Facebook -->
     <div id="fb-root"></div>
     <script>
-        (function(d, s, id) {
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
             fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));
     </script>
 </body>
 </html>
