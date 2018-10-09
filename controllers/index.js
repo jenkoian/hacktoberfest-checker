@@ -69,7 +69,7 @@ exports.index = (req, res) => {
 
     if (!username) {
         if (req.xhr) {
-            return res.render('partials/error', { layout: false });
+            return res.render('partials/error', {hostname: hostname, layout: false});
         }
 
         return res.render('index', {hostname: hostname, timemessage: timemessage});
@@ -114,11 +114,16 @@ exports.index = (req, res) => {
             if (req.xhr) {
                 const code = errorCodes[err] || 404;
                 res.status(code).render('partials/error', {
-                    layout: false, errorMsg: errors[err]
+                    hostname: hostname,
+                    layout: false,
+                    errorMsg: errors[err]
                 });
             } else {
                 res.render('index', {
-                    error: true, errorMsg: errors[err], username
+                    hostname: hostname,
+                    error: true,
+                    errorMsg: errors[err],
+                    username
                 });
             }
         });
@@ -248,9 +253,11 @@ const logCallsRemaining = res => {
 };
 
 exports.me = (req, res) => {
-    res.render('me');
+    var hostname = `${req.protocol}://${req.headers.host}`;
+    res.render('me', {hostname: hostname});
 };
 
 exports.notfound = (req, res) => {
-    res.render('404');
+    var hostname = `${req.protocol}://${req.headers.host}`;
+    res.render('404', {hostname: hostname});
 };
