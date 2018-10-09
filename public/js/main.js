@@ -173,11 +173,10 @@ $(document).on('ready', () => {
     }
     // if hostname is empty, use location to build the link
     // needed for reverse proxy setup
-    if (document.getElementById('melink') != null && document.getElementById('melink').innerHTML == '/me') {
+    var meLink = $('#meLink');
+    if (meLink != null && meLink === '/me') {
         var link = `${window.location.href.split('?')[0]}me`;
-        document.getElementById('melink').innerHTML = link;
-        document.getElementById('melink').href = link;
-        document.getElementById('twitter-share').setAttribute('data-url', window.location.href);
-        document.getElementById('fb-share').setAttribute('data-href', window.location.href);
+        meLink.html(link);
+        meLink.href = link;
     }
 });

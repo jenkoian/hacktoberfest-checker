@@ -37,10 +37,10 @@ exports.index = (req, res) => {
     var curmonth = today.getMonth();
     var timeleft = 31 - today.getDate();
     var timemessage = '';
-    if (curmonth == 9) {
-        if (timeleft == 0) {
+    if (curmonth === 9) {
+        if (timeleft === 0) {
             timemessage = 'It\'s the very last day! Get your last PRs in!';
-        } else if (timeleft == 1) {
+        } else if (timeleft === 1) {
             timemessage = 'One more day, keep it going!';
         } else if (timeleft < 10) {
             timemessage = 'There\'s only ' + timeleft + ' days left! You can do it!';
@@ -77,7 +77,7 @@ exports.index = (req, res) => {
     function getStatement(prs) {
         if (curmonth < 9) {
             return 'Last year\'s result.';
-        } else if (curmonth == 9) {
+        } else if (curmonth === 9) {
             return statements[prs.length < prAmount+1 ? prs.length : prAmount+1 ];
         } else {
             return 'This year\'s result.';
@@ -141,7 +141,7 @@ function getNextPage(response, github) {
                     resolve();
                 });
             } else {
-                if (process.env.NODE_ENV != 'production') {
+                if (process.env.NODE_ENV !== 'production') {
                     console.log('Found ' + pullRequestData.length + ' pull requests.');
                 }
                 resolve();
@@ -175,7 +175,7 @@ function loadPrs(github, username) {
                     resolve();
                 });
             } else {
-                if (process.env.NODE_ENV != 'production') {
+                if (process.env.NODE_ENV !== 'production') {
                     console.log('Found ' + pullRequestData.length + ' pull requests.');
                 }
                 resolve();
@@ -239,7 +239,7 @@ function findPrs(github, username) {
 
 const logCallsRemaining = res => {
     var callsRemaining = res.meta['x-ratelimit-remaining'];
-    if (process.env.NODE_ENV != 'production') {
+    if (process.env.NODE_ENV !== 'production') {
         console.log('API calls remaining: ' + callsRemaining);
     } else if (callsRemaining < 100) {
         console.log('API calls remaining: ' + callsRemaining);
