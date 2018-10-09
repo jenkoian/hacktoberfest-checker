@@ -177,5 +177,7 @@ $(document).on('ready', () => {
         var link = `${window.location.href.split('?')[0]}me`;
         document.getElementById('melink').innerHTML = link;
         document.getElementById('melink').href = link;
+        document.getElementById('twitter-share').setAttribute('data-url', window.location.href);
+        document.getElementById('fb-share').setAttribute('data-href', window.location.href);
     }
 });
