@@ -171,12 +171,4 @@ $(document).on('ready', () => {
     if (window.location.pathname.endsWith('/me')) {
         redirectToUserPage();
     }
-    // if hostname is empty, use location to build the link
-    // needed for reverse proxy setup
-    var meLink = $('#meLink');
-    if (meLink != null && meLink === '/me') {
-        var link = `${window.location.href.split('?')[0]}me`;
-        meLink.html(link);
-        meLink.href = link;
-    }
 });

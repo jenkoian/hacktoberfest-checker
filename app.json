@@ -1,17 +1,30 @@
 {
-  "name": "hacktoberfest-checker",
-  "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt.",
-  "keywords": [
-    "hacktoberfest"
-  ],
-  "website": "https://hacktoberfestchecker.herokuapp.com",
-  "repository": "https://github.com/jenkoian/hacktoberfest-checker",
-  "logo": "https://github.com/jenkoian/hacktoberfest-checker/blob/master/public/img/og.png?raw=true",
-  "success_url": "/",
-  "env": {
-    "GITHUB_TOKEN": {
-      "description": "Link: https://github.com/settings/tokens/new",
-      "required": true
+    "name": "hacktoberfest-checker",
+    "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt.",
+    "keywords": [
+        "hacktoberfest",
+        "hacktoberfestchecker"
+    ],
+    "website": "https://hacktoberfestchecker.herokuapp.com",
+    "repository": "https://github.com/jenkoian/hacktoberfest-checker",
+    "logo": "https://github.com/jenkoian/hacktoberfest-checker/blob/master/public/img/og.png?raw=true",
+    "success_url": "/",
+    "env": {
+        "GITHUB_TOKEN": {
+            "description": "Link: https://github.com/settings/tokens/new",
+            "required": true
+        },
+        "APP_URL": {
+            "description": "URL of the site where this is deployed to",
+            "required": true
+        },
+        "NODE_ENV": {
+            "description": "Production or development?",
+            "required": false
+        },
+        "GA_CODE": {
+            "description": "Code for Google Analytics",
+            "required": false
+        }
     }
-  }
 }
