@@ -71,7 +71,7 @@ app.locals = {
 };
 
 // Production error handler
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use((err, req, res, next) => {
         console.error(err.stack);
         res.sendStatus(err.status || 500);
