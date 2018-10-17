@@ -117,7 +117,7 @@ HacktoberfestChecker.prototype.getName = function() {
  * create the necessary HTML to show the spinner using fluent syntax
  */
 HacktoberfestChecker.prototype.makeSpinner = function() {
-    return $('<div/>').addClass('tc').append(
+    return $('<div/>').addClass('text-center').append(
         $('<img/>', {
             src: this.loader,
             alt: 'Loading...'
@@ -129,7 +129,7 @@ HacktoberfestChecker.prototype.makeSpinner = function() {
  * create the necessary HTML to show an error message using fluent syntax
  */
 HacktoberfestChecker.prototype.makeError = function(error) {
-    return $('<div/>').addClass('tc').append(
+    return $('<div/>').addClass('text-center').append(
         $('<h2/>', {
             text: error,
             class: 'white'
@@ -159,7 +159,7 @@ function redirectToUserPage() {
 
 function saveUserPage() {
     // Save username into localStorage. Recall username by visiting /me.
-    localStorage.myGitHub = $('[name="username"]').val();
+    localStorage.myGitHub = $('[name="username"]').val().trim();
     // Provide some sort of visual feedback. Redirect to that page.
     window.location.href='./me';
 }
@@ -170,12 +170,5 @@ $(document).on('ready', () => {
     // Works with /me or /me/
     if (window.location.pathname.endsWith('/me')) {
         redirectToUserPage();
-    }
-    // if hostname is empty, use location to build the link
-    // needed for reverse proxy setup
-    if (document.getElementById('melink') != null && document.getElementById('melink').innerHTML == '/me') {
-        var link = `${window.location.href.split('?')[0]}me`;
-        document.getElementById('melink').innerHTML = link;
-        document.getElementById('melink').href = link;
     }
 });

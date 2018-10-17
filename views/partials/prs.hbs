@@ -1,51 +1,52 @@
 {{#exists prs}}
-    <div class="tc white">
-        <div class="pb4 flex justify-center">
-            <div class="pa1">
-                <a class="twitter-share-button white no-underline f6"
-                    href="https://twitter.com/share"
-                    data-size="large"
-                    data-text="My progress on hacktoberfest {{ prs.length }} / {{prAmount}}"
-                    data-url="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
-                    data-hashtags="hacktoberfest, hacktoberfestchecker">
+    <div class="text-center text-white">
+        <div class="pb-8 flex justify-center">
+            <div class="p-2" id="twitter-share">
+                <a target="_blank" class="bg-blue text-white rounded px-2 py-1 pointer text-white no-underline text-sm"
+                    href="https://twitter.com/intent/tweet?text=My progress on hacktoberfest {{ prs.length }} / {{prAmount}}&url={{hostname}}/?username={{username}}&hashtags=hacktoberfest, hacktoberfestchecker"
+                    data-size="large">
+                    <i class="fab fa-twitter fa-lg"></i>
                     Tweet
                 </a>
             </div>
-            <div class="fb-share-button pa1"
-                data-href="https://hacktoberfestchecker.herokuapp.com/?username={{username}}"
+            <div class="p-2" id="fb-share"
+                data-href="{{hostname}}/?username={{username}}"
                 data-layout="button"
                 data-size="large">
-                    <a class="fb-xfbml-parse-ignore" href="https://www.facebook.com/sharer/sharer.php">Share</a>
+                    <a target="_blank" class="fb-xfbml-parse-ignore bg-blue-dark text-white rounded px-2 py-1 pointer text-white no-underline text-sm" href="https://www.facebook.com/sharer/sharer.php?u={{hostname}}%2F%3Fusername%3D{{username}}&amp;src=sdkpreparse">
+                        <i class="fab fa-facebook fa-lg"></i>
+                        Share
+                    </a>
             </div>
         </div>
-        <div class="lh-copy pb1 flex flex-wrap justify-center content-center-ns br2 center overflow-hidden w-50-ns w-80-m w-90">
-            <div class="mh3">
+        <div class="pb-2 flex flex-wrap justify-center content-center rounded mx-auto overflow-hidden w-5/6 lg:w-1/2">
+            <div class="mx-4">
                 {{#if userImage}}
                     <a href = "https://github.com/{{username}}" target="_blank">
-                        <img id="userImage" alt="GitHub profile image for {{ username }}" class="tc br-100 w4 h4 bw2 b--solid b--near-white u-bgc--f4f4f4 overflow-hidden dim" src="{{userImage}}" />
+                        <img id="userImage" alt="GitHub profile image for {{ username }}" class="text-center rounded-full w-32 h-32 border-4 border-solid border-white bg-white overflow-hidden dim" src="{{userImage}}" />
                     </a>
                 {{/if}}
             </div>
-            <div class="flex flex-wrap  justify-center content-center flex-column">
-                <span class="db br2 f1 fw5 white w5">{{ prs.length }} / {{prAmount}}</span>
-                <h3 class="mv1 fw3 light-gray">{{ statement }}</h3>
+            <div class="flex flex-wrap justify-center content-center flex-col">
+                <span class="block rounded text-5xl font-medium white w-64">{{ prs.length }} / {{prAmount}}</span>
+                <h3 class="my-1 font-light text-gray-light">{{ statement }}</h3>
             </div>
         </div>
     </div>
 
     {{#if isNotComplete }}
         <div class="flex flex-wrap justify-center content-center">
-            <div class="light-gray pb3">
-                Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="orange" target="_blank">issues</a> and get hacking!</a>
+            <div class="text-grey-light pb-4">
+                Look at the following <a href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue" class="text-orange" target="_blank">issues</a> and get hacking!</a>
             </div>
         </div>
     {{/if}}
 
     {{#if prs.length}}
-        <div class="br2 center shadow-1 overflow-hidden w-50-ns w-80-m w-90 mb4">
+        <div class="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
             {{#each prs}}
-                <div class="bg-white {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}lh-copy pa3 flex bb b--gray pr-item">
-                    <div class="br-100 h2 mr3 mt1 tc w2">
+                <div class="bg-white leading-normal {{#if this.has_hacktoberfest_label}}hacktoberfest {{/if}}p-4 flex border-b border-grey break-words">
+                    <div class="rounded-full mr-4 mt-1 text-center h-8 w-8">
                         {{#if this.open}}
                             <svg aria-hidden="true" fill="#2cbe4e" height="18" version="1.1" viewBox="0 0 12 16" width="24">
                                 <path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
@@ -61,20 +62,20 @@
                         {{/if}}
                     </div>
                     <div>
-                        <div class="mid-gray">
-                            <a class="color-inherit fw6 link underline-hover" href="{{ this.user.url }}">{{ this.user.login }}</a>
+                        <div class="text-grey-darker">
+                            <a class="text-grey-darker font-semibold link no-underline hover:underline" href="{{ this.user.url }}">{{ this.user.login }}</a>
                             submitted a pull request
-                            <a class="orange link underline-hover" href="{{ this.url }}">{{ this.repo_name }}#{{ this.number }}</a>
+                            <a class="text-orange link no-underline hover:underline" href="{{ this.url }}">{{ this.repo_name }}#{{ this.number }}</a>
                         </div>
-                        <div class="light-silver">{{ this.title }} on {{ this.created_at }}</div>
+                        <div class="text-grey-dark">{{ this.title }} on {{ this.created_at }}</div>
                     </div>
                 </div>
             {{/each}}
         </div>
     {{/if}}
 
-    <div class="br2 center mt5 overflow-hidden w-50-ns w-80-m w-90 mt2">
-        <button class="u-bgc-21ffff u-c-411e2f center mt2 h2 bn pointer br1 pv0 ph3 db saveUser">This is Me</button>
-        <p class='light-silver center tc'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link orange underline-hover saveUser' id="melink">{{ hostname }}/me</a> on this device.</p>
+    <div class="rounded mx-auto mt-16 overflow-hidden w-5/6 lg:w-1/2 mt-4">
+        <button class="bg-teal-lighter text-pink-darkest mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser">This is Me</button>
+        <p class='text-grey-dark mx-auto text-center my-4'>In the future, you can find your PRs by visiting <a href='{{ hostname }}/me' class='link text-orange underline-hover saveUser' id="melink">{{ hostname }}/me</a> on this device.</p>
     </div>
 {{/exists}}
