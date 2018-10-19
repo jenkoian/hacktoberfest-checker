@@ -11,7 +11,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./public/css/tailwind.css",
+    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
     "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
   },
