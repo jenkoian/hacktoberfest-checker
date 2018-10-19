@@ -1,16 +1,16 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
     "node": ">=8.0.0"
   },
   "scripts": {
-    "prestart": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js",
-    "start": "node index.js",
-    "babel-dev": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js --watch",
-    "dev": "nodemon index.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./public/css/tailwind.css",
     "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
     "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
@@ -35,13 +35,23 @@
     "method-override": "^2.3.5",
     "moment": "^2.18.1",
     "morgan": "^1.7.0",
+    "prop-types": "^15.6.2",
     "q": "^1.5.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "zepto": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.8.0",
+    "eslint": "5.6.0",
     "nodemon": "^1.12.1",
+    "react-scripts": "^2.0.5",
     "tailwindcss": "^0.6.6"
   },
-  "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
+  "repository": "git@github.com:jenkoian/hacktoberfest-checker.git",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
