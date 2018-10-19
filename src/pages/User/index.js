@@ -1,13 +1,25 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import SiteTitle from '../../components/SiteTitle';
+import UsernameForm from '../../components/UsernameForm';
 
-const User = () => (
+const User = ({ match: { params: { username } } }) => (
   <Fragment>
     <Helmet>
-      <title>User</title>
+      <title>{username}</title>
     </Helmet>
-    <h1>User</h1>
+    <SiteTitle>Hacktoberfest Checker</SiteTitle>
+    <UsernameForm username={username} />
   </Fragment>
 );
+
+User.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      username: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
+};
 
 export default User;
