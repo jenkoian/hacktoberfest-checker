@@ -1,3 +1,5 @@
+'use strict';
+
 const GithubApi = require('github');
 
 const setupGithubApi = () => {

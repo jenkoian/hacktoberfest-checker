@@ -1,3 +1,5 @@
-const start = require('./api/start');
+'use strict';
+
+const start = require('./api/index');
 
 start();

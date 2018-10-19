@@ -1,70 +1,34 @@
 'use strict';
 
-// Module dependencies
 const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const compression = require('compression');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const exphbs = require('express-handlebars');
-const setupGithubApi = require('./lib/setupGithubApi');
-
-// Load environment variables from .env file
-dotenv.load();
-
-// Controllers
+const setupGithubApi = require('./setupHelpers/setupGithubApi');
+const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
 const IndexController = require('./controllers/index');
 
-const app = express();
+const start = () => {
+  // Load environment variables from .env file
+  dotenv.load();
 
-const hbs = exphbs.create({
-  defaultLayout: 'main',
-  helpers: {
-    ifeq(a, b, options) {
-      if (a === b) {
-        return options.fn(this);
-      }
-      return options.inverse(this);
-    },
-    toJSON(object) {
-      return JSON.stringify(object);
-    },
-    exists(variable, options) {
-      if (typeof variable !== 'undefined') {
-        return options.fn(this);
-      }
-    },
-    timeago: require('helper-timeago')
-  },
-  extname: 'hbs'
-});
+  const app = express();
 
-const github = setupGithubApi();
+  const githubApi = setupGithubApi();
 
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');
-app.set('port', process.env.PORT || 5000);
-app.set('github', github);
+  const port = process.env.PORT || 5000;
 
-// Production error handler
-if (process.env.NODE_ENV === 'production') {
-  app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.sendStatus(err.status || 500);
+  app.set('port', port);
+  app.set('github', githubApi);
+
+  setupErrorHandling(app);
+
+  app.use(bodyParser.json());
+
+  app.get('/', IndexController.index);
+
+  app.listen(port, () => {
+    console.log(`Express server listening on port ${port}`);
   });
-} else {
-  app.use(logger('dev'));
-}
+};
 
-app.use(compression());
-app.use(bodyParser.json());
-
-app.get('/', IndexController.index);
-
-app.listen(app.get('port'), () => {
-  console.log(`Express server listening on port ${app.get('port')}`);
-});
-
-// export module
-module.exports = app;
+module.exports = start;
