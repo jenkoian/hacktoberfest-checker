@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import Redirect from 'react-router-dom/Redirect';
 
-const Me = () => (
-  <Fragment>
-    <Helmet>
-      <title>Me</title>
-    </Helmet>
-    <h1>Me</h1>
-  </Fragment>
-);
+const Me = () => {
+  const username = localStorage.getItem('myGithub');
+
+  if (!username) {
+    return <Redirect to="/" />;
+  }
+
+  return <Redirect to={`/user/${username}`} />;
+};
 
 export default Me;
