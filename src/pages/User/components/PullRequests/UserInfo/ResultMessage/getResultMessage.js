@@ -1,4 +1,4 @@
-import prAmount from './prAmount';
+import pullRequestAmount from '../../pullRequestAmount';
 
 const messages = [
   'It\'s not too late to start!',
@@ -10,7 +10,7 @@ const messages = [
   'Now you\'re just showing off!'
 ];
 
-const getResultMessage = (prs) => {
+const getResultMessage = (pullRequestCount) => {
   const currentMonth = new Date().getMonth();
 
   if (currentMonth < 9) {
@@ -21,13 +21,13 @@ const getResultMessage = (prs) => {
     return 'This year\'s result.';
   }
 
-  const isShowingOff = prs.length > prAmount;
+  const isShowingOff = pullRequestCount > pullRequestAmount;
 
   if (isShowingOff) {
-    return messages[prAmount + 1];
+    return messages[pullRequestAmount + 1];
   }
 
-  return messages[prs.length];
+  return messages[pullRequestCount];
 };
 
 export default getResultMessage;

@@ -11,7 +11,8 @@ const errorDescriptions = {
 const getStatusCode = error => statusCodes[error] || 400;
 
 const getErrorDescription = error =>
-  errorDescriptions[error] || 'Bad request!';
+  errorDescriptions[error] ||
+  'Couldn\'t find any data or we hit an error, err try again?';
 
 module.exports.getStatusCode = getStatusCode;
 module.exports.getErrorDescription = getErrorDescription;

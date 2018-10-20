@@ -1,5 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import LoadingIcon from './LoadingIcon';
+import ErrorText from './ErrorText';
+import pullRequestAmount from './pullRequestAmount';
+import UserInfo from './UserInfo';
+import IssuesLink from './IssuesLink';
+import MeLinkInfo from './MeLinkInfo';
 
 export default class PullRequests extends Component {
   static defaultProps = {
@@ -12,11 +18,24 @@ export default class PullRequests extends Component {
     error: null
   };
 
-  componentDidMount = () => this.fetchPullRequests();
+  componentDidMount = () => {
+    this.storeUsernameAsMe();
+    this.fetchPullRequests();
+  };
 
   componentDidUpdate = (prevProps) => {
     if (prevProps.username === this.props.username) return;
     this.fetchPullRequests();
+  };
+
+  storeUsernameAsMe = () => {
+    const username = this.props.username;
+
+    if (localStorage.getItem('myGithub')) {
+      return;
+    }
+
+    localStorage.setItem('myGithub', username);
   };
 
   fetchPullRequests = () => {
@@ -40,7 +59,34 @@ export default class PullRequests extends Component {
       );
   };
 
-  render = () => (
-    <h1>hang on</h1>
-  );
+  render = () => {
+    const username = this.props.username;
+    const { loading, data, error } = this.state;
+
+    if (loading) {
+      return <LoadingIcon />
+    }
+
+    if (error) {
+      return <ErrorText errorMessage={error.error_description} />;
+    }
+
+    const isComplete = data.prs.length >= pullRequestAmount;
+
+    return (
+      <Fragment>
+        <div className="text-center text-white">
+          <UserInfo
+            username={username}
+            userImage={data.userImage}
+            pullRequestCount={data.prs.length}
+          />
+        </div>
+        {!isComplete &&
+          <IssuesLink />
+        }
+        <MeLinkInfo username={username} />
+      </Fragment>
+    );
+  }
 }
