@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const setupGithubApi = require('./setupHelpers/setupGithubApi');
 const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
-const IndexController = require('./controllers/index');
+const PrController = require('./controllers/index');
 
 const start = () => {
   // Load environment variables from .env file
@@ -24,7 +24,7 @@ const start = () => {
 
   app.use(bodyParser.json());
 
-  app.get('/', IndexController.index);
+  app.get('/prs', PrController.index);
 
   app.listen(port, () => {
     console.log(`Express server listening on port ${port}`);
