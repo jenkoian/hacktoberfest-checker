@@ -2,10 +2,11 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const dotenv = require('dotenv');
 const setupGithubApi = require('./setupHelpers/setupGithubApi');
 const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
-const PrController = require('./controllers/index');
+const PrController = require('./controllers/pr');
 
 const start = () => {
   // Load environment variables from .env file
@@ -23,6 +24,12 @@ const start = () => {
   setupErrorHandling(app);
 
   app.use(bodyParser.json());
+
+  const corsOptions = {
+    origin: process.env.REACT_APP_HOSTNAME
+  };
+
+  app.use(cors(corsOptions));
 
   app.get('/prs', PrController.index);
 

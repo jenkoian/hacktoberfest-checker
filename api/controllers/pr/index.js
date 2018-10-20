@@ -33,11 +33,10 @@ exports.index = (req, res) => {
       const data = {
         prs,
         username,
-        userImage: user.data.avatar_url,
-        prAmount
+        userImage: user.data.avatar_url
       };
 
-      res.json();
+      res.json(data);
     })
     .catch((err) => {
       console.log(err);

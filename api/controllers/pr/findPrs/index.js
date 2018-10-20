@@ -3,15 +3,17 @@
 const _ = require('lodash');
 const moment = require('moment');
 const logCallsRemaining = require('../logCallsRemaining');
+const loadPrs = require('./loadPrs');
 
 const findPrs = (github, username) => {
   return loadPrs(github, username)
-    .then((pullRequestData) => {
-      newPullRequestData = _.map(pullRequestData, event => {
+    .then(pullRequestData =>
+      _.map(pullRequestData, event => {
         const repo = event.pull_request.html_url.substring(
           0,
           event.pull_request.html_url.search('/pull/')
         );
+
         const hacktoberFestLabels = _.some(
           event.labels,
           label => label.name.toLowerCase() === 'hacktoberfest'
@@ -30,9 +32,8 @@ const findPrs = (github, username) => {
             url: event.user.html_url
           }
         };
-      });
-      return pullRequestData;
-    })
+      })
+    )
     .then((prs) => {
       const checkMergeStatus = _.map(prs, (pr) => {
         const repoDetails = pr.repo_name.split('/');

@@ -5,7 +5,7 @@ const statusCodes = {
 };
 
 const errorDescriptions = {
-  notUser: 'Username must belong to a user account.';
+  notUser: 'Username must belong to a user account.'
 };
 
 const getStatusCode = error => statusCodes[error] || 400;

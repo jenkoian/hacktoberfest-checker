@@ -11,7 +11,7 @@ const getNextPage = (response, github, pullRequestData) =>
 
       if (github.hasNextPage(res)) {
         getNextPage(res, github, newPullRequestData).then(pullRequestData =>
-          resolve(pullRequestData);
+          resolve(pullRequestData)
         );
         return;
       }
