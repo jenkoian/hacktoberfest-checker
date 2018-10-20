@@ -1,3 +1,4 @@
+import React from 'react';
 import loadingIcon from './loading-icon.gif';
 
 const LoadingIcon = () => (

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import LoadingIcon from './LoadingIcon';
 import ErrorText from './ErrorText';
 import pullRequestAmount from './pullRequestAmount';
+import ShareButtons from './ShareButtons';
 import UserInfo from './UserInfo';
+import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
 
@@ -23,7 +25,7 @@ export default class PullRequests extends Component {
     this.fetchPullRequests();
   };
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     if (prevProps.username === this.props.username) return;
     this.fetchPullRequests();
   };
@@ -41,7 +43,12 @@ export default class PullRequests extends Component {
   fetchPullRequests = () => {
     const username = this.props.username;
     const apiUrl = process.env.REACT_APP_API_URL;
-    fetch(`${apiUrl}/pullRequests?username=${username}`, {
+
+    this.setState({
+      loading: true
+    });
+
+    fetch(`${apiUrl}/prs?username=${username}`, {
       method: 'GET'
     })
       .then(response => response.json())
@@ -64,11 +71,17 @@ export default class PullRequests extends Component {
     const { loading, data, error } = this.state;
 
     if (loading) {
-      return <LoadingIcon />
+      return <LoadingIcon />;
     }
 
-    if (error) {
-      return <ErrorText errorMessage={error.error_description} />;
+    if (error || data.error_description) {
+      return (
+        <ErrorText
+          errorMessage={
+            (error && error.error_description) || data.error_description
+          }
+        />
+      );
     }
 
     const isComplete = data.prs.length >= pullRequestAmount;
@@ -76,17 +89,22 @@ export default class PullRequests extends Component {
     return (
       <Fragment>
         <div className="text-center text-white">
+          <ShareButtons username={username} />
           <UserInfo
             username={username}
             userImage={data.userImage}
             pullRequestCount={data.prs.length}
           />
         </div>
-        {!isComplete &&
-          <IssuesLink />
-        }
+        <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
+          {data.prs.length &&
+            data.prs.map((pullRequest, i) => (
+              <PullRequest pullRequest={pullRequest} key={i} />
+            ))}
+        </div>
+        {!isComplete && <IssuesLink />}
         <MeLinkInfo username={username} />
       </Fragment>
     );
-  }
+  };
 }
