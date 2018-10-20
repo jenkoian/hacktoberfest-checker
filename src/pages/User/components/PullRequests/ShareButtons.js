@@ -11,6 +11,7 @@ const ShareButtons = ({ username }) => (
         data-size="large"
       >
         <i className="fab fa-twitter fa-lg" />
+        {' '}
         Tweet
       </a>
     </div>
@@ -27,6 +28,7 @@ const ShareButtons = ({ username }) => (
         href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.origin}%2F%3Fusername%3D${username}&amp;src=sdkpreparse`}
       >
         <i className="fab fa-facebook fa-lg" />
+        {' '}
         Share
       </a>
     </div>

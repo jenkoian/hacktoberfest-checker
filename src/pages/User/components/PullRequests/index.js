@@ -66,6 +66,20 @@ export default class PullRequests extends Component {
       );
   };
 
+  getErrorMessage = () => {
+    const { data, error } = this.state;
+
+    if (error && error.description) {
+      return error.error_description;
+    }
+
+    if (data && data.error_description) {
+      return data.error_description;
+    }
+
+    return 'Couldn\'t find any data or we hit an error, err try again?';
+  };
+
   render = () => {
     const username = this.props.username;
     const { loading, data, error } = this.state;
@@ -75,13 +89,7 @@ export default class PullRequests extends Component {
     }
 
     if (error || data.error_description) {
-      return (
-        <ErrorText
-          errorMessage={
-            (error && error.error_description) || data.error_description
-          }
-        />
-      );
+      return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
 
     const isComplete = data.prs.length >= pullRequestAmount;
