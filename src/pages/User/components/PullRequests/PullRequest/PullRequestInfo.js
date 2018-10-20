@@ -10,7 +10,9 @@ const PullRequestInfo = ({ pullRequest }) => (
       >
         {pullRequest.user.login}
       </a>
+      {' '}
       submitted a pull request
+      {' '}
       <a
         className="text-orange link no-underline hover:underline"
         href={pullRequest.url}
