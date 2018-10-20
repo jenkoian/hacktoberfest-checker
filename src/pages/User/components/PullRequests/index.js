@@ -97,7 +97,10 @@ export default class PullRequests extends Component {
     return (
       <Fragment>
         <div className="text-center text-white">
-          <ShareButtons username={username} />
+          <ShareButtons
+            username={username}
+            pullRequestCount={data.prs.length}
+          />
           <UserInfo
             username={username}
             userImage={data.userImage}

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import pullRequestAmount from './pullRequestAmount';
 
-const ShareButtons = ({ username }) => (
+const ShareButtons = ({ username, pullRequestCount }) => (
   <div className="pb-8 flex justify-center">
     <div className="p-2" id="twitter-share">
       <a
         target="_blank"
         className="bg-blue text-white rounded px-2 py-1 pointer text-white no-underline text-sm"
-        href="https://twitter.com/intent/tweet?text=My progress on hacktoberfest {{ prs.length }} / {{prAmount}}&url={{hostname}}/?username={{username}}&hashtags=hacktoberfest, hacktoberfestchecker"
+        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${window.location.origin}/username/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
         data-size="large"
       >
         <i className="fab fa-twitter fa-lg" />
@@ -25,7 +26,7 @@ const ShareButtons = ({ username }) => (
       <a
         target="_blank"
         className="fb-xfbml-parse-ignore bg-blue-dark text-white rounded px-2 py-1 pointer text-white no-underline text-sm"
-        href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.origin}%2F%3Fusername%3D${username}&amp;src=sdkpreparse`}
+        href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.origin}/username/${username}`}
       >
         <i className="fab fa-facebook fa-lg" />
         {' '}
@@ -36,7 +37,8 @@ const ShareButtons = ({ username }) => (
 );
 
 ShareButtons.propTypes = {
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
+  pullRequestCount: PropTypes.number.isRequired
 };
 
 export default ShareButtons;
