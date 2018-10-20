@@ -147,7 +147,7 @@ function loadPrs(github, username) {
             searchyear = curyear - 1;
         }
         github.search.issues({
-            q: `-label:invalid+created:${searchyear}-09-30T00:00:00-12:00..${searchyear}-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`,
+            q: `-label:invalid+created:${searchyear}-09-30T00:00:00-12:00..${searchyear}-10-31T23:59:59-12:00+type:pr+is:public+author:${username}+-user:${username}`,
             per_page: 100  // 30 is the default but this makes it clearer/allows it to be tweaked
         }, function(err, res) {
             if (err) {
