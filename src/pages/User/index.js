@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
+import PullRequests from './components/PullRequests';
 
 const User = ({ match: { params: { username } } }) => (
   <Fragment>
@@ -11,6 +12,7 @@ const User = ({ match: { params: { username } } }) => (
     </Helmet>
     <SiteTitle>Hacktoberfest Checker</SiteTitle>
     <UsernameForm username={username} />
+    <PullRequests username={username} />
   </Fragment>
 );
 

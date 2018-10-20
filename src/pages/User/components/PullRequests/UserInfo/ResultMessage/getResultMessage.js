@@ -1,4 +1,4 @@
-const prAmount = 5;
+import prAmount from './prAmount';
 
 const messages = [
   'It\'s not too late to start!',
