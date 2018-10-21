@@ -19,8 +19,8 @@ kept it as it were last year (obviously updated the year and new PR requirement)
 
 I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
 
-You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on 
-digital ocean as they were kind enough to offer me some hosting vouchers. 
+You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on
+digital ocean as they were kind enough to offer me some hosting vouchers.
 
 Happy hacking!
 
@@ -43,6 +43,12 @@ Happy hacking!
 * `$ yarn start`
 
 * Point browser to [localhost:5000](http://localhost:5000)
+
+Want to run the API server and the frontend in their own processes? Use this:
+```bash
+$ yarn start-frontend
+$ yarn start-server
+```
 
 ### Running the app within Docker
 

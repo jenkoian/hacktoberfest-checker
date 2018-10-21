@@ -7,8 +7,9 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "node index.js",
+    "start": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
+    "start-frontend": "react-scripts start",
+    "start-server": "node index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -39,6 +40,7 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "parallelshell": "^3.0.2",
     "prettier": "^1.14.3",
     "react-scripts": "^2.0.5",
     "tailwindcss": "^0.6.6"
