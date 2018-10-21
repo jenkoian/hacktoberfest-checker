@@ -1,10 +1,6 @@
-import React, {Fragment} from 'react';
-import {Helmet} from 'react-helmet';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GithubCorner from './components/GithubCorner';
 import RegisterReminder from './components/RegisterReminder';
 import PageWrapper from './components/PageWrapper';
@@ -15,22 +11,22 @@ import Me from './pages/Me';
 import NotFound from './pages/NotFound';
 
 const App = () => (
-    <Fragment>
-        <Helmet titleTemplate="%s | Hacktoberfest Checker"/>
-        <GithubCorner/>
-        <RegisterReminder/>
-        <PageWrapper>
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/user/:username" component={User}/>
-                    <Route exact path="/me" component={Me}/>
-                    <Route component={NotFound}/>
-                </Switch>
-            </Router>
-        </PageWrapper>
-        <Footer/>
-    </Fragment>
+  <Fragment>
+    <Helmet titleTemplate="%s | Hacktoberfest Checker" />
+    <GithubCorner />
+    <RegisterReminder />
+    <PageWrapper>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/user/:username" component={User} />
+          <Route exact path="/me" component={Me} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </PageWrapper>
+    <Footer />
+  </Fragment>
 );
 
 export default App;

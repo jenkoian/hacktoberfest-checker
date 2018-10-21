@@ -2,13 +2,13 @@ import React from 'react';
 import Redirect from 'react-router-dom/Redirect';
 
 const Me = () => {
-    const username = localStorage.getItem('myGithub');
+  const username = localStorage.getItem('myGithub');
 
-    if (!username) {
-        return <Redirect to="/"/>;
-    }
+  if (!username) {
+    return <Redirect to="/" />;
+  }
 
-    return <Redirect to={`/user/${username}`}/>;
+  return <Redirect to={`/user/${username}`} />;
 };
 
 export default Me;
