@@ -4,4 +4,4 @@ import App from './App';
 import './tailwind.css';
 import './index.css';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<App/>, document.querySelector('#root'));
