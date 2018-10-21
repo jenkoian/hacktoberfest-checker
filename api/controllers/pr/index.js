@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
 const logCallsRemaining = require('./logCallsRemaining');
 const findPrs = require('./findPrs');
 const { getStatusCode, getErrorDescription } = require('./errors');
@@ -11,8 +10,6 @@ const { getStatusCode, getErrorDescription } = require('./errors');
 exports.index = (req, res) => {
   const github = req.app.get('github');
   const username = req.query.username;
-
-  var hostname = process.env.APP_URL || `${req.protocol}://${req.headers.host}`;
 
   if (!username) {
     return res.status(400).json({

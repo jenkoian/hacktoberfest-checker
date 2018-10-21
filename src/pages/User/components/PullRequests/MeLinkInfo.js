@@ -20,11 +20,11 @@ export default class MeLinkInfo extends Component {
       <p className="text-grey-dark mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
         <a
-          href="/me"
+          href={`${process.env.REACT_APP_HOSTNAME}/me`}
           className="link text-orange underline-hover saveUser"
           id="melink"
         >
-          {window.location.origin}
+          {process.env.REACT_APP_HOSTNAME}
           /me
         </a>{' '}
         on this device.
