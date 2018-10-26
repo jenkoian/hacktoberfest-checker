@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const setupGithubApi = require('./setupHelpers/setupGithubApi');
 const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
 const PrController = require('./controllers/pr');
+const path = require('path');
 
 const start = () => {
   // Load environment variables from .env file
@@ -23,6 +24,8 @@ const start = () => {
 
   setupErrorHandling(app);
 
+  app.use(express.static(path.join(__dirname, '../build')));
+
   app.use(bodyParser.json());
 
   const corsOptions = {
@@ -32,6 +35,10 @@ const start = () => {
   app.use(cors(corsOptions));
 
   app.get('/prs', PrController.index);
+
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  });
 
   app.listen(port, () => {
     console.log(`Express server listening on port ${port}`);
