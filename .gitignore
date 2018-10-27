@@ -17,3 +17,4 @@ Thumbs.db
 # Compiled js
 public/js/main-compiled.js
 public/js/main-compiled.js.map
+build/
