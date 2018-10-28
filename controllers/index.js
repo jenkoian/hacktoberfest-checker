@@ -42,7 +42,7 @@ exports.index = (req, res) => {
         } else if (timeleft === 1) {
             timemessage = 'One more day, keep it going!';
         } else if (timeleft < 10) {
-            timemessage = 'There\'s only ' + timeleft + ' days left! You can do it!';
+            timemessage = 'There are only ' + timeleft + ' days left! You can do it!';
         } else {
             timemessage = 'There\'s ' + timeleft + ' days remaining!';
         }
