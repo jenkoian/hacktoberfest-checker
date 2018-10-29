@@ -35,7 +35,7 @@ exports.index = (req, res) => {
       res.json(data);
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error: ' + err);
 
       const statusCode = getStatusCode(err);
       const errorDescription = getErrorDescription(err);
