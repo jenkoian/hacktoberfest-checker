@@ -7,7 +7,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "start": "yarn build; yarn start-server",
+    "start": "yarn run build; yarn run start-server",
     "start-development": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
     "start-frontend": "react-scripts start",
     "start-server": "node index.js",
