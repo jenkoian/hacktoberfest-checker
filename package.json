@@ -1,19 +1,24 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
     "node": ">=8.0.0"
   },
   "scripts": {
-    "prestart": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js",
-    "start": "node index.js",
-    "babel-dev": "babel public/js/*.js --presets es2015 --out-file public/js/main-compiled.js --source-maps --ignore *-compiled.js --watch",
-    "dev": "nodemon index.js",
-    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./public/css/tailwind.css",
-    "eslint": "eslint controllers/**/*.js public/**/*.js index.js",
-    "eslint-fix": "eslint controllers/**/*.js public/**/*.js index.js --fix"
+    "start": "yarn build; yarn start-server",
+    "start-development": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
+    "start-frontend": "react-scripts start",
+    "start-server": "node index.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
+    "eslint": "yarn prettier",
+    "eslint-fix": "yarn prettier-fix",
+    "prettier": "prettier \"{src,api}/**/*.js\"",
+    "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
   },
   "keywords": [
     "hacktoberfest"
@@ -21,27 +26,31 @@
   "author": "Ian Jenkins",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.15.1",
-    "compression": "^1.6.2",
+    "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.13.4",
-    "express-flash": "0.0.2",
-    "express-handlebars": "^3.0.0",
     "github": "^12.0.0",
-    "helper-timeago": "^0.1.0",
     "lodash": "^4.17.4",
-    "method-override": "^2.3.5",
     "moment": "^2.18.1",
     "morgan": "^1.7.0",
-    "q": "^1.5.0",
-    "zepto": "^1.2.0"
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "eslint": "^4.8.0",
-    "nodemon": "^1.12.1",
+    "parallelshell": "^3.0.2",
+    "prettier": "^1.14.3",
+    "react-scripts": "^2.0.5",
     "tailwindcss": "^0.6.6"
   },
-  "repository": "git@github.com:jenkoian/hacktoberfest-checker.git"
+  "repository": "git@github.com:jenkoian/hacktoberfest-checker.git",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

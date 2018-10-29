@@ -12,15 +12,17 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 ## 2018!
 
-I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
+~I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
 React on the front end. I did make a start, and may look to release it midway through Hacktoberfest. If you fancy hacking
 along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
-kept it as it were last year (obviously updated the year and new PR requirement).
+kept it as it were last year (obviously updated the year and new PR requirement).~
+
+With massive thanks to [Rafael Klaessen](https://github.com/rafaelklaessen) the react version is now merged and live!
 
 I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
 
-You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on 
-digital ocean as they were kind enough to offer me some hosting vouchers. 
+You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on
+digital ocean as they were kind enough to offer me some hosting vouchers.
 
 Happy hacking!
 
@@ -43,6 +45,12 @@ Happy hacking!
 * `$ yarn start`
 
 * Point browser to [localhost:5000](http://localhost:5000)
+
+Want to run the API server and the frontend in their own processes? Use this:
+```bash
+$ yarn start-frontend
+$ yarn start-server
+```
 
 ### Running the app within Docker
 
