@@ -16,4 +16,4 @@ COPY --chown=octocat:octocat . /app
 
 EXPOSE 5000
 
-ENTRYPOINT ["node", "index.js"]
+ENTRYPOINT ["yarn", "start"]

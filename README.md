@@ -12,10 +12,12 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 ## 2018!
 
-I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
+~I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
 React on the front end. I did make a start, and may look to release it midway through Hacktoberfest. If you fancy hacking
 along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
-kept it as it were last year (obviously updated the year and new PR requirement).
+kept it as it were last year (obviously updated the year and new PR requirement).~
+
+With massive thanks to [Rafael Klaessen](https://github.com/rafaelklaessen) the react version is now merged and live!
 
 I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
 
