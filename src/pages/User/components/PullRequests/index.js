@@ -108,7 +108,7 @@ export default class PullRequests extends Component {
           />
         </div>
         <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
-          {data.prs.length &&
+          {data.prs.length > 0 &&
             data.prs.map((pullRequest, i) => (
               <PullRequest pullRequest={pullRequest} key={i} />
             ))}
