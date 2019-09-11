@@ -1,9 +1,0 @@
-node_modules
-CONTRIBUTING.md
-LICENSE
-README.MD
-.git
-.github
-.eslintrc
-.editorconfig
-.env.example
