@@ -14,8 +14,11 @@
     "react-dom": "16.9.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "cssnano": "^4.1.10",
     "eslint": "^6.3.0",
     "eslint-plugin-react": "^7.14.3",
+    "postcss-easy-import": "^3.0.0",
     "tailwindcss": "^1.1.2"
   }
 }

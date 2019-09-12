@@ -7,7 +7,7 @@ const links = [
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
-})
+});
 
 const Nav = () => (
   <nav>
@@ -51,6 +51,6 @@ const Nav = () => (
       }
     `}</style>
   </nav>
-)
+);
 
 export default Nav
