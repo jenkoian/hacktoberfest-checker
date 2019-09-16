@@ -10,15 +10,20 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "next": "9.0.5",
+    "next-fonts": "^0.18.0",
+    "postcss-url": "^8.0.0",
     "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "react-dom": "16.9.0",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
+    "babel-plugin-macros": "^2.6.1",
     "cssnano": "^4.1.10",
     "eslint": "^6.3.0",
     "eslint-plugin-react": "^7.14.3",
     "postcss-easy-import": "^3.0.0",
+    "tailwind.macro": "^0.5.10",
     "tailwindcss": "^1.1.2"
   }
 }

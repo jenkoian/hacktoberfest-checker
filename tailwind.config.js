@@ -1,7 +1,11 @@
 module.exports = {
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        'dark-blue': 'rgb(21, 35, 71)'
+      }
+    }
   },
   variants: {},
   plugins: []
-}
+};
