@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SiteTitle = () => (
-    <h1 className="text-center text-5xl md:text-xxl py-12 md:py-8">
+const SiteTitle = props => (
+    <h1 className="text-center text-4xl md:text-6xl py-12 md:py-8">
         <a className="text-white no-underline" href="">
-            Hacktoberfest Checker
+            {props.children}
         </a>
     </h1>
 );

@@ -1,6 +1,19 @@
 function Footer() {
     return (
-        <footer className="bg-blue-500"></footer>
+        <footer className="text-sm px-8 text-center flex-none py-4">
+            <p className="text-white">
+                Disclaimer: This site is fan made and not affiliated with{' '}
+                <a
+                    className="text-orange"
+                    href="https://hacktoberfest.digitalocean.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Hacktoberfest
+                </a>
+                .
+            </p>
+        </footer>
     );
 }
 
