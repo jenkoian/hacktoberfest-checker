@@ -9,7 +9,7 @@ const UserImage = ({ userImage, username }) => (
   >
     <img
       id="userImage"
-      alt={`GitHub profile image for ${username}`}
+      alt={`GitHub profile img for ${username}`}
       className="text-center rounded-full w-32 h-32 border-4 border-solid border-white bg-white overflow-hidden dim"
       src={userImage}
     />

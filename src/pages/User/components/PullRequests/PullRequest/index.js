@@ -17,12 +17,12 @@ const PullRequest = ({ pullRequest }) => (
 PullRequest.propTypes = {
   pullRequest: PropTypes.shape({
     number: PropTypes.number.isRequired,
-    repo_name: PropTypes.string.isRequired,
+    // repo_name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
-    has_hacktoberfest_label: PropTypes.bool.isRequired,
-    open: PropTypes.bool.isRequired,
-    merged: PropTypes.bool.isRequired,
+    // has_hacktoberfest_label: PropTypes.bool.isRequired,
+    // open: PropTypes.bool.isRequired,
+    // merged: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired

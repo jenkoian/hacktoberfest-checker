@@ -8,6 +8,7 @@ import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
+// import { promises } from 'dns';
 
 export default class PullRequests extends Component {
   static defaultProps = {
@@ -17,7 +18,8 @@ export default class PullRequests extends Component {
   state = {
     loading: true,
     data: null,
-    error: null
+    error: null,
+    userDetail: null
   };
 
   componentDidMount = () => {
@@ -42,28 +44,33 @@ export default class PullRequests extends Component {
 
   fetchPullRequests = () => {
     const username = this.props.username;
-    const apiUrl = process.env.REACT_APP_API_URL;
-
+    console.log('Pull Req Username', username);
+    const apiUrl = [
+      `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2018-10-01..2018-10-31`,
+      `https://api.github.com/search/users?q=user:${username}`
+    ];
     this.setState({
       loading: true
     });
 
-    fetch(`${apiUrl}/prs?username=${username}`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(pullRequests =>
-        this.setState({
-          loading: false,
-          data: pullRequests
-        })
-      )
-      .catch(error =>
-        this.setState({
-          loading: false,
-          error
-        })
-      );
+    const allResponses = apiUrl.map(url =>
+      fetch(url)
+        .then(response => response.json())
+        .catch(error =>
+          this.setState({
+            loading: false,
+            error
+          })
+        )
+    );
+
+    Promise.all(allResponses).then(pullRequests =>
+      this.setState({
+        loading: false,
+        data: pullRequests[0],
+        userDetail: pullRequests[1]
+      })
+    );
   };
 
   getErrorMessage = () => {
@@ -73,8 +80,8 @@ export default class PullRequests extends Component {
       return error.error_description;
     }
 
-    if (data && data.error_description) {
-      return data.error_description;
+    if (data && data.errors) {
+      return data.errors.message;
     }
 
     return "Couldn't find any data or we hit an error, err try again?";
@@ -82,34 +89,36 @@ export default class PullRequests extends Component {
 
   render = () => {
     const username = this.props.username;
-    const { loading, data, error } = this.state;
+    const { loading, data, error, userDetail } = this.state;
 
     if (loading) {
       return <LoadingIcon />;
     }
 
-    if (error || data.error_description) {
+    if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
+    console.log('This data');
+    console.log(data);
 
-    const isComplete = data.prs.length >= pullRequestAmount;
+    const isComplete = data.items.length >= pullRequestAmount;
 
     return (
       <Fragment>
         <div className="text-center text-white">
           <ShareButtons
             username={username}
-            pullRequestCount={data.prs.length}
+            pullRequestCount={data.items.length}
           />
           <UserInfo
             username={username}
-            userImage={data.userImage}
-            pullRequestCount={data.prs.length}
+            userImage={userDetail.items[0].avatar_url}
+            pullRequestCount={data.items.length}
           />
         </div>
         <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
-          {data.prs.length > 0 &&
-            data.prs.map((pullRequest, i) => (
+          {data.items.length > 0 &&
+            data.items.map((pullRequest, i) => (
               <PullRequest pullRequest={pullRequest} key={i} />
             ))}
         </div>

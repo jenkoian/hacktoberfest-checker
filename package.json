@@ -7,12 +7,9 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "start": "yarn build; yarn start-server",
-    "start-development": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
-    "start-frontend": "react-scripts start",
-    "start-server": "node index.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
     "eslint": "yarn prettier",

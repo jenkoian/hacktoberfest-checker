@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+function dateFormater(dateTime) {
+  const date = new Date(dateTime);
+  return date.toDateString();
+}
+
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
     <div className="text-grey-darker">
@@ -15,11 +20,11 @@ const PullRequestInfo = ({ pullRequest }) => (
         className="text-orange link no-underline hover:underline"
         href={pullRequest.url}
       >
-        {pullRequest.repo_name}#{pullRequest.number}
+        {pullRequest.repository_url.split('repos/')[1]}#{pullRequest.number}
       </a>
     </div>
     <div className="text-grey-dark">
-      {pullRequest.title} on {pullRequest.created_at}
+      {pullRequest.title} on {dateFormater(pullRequest.created_at)}
     </div>
   </div>
 );
@@ -27,7 +32,7 @@ const PullRequestInfo = ({ pullRequest }) => (
 PullRequestInfo.propTypes = {
   pullRequest: PropTypes.shape({
     number: PropTypes.number.isRequired,
-    repo_name: PropTypes.string.isRequired,
+    // repo_name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     user: PropTypes.shape({
