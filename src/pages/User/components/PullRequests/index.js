@@ -8,7 +8,6 @@ import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
-// import { promises } from 'dns';
 
 export default class PullRequests extends Component {
   static defaultProps = {
@@ -42,39 +41,50 @@ export default class PullRequests extends Component {
     localStorage.setItem('myGithub', username);
   };
 
-  fetchPullRequests = () => {
-    const username = this.props.username;
-    console.log('Pull Req Username', username);
-    const apiUrl = [
-      `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2018-10-01..2018-10-31`,
-      `https://api.github.com/search/users?q=user:${username}`
-    ];
-    this.setState({
-      loading: true
-    });
-
-    const allResponses = apiUrl.map(url =>
-      fetch(url, {
-        headers: {
-          Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-        }
-      })
-        .then(response => response.json())
-        .catch(error =>
-          this.setState({
-            loading: false,
-            error
-          })
-        )
-    );
-
-    Promise.all(allResponses).then(pullRequests =>
+  fetchPullRequests = async () => {
+    try {
+      const username = this.props.username;
+      const apiUrl = [
+        `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2018-10-01..2018-10-31`,
+        `https://api.github.com/search/users?q=user:${username}`
+      ];
       this.setState({
-        loading: false,
-        data: pullRequests[0],
-        userDetail: pullRequests[1]
-      })
-    );
+        loading: true
+      });
+
+      const allResponses = apiUrl.map(url =>
+        fetch(url, {
+          headers: {
+            Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+          }
+        })
+          .then(response => response.json())
+          .catch(error =>
+            this.setState({
+              loading: false,
+              error
+            })
+          )
+      );
+
+      // Promise.all(allResponses).then(pullRequests =>
+      //   this.setState({
+      //     loading: false,
+      //     data: pullRequests[0],
+      //     userDetail: pullRequests[1]
+      //   })
+      // );
+
+      const [data, userDetail] = await Promise.all(allResponses);
+
+      this.setState({
+        data,
+        userDetail,
+        loading: false
+      });
+    } catch (error) {
+      console.log('Error: ', error);
+    }
   };
 
   getErrorMessage = () => {
@@ -102,8 +112,6 @@ export default class PullRequests extends Component {
     if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
-    console.log('This data');
-    console.log(data);
 
     const isComplete = data.items.length >= pullRequestAmount;
 

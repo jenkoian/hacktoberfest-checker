@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-function dateFormater(dateTime) {
-  const date = new Date(dateTime);
-  return date.toDateString();
-}
+import dateFormater from '../../../../../utils/dateFormater';
 
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
@@ -32,7 +28,6 @@ const PullRequestInfo = ({ pullRequest }) => (
 PullRequestInfo.propTypes = {
   pullRequest: PropTypes.shape({
     number: PropTypes.number.isRequired,
-    // repo_name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     user: PropTypes.shape({
