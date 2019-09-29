@@ -54,7 +54,11 @@ export default class PullRequests extends Component {
     });
 
     const allResponses = apiUrl.map(url =>
-      fetch(url)
+      fetch(url, {
+        headers: {
+          Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+        }
+      })
         .then(response => response.json())
         .catch(error =>
           this.setState({
