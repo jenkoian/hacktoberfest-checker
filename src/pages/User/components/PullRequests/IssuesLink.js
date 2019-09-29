@@ -1,8 +1,8 @@
 import React from 'react';
 
 const IssuesLink = () => (
-  <div className="flex flex-wrap justify-center content-center">
-    <div className="text-grey-light pb-4">
+  <div className="w-4/5 mx-auto">
+    <div className="text-grey-light text-center pb-4">
       Look at the following{' '}
       <a
         href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue"
