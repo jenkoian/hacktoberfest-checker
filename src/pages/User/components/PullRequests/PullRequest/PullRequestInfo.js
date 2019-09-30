@@ -17,6 +17,9 @@ const PullRequestInfo = ({ pullRequest }) => (
       >
         {pullRequest.repo_name}#{pullRequest.number}
       </a>
+      {pullRequest.is_pending &&
+        <em className="text-mid-grey"> Pending</em>
+      }
     </div>
     <div className="text-grey-dark">
       {pullRequest.title} on {pullRequest.created_at}
