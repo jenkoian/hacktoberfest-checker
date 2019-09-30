@@ -25,6 +25,8 @@ I'll try and get some issues up which I think might be good things to contribute
 
 I've removed the issue and pull request templates as I find them more of a barrier than anything. That said, I'm not opposed to reviewing new versions should anyone wish to PR.
 
+Finally, I have to give a big shout out to [DigitalOcean](https://www.digitalocean.com/) and [Dev](https://dev.to/) for yet another awesome event and their support for this checker app also.
+
 ### Doesn't DigitalOcean have their own progress checker now?
 
 They do! However, I still think it's worth having a checker which doesn't require auth and allows you to check on your mates (or celebrity developers!).
