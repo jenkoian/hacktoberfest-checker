@@ -12,11 +12,14 @@ const PullRequestInfo = ({ pullRequest }) => (
       </a>{' '}
       submitted a pull request{' '}
       <a
-        className="text-orange link no-underline hover:underline"
+        className="text-mid-purple link no-underline hover:underline"
         href={pullRequest.url}
       >
         {pullRequest.repo_name}#{pullRequest.number}
       </a>
+      {pullRequest.is_pending &&
+        <em className="text-mid-grey"> Pending</em>
+      }
     </div>
     <div className="text-grey-dark">
       {pullRequest.title} on {pullRequest.created_at}

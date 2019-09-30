@@ -6,29 +6,36 @@
 Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
 [https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
-([https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/) will still work)
 
-![Screenshot](hacktoberfest-checker-2018.png)
+![Screenshot](hacktoberfest-checker-2019.png)
 
-## 2018!
+## 2019!
 
-~I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
-React on the front end. I did make a start, and may look to release it midway through Hacktoberfest. If you fancy hacking
-along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
-kept it as it were last year (obviously updated the year and new PR requirement).~
+My plan for this years edition was to use next.js but sadly I ran out of time (starting the night before October may not have been the best plan!). 
+If anyone fancies learning [next.js](https://nextjs.org) along with me take a look at the [nextjs](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs) branch where I start from scratch or the [nextjs2](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs2) branch where I conver existing app to nextjs.
+In case you hadn't worked it out already, JS is not my area of expertise, but one of things I use this repo for is to keep up with JS and various libraries and things I read about and nextjs is something I like the look of.
 
-With massive thanks to [Rafael Klaessen](https://github.com/rafaelklaessen) the react version is now merged and live!
+So whether the nextjs version sees the light of day or not, I've still made a few updates to the existing app for 2019:
 
-I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
+* Updated the logo and colour scheme to fit the new theme
+* Used a hexagon for the user image
+* Updated a few underlying libraries
 
-You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on
-digital ocean as they were kind enough to offer me some hosting vouchers.
+I'll try and get some issues up which I think might be good things to contribute. 
+
+I've removed the issue and pull request templates as I find them more of a barrier than anything. That said, I'm not opposed to reviewing new versions should anyone wish to PR.
+
+Finally, I have to give a big shout out to [DigitalOcean](https://www.digitalocean.com/) and [Dev](https://dev.to/) for yet another awesome event and their support for this checker app also.
+
+### Doesn't DigitalOcean have their own progress checker now?
+
+They do! However, I still think it's worth having a checker which doesn't require auth and allows you to check on your mates (or celebrity developers!).
 
 Happy hacking!
 
 ## Requirements
 
-* Node v8+
+* Node v10+
 > Recommended to use [NVM](https://github.com/creationix/nvm)
 
 ## Running the app
@@ -40,16 +47,24 @@ Happy hacking!
    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
    * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
 
-* `$ yarn install`
+* `$ npm install`
 
-* `$ yarn start`
+* `$ npm run tailwind-gen`
+
+* `$ npm start`
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
 Want to run the API server and the frontend in their own processes? Use this:
 ```bash
-$ yarn start-frontend
-$ yarn start-server
+$ npm run start-frontend
+$ npm run start-server
+```
+
+or in a single command...
+
+```bash
+$ npm run start-development
 ```
 
 ### Running the app within Docker
@@ -66,4 +81,4 @@ or use the docker-compose
 
 ## License
 
-MIT © 2015-2018 [Ian Jenkins](https://github.com/jenkoian)
+MIT © 2015-2019 [Ian Jenkins](https://github.com/jenkoian)

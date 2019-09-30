@@ -1,22 +1,22 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "yarn build; yarn start-server",
-    "start-development": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
+    "start": "npm run build; npm run start-server",
+    "start-development": "npm-run-all -l -p  \"start-frontend\" \"start-server\"",
     "start-frontend": "react-scripts start",
     "start-server": "node index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
-    "eslint": "yarn prettier",
-    "eslint-fix": "yarn prettier-fix",
+    "tailwind-gen": "node ./node_modules/.bin/postcss ./src/style.css -o ./src/index.css",
+    "eslint": "npm run prettier",
+    "eslint-fix": "npm run prettier-fix",
     "prettier": "prettier \"{src,api}/**/*.js\"",
     "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
   },
@@ -34,17 +34,21 @@
     "lodash": "^4.17.13",
     "moment": "^2.18.1",
     "morgan": "^1.7.0",
+    "postcss-url": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.0.5"
+    "react-scripts": "3.0.1"
   },
   "devDependencies": {
-    "parallelshell": "^3.0.2",
+    "autoprefixer": "^9.6.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.3",
+    "postcss-easy-import": "^3.0.0",
     "prettier": "^1.14.3",
-    "tailwindcss": "^0.6.6"
+    "tailwindcss": "^1.1.2"
   },
   "repository": "git@github.com:jenkoian/hacktoberfest-checker.git",
   "browserslist": [
