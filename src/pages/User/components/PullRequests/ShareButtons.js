@@ -8,7 +8,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-blue text-white rounded px-2 py-1 pointer text-white no-underline text-sm"
+        className="bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue rounded px-2 py-1 pointer no-underline text-sm"
         href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${
           process.env.REACT_APP_HOSTNAME
         }/username/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
@@ -27,7 +27,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="fb-xfbml-parse-ignore bg-blue-dark text-white rounded px-2 py-1 pointer text-white no-underline text-sm"
+        className="fb-xfbml-parse-ignore bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue rounded px-2 py-1 pointer no-underline text-sm"
         href={`https://www.facebook.com/sharer/sharer.php?u=${
           process.env.REACT_APP_HOSTNAME
         }/username/${username}`}

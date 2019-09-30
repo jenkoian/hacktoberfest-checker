@@ -10,10 +10,10 @@ USER octocat
 COPY --chown=octocat:octocat package.json /app
 
 # The latest offical nodejs image already includes yarn.
-RUN yarn install --production --pure-lockfile
+RUN npm install --production
 
 COPY --chown=octocat:octocat . /app
 
 EXPOSE 5000
 
-ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT ["npm", "start"]

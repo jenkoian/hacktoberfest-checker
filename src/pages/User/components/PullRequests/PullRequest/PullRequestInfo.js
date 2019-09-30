@@ -12,7 +12,7 @@ const PullRequestInfo = ({ pullRequest }) => (
       </a>{' '}
       submitted a pull request{' '}
       <a
-        className="text-orange link no-underline hover:underline"
+        className="text-mid-purple link no-underline hover:underline"
         href={pullRequest.url}
       >
         {pullRequest.repo_name}#{pullRequest.number}

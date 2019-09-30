@@ -1,2 +1,2 @@
-release: yarn install --production --pure-lockfile
-web: yarn start
+release: npm install --production
+web: npm start
