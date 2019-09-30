@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use strict';\n\nvar ansiRegex = require('ansi-regex');\n\nvar stripAnsi = function stripAnsi(string) {\n  return typeof string === 'string' ? string.replace(ansiRegex(), '') : string;\n};\n\nmodule.exports = stripAnsi;\nmodule.exports.default = stripAnsi;","map":null,"metadata":{},"sourceType":"script"}

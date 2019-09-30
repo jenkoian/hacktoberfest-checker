@@ -1,5 +1,16 @@
 'use strict';
 
-const start = require('./api/index');
+const express = require('express');
 
-start();
+const app = express();
+const port = process.env.PORT || 5000;
+
+app.set('port', port);
+
+app.get('/*', function (req, res) {
+    res.redirect(301, 'https://hacktoberfestchecker.jenko.me' + req.path)
+});
+
+app.listen(port, () => {
+    console.log(`Express server listening on port ${port}`);
+});
