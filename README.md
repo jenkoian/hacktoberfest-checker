@@ -11,13 +11,13 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 ## 2019!
 
-My plan for this years edition was to use next.js but sadly I ran out of time (starting the night before October may not have been the best plan!). 
-If anyone fancies learning [next.js](https://nextjs.org) along with me take a look at the [nextjs](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs) branch where I start from scratch or the [nextjs2](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs2) branch where I conver existing app to nextjs.
-In case you hadn't worked it out already, JS is not my area of expertise, but one of things I use this repo for is to keep up with JS and various libraries and things I read about and nextjs is something I like the look of.
+My plan for this year's edition was to use next.js but sadly I ran out of time (starting the night before October may not have been the best plan!). 
+If anyone fancies learning [next.js](https://nextjs.org) along with me take a look at the [nextjs](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs) branch where I start from scratch or the [nextjs2](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs2) branch where I convert the existing app to nextjs.
+In case you hadn't worked it out already, JS is not my area of expertise, but one of the things I use this repo for is to keep up with JS and various libraries and things I read about and nextjs is something I like the look of.
 
 So whether the nextjs version sees the light of day or not, I've still made a few updates to the existing app for 2019:
 
-* Updated the logo and colour scheme to fit the new theme
+* Updated the logo and color scheme to fit the new theme
 * Used a hexagon for the user image
 * Updated a few underlying libraries
 
@@ -27,9 +27,9 @@ I've removed the issue and pull request templates as I find them more of a barri
 
 Finally, I have to give a big shout out to [DigitalOcean](https://www.digitalocean.com/) and [Dev](https://dev.to/) for yet another awesome event and their support for this checker app also.
 
-### Doesn't DigitalOcean have their own progress checker now?
+### Doesn't DigitalOcean have their progress checker now?
 
-They do! However, I still think it's worth having a checker which doesn't require auth and allows you to check on your mates (or celebrity developers!).
+They do! However, I still think it's worth having a checker that doesn't require auth and allows you to check on your mates (or celebrity developers!).
 
 Happy hacking!
 
@@ -45,7 +45,7 @@ Happy hacking!
 * Create a `.env` file using `.env.example` as an example. Or export the GitHub token as an environment variable for Node.js to use:
    * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
-   * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
+   * Windows (PowerShell): `$env: GITHUB_TOKEN=YOUR TOKEN`
 
 * `$ npm install`
 
@@ -55,7 +55,7 @@ Happy hacking!
 
 * Point browser to [localhost:5000](http://localhost:5000)
 
-Want to run the API server and the frontend in their own processes? Use this:
+Want to run the API server and the frontend in their processes? Use this:
 ```bash
 $ npm run start-frontend
 $ npm run start-server
