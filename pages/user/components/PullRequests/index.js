@@ -42,7 +42,7 @@ export default class PullRequests extends Component {
 
   fetchPullRequests = () => {
     const username = this.props.username;
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
     this.setState({
       loading: true

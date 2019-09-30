@@ -1,9 +1,8 @@
 import React from 'react';
-import loadingIcon from './loading-icon.gif';
 
 const LoadingIcon = () => (
   <div className="text-center">
-    <img src={loadingIcon} alt="Loading icon" />
+    <img src="/static/loading-icon.gif" alt="Loading icon" />
   </div>
 );
 

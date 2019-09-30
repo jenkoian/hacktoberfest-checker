@@ -1,6 +1,8 @@
 'use strict';
 
 const express = require('express');
+const next = require('next');
+const dev = process.env.NODE_ENV !== 'production';
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -10,38 +12,45 @@ const PrController = require('./controllers/pr');
 const path = require('path');
 
 const start = () => {
-  // Load environment variables from .env file
-  dotenv.load();
-
-  const app = express();
+  const app = next({ dev });
+  const handle = app.getRequestHandler();
 
   const githubApi = setupGithubApi();
 
-  const port = process.env.PORT || 5000;
+  app.prepare().then(() => {
+    // Load environment variables from .env file
+    dotenv.load();
+    const port = process.env.PORT || 5000;
 
-  app.set('port', port);
-  app.set('github', githubApi);
+    const server = express();
 
-  setupErrorHandling(app);
+    server.set('port', port);
+    server.set('github', githubApi);
 
-  app.use(express.static(path.join(__dirname, '../build')));
+    setupErrorHandling(server);
 
-  app.use(bodyParser.json());
+    server.use(express.static(path.join(__dirname, '../build')));
 
-  const corsOptions = {
-    origin: process.env.REACT_APP_HOSTNAME
-  };
+    server.use(bodyParser.json());
 
-  app.use(cors(corsOptions));
+    const corsOptions = {
+      origin: process.env.REACT_APP_HOSTNAME
+    };
 
-  app.get('/prs', PrController.index);
+    server.use(cors(corsOptions));
 
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-  });
+    server.get('/prs', PrController.index);
 
-  app.listen(port, () => {
-    console.log(`Express server listening on port ${port}`);
+    server.get('/*', (req, res) => {
+      return handle(req, res)
+    });
+
+    server.listen(port, () => {
+      console.log(`Express server listening on port ${port}`);
+    });
+  }).catch((ex) => {
+    console.error(ex.stack);
+    process.exit(1)
   });
 };
 

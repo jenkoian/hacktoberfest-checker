@@ -1,5 +1,4 @@
 import React from 'react';
-import './GithubCorner.css';
 
 const GithubCorner = () => (
   <a

@@ -7,18 +7,10 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "start": "yarn build; yarn start-server",
-    "start-development": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
-    "start-frontend": "react-scripts start",
-    "start-server": "node index.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css",
-    "eslint": "yarn prettier",
-    "eslint-fix": "yarn prettier-fix",
-    "prettier": "prettier \"{src,api}/**/*.js\"",
-    "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "tailwind-gen": "node ./node_modules/tailwindcss/lib/cli.js build ./tailwind-gen.css -c ./tailwind.js -o ./src/tailwind.css"
   },
   "keywords": [
     "hacktoberfest"
@@ -26,14 +18,19 @@
   "author": "Ian Jenkins",
   "license": "MIT",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "body-parser": "^1.15.1",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
+    "dotenv-load": "^2.0.0",
     "express": "^4.13.4",
     "github": "^12.0.0",
     "lodash": "^4.17.13",
     "moment": "^2.18.1",
     "morgan": "^1.7.0",
+    "next": "^9.0.7",
+    "next-env": "^1.1.0",
+    "next-fonts": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

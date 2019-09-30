@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withRouter from 'react-router-dom/withRouter';
+import Router, { withRouter } from 'next/router'
 import TimeMessage from './TimeMessage';
 import UsernameInput from './UsernameInput';
 import CheckButton from './CheckButton';
@@ -8,10 +8,6 @@ import CheckButton from './CheckButton';
 class UsernameForm extends Component {
   static propTypes = {
     username: PropTypes.string,
-    // Provided by withRouter()
-    history: PropTypes.shape({
-      push: PropTypes.func.isRequired
-    }).isRequired
   };
 
   static defaultProps = {
@@ -34,7 +30,9 @@ class UsernameForm extends Component {
     }
 
     const userUrl = this.getUserUrl(username);
-    this.props.history.push(userUrl);
+    Router.push({
+      pathname: userUrl,
+    });
   };
 
   getUserUrl = username => `/user/${username}`;
