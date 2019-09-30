@@ -15,7 +15,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/.bin/postcss ./src/style.css -o ./src/index.css",
-    "eslint": "npmn run prettier",
+    "eslint": "npm run prettier",
     "eslint-fix": "npm run prettier-fix",
     "prettier": "prettier \"{src,api}/**/*.js\"",
     "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
@@ -40,7 +40,7 @@
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
