@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RegisterReminder = () => (
-  <div className="flex flex-none items-center justify-center p-2 bg-white text-orange">
+  <div className="flex flex-none items-center justify-center p-2 bg-white text-mid-purple">
     <svg
       className="w-4 h-4"
       data-icon="info"
@@ -14,10 +14,10 @@ const RegisterReminder = () => (
     <span className="text-md leading-tight ml-4 mr-16 md:mr-8">
       Remember to{' '}
       <a
-        href="https://hacktoberfest.digitalocean.com/sign_up/register"
+        href="https://hacktoberfest.digitalocean.com/profile"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-orange underline"
+        className="text-mid-purple underline"
       >
         register
       </a>{' '}

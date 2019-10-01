@@ -6,22 +6,26 @@ export default class MeLinkInfo extends Component {
     username: PropTypes.string.isRequired
   };
 
-  storeUsernameAsMe = () =>
+  storeUsernameAsMe = () => {
     localStorage.setItem('myGithub', this.props.username);
+    this.forceUpdate();
+  };
 
-  render = () => (
-    <div className="rounded mx-auto mt-16 overflow-hidden w-5/6 lg:w-1/2 mt-4">
+  render = () => {
+    let storeUsernameBtn = (
       <button
-        className="bg-teal-lighter text-pink-darkest mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser"
+        className="bg-mid-purple text-white hover:bg-light-blue hover:text-mid-blue mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser"
         onClick={this.storeUsernameAsMe}
       >
         This is Me
       </button>
-      <p className="text-grey-dark mx-auto text-center my-4">
+    );
+    let infoStr = (
+      <p className="text-mid-grey mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
         <a
           href={`${process.env.REACT_APP_HOSTNAME}/me`}
-          className="link text-orange underline-hover saveUser"
+          className="link text-mid-purple underline-hover saveUser"
           id="melink"
         >
           {process.env.REACT_APP_HOSTNAME}
@@ -29,6 +33,30 @@ export default class MeLinkInfo extends Component {
         </a>{' '}
         on this device.
       </p>
-    </div>
-  );
+    );
+    const savedUsername = localStorage.getItem('myGithub');
+    if (savedUsername === this.props.username) {
+      storeUsernameBtn = null;
+      infoStr = (
+        <p className="text-mid-grey mx-auto text-center my-4">
+          Username {this.props.username} saved! You can visit{' '}
+          <a
+            href={`${process.env.REACT_APP_HOSTNAME}/me`}
+            className="link text-mid-purple underline-hover saveUser"
+            id="melink"
+          >
+            {process.env.REACT_APP_HOSTNAME}
+            /me
+          </a>{' '}
+          now!
+        </p>
+      )
+    }
+    return (
+      <div className="rounded mx-auto mt-16 overflow-hidden w-5/6 lg:w-1/2 mt-4">
+        {storeUsernameBtn}
+        {infoStr}
+      </div>
+    )
+  };
 }

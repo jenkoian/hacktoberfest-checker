@@ -3,7 +3,7 @@
   "description":
     "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt.",
   "keywords": ["hacktoberfest", "hacktoberfestchecker"],
-  "website": "https://hacktoberfestchecker.herokuapp.com",
+  "website": "https://hacktoberfestchecker.jenko.me",
   "repository": "https://github.com/jenkoian/hacktoberfest-checker",
   "logo":
     "https://github.com/jenkoian/hacktoberfest-checker/blob/master/public/img/og.png?raw=true",

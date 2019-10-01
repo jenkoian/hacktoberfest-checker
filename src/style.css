@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'squealerregular';
+  src: url('./fonts/squealer-webfont.eot');
+  src: url('./fonts/squealer-webfont.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/squealer-webfont.woff2') format('woff2'),
+    url('./fonts/squealer-webfont.woff') format('woff'),
+    url('./fonts/squealer-webfont.ttf') format('truetype'),
+    url('./fonts/squealer-webfont.svg#squealerregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'lazer84regular';
+  src: url('./fonts/lazer84-webfont.eot');
+  src: url('./fonts/lazer84-webfont.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/lazer84-webfont.woff2') format('woff2'),
+  url('./fonts/lazer84-webfont.woff') format('woff'),
+  url('./fonts/lazer84-webfont.ttf') format('truetype'),
+  url('./fonts/lazer84-webfont.svg#lazer84regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+body {
+  @apply bg-dark-blue p-12;
+  font-family: 'proxima-nova', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue',
+    'Arial', sans-serif;
+  padding: 0;
+}
+
+h1 {
+  font-family: "squealerregular", serif;
+  font-weight: normal;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+}
+
+h1 span {
+  font-family: "lazer84regular", serif;
+  font-weight: normal;
+  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+}
+
+.dim {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.dim:hover {
+  opacity: 0.6;
+}
+
+.bn.br--left.br1.ph2 {
+  transition: box-shadow ease-in-out 0.2s;
+}
+
+.bn.br--left.br1.ph2:focus {
+  outline: none;
+}
+
+/* Generated at http://brenna.github.io/csshexagon/ */
+.hexagon {
+  position: relative;
+  width: 128px;
+  height: 73.90px;
+  margin: 36.95px 0;
+  background-image: url(https://avatars0.githubusercontent.com/u/131355?v=);
+  background-size: auto 136.2547px;
+  background-position: center;
+  border-left: solid 5px #fefcff;
+  border-right: solid 5px #fefcff;
+}
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 90.51px;
+  height: 90.51px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 13.75px;
+  text-align: initial;
+}
+
+/*counter transform the bg image on the caps*/
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 118.0000px;
+  height: 68.12733176437585px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -45.2548px;
+  border-top: solid 7.0711px #fefcff;
+  border-right: solid 7.0711px #fefcff;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -45.2548px;
+  border-bottom: solid 7.0711px #fefcff;
+  border-left: solid 7.0711px #fefcff;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 2.8868px;
+  left: 0;
+  width: 118.0000px;
+  height: 68.1273px;
+  z-index: 2;
+  background: inherit;
+}
