@@ -9,7 +9,7 @@ export default class MeLinkInfo extends Component {
   storeUsernameAsMe = () => {
     localStorage.setItem('myGithub', this.props.username);
     this.forceUpdate();
-  }
+  };
 
   render = () => {
     let storeUsernameBtn = (
