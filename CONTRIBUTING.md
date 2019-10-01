@@ -13,5 +13,5 @@
 - Push to the branch: (`git push origin my-new-feature`)
 
 ### Step 5
-- Create pull request
+- Create pull request (And you are all set)
 
