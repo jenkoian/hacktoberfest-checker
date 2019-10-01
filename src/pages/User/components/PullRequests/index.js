@@ -67,14 +67,6 @@ export default class PullRequests extends Component {
           )
       );
 
-      // Promise.all(allResponses).then(pullRequests =>
-      //   this.setState({
-      //     loading: false,
-      //     data: pullRequests[0],
-      //     userDetail: pullRequests[1]
-      //   })
-      // );
-
       const [data, userDetail] = await Promise.all(allResponses);
 
       this.setState({

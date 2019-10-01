@@ -9,7 +9,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="bg-blue text-white rounded px-2 py-1 pointer text-white no-underline text-sm"
-        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/username/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
+        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/username/${username}&hashtags=frogtoberfest, frogtoberfest`}
         data-size="large"
       >
         <i className="fab fa-twitter fa-lg" /> Tweet

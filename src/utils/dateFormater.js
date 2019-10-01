@@ -1,6 +1,6 @@
-const dateFormater = dateTime => {
+const dateFormatter = dateTime => {
   const date = new Date(dateTime);
   return date.toDateString();
 };
 
-export default dateFormater;
+export default dateFormatter;

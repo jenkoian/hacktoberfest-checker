@@ -21,3 +21,6 @@ build/
 
 #yarn files
 yarn-error.log
+
+#vscode stuff
+.vscode

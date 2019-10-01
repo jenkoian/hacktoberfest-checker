@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dateFormater from '../../../../../utils/dateFormater';
+import dateFormatter from '../../../../../utils/dateFormater';
 
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
@@ -20,7 +20,7 @@ const PullRequestInfo = ({ pullRequest }) => (
       </a>
     </div>
     <div className="text-grey-dark">
-      {pullRequest.title} on {dateFormater(pullRequest.created_at)}
+      {pullRequest.title} on {dateFormatter(pullRequest.created_at)}
     </div>
   </div>
 );
