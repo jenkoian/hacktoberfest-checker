@@ -8,7 +8,7 @@ export default class MeLinkInfo extends Component {
 
   storeUsernameAsMe = () => {
     localStorage.setItem('myGithub', this.props.username);
-    this.forceUpdate()
+    this.forceUpdate();
   }
 
   render = () => {
@@ -19,7 +19,7 @@ export default class MeLinkInfo extends Component {
       >
         This is Me
       </button>
-    )
+    );
     let infoStr = (
       <p className="text-mid-grey mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
@@ -33,10 +33,10 @@ export default class MeLinkInfo extends Component {
         </a>{' '}
         on this device.
       </p>
-    )
-    const savedUsername = localStorage.getItem('myGithub')
+    );
+    const savedUsername = localStorage.getItem('myGithub');
     if (savedUsername === this.props.username) {
-      storeUsernameBtn = null
+      storeUsernameBtn = null;
       infoStr = (
         <p className="text-mid-grey mx-auto text-center my-4">
           Username {this.props.username} saved! You can visit{' '}
