@@ -25,7 +25,7 @@ export default class MeLinkInfo extends Component {
         In the future, you can find your PRs by visiting{' '}
         <a
           href={`${process.env.REACT_APP_HOSTNAME}/me`}
-          className="link text-mid-purple underline-hover saveUser"
+          className="link saveUser"
           id="melink"
         >
           {process.env.REACT_APP_HOSTNAME}
@@ -42,7 +42,7 @@ export default class MeLinkInfo extends Component {
           Username {this.props.username} saved! You can visit{' '}
           <a
             href={`${process.env.REACT_APP_HOSTNAME}/me`}
-            className="link text-mid-purple underline-hover saveUser"
+            className="link saveUser"
             id="melink"
           >
             {process.env.REACT_APP_HOSTNAME}
@@ -50,13 +50,13 @@ export default class MeLinkInfo extends Component {
           </a>{' '}
           now!
         </p>
-      )
+      );
     }
     return (
       <div className="rounded mx-auto mt-16 overflow-hidden w-5/6 lg:w-1/2 mt-4">
         {storeUsernameBtn}
         {infoStr}
       </div>
-    )
+    );
   };
 }
