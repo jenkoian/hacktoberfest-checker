@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import User from './pages/User';
 import Me from './pages/Me';
 import NotFound from './pages/NotFound';
+import Faq from './pages/Faq'
 
 const App = () => (
   <Fragment>
@@ -21,6 +22,7 @@ const App = () => (
           <Route exact path="/" component={Home} />
           <Route exact path="/user/:username" component={User} />
           <Route exact path="/me" component={Me} />
+          <Route exact path="/faq" component={Faq} />
           <Route component={NotFound} />
         </Switch>
       </Router>

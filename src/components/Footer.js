@@ -14,6 +14,9 @@ const Footer = () => (
       </a>
       .
     </p>
+    <p className="text-white">
+      <a href="/Faq">F.A.Q.</a>
+    </p>
   </footer>
 );
 
