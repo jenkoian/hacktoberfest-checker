@@ -18,17 +18,23 @@ export default class PullRequests extends Component {
     loading: true,
     data: null,
     error: null,
-    userDetail: null
+    userDetail: null,
+    otherReposCount: null
   };
 
   componentDidMount = () => {
     this.storeUsernameAsMe();
     this.fetchPullRequests();
+    // console.log('Data', this.state.data);
+    // this.counterOtherRepos(this.state.data, this.state.userDetail);
   };
 
   componentDidUpdate = prevProps => {
     if (prevProps.username === this.props.username) return;
     this.fetchPullRequests();
+    // console.log('Data', this.state.data);
+    // this.counterOtherRepos(this.state.data, this.state.userDetail);
+    // console.log('otherPrs', this.state.counterOtherRepos);
   };
 
   storeUsernameAsMe = () => {
@@ -68,11 +74,12 @@ export default class PullRequests extends Component {
       );
 
       const [data, userDetail] = await Promise.all(allResponses);
-
+      const count = this.counterOtherRepos(data, userDetail);
       this.setState({
         data,
         userDetail,
-        loading: false
+        loading: false,
+        otherReposCount: count
       });
     } catch (error) {
       console.log('Error: ', error);
@@ -93,6 +100,45 @@ export default class PullRequests extends Component {
     return "Couldn't find any data or we hit an error, err try again?";
   };
 
+  conditionChecker(data, userDetail) {
+    // const user = userDetail.items[0].login;
+    // let count = 0;
+
+    // data.items.forEach((pullRequest, index) => {
+    //   const repoOwner = pullRequest.repository_url
+    //     .split('/repos/')
+    //     .pop()
+    //     .split('/')
+    //     .shift();
+    //   if (repoOwner !== user) {
+    //     count++;
+    //   }
+    // });
+
+    if (data.items.length < 10) {
+      return false;
+    }
+    return this.state.otherReposCount >= 4;
+  }
+
+  counterOtherRepos(data, userDetail) {
+    const user = userDetail.items[0].login;
+    let count = 0;
+
+    data.items.forEach((pullRequest, index) => {
+      const repoOwner = pullRequest.repository_url
+        .split('/repos/')
+        .pop()
+        .split('/')
+        .shift();
+      if (repoOwner !== user) {
+        count++;
+      }
+    });
+
+    return count;
+  }
+
   render = () => {
     const username = this.props.username;
     const { loading, data, error, userDetail } = this.state;
@@ -105,7 +151,8 @@ export default class PullRequests extends Component {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
 
-    const isComplete = data.items.length >= pullRequestAmount;
+    // const isComplete = data.items.length >= pullRequestAmount;
+    const isComplete = this.conditionChecker(data, userDetail);
 
     return (
       <Fragment>
@@ -118,6 +165,7 @@ export default class PullRequests extends Component {
             username={username}
             userImage={userDetail.items[0].avatar_url}
             pullRequestCount={data.items.length}
+            otherReposCount={this.state.otherReposCount}
           />
         </div>
         <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">

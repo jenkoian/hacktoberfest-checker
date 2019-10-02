@@ -1,7 +1,10 @@
 import React from 'react';
 
 const RegisterReminder = () => (
-  <div className="flex flex-none items-center justify-center p-2 bg-white text-orange">
+  <div
+    className="flex flex-none items-center justify-center p-2 bg-white text-orange"
+    style={styles}
+  >
     <svg
       className="w-4 h-4"
       data-icon="info"
@@ -25,5 +28,9 @@ const RegisterReminder = () => (
     </span>
   </div>
 );
+
+const styles = {
+  backgroundColor: '#e5e6eb'
+};
 
 export default RegisterReminder;

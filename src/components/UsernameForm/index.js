@@ -47,6 +47,7 @@ class UsernameForm extends Component {
         className="flex h-8 mx-auto w-5/6 md:w-3/5 lg:w-1/3"
         method="get"
         onSubmit={this.handleSubmit}
+        style={formStyle}
       >
         <UsernameInput
           value={this.state.username}
@@ -57,5 +58,9 @@ class UsernameForm extends Component {
     </div>
   );
 }
+
+const formStyle = {
+  border: '2px solid #133370'
+};
 
 export default withRouter(UsernameForm);
