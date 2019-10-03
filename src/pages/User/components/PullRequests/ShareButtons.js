@@ -9,7 +9,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue px-2 py-1 pointer no-underline text-sm"
-        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/username/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
+        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/user/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
         data-size="large"
       >
         <i className="fab fa-twitter fa-lg" /> Tweet
@@ -18,7 +18,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
     <div
       className="p-2"
       id="fb-share"
-      data-href={`${process.env.REACT_APP_HOSTNAME}/username/${username}`}
+      data-href={`${process.env.REACT_APP_HOSTNAME}/user/${username}`}
       data-layout="button"
       data-size="large"
     >
@@ -26,7 +26,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="fb-xfbml-parse-ignore bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue px-2 py-1 pointer no-underline text-sm"
-        href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.REACT_APP_HOSTNAME}/username/${username}`}
+        href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.REACT_APP_HOSTNAME}/user/${username}`}
       >
         <i className="fab fa-facebook fa-lg" /> Share
       </a>
