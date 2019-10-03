@@ -6,7 +6,7 @@ import PullRequestInfo from './PullRequestInfo';
 const PullRequest = ({ pullRequest }) => (
   <div
     className={`bg-white leading-normal ${
-      pullRequest.has_hacktoberfest_label ? 'hacktoberfest' : ''
+      pullRequest.has_hacktoberfest_label ? 'hacktoberfest ' : ''
     }p-4 flex border-b border-grey break-words`}
   >
     <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
