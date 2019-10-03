@@ -9745,6 +9745,10 @@ video {
   color: #99a1b3;
 }
 
+.text-glow {
+  text-shadow: 0 0 2px #f2dd5e, 0 0 10px #f2dd5e, 0 0 35px #f2dd5e;
+}
+
 .hover\:text-transparent:hover {
   color: transparent;
 }
