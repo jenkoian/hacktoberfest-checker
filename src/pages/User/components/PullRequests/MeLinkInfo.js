@@ -14,6 +14,7 @@ export default class MeLinkInfo extends Component {
       <button
         className="bg-teal-lighter text-pink-darkest mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser"
         onClick={this.storeUsernameAsMe}
+        style={buttonStyle}
       >
         This is Me
       </button>
@@ -32,3 +33,7 @@ export default class MeLinkInfo extends Component {
     </div>
   );
 }
+
+const buttonStyle = {
+  border: '2px solid #12336f'
+};

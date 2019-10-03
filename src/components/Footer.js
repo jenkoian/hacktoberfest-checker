@@ -1,8 +1,12 @@
 import React from 'react';
+import presentedByLogo from '../assets/images/presented by logo lockup 1x.png';
 
 const Footer = () => (
-  <footer className="text-sm px-8 text-center flex-none py-4">
-    <p className="text-white">
+  <footer
+    className="text-sm px-8 text-center flex-none py-4"
+    style={footerStyle}
+  >
+    {/* <p className="text-white">
       Disclaimer: This site is fan made and not affiliated with{' '}
       <a
         className="text-orange"
@@ -13,8 +17,14 @@ const Footer = () => (
         Hacktoberfest
       </a>
       .
-    </p>
+    </p> */}
+    <img src={presentedByLogo}></img>
   </footer>
 );
+
+const footerStyle = {
+  width: '30%',
+  margin: '20px auto'
+};
 
 export default Footer;
