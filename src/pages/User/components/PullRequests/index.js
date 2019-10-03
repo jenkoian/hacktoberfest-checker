@@ -8,6 +8,7 @@ import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
+import { GITHUB_TOKEN } from '../../../../config';
 
 export default class PullRequests extends Component {
   static defaultProps = {
@@ -46,7 +47,7 @@ export default class PullRequests extends Component {
     try {
       const username = this.props.username;
       const apiUrl = [
-        `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2018-10-01..2018-10-31`,
+        `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
         `https://api.github.com/search/users?q=user:${username}`
       ];
       this.setState({
@@ -56,25 +57,19 @@ export default class PullRequests extends Component {
       const allResponses = apiUrl.map(url =>
         fetch(url, {
           headers: {
-            Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+            Authorization: `token ${GITHUB_TOKEN}`
           }
         })
-          .then(response => {
-            console.log(';All good');
-            return response.json();
-          })
-          .catch(error => {
-            console.log('error encountered in catch');
-            return this.setState({
+          .then(response => response.json())
+          .catch(error =>
+            this.setState({
               loading: false,
               error
-            });
-          })
+            })
+          )
       );
 
       const [data, userDetail] = await Promise.all(allResponses);
-      console.log('data', data);
-      console.log('userDetail', userDetail);
       const count = this.counterOtherRepos(data, userDetail);
       this.setState({
         data,
@@ -84,9 +79,6 @@ export default class PullRequests extends Component {
         error: null
       });
     } catch (error) {
-      console.log('Error', error);
-      console.log('data', this.state.data);
-      console.log('userDetail', this.state.userDetail);
       this.setState({
         error,
         loading: false,
@@ -118,9 +110,6 @@ export default class PullRequests extends Component {
   }
 
   counterOtherRepos(data, userDetail) {
-    // if (!data && !userDetail) {
-    //   return null;
-    // }
     const user = userDetail.items[0].login;
     let count = 0;
 
@@ -141,7 +130,6 @@ export default class PullRequests extends Component {
   render = () => {
     const username = this.props.username;
     const { loading, data, error, userDetail } = this.state;
-    console.log('Error in render', error);
     if (loading) {
       return <LoadingIcon />;
     }

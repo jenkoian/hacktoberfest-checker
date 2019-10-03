@@ -7,14 +7,14 @@ const PullRequestInfo = ({ pullRequest }) => (
     <div className="text-grey-darker">
       <a
         className="text-grey-darker font-semibold link no-underline hover:underline"
-        href={pullRequest.user.url}
+        href={pullRequest.user.html_url}
       >
         {pullRequest.user.login}
       </a>{' '}
       submitted a pull request{' '}
       <a
         className="text-orange link no-underline hover:underline"
-        href={pullRequest.url}
+        href={pullRequest.html_url}
       >
         {pullRequest.repository_url.split('repos/')[1]}#{pullRequest.number}
       </a>

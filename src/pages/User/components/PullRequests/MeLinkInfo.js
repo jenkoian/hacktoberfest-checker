@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { HOSTNAME } from '../../../../config';
 
 export default class MeLinkInfo extends Component {
   static propTypes = {
@@ -21,11 +22,11 @@ export default class MeLinkInfo extends Component {
       <p className="text-grey-dark mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
         <a
-          href={`${process.env.REACT_APP_HOSTNAME}/me`}
+          href={`${HOSTNAME}/me`}
           className="link text-orange underline-hover saveUser"
           id="melink"
         >
-          {process.env.REACT_APP_HOSTNAME}
+          {HOSTNAME}
           /me
         </a>{' '}
         on this device.

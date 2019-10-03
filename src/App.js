@@ -14,7 +14,7 @@ const App = () => (
   <Fragment>
     <Helmet titleTemplate="%s | Hacktoberfest Checker" />
     <GithubCorner />
-    <RegisterReminder />
+    {/* <RegisterReminder /> */}
     <PageWrapper>
       <Router>
         <Switch>

@@ -32,7 +32,6 @@ class UsernameForm extends Component {
     if (username.trim().length === 0) {
       return;
     }
-    console.log(username);
     const userUrl = this.getUserUrl(username);
     this.props.history.push(userUrl);
   };
