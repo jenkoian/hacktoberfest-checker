@@ -1,4 +1,31 @@
 @tailwind base;
+
+body {
+  @apply bg-dark-blue p-12 text-mid-grey;
+  font-family: 'Space Mono', monospace;
+  padding: 0;
+}
+
+h1 {
+  font-family: "squealerregular", serif;
+  font-weight: normal;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+}
+
+h1 span {
+  font-family: "lazer84regular", serif;
+  font-weight: normal;
+  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+}
+
+a {
+  @apply text-light-blue;
+}
+
+a:hover {
+  @apply text-mid-purple;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -25,26 +52,6 @@
   font-weight: normal;
   font-style: normal;
 
-}
-
-body {
-  @apply bg-dark-blue p-12;
-  font-family: 'proxima-nova', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue',
-    'Arial', sans-serif;
-  padding: 0;
-}
-
-h1 {
-  font-family: "squealerregular", serif;
-  font-weight: normal;
-  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
-}
-
-h1 span {
-  font-family: "lazer84regular", serif;
-  font-weight: normal;
-  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
 }
 
 .dim {
@@ -84,8 +91,6 @@ h1 span {
   width: 90.51px;
   height: 90.51px;
   overflow: hidden;
-  -webkit-transform: scaleY(0.5774) rotate(-45deg);
-  -ms-transform: scaleY(0.5774) rotate(-45deg);
   transform: scaleY(0.5774) rotate(-45deg);
   background: inherit;
   left: 13.75px;
@@ -99,11 +104,7 @@ h1 span {
   position: absolute;
   width: 118.0000px;
   height: 68.12733176437585px;
-  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
-  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
-  transform:          rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
-  -webkit-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
+  transform: rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
   transform-origin: 0 0;
   background: inherit;
 }
@@ -137,4 +138,16 @@ h1 span {
   height: 68.1273px;
   z-index: 2;
   background: inherit;
+}
+
+.pull-request {
+  @apply bg-dark-blue-alt block;
+
+  transition: all .3s ease-out;
+}
+
+.pull-request:hover {
+  @apply shadow-2xl;
+
+  transform: scale(1.04, 1.04);
 }

@@ -8,10 +8,8 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue rounded px-2 py-1 pointer no-underline text-sm"
-        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${
-          process.env.REACT_APP_HOSTNAME
-        }/username/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
+        className="bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue px-2 py-1 pointer no-underline text-sm"
+        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/username/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
         data-size="large"
       >
         <i className="fab fa-twitter fa-lg" /> Tweet
@@ -27,10 +25,8 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="fb-xfbml-parse-ignore bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue rounded px-2 py-1 pointer no-underline text-sm"
-        href={`https://www.facebook.com/sharer/sharer.php?u=${
-          process.env.REACT_APP_HOSTNAME
-        }/username/${username}`}
+        className="fb-xfbml-parse-ignore bg-mid-purple hover:bg-light-blue text-white hover:text-mid-blue px-2 py-1 pointer no-underline text-sm"
+        href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.REACT_APP_HOSTNAME}/username/${username}`}
       >
         <i className="fab fa-facebook fa-lg" /> Share
       </a>

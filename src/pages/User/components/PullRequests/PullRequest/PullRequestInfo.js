@@ -3,25 +3,13 @@ import PropTypes from 'prop-types';
 
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
-    <div className="text-grey-darker">
-      <a
-        className="text-grey-darker font-semibold link no-underline hover:underline"
-        href={pullRequest.user.url}
-      >
-        {pullRequest.user.login}
-      </a>{' '}
-      submitted a pull request{' '}
-      <a
-        className="text-mid-purple link no-underline hover:underline"
-        href={pullRequest.url}
-      >
+    <div className="mb-4">
+      <span className="text-light-blue">
         {pullRequest.repo_name}#{pullRequest.number}
-      </a>
-      {pullRequest.is_pending &&
-        <em className="text-mid-grey"> Pending</em>
-      }
+      </span>
+      {pullRequest.is_pending && <em className="text-mid-grey"> Pending</em>}
     </div>
-    <div className="text-grey-dark">
+    <div>
       {pullRequest.title} on {pullRequest.created_at}
     </div>
   </div>

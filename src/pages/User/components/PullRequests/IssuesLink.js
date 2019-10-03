@@ -6,7 +6,6 @@ const IssuesLink = () => (
       Look at the following{' '}
       <a
         href="https://github.com/search?q=label:hacktoberfest+state:open+type:issue"
-        className="text-mid-purple"
         target="_blank"
         rel="noopener noreferrer"
       >
