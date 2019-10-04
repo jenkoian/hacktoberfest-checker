@@ -1,0 +1,47 @@
+---
+version: 2
+jobs:
+  aws_s3_deploy:
+    docker:
+      - image: leapfrogtechnology/envault:0.4.6-node10.16.0-stretch-slim
+    steps:
+      - checkout
+      - run:
+          name: Setup Stage
+          command: |
+            if [ $CIRCLE_BRANCH == "dev" ] || [ $CIRCLE_BRANCH == "CI-V2" ]
+            then
+              echo 'export STAGE=dev' >> ~/.bashrc
+            elif [ $CIRCLE_BRANCH == "uat" ]
+            then
+              echo 'export STAGE=uat' >> ~/.bashrc
+            elif [ $CIRCLE_BRANCH == "qa" ]
+            then
+              echo 'export STAGE=qa' >> ~/.bashrc
+            elif [ $CIRCLE_BRANCH == "release" ]
+            then
+              echo 'export STAGE=staging' >> ~/.bashrc
+            elif [ $CIRCLE_BRANCH == "master" ]
+            then
+              echo 'export STAGE=production' >> ~/.bashrc
+            else
+              echo "Undefined stage"
+            fi
+            echo 'export CI=false' >> ~/.bashrc
+      - run:
+          name: Copy Dist Files to AWS S3 Buckets
+          command: |
+                  source ~/.bashrc;
+                  yarn;
+                  yarn build;
+                  aws s3 sync build s3://$BUCKET_NAME/ --delete;
+workflows:
+  version: 2
+  deploy_app:
+    jobs:
+      - aws_s3_deploy:
+          filters:
+            branches:
+              only:
+                - ci-integration
+                - master
