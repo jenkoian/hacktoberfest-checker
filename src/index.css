@@ -9353,6 +9353,10 @@ a:hover {
   color: #99a1b3;
 }
 
+.glowly-blue {
+  text-shadow: 0 0 1px #001716, 0 0 12px #03edf975, 0 0 5px #03edf975, 0 0 8px #03edf975;
+}
+
 .hover\:text-transparent:hover {
   color: transparent;
 }
