@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { HOSTNAME } from '../../../../config';
 
 export default class MeLinkInfo extends Component {
   static propTypes = {
@@ -14,17 +15,18 @@ export default class MeLinkInfo extends Component {
       <button
         className="bg-teal-lighter text-pink-darkest mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser"
         onClick={this.storeUsernameAsMe}
+        style={buttonStyle}
       >
         This is Me
       </button>
       <p className="text-grey-dark mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
         <a
-          href={`${process.env.REACT_APP_HOSTNAME}/me`}
+          href={`${HOSTNAME}/me`}
           className="link text-orange underline-hover saveUser"
           id="melink"
         >
-          {process.env.REACT_APP_HOSTNAME}
+          {HOSTNAME}
           /me
         </a>{' '}
         on this device.
@@ -32,3 +34,7 @@ export default class MeLinkInfo extends Component {
     </div>
   );
 }
+
+const buttonStyle = {
+  border: '2px solid #12336f'
+};

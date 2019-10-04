@@ -8,6 +8,7 @@ import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
+import { GITHUB_TOKEN } from '../../../../config';
 
 export default class PullRequests extends Component {
   static defaultProps = {
@@ -17,7 +18,9 @@ export default class PullRequests extends Component {
   state = {
     loading: true,
     data: null,
-    error: null
+    error: null,
+    userDetail: null,
+    otherReposCount: null
   };
 
   componentDidMount = () => {
@@ -40,30 +43,49 @@ export default class PullRequests extends Component {
     localStorage.setItem('myGithub', username);
   };
 
-  fetchPullRequests = () => {
-    const username = this.props.username;
-    const apiUrl = process.env.REACT_APP_API_URL;
+  fetchPullRequests = async () => {
+    try {
+      const username = this.props.username;
+      const apiUrl = [
+        `https://api.github.com/search/issues?q=author:${username}+is:pr+created:2019-10-01..2019-10-31`,
+        `https://api.github.com/search/users?q=user:${username}`
+      ];
+      this.setState({
+        loading: true
+      });
 
-    this.setState({
-      loading: true
-    });
-
-    fetch(`${apiUrl}/prs?username=${username}`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(pullRequests =>
-        this.setState({
-          loading: false,
-          data: pullRequests
+      const allResponses = apiUrl.map(url =>
+        fetch(url, {
+          headers: {
+            Authorization: `token ${GITHUB_TOKEN}`
+          }
         })
-      )
-      .catch(error =>
-        this.setState({
-          loading: false,
-          error
-        })
+          .then(response => response.json())
+          .catch(error =>
+            this.setState({
+              loading: false,
+              error
+            })
+          )
       );
+
+      const [data, userDetail] = await Promise.all(allResponses);
+      const count = this.counterOtherRepos(data, userDetail);
+      this.setState({
+        data,
+        userDetail,
+        loading: false,
+        otherReposCount: count,
+        error: null
+      });
+    } catch (error) {
+      this.setState({
+        error,
+        loading: false,
+        data: null,
+        userDetail: null
+      });
+    }
   };
 
   getErrorMessage = () => {
@@ -73,43 +95,67 @@ export default class PullRequests extends Component {
       return error.error_description;
     }
 
-    if (data && data.error_description) {
-      return data.error_description;
+    if (data && data.errors) {
+      return data.errors.message;
     }
 
     return "Couldn't find any data or we hit an error, err try again?";
   };
 
+  conditionChecker(data, userDetail) {
+    if (data.items.length < 10) {
+      return false;
+    }
+    return this.state.otherReposCount >= 4;
+  }
+
+  counterOtherRepos(data, userDetail) {
+    const user = userDetail.items[0].login;
+    let count = 0;
+
+    data.items.forEach((pullRequest, index) => {
+      const repoOwner = pullRequest.repository_url
+        .split('/repos/')
+        .pop()
+        .split('/')
+        .shift();
+      if (repoOwner !== user) {
+        count++;
+      }
+    });
+
+    return count;
+  }
+
   render = () => {
     const username = this.props.username;
-    const { loading, data, error } = this.state;
-
+    const { loading, data, error, userDetail } = this.state;
     if (loading) {
       return <LoadingIcon />;
     }
-
-    if (error || data.error_description) {
+    if (error || data.errors || data.message) {
       return <ErrorText errorMessage={this.getErrorMessage()} />;
     }
 
-    const isComplete = data.prs.length >= pullRequestAmount;
+    const isComplete = this.conditionChecker(data, userDetail);
 
     return (
       <Fragment>
         <div className="text-center text-white">
           <ShareButtons
             username={username}
-            pullRequestCount={data.prs.length}
+            pullRequestCount={data.items.length}
           />
           <UserInfo
             username={username}
-            userImage={data.userImage}
-            pullRequestCount={data.prs.length}
+            userImage={userDetail.items[0].avatar_url}
+            pullRequestCount={data.items.length}
+            otherReposCount={this.state.otherReposCount}
           />
         </div>
         <div className="rounded mx-auto shadow overflow-hidden w-5/6 lg:w-1/2 mb-4">
-          {data.prs.length > 0 &&
-            data.prs.map((pullRequest, i) => (
+          {data.items.length > 0 &&
+            data.items.map((pullRequest, i) => (
               <PullRequest pullRequest={pullRequest} key={i} />
             ))}
         </div>

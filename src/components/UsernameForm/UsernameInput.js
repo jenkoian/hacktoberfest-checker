@@ -13,12 +13,17 @@ const UsernameInput = ({ value, onChange, ...props }) => (
     spellCheck="false"
     autoCapitalize="none"
     autoCorrect="off"
+    style={inputStyle}
   />
 );
 
 UsernameInput.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func
+};
+
+const inputStyle = {
+  borderRight: '2px solid #133370'
 };
 
 export default UsernameInput;

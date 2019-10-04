@@ -7,10 +7,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "start": "yarn build; yarn start-server",
-    "start-development": "parallelshell \"yarn start-frontend\" \"yarn start-server\"",
-    "start-frontend": "react-scripts start",
-    "start-server": "node index.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

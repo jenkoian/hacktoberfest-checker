@@ -18,3 +18,9 @@ Thumbs.db
 public/js/main-compiled.js
 public/js/main-compiled.js.map
 build/
+
+#yarn files
+yarn-error.log
+
+#vscode stuff
+.vscode

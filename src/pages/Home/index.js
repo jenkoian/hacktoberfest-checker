@@ -4,7 +4,7 @@ import UsernameForm from '../../components/UsernameForm';
 
 const Home = () => (
   <Fragment>
-    <SiteTitle>Hacktoberfest Checker</SiteTitle>
+    <SiteTitle>Frogtoberfest Checker</SiteTitle>
     <UsernameForm />
   </Fragment>
 );

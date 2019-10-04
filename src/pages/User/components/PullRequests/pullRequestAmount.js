@@ -1,3 +1,4 @@
-const pullRequestAmount = 5;
-
-export default pullRequestAmount;
+module.exports = {
+  pullRequestAmount: 10,
+  otherReposAmount: 4
+};

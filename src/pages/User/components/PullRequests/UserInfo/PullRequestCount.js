@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import pullRequestAmount from '../pullRequestAmount';
+// import pullRequestAmount from '../pullRequestAmount';
 
-const PullRequestCount = ({ pullRequestCount }) => (
+const PullRequestCount = ({ pullRequestCount, pullRequestAmount }) => (
   <span className="block rounded text-5xl font-medium white w-64">
     {pullRequestCount} / {pullRequestAmount}
   </span>
