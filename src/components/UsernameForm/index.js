@@ -44,7 +44,7 @@ class UsernameForm extends Component {
       <TimeMessage />
       <form
         action="/"
-        className="flex h-8 mx-auto w-5/6 md:w-3/5 lg:w-1/3"
+        className="flex h-12 mx-auto w-5/6 md:w-3/5 lg:w-1/3"
         method="get"
         onSubmit={this.handleSubmit}
       >

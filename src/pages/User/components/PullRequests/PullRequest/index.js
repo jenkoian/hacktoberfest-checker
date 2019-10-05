@@ -4,14 +4,16 @@ import MergeStatus from './MergeStatus';
 import PullRequestInfo from './PullRequestInfo';
 
 const PullRequest = ({ pullRequest }) => (
-  <div
-    className={`bg-white leading-normal ${
-      pullRequest.has_hacktoberfest_label ? 'hacktoberfest' : ''
-    }p-4 flex border-b border-grey break-words`}
-  >
-    <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
-    <PullRequestInfo pullRequest={pullRequest} />
-  </div>
+  <a className="pull-request shadow-lg" href={pullRequest.url}>
+    <div
+      className={`flex text-mid-grey mb-6 ${
+        pullRequest.has_hacktoberfest_label ? 'hacktoberfest ' : ''
+      }p-4 break-words`}
+    >
+      <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
+      <PullRequestInfo pullRequest={pullRequest} />
+    </div>
+  </a>
 );
 
 PullRequest.propTypes = {
