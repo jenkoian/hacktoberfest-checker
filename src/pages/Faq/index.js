@@ -6,10 +6,12 @@ import FaqEntry from './components/FaqEntry';
 const Faq = () => (
   <Fragment>
     <SiteTitle>Hacktoberfest Checker</SiteTitle>
-    <h1 className="text-white text-center text-4xl font-extrabold">F.A.Q.</h1>
-    {faqData.map(data => (
-      <FaqEntry key={data.question} data={data}></FaqEntry>
-    ))}
+    <h1 className="text-white text-center text-4xl font-extrabold">FAQS</h1>
+    <div className="mx-auto w-5/6 lg:w-1/2 mb-4 mt-5">
+      {faqData.map(data => (
+        <FaqEntry key={data.question} data={data}></FaqEntry>
+      ))}
+    </div>
   </Fragment>
 );
 
