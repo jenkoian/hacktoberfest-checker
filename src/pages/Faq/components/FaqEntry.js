@@ -1,9 +1,5 @@
 import React from 'react';
 
-var inlineStyle = {
-  display: 'none'
-};
-
 const FaqEntry = ({ data }) => {
   //console.log(data);
   return (

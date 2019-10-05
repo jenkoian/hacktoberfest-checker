@@ -1,9 +1,5 @@
 import React from 'react';
 
-var inlineStyle = {
-  display: 'none'
-};
-
 const Footer = () => (
   <footer className="text-sm px-8 text-center flex-none py-4">
     <p className="text-white">
@@ -27,9 +23,6 @@ const Footer = () => (
       <i class="fas fa-question"/> FAQs
       </a>
     </div>
-    <p className="text-white" style={inlineStyle}>
-      <a href="/Faq">FAQs</a>
-    </p>
   </footer>
 );
 
