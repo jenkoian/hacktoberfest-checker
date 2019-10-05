@@ -5,7 +5,6 @@ const Footer = () => (
     <p className="text-white">
       Disclaimer: This site is fan made and not affiliated with{' '}
       <a
-        /* className="text-orange" */
         href="https://hacktoberfest.digitalocean.com/"
         target="_blank"
         rel="noopener noreferrer"
