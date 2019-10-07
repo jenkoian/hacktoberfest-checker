@@ -1,7 +1,6 @@
 import React from 'react';
 
 const FaqEntry = ({ data }) => {
-  //console.log(data);
   return (
     <div className="faqs shadow-lg flex text-mid-grey mb-6 p-4 break-words">
       <div className="pb-2 flex flex-wrap justify-left content-center rounded mx-auto my-5 overflow-hidden w-5/6 lg:w-100 ">
