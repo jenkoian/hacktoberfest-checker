@@ -16,10 +16,10 @@ const getTimeMessage = () => {
   }
 
   if (daysLeft < 10) {
-    return `There's only ${daysLeft} days left! You can do it!`;
+    return `There are only ${daysLeft} days left! You can do it!`;
   }
 
-  return `There's ${daysLeft} days remaining!`;
+  return `There are ${daysLeft} days remaining!`;
 };
 
 export default getTimeMessage;

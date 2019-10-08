@@ -10659,7 +10659,8 @@ a:hover {
   background: inherit;
 }
 
-.pull-request {
+.pull-request,
+.faqs {
   background-color: #1d2c4e;
   display: block;
   -webkit-transition: all .3s ease-out;

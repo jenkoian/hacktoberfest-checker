@@ -11,7 +11,7 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 ## 2019!
 
-My plan for this year's edition was to use next.js but sadly I ran out of time (starting the night before October may not have been the best plan!). 
+My plan for this year's edition was to use next.js but sadly I ran out of time (starting the night before October may not have been the best plan!).
 If anyone fancies learning [next.js](https://nextjs.org) along with me take a look at the [nextjs](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs) branch where I start from scratch or the [nextjs2](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs2) branch where I convert the existing app to nextjs.
 In case you hadn't worked it out already, JS is not my area of expertise, but one of the things I use this repo for is to keep up with JS and various libraries and things I read about and nextjs is something I like the look of.
 
@@ -21,7 +21,7 @@ So whether the nextjs version sees the light of day or not, I've still made a fe
 * Used a hexagon for the user image
 * Updated a few underlying libraries
 
-I'll try and get some issues up which I think might be good things to contribute. 
+I'll try and get some issues up which I think might be good things to contribute.
 
 I've removed the issue and pull request templates as I find them more of a barrier than anything. That said, I'm not opposed to reviewing new versions should anyone wish to PR.
 
@@ -78,6 +78,14 @@ As an alternative to the section above, you can run the app within a Docker cont
 or use the docker-compose
 
 * `$ docker-compose up --build`
+
+## Changing styling
+
+Styling is done through [tailwind](https://tailwindcss.com/) as much as possible no CSS should be added and class names favoured.
+However, there will be occasions where custom CSS is required, in this case you need to edit `style.css`
+and run `npm run tailwind-gen` to generate the new CSS file.
+
+> Note: You should never directly edit `index.css`
 
 ## License
 
