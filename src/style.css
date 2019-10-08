@@ -140,7 +140,8 @@ a:hover {
   background: inherit;
 }
 
-.pull-request {
+.pull-request,
+.faqs {
   @apply bg-dark-blue-alt block;
 
   transition: all .3s ease-out;

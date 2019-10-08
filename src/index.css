@@ -9073,6 +9073,10 @@ a:hover {
   color: #742a2a;
 }
 
+.text-orange {
+  color: #ffa500;
+}
+
 .text-orange-100 {
   color: #fffaf0;
 }
@@ -10659,7 +10663,8 @@ a:hover {
   background: inherit;
 }
 
-.pull-request {
+.pull-request,
+.faqs {
   background-color: #1d2c4e;
   display: block;
   -webkit-transition: all .3s ease-out;
