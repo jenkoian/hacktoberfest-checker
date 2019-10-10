@@ -6,5 +6,9 @@ export default [
     {
         question: "Why do some PRs show outside of October?",
         answer: "If you've submitted a PR on the last day of September or the first day of November, there is a chance of it counting if it is October in any timezone."
+    },
+    {
+        question: "Why is this project needed if Hacktoberfest's `Profile` now shows your progress?",
+        answer: "While it is true you can see your progress on Hacktoberfest's official website at https://hacktoberfest.digitalocean.com/profile this is still a really fun and rewarding project to work on. Plus we've done it for years before they ever thought to do it themselves :-)"
     }
 ]
