@@ -3,16 +3,19 @@
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
+Useful checker web app to see how close you are to achieving the requirements for a free swag as part of Frogtoberfest.
 
-[https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
-([https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/) will still work)
+Happy hacking!
 
-![Screenshot](hacktoberfest-checker-2018.png)
+[https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/)
+([https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/))
+
+![Screenshot](frogtoberfest-checker.png)
 
 ## Requirements
 
 * Node v8+
+
 > Recommended to use [NVM](https://github.com/creationix/nvm)
 
 ## Running the app
@@ -50,6 +53,4 @@ or use the docker-compose
 
 ## License
 
-MIT © 2019 [Leapfrog Technology](https://github.com/leapfrogtechnology)
-
-Happy hacking!
+MIT © 2015-2018 [Ian Jenkins](https://github.com/jenkoian)
