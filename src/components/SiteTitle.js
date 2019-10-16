@@ -1,10 +1,10 @@
 import React from 'react';
 import frogtoberfestImage from '../assets/images/Frogtoberfest Logo 1x.png';
+import { HOSTNAME } from '../config';
 
 const SiteTitle = () => (
-  // <h1 className="text-center text-5xl md:text-xxl py-12 md:py-8">
-  <div className="text-center " style={styles}>
-    <a className="text-white no-underline" href="">
+  <div className="text-center" style={styles}>
+    <a className="text-white no-underline" href={HOSTNAME}>
       <img alt="Frogtoberfest Artwork" src={frogtoberfestImage} />
     </a>
   </div>

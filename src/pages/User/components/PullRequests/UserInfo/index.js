@@ -37,7 +37,7 @@ const UserInfo = ({
         pullRequestCount={otherReposCount}
         pullRequestAmount={otherReposAmount}
       />
-      <ResultMessage message="Other PR'S" />
+      <ResultMessage message="Other Repo PR'S" />
     </div>
   </div>
 );

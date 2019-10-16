@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Redirect from 'react-router/Redirect';
 
 const ErrorText = ({ errorMessage }) => (
   <h2 className="text-center text-white" style={errorTextStyle}>

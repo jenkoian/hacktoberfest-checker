@@ -14,7 +14,7 @@ const User = ({
     <Helmet>
       <title>{username}</title>
     </Helmet>
-    <SiteTitle>Hacktoberfest Checker</SiteTitle>
+    <SiteTitle>Frogtoberfest Checker</SiteTitle>
     <UsernameForm username={username} />
     <PullRequests username={username} />
   </Fragment>

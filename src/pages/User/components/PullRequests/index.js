@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import LoadingIcon from './LoadingIcon';
 import ErrorText from './ErrorText';
-import pullRequestAmount from './pullRequestAmount';
 import ShareButtons from './ShareButtons';
 import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';

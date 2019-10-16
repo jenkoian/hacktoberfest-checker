@@ -3,7 +3,7 @@ import './GithubCorner.css';
 
 const GithubCorner = () => (
   <a
-    href="https://github.com/jenkoian/hacktoberfest-checker"
+    href="https://github.com/leapfrogtechnology/hacktoberfest-checker"
     className="github-corner"
     aria-label="Fork me on Github"
     target="_blank"

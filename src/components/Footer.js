@@ -6,19 +6,8 @@ const Footer = () => (
     className="text-sm px-8 text-center flex-none py-4"
     style={footerStyle}
   >
-    {/* <p className="text-white">
-      Disclaimer: This site is fan made and not affiliated with{' '}
-      <a
-        className="text-orange"
-        href="https://hacktoberfest.digitalocean.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Hacktoberfest
-      </a>
-      .
-    </p> */}
-    <img src={presentedByLogo}></img>
+    <a href="https://github.com/leapfrogtechnology/opensource">
+      <img src={presentedByLogo} alt='Leapfrog Opensource Logo'></img></a>
   </footer>
 );
 
