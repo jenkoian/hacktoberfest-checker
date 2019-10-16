@@ -1,4 +1,4 @@
-# Hacktoberfest Checker
+# Frogtoberfest Checker
 
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
@@ -9,22 +9,6 @@ Useful checker web app to see how close you are to achieving the requirements fo
 ([https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/) will still work)
 
 ![Screenshot](hacktoberfest-checker-2018.png)
-
-## 2018!
-
-~I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
-React on the front end. I did make a start, and may look to release it midway through Hacktoberfest. If you fancy hacking
-along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
-kept it as it were last year (obviously updated the year and new PR requirement).~
-
-With massive thanks to [Rafael Klaessen](https://github.com/rafaelklaessen) the react version is now merged and live!
-
-I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
-
-You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on
-digital ocean as they were kind enough to offer me some hosting vouchers.
-
-Happy hacking!
 
 ## Requirements
 
@@ -66,4 +50,6 @@ or use the docker-compose
 
 ## License
 
-MIT © 2015-2018 [Ian Jenkins](https://github.com/jenkoian)
+MIT © 2019 [Leapfrog Technology](https://github.com/leapfrogtechnology)
+
+Happy hacking!
