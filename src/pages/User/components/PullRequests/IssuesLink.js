@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IssuesLink = () => (
-  <div className="flex flex-wrap justify-center content-center">
+  <div className="flex flex-wrap justify-center content-center text-center">
     <div className="text-mid-grey pb-4">
       Look at the following{' '}
       <a
