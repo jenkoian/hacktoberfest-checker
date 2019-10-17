@@ -27,9 +27,25 @@ Happy Hacking!
 
 - Alternatively, you cann export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
 
-  - Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
-  - Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
-  - Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
+  - **Mac/Linux**
+
+    ```bash
+    export GITHUB_TOKEN=YOUR_TOKEN
+    ```
+
+  - **Windows**
+
+    For command prompt:
+
+    ```
+    set GITHUB_TOKEN=YOUR TOKEN
+    ```
+
+    For PowerShell:
+
+    ```
+    $env:GITHUB_TOKEN=YOUR TOKEN
+    ```
 
 - Install dependencies and start.
 
