@@ -57,4 +57,4 @@ $ docker-compose up --build
 
 ## License
 
-MIT © 2015-2018 [Ian Jenkins](https://github.com/jenkoian)
+MIT © 2019-Present [Leapfrog Technology](https://github.com/leapfrogtechnology)
