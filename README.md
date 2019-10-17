@@ -57,4 +57,7 @@ $ docker-compose up --build
 
 ## License
 
-MIT © 2019-Present [Leapfrog Technology](https://github.com/leapfrogtechnology)
+Redestributed and sub-licensed under [MIT License](LICENSE) © 2019-Present by [Leapfrog Technology](https://github.com/leapfrogtechnology).  
+
+Originally distributed and licensed under [MIT License](https://github.com/jenkoian/hacktoberfest-checker/LICENSE) by [Ian Jenkins](https://github.com/jenkoian). Check the original source code here - https://github.com/jenkoian/hacktoberfest-checker
+
