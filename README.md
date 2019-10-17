@@ -1,34 +1,21 @@
-# Hacktoberfest Checker
+# Frogtoberfest Checker
 
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
-
-[https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
-([https://hacktoberfestchecker.herokuapp.com/](https://hacktoberfestchecker.herokuapp.com/) will still work)
-
-![Screenshot](hacktoberfest-checker-2018.png)
-
-## 2018!
-
-~I had some grand plans for this years edition but unfortunately I've not had the time. It basically equates to using
-React on the front end. I did make a start, and may look to release it midway through Hacktoberfest. If you fancy hacking
-along with me, keep an eye on the react branch. Other than that, I've done a simple reskin and more or less
-kept it as it were last year (obviously updated the year and new PR requirement).~
-
-With massive thanks to [Rafael Klaessen](https://github.com/rafaelklaessen) the react version is now merged and live!
-
-I will add some tickets when I think of them of improvements etc. feel free to suggest any you can think of though too.
-
-You may notice the domain has changed, the old heroku app is still up and I will deploy to both, but the new domain is hosted on
-digital ocean as they were kind enough to offer me some hosting vouchers.
+Useful web app to see how close you are to achieving the requirements for a free swag as part of Frogtoberfest.
 
 Happy hacking!
+
+[https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/)
+([https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/))
+
+![Screenshot](frogtoberfest-checker.png)
 
 ## Requirements
 
 * Node v8+
+
 > Recommended to use [NVM](https://github.com/creationix/nvm)
 
 ## Running the app

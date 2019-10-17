@@ -12,7 +12,7 @@ const IssuesLink = () => (
       >
         issues
       </a>{' '}
-      and get hacking!
+      and start hacking!
     </div>
   </div>
 );
