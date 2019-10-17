@@ -3,13 +3,22 @@ import PropTypes from 'prop-types';
 import MergeStatus from './MergeStatus';
 import PullRequestInfo from './PullRequestInfo';
 
+const ISSUE_STATUS = {
+  ALL: 'all',
+  OPEN: 'open',
+  CLOSED: 'closed'
+};
+
 const PullRequest = ({ pullRequest }) => (
   <div
     className={`bg-white leading-normal ${
       pullRequest.has_hacktoberfest_label ? 'hacktoberfest' : ''
     }p-4 flex border-b border-grey break-words`}
   >
-    <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
+    <MergeStatus
+      open={pullRequest.state === ISSUE_STATUS.OPEN}
+      merged={pullRequest.state === ISSUE_STATUS.CLOSED}
+    />
     <PullRequestInfo pullRequest={pullRequest} />
   </div>
 );
