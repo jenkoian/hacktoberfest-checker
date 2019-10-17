@@ -6,7 +6,7 @@ const MergeStatus = ({ open, merged }) => (
     {open && (
       <svg
         aria-hidden="true"
-        fill="#39486E"
+        fill="#28a745"
         height="18"
         version="1.1"
         viewBox="0 0 12 16"
@@ -21,7 +21,7 @@ const MergeStatus = ({ open, merged }) => (
     {merged && (
       <svg
         aria-hidden="true"
-        fill="#39486E"
+        fill="#6f42c1"
         height="18"
         version="1.1"
         viewBox="0 0 12 16"
@@ -36,7 +36,7 @@ const MergeStatus = ({ open, merged }) => (
     {!open && !merged && (
       <svg
         aria-hidden="true"
-        fill="#39486E"
+        fill="#cb2431"
         height="18"
         version="1.1"
         viewBox="0 0 12 16"
