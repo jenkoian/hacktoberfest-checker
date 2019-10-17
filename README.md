@@ -1,7 +1,6 @@
 # Frogtoberfest Checker
 
-[![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![CircleCI](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master.svg?style=svg)](https://circleci.com/gh/leapfrogtechnology/frogtoberfest/tree/master)
 
 Web app to track your progress for Frogtoberfest.
 
@@ -27,7 +26,7 @@ Happy Hacking!
    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
    * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
 
-* Install dependencies and run it. 
+* Install dependencies and run it.
   ```bash
   $ yarn
   $ yarn start
