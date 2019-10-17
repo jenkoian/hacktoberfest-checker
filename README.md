@@ -4,10 +4,9 @@
 
 Web app to track your progress for Frogtoberfest.
 
-Happy Hacking!
+:point_right: [https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com)
 
-[https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/)
-([https://frogtoberfest.lftechnology.com/](https://frogtoberfest.lftechnology.com/))
+Happy Hacking!
 
 ![Screenshot](frogtoberfest-checker.png)
 
