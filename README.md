@@ -15,18 +15,21 @@ Happy Hacking!
 
 * Node v8+
 
-> Recommended to use [NVM](https://github.com/creationix/nvm)
-
 ## Running the app
 
 * [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
 
-* Create a `.env` file using `.env.example`. Or export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
+* Create a `.env` file using `.env.example`.
+  ```bash
+  $ cp .env.example .env
+  ```
+
+* Alternatively, you cann export your GitHub token as `GITHUB_TOKEN` environment variable in your system:
    * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
    * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
    * Windows (PowerShell): `$env:GITHUB_TOKEN=YOUR TOKEN`
 
-* Install dependencies and run it.
+* Install dependencies and start.
   ```bash
   $ yarn
   $ yarn start
@@ -57,7 +60,7 @@ $ docker-compose up --build
 
 ## License
 
-Redistributed and sub-licensed under [MIT License](LICENSE) © 2019 - present by [Leapfrog Technology](https://github.com/leapfrogtechnology).  
+Redistributed and sub-licensed under [MIT License](LICENSE) © 2019 - present by [Leapfrog Technology](https://github.com/leapfrogtechnology).
 
 Originally distributed and licensed under [MIT License](https://github.com/jenkoian/hacktoberfest-checker/LICENSE) by [Ian Jenkins](https://github.com/jenkoian). Check the original source code [here](https://github.com/jenkoian/hacktoberfest-checker).
 
