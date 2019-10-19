@@ -163,3 +163,14 @@ a:hover {
   content: "\f099";
   vertical-align: inherit;
 }
+
+
+/* Stopping URL going off page on smaller screens */
+.saveUser {
+  word-wrap: break-word
+}
+
+/* Changed size as div wasnt accounting for the ofset of icon on samller screens, causing text to overflow out of the div */
+.content-size {
+  width: 90%;
+}
