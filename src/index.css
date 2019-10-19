@@ -9746,7 +9746,7 @@ video {
 }
 
 .text-glow {
-  text-shadow: 0 0 2px #f2dd5e, 0 0 10px #f2dd5e, 0 0 35px #f2dd5e;
+  text-shadow: 0 0 2px #f2dd5e, 0 0 5px #f2dd5e, 0 0 25px #f2dd5e;
 }
 
 .hover\:text-transparent:hover {
