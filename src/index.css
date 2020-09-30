@@ -291,23 +291,6 @@ progress {
  */
 
 /**
- * 1. Prevent padding and border from affecting element width
- * https://goo.gl/pYtbK7
- * 2. Change the default font family in all browsers (opinionated)
- */
-
-html {
-  box-sizing: border-box; /* 1 */
-  font-family: sans-serif; /* 2 */
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-/**
  * Removes the default spacing and border for appropriate elements.
  */
 
@@ -320,8 +303,8 @@ p {
 }
 
 button {
-  background: transparent;
-  padding: 0;
+  background-color: transparent;
+  background-image: none;
 }
 
 /**
@@ -339,38 +322,50 @@ button:focus {
  */
 
 /**
- * 1. Use the system font stack as a sane default.
+ * 1. Use the user's configured `sans` font-family (with Tailwind's default
+ *    sans-serif font stack as a fallback) as a sane default.
  * 2. Use Tailwind's default "normal" line-height so the user isn't forced
- * to override it to ensure consistency even when using the default theme.
+ *    to override it to ensure consistency even when using the default theme.
  */
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
 /**
- * Allow adding a border to an element by just adding a border-width.
+ * 1. Prevent padding and border from affecting element width.
  *
- * By default, the way the browser specifies that an element should have no
- * border is by setting it's border-style to `none` in the user-agent
- * stylesheet.
+ *    We used to set this in the html element and inherit from
+ *    the parent element for everything else. This caused issues
+ *    in shadow-dom-enhanced elements like <details> where the content
+ *    is wrapped by a div with box-sizing set to `content-box`.
  *
- * In order to easily add borders to elements by just setting the `border-width`
- * property, we change the default border-style for all elements to `solid`, and
- * use border-width to hide them instead. This way our `border` utilities only
- * need to set the `border-width` property instead of the entire `border`
- * shorthand, making our border utilities much more straightforward to compose.
+ *    https://github.com/mozdevs/cssremedy/issues/4
  *
- * https://github.com/tailwindcss/tailwindcss/pull/116
+ *
+ * 2. Allow adding a border to an element by just adding a border-width.
+ *
+ *    By default, the way the browser specifies that an element should have no
+ *    border is by setting it's border-style to `none` in the user-agent
+ *    stylesheet.
+ *
+ *    In order to easily add borders to elements by just setting the `border-width`
+ *    property, we change the default border-style for all elements to `solid`, and
+ *    use border-width to hide them instead. This way our `border` utilities only
+ *    need to set the `border-width` property instead of the entire `border`
+ *    shorthand, making our border utilities much more straightforward to compose.
+ *
+ *    https://github.com/tailwindcss/tailwindcss/pull/116
  */
 
 *,
-*::before,
-*::after {
-  border-width: 0;
-  border-style: solid;
-  border-color: #e2e8f0;
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e2e8f0; /* 2 */
 }
 
 /*
@@ -392,10 +387,6 @@ img {
 }
 
 input::-webkit-input-placeholder {
-  color: #a0aec0;
-}
-
-input::-moz-placeholder {
   color: #a0aec0;
 }
 
@@ -479,9 +470,13 @@ img {
 }
 
 body {
-  background-color: rgb(21, 35, 71);
+  --bg-opacity: 1;
+  background-color: #072540;
+  background-color: rgba(7, 37, 64, var(--bg-opacity));
   padding: 3rem;
+  --text-opacity: 1;
   color: #99a1b3;
+  color: rgba(153, 161, 179, var(--text-opacity));
   font-family: 'Space Mono', monospace;
   padding: 0;
 }
@@ -489,37 +484,59 @@ body {
 h1 {
   font-family: "squealerregular", serif;
   font-weight: normal;
-  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+  text-shadow: -1px 0 lightpink, 0 1px lightpink, 1px 0 lightpink, 0 -1px lightpink;
 }
 
 h1 span {
-  font-family: "lazer84regular", serif;
+  font-family: 'Press Start 2P', monospace;
   font-weight: normal;
-  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+}
+
+small {
+  font-family: 'Press Start 2P', monospace;
 }
 
 a {
-  color: #92EAFF;
+  --text-opacity: 1;
+  color: #93c2db;
+  color: rgba(147, 194, 219, var(--text-opacity));
 }
 
 a:hover {
-  color: #A11EC6;
+  --text-opacity: 1;
+  color: #ff8ae2;
+  color: rgba(255, 138, 226, var(--text-opacity));
 }
 
 .bg-dark-blue-alt {
-  background-color: #1d2c4e;
+  --bg-opacity: 1;
+  background-color: #183d5d;
+  background-color: rgba(24, 61, 93, var(--bg-opacity));
 }
 
 .bg-mid-blue {
-  background-color: #39486E;
+  --bg-opacity: 1;
+  background-color: #0069ff;
+  background-color: rgba(0, 105, 255, var(--bg-opacity));
 }
 
 .bg-mid-purple {
+  --bg-opacity: 1;
   background-color: #A11EC6;
+  background-color: rgba(161, 30, 198, var(--bg-opacity));
 }
 
 .hover\:bg-light-blue:hover {
-  background-color: #92EAFF;
+  --bg-opacity: 1;
+  background-color: #93c2db;
+  background-color: rgba(147, 194, 219, var(--bg-opacity));
+}
+
+.hover\:bg-light-pink:hover {
+  --bg-opacity: 1;
+  background-color: #ff8ae2;
+  background-color: rgba(255, 138, 226, var(--bg-opacity));
 }
 
 .rounded-sm {
@@ -534,8 +551,16 @@ a:hover {
   border-radius: 9999px;
 }
 
+.border-solid {
+  border-style: solid;
+}
+
 .border-none {
   border-style: none;
+}
+
+.border-4 {
+  border-width: 4px;
 }
 
 .border {
@@ -555,14 +580,11 @@ a:hover {
 }
 
 .flex {
-  display: -webkit-box;
   display: flex;
 }
 
 .flex-col {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-wrap {
@@ -570,8 +592,11 @@ a:hover {
 }
 
 .items-center {
-  -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
+}
+
+.content-center {
+  align-content: center;
 }
 
 .self-center {
@@ -579,27 +604,19 @@ a:hover {
 }
 
 .justify-center {
-  -webkit-box-pack: center;
-          justify-content: center;
-}
-
-.content-center {
-  align-content: center;
+  justify-content: center;
 }
 
 .flex-auto {
-  -webkit-box-flex: 1;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .flex-none {
-  -webkit-box-flex: 0;
-          flex: none;
+  flex: none;
 }
 
 .flex-grow {
-  -webkit-box-flex: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
 
 .font-light {
@@ -634,8 +651,33 @@ a:hover {
   height: 100vh;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+}
+
+.text-6xl {
+  font-size: 4rem;
+}
+
 .leading-tight {
   line-height: 1.25;
+}
+
+.mx-0 {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .my-1 {
@@ -695,20 +737,12 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
-.mr-8 {
-  margin-right: 2rem;
-}
-
 .mt-16 {
   margin-top: 4rem;
 }
 
 .mr-16 {
   margin-right: 4rem;
-}
-
-.-mt-4 {
-  margin-top: -1rem;
 }
 
 .object-cover {
@@ -794,6 +828,10 @@ a:hover {
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
 .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -802,56 +840,50 @@ a:hover {
   text-align: center;
 }
 
-.text-right {
-  text-align: right;
-}
-
 .text-white {
+  --text-opacity: 1;
   color: #fff;
-}
-
-.text-yellow {
-  color: #fff922;
-}
-
-.text-blue-700 {
-  color: #2b6cb0;
+  color: rgba(255, 255, 255, var(--text-opacity));
 }
 
 .text-light-blue {
-  color: #92EAFF;
-}
-
-.text-mid-purple {
-  color: #A11EC6;
+  --text-opacity: 1;
+  color: #93c2db;
+  color: rgba(147, 194, 219, var(--text-opacity));
 }
 
 .text-mid-grey {
+  --text-opacity: 1;
   color: #99a1b3;
+  color: rgba(153, 161, 179, var(--text-opacity));
+}
+
+.text-dark-pink {
+  --text-opacity: 1;
+  color: #9c4668;
+  color: rgba(156, 70, 104, var(--text-opacity));
+}
+
+.text-light-pink {
+  --text-opacity: 1;
+  color: #ff8ae2;
+  color: rgba(255, 138, 226, var(--text-opacity));
+}
+
+.hover\:text-white:hover {
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
 }
 
 .hover\:text-mid-blue:hover {
-  color: #39486E;
+  --text-opacity: 1;
+  color: #0069ff;
+  color: rgba(0, 105, 255, var(--text-opacity));
 }
 
-.text-sm {
-  font-size: 0.875rem;
-}
-
-.text-base {
-  font-size: 1rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-}
-
-.italic {
-  font-style: italic;
+.uppercase {
+  text-transform: uppercase;
 }
 
 .no-underline {
@@ -880,6 +912,72 @@ a:hover {
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+@-webkit-keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
+            animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+
+  50% {
+    transform: none;
+    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
+            animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
 }
 
 @font-face {
@@ -916,90 +1014,20 @@ a:hover {
 
 /* Generated at http://brenna.github.io/csshexagon/ */
 
-.hexagon {
-  position: relative;
-  width: 128px;
-  height: 73.90px;
-  margin: 36.95px 0;
-  background-image: url(https://avatars0.githubusercontent.com/u/131355?v=);
-  background-size: auto 136.2547px;
-  background-position: center;
-  border-left: solid 5px #fefcff;
-  border-right: solid 5px #fefcff;
-}
-
-.hexTop,
-.hexBottom {
-  position: absolute;
-  z-index: 1;
-  width: 90.51px;
-  height: 90.51px;
-  overflow: hidden;
-  -webkit-transform: scaleY(0.5774) rotate(-45deg);
-          transform: scaleY(0.5774) rotate(-45deg);
-  background: inherit;
-  left: 13.75px;
-  text-align: initial;
-}
-
 /*counter transform the bg image on the caps*/
-
-.hexTop:after,
-.hexBottom:after {
-  content: "";
-  position: absolute;
-  width: 118.0000px;
-  height: 68.12733176437585px;
-  -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
-          transform: rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  background: inherit;
-}
-
-.hexTop {
-  top: -45.2548px;
-  border-top: solid 7.0711px #fefcff;
-  border-right: solid 7.0711px #fefcff;
-}
-
-.hexTop:after {
-  background-position: center top;
-}
-
-.hexBottom {
-  bottom: -45.2548px;
-  border-bottom: solid 7.0711px #fefcff;
-  border-left: solid 7.0711px #fefcff;
-}
-
-.hexBottom:after {
-  background-position: center bottom;
-}
-
-.hexagon:after {
-  content: "";
-  position: absolute;
-  top: 2.8868px;
-  left: 0;
-  width: 118.0000px;
-  height: 68.1273px;
-  z-index: 2;
-  background: inherit;
-}
 
 .pull-request,
 .faqs {
-  background-color: #1d2c4e;
+  --bg-opacity: 1;
+  background-color: #183d5d;
+  background-color: rgba(24, 61, 93, var(--bg-opacity));
   display: block;
-  -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
 
 .pull-request:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  -webkit-transform: scale(1.04, 1.04);
-          transform: scale(1.04, 1.04);
+  transform: scale(1.04, 1.04);
 }
 
 /* better positions facebook and twitter icons */
@@ -1015,6 +1043,14 @@ a:hover {
 }
 
 @media (min-width: 768px) {
+
+  .md\:text-5xl {
+    font-size: 3rem;
+  }
+
+  .md\:text-7xl {
+    font-size: 5rem;
+  }
 
   .md\:mr-8 {
     margin-right: 2rem;
@@ -1032,10 +1068,6 @@ a:hover {
 
   .md\:pt-16 {
     padding-top: 4rem;
-  }
-
-  .md\:text-6xl {
-    font-size: 4rem;
   }
 
   .md\:w-3\/5 {

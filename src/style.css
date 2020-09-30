@@ -9,13 +9,17 @@ body {
 h1 {
   font-family: "squealerregular", serif;
   font-weight: normal;
-  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+  text-shadow: -1px 0 lightpink, 0 1px lightpink, 1px 0 lightpink, 0 -1px lightpink;
 }
 
 h1 span {
-  font-family: "lazer84regular", serif;
+  font-family: 'Press Start 2P', monospace;
   font-weight: normal;
-  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+}
+
+small {
+  font-family: 'Press Start 2P', monospace;
 }
 
 a {
@@ -23,7 +27,7 @@ a {
 }
 
 a:hover {
-  @apply text-mid-purple;
+  @apply text-light-pink;
 }
 
 @tailwind components;
@@ -77,11 +81,7 @@ a:hover {
   width: 128px;
   height: 73.90px;
   margin: 36.95px 0;
-  background-image: url(https://avatars0.githubusercontent.com/u/131355?v=);
-  background-size: auto 136.2547px;
-  background-position: center;
-  border-left: solid 5px #fefcff;
-  border-right: solid 5px #fefcff;
+  border: solid 5px #fefcff;
 }
 
 .hexTop,

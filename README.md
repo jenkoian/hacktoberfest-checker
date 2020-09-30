@@ -7,25 +7,15 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 [https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
 
-![Screenshot](hacktoberfest-checker-2019.png)
+![Screenshot](hacktoberfest-checker-2020.png)
 
-## 2019!
+## 2020!
 
-My plan for this year's edition was to use next.js but sadly I ran out of time (starting the night before October may not have been the best plan!).
-If anyone fancies learning [next.js](https://nextjs.org) along with me take a look at the [nextjs](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs) branch where I start from scratch or the [nextjs2](https://github.com/jenkoian/hacktoberfest-checker/tree/nextjs2) branch where I convert the existing app to nextjs.
-In case you hadn't worked it out already, JS is not my area of expertise, but one of the things I use this repo for is to keep up with JS and various libraries and things I read about and nextjs is something I like the look of.
+Been really short on time this year, so just a quick reskin rather than any major tech advancements.
 
-So whether the nextjs version sees the light of day or not, I've still made a few updates to the existing app for 2019:
+I will add some issues when I get chance of ideas that can be contributed, I'll continue to do this throughout the month.
 
-* Updated the logo and color scheme to fit the new theme
-* Used a hexagon for the user image
-* Updated a few underlying libraries
-
-I'll try and get some issues up which I think might be good things to contribute.
-
-I've removed the issue and pull request templates as I find them more of a barrier than anything. That said, I'm not opposed to reviewing new versions should anyone wish to PR.
-
-Finally, I have to give a big shout out to [DigitalOcean](https://www.digitalocean.com/) and [Dev](https://dev.to/) for yet another awesome event and their support for this checker app also.
+Finally, I have to give a big shout out to [DigitalOcean](https://www.digitalocean.com/) and [Dev](https://dev.to/) for yet another awesome event and their support for this checker app.
 
 ### Doesn't DigitalOcean have their progress checker now?
 
@@ -89,4 +79,4 @@ and run `npm run tailwind-gen` to generate the new CSS file.
 
 ## License
 
-MIT © 2015-2019 [Ian Jenkins](https://github.com/jenkoian)
+MIT © 2015-2020 [Ian Jenkins](https://github.com/jenkoian)
