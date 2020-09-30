@@ -8,12 +8,21 @@ const setupGithubApi = require('./setupHelpers/setupGithubApi');
 const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
 const PrController = require('./controllers/pr');
 const path = require('path');
+const compression = require('compression');
 
 const start = () => {
   // Load environment variables from .env file
   dotenv.load();
 
   const app = express();
+
+  const shouldCompress = (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false;
+    }
+    return compression.filter(req, res);
+  };
+  
 
   const githubApi = setupGithubApi();
 
@@ -33,6 +42,11 @@ const start = () => {
   };
 
   app.use(cors(corsOptions));
+  
+  app.use(compression({
+    filter: shouldCompress,
+    threshold: 0
+  }));
 
   app.get('/prs', PrController.index);
 
