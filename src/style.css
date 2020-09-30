@@ -1,7 +1,7 @@
 @tailwind base;
 
 body {
-  @apply bg-dark-blue p-12 text-mid-grey;
+  @apply bg-dark p-12 text-mid-grey;
   font-family: 'Space Mono', monospace;
   padding: 0;
 }
