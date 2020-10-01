@@ -4,16 +4,18 @@ const Footer = () => (
   <footer className="text-sm px-8 text-center flex-none py-4">
     <p className="text-white">
       Disclaimer: This site is fan made and not affiliated with{' '}
-      <a
-        href="https://hacktoberfest.digitalocean.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Hacktoberfest
-      </a>
+      <b>
+        <a
+          href="https://hacktoberfest.digitalocean.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Hacktoberfest
+        </a>
+      </b>
       .
     </p>
-    <div className="p-2 mt-4" id="faqs">
+    <div className="p-2 mt-5" id="faqs">
       <a
         rel="noopener noreferrer"
         className="bg-mid-blue hover:bg-light-pink text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
