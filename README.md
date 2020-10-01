@@ -77,6 +77,13 @@ and run `npm run tailwind-gen` to generate the new CSS file.
 
 > Note: You should never directly edit `index.css`
 
+## Contributions
+ 1. Fork the Project
+ 2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+ 3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+ 4. Push to the Branch (git push origin feature/AmazingFeature)
+ 5. Open a Pull Request
+ 
 ## License
 
 MIT © 2015-2020 [Ian Jenkins](https://github.com/jenkoian)
