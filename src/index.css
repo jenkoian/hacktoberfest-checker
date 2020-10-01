@@ -1030,18 +1030,6 @@ a:hover {
   transform: scale(1.04, 1.04);
 }
 
-/* better positions facebook and twitter icons */
-
-.fa-facebook:before {
-  content: "\f09a";
-  vertical-align: inherit;
-}
-
-.fa-twitter:before {
-  content: "\f099";
-  vertical-align: inherit;
-}
-
 @media (min-width: 768px) {
 
   .md\:text-5xl {
