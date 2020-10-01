@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jenkoian/hacktoberfest-checker.svg?branch=master)](https://travis-ci.org/jenkoian/hacktoberfest-checker)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
+Useful checker web app to see how close you are to achieving the requirements for a free Limited Edition t-shirt and Stickers as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
 
 [https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
 
