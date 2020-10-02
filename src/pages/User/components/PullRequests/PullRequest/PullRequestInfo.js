@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
-    {console.log(pullRequest)}
     <div className="mb-4">
       <span className="text-light-blue">
         {pullRequest.repo_name}#{pullRequest.number}
