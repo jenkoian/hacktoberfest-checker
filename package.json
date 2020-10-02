@@ -26,6 +26,10 @@
   "author": "Ian Jenkins",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.31",
+    "@fortawesome/free-brands-svg-icons": "^5.15.0",
+    "@fortawesome/free-solid-svg-icons": "^5.15.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "body-parser": "^1.15.1",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",

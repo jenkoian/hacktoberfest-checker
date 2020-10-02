@@ -17,5 +17,6 @@
 [Reuben Antz](https://github.com/antzshrek)
 [Rafael Klaessen](https://github.com/rafaelklaessen)
 [radiantly](https://github.com/radiantly)
+[marnixbouhuis](https://github.com/marnixbouhuis)
 
 Contributed but missing from this list? Open a PR! https://github.com/jenkoian/hacktoberfest-checker
