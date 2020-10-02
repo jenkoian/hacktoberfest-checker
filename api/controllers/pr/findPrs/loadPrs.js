@@ -3,7 +3,7 @@
 const getNextPage = require('./getNextPage');
 
 const buildQuery = (username, searchYear) =>
-  `-label:invalid+created:${searchYear}-09-30T00:00:00-12:00..${searchYear}-10-31T23:59:59-12:00+type:pr+is:public+author:${username}`;
+  `+created:${searchYear}-09-30T00:00:00-12:00..${searchYear}-10-31T23:59:59-12:00+type:pr+is:public+draft:false+author:${username}`;
 
 const loadPrs = (github, username) =>
   new Promise((resolve, reject) => {

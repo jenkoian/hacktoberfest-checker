@@ -8,7 +8,14 @@ const loadPrs = require('./loadPrs');
 const findPrs = (github, username) => {
   return loadPrs(github, username)
     .then(pullRequestData =>
-      _.map(pullRequestData, event => {
+      pullRequestData.filter(event => {
+        const isInvalid = event.labels.some(label => {
+          return (label.name.toLowerCase() === 'invalid' ||
+                  label.name.toLowerCase() === 'spam');
+        });
+
+        return !isInvalid;
+      }).map(event => {
         const repo = event.pull_request.html_url.substring(
           0,
           event.pull_request.html_url.search('/pull/')
