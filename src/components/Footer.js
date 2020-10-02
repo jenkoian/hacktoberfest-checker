@@ -13,13 +13,13 @@ const Footer = () => (
       </a>
       .
     </p>
-    <div className="p-2 mt-4" id="faqs">
+    <div className="p-2 my-4" id="faqs">
       <a
         rel="noopener noreferrer"
         className="bg-mid-blue hover:bg-light-pink text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
         href="/Faq"
       >
-      <i class="fas fa-question"/> FAQs
+      <i className="fas fa-question"/> FAQs
       </a>
     </div>
   </footer>
