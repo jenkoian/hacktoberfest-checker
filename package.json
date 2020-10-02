@@ -15,7 +15,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/.bin/postcss ./src/style.css -o ./src/index.css",
-    "prettier": "prettier \"{src,api}/**/*.js\"",
+    "prettier": "prettier --check \"{src,api}/**/*.js\"",
     "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
   },
   "keywords": [
