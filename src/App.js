@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import User from './pages/User';
 import Me from './pages/Me';
 import NotFound from './pages/NotFound';
-import Faq from './pages/Faq'
+import Faq from './pages/Faq';
 
 const App = () => (
   <Fragment>
