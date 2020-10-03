@@ -55,7 +55,7 @@ export default class PullRequests extends Component {
       .then(pullRequests =>
         this.setState({
           loading: false,
-          data: pullRequests
+          data: pullRequests.filter(pr=>pr.has_hacktoberfest_label)
         })
       )
       .catch(error =>
