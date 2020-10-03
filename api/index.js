@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const compression = require('compression');
 const setupGithubApi = require('./setupHelpers/setupGithubApi');
 const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
 const PrController = require('./controllers/pr');
@@ -27,6 +28,7 @@ const start = () => {
   app.use(express.static(path.join(__dirname, '../build')));
 
   app.use(bodyParser.json());
+  app.use(compression());
 
   const corsOptions = {
     origin: process.env.REACT_APP_HOSTNAME
