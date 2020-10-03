@@ -39,13 +39,13 @@ const findPrs = (github, username) => {
             number: event.number,
             open: event.state === 'open',
             repo_name: repo.replace('https://github.com/', ''),
+            repo_must_have_topic: moment(event.created_at).isAfter(
+              '2020-10-03T12:00:00.000Z'
+            ),
             title: event.title,
             url: event.html_url,
             created_at: moment(event.created_at).format('MMMM Do YYYY'),
             is_pending: moment(event.created_at).isAfter(twoWeeksOld),
-            repo_must_have_topic: moment(event.created_at).isAfter(
-              '2020-10-03T12:00:00.000Z'
-            ),
             user: {
               login: event.user.login,
               url: event.user.html_url
@@ -56,35 +56,40 @@ const findPrs = (github, username) => {
     .then(prs => {
       // Ensure each repo only gets one request for their topics
       const repoTopicRequests = _.uniq(
-        prs
-          .filter(pr => pr.repo_must_have_topic)
-          .reduce((repos, pr) => [...repos, pr.repo_name], [])
-      ).map(fullRepo => {
-        const [owner, repo] = fullRepo.split('/');
+        prs.filter(pr => pr.repo_must_have_topic).map(pr => pr.repo_name)
+      ).map(repo_name => {
+        const [owner, repo] = repo_name.split('/');
+        const repoDetails = { owner, repo };
         return github.repos
-          .getTopics({ owner, repo })
+          .getTopics(repoDetails)
           .then(logCallsRemaining)
-          .then(res => ({ repo: fullRepo, topics: res.data.names }));
+          .then(res => ({ repo_name, topics: res.data.names }));
       });
 
       return Promise.all(repoTopicRequests)
         .then(repoTopics =>
-          repoTopics.reduce(
-            (map, { repo, topics }) => ({ ...map, [repo]: topics }),
+          _.reduce(
+            repoTopics,
+            (map, { repo_name, topics }) => ({
+              ...map,
+              [repo_name]: topics
+            }),
             {}
           )
         )
         .then(repoTopicMap =>
-          prs.map(pr => ({
-            ...pr,
-            ...(pr.repo_must_have_topic
-              ? {
-                  repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_name].some(
-                    topic => topic.toLowerCase() === 'hacktoberfest'
-                  )
-                }
-              : {})
-          }))
+          _.map(prs, pr =>
+            _.assign(
+              pr,
+              pr.repo_must_have_topic
+                ? {
+                    repo_has_hacktoberfest_topic: repoTopicMap[
+                      pr.repo_name
+                    ].some(topic => topic.toLowerCase() === 'hacktoberfest')
+                  }
+                : {}
+            )
+          )
         );
     })
     .then(prs =>

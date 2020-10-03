@@ -24,6 +24,7 @@ PullRequest.propTypes = {
     repo_has_hacktoberfest_topic: PropTypes.bool,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
+    is_pending: PropTypes.bool.isRequired,
     has_hacktoberfest_label: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     merged: PropTypes.bool.isRequired,
