@@ -43,12 +43,54 @@ const findPrs = (github, username) => {
             url: event.html_url,
             created_at: moment(event.created_at).format('MMMM Do YYYY'),
             is_pending: moment(event.created_at).isAfter(weekOld),
+            repo_must_have_topic: moment(event.created_at).isAfter(
+              '2020-10-03T12:00:00.000Z'
+            ),
             user: {
               login: event.user.login,
               url: event.user.html_url
             }
           };
         })
+    )
+    .then(prs => {
+      // Ensure each repo only gets one request for their topics
+      const repoTopicRequests = _.uniq(
+        prs
+          .filter(pr => pr.repo_must_have_topic)
+          .reduce((repos, pr) => [...repos, pr.repo_name], [])
+      ).map(fullRepo => {
+        const [owner, repo] = fullRepo.split('/');
+        return github.repos
+          .getTopics({ owner, repo })
+          .then(logCallsRemaining)
+          .then(res => ({ repo: fullRepo, topics: res.data.names }));
+      });
+
+      return Promise.all(repoTopicRequests)
+        .then(repoTopics =>
+          repoTopics.reduce(
+            (map, { repo, topics }) => ({ ...map, [repo]: topics }),
+            {}
+          )
+        )
+        .then(repoTopicMap =>
+          prs.map(pr => ({
+            ...pr,
+            ...(pr.repo_must_have_topic
+              ? {
+                  repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_name].some(
+                    topic => topic.toLowerCase() === 'hacktoberfest'
+                  )
+                }
+              : {})
+          }))
+        );
+    })
+    .then(prs =>
+      prs.filter(
+        pr => !pr.repo_must_have_topic || pr.repo_has_hacktoberfest_topic
+      )
     )
     .then(prs => {
       const checkMergeStatus = _.map(prs, pr => {
