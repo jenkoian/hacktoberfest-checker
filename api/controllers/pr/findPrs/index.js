@@ -27,11 +27,11 @@ const findPrs = (github, username) => {
 
           const hacktoberFestLabels = _.some(
             event.labels,
-            label => label.name.toLowerCase() === 'hacktoberfest'
+            label => label.name.toLowerCase() === 'hacktoberfest-accepted'
           );
 
-          const weekOld = moment()
-            .subtract(7, 'days')
+          const twoWeeksOld = moment()
+            .subtract(14, 'days')
             .startOf('day');
 
           return {
@@ -42,7 +42,7 @@ const findPrs = (github, username) => {
             title: event.title,
             url: event.html_url,
             created_at: moment(event.created_at).format('MMMM Do YYYY'),
-            is_pending: moment(event.created_at).isAfter(weekOld),
+            is_pending: moment(event.created_at).isAfter(twoWeeksOld),
             repo_must_have_topic: moment(event.created_at).isAfter(
               '2020-10-03T12:00:00.000Z'
             ),
@@ -117,6 +117,27 @@ const findPrs = (github, username) => {
 
       return Promise.all(checkMergeStatus).then(mergeStatus =>
         _.zipWith(prs, mergeStatus, (pr, merged) => _.assign(pr, { merged }))
+      );
+    })
+    .then(prs => {
+      const checkApproval = _.map(prs, pr => {
+        const repoDetails = pr.repo_name.split('/');
+        const pullDetails = {
+          owner: repoDetails[0],
+          repo: repoDetails[1],
+          number: pr.number
+        };
+
+        return github.pullRequests
+          .getReviews(pullDetails)
+          .then(logCallsRemaining)
+          .then(res => res.data.some(review => review.state === 'APPROVED'));
+      });
+
+      return Promise.all(checkApproval).then(approvalStatus =>
+        _.zipWith(prs, approvalStatus, (pr, approved) =>
+          _.assign(pr, { approved })
+        )
       );
     });
 };

@@ -27,6 +27,7 @@ PullRequest.propTypes = {
     has_hacktoberfest_label: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     merged: PropTypes.bool.isRequired,
+    approved: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired
