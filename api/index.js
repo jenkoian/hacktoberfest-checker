@@ -22,7 +22,6 @@ const start = () => {
     }
     return compression.filter(req, res);
   };
-  
 
   const githubApi = setupGithubApi();
 
@@ -42,10 +41,12 @@ const start = () => {
   };
 
   app.use(cors(corsOptions));
-  
-  app.use(compression({
-    filter: shouldCompress
-  }));
+
+  app.use(
+    compression({
+      filter: shouldCompress
+    })
+  );
 
   app.get('/prs', PrController.index);
 
