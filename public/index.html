@@ -68,7 +68,7 @@
       ga('send', 'pageview');
       ga('set', 'anonymizeIp', true);
       ga('set', 'allowAdFeatures', false);
-      if (window.location.contains('user')) {
+      if (window.location.href.indexOf('user') > -1) {
         ga('set', 'location', '%REACT_APP_HOSTNAME%/user');
         ga('set', 'page', '/user');
         ga('set', 'title', 'User | Hacktoberfest Checker');
