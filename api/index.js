@@ -44,8 +44,7 @@ const start = () => {
   app.use(cors(corsOptions));
   
   app.use(compression({
-    filter: shouldCompress,
-    threshold: 0
+    filter: shouldCompress
   }));
 
   app.get('/prs', PrController.index);
