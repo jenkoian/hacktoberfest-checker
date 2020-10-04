@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestion as questionIcon } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestion as questionIcon } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => (
   <footer className="text-sm px-8 text-center flex-none py-4">
@@ -19,10 +19,10 @@ const Footer = () => (
     <div className="p-2 my-4" id="faqs">
       <a
         rel="noopener noreferrer"
-        className="bg-mid-blue hover:bg-light-pink text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="bg-mid-blue hover:bg-light-pink text-white transition hover:text-white px-2 py-1 pointer no-underline text-sm"
         href="/Faq"
       >
-        <FontAwesomeIcon icon={questionIcon}/> FAQs
+        <FontAwesomeIcon icon={questionIcon} /> FAQs
       </a>
     </div>
   </footer>
