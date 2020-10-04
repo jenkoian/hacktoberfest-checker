@@ -65,7 +65,6 @@
         r.parentNode.insertBefore(e, r);
       })(window, document, 'script', 'ga');
       ga('create', '%REACT_APP_GA_CODE%', 'auto');
-      ga('send', 'pageview');
       ga('set', 'anonymizeIp', true);
       ga('set', 'allowAdFeatures', false);
       if (window.location.href.indexOf('user') > -1) {
@@ -73,6 +72,7 @@
         ga('set', 'page', '/user');
         ga('set', 'title', 'User | Hacktoberfest Checker');
       }
+      ga('send', 'pageview');
     </script>
     <!-- Twitter -->
     <script>
