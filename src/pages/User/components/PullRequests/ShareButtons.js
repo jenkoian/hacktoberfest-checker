@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import pullRequestAmount from './pullRequestAmount';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter as twitterIcon,
   faFacebookSquare as facebookIcon
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons';
 
 const ShareButtons = ({ username, pullRequestCount }) => (
   <div className="pb-8 flex justify-center">
@@ -14,11 +14,11 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-mid-blue hover:bg-light-pink text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="bg-mid-blue hover:bg-light-pink text-white transition hover:text-white px-2 py-1 pointer no-underline text-sm"
         href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/user/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
         data-size="large"
       >
-        <FontAwesomeIcon icon={twitterIcon} size={"lg"}/> Tweet
+        <FontAwesomeIcon icon={twitterIcon} size={'lg'} /> Tweet
       </a>
     </div>
     <div
@@ -31,10 +31,10 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="fb-xfbml-parse-ignore bg-mid-blue hover:bg-light-pink text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="fb-xfbml-parse-ignore bg-mid-blue hover:bg-light-pink text-white transition hover:text-white px-2 py-1 pointer no-underline text-sm"
         href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.REACT_APP_HOSTNAME}/user/${username}`}
       >
-        <FontAwesomeIcon icon={facebookIcon} size={"lg"}/> Share
+        <FontAwesomeIcon icon={facebookIcon} size={'lg'} /> Share
       </a>
     </div>
   </div>
