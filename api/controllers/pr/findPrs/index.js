@@ -94,9 +94,12 @@ const findPrs = (github, username) => {
         );
     })
     .then(prs =>
-      prs.filter(
-        pr => !pr.repo_must_have_topic || pr.repo_has_hacktoberfest_topic
-      )
+      prs.filter(pr => {
+        // Operating under initial rules
+        if (!pr.repo_must_have_topic) return true;
+        // label OR topic
+        return pr.has_hacktoberfest_label || pr.repo_has_hacktoberfest_topic;
+      })
     )
     .then(prs => {
       const checkMergeStatus = _.map(prs, pr => {
@@ -147,13 +150,15 @@ const findPrs = (github, username) => {
       );
     })
     .then(prs =>
-      prs.filter(
-        pr =>
-          !pr.repo_must_have_topic ||
-          pr.merged ||
-          pr.approved ||
-          pr.has_hacktoberfest_label
-      )
+      prs.filter(pr => {
+        // Operating under initial rules
+        if (!pr.repo_must_have_topic) return true;
+        // label OR (topic AND (merged OR approved))
+        return (
+          pr.has_hacktoberfest_label ||
+          (pr.repo_has_hacktoberfest_topic && (pr.merged || pr.approved))
+        );
+      })
     );
 };
 
