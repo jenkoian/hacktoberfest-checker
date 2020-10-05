@@ -8,7 +8,7 @@ const PullRequestInfo = ({ pullRequest }) => (
         {pullRequest.repo_name}#{pullRequest.number}
       </span>
       {pullRequest.is_pending && (
-        <div className="ml-4 rounded-full px-4 text-white bg-mid-blue inline">
+        <div className="ml-4 rounded-full px-2 text-white bg-mid-blue inline text-xs">
           <em>Pending</em>
         </div>
       )}
