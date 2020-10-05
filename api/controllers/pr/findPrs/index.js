@@ -30,7 +30,8 @@ const findPrs = (github, username) => {
             label => label.name.toLowerCase() === 'hacktoberfest-accepted'
           );
 
-          const twoWeeksOld = moment()
+          const twoWeeksOld = moment
+            .utc()
             .subtract(14, 'days')
             .startOf('day');
 
@@ -39,13 +40,13 @@ const findPrs = (github, username) => {
             number: event.number,
             open: event.state === 'open',
             repo_name: repo.replace('https://github.com/', ''),
-            repo_must_have_topic: moment(event.created_at).isAfter(
-              '2020-10-03T12:00:00.000Z'
-            ),
+            repo_must_have_topic: moment
+              .utc(event.created_at)
+              .isAfter('2020-10-03T12:00:00.000Z'),
             title: event.title,
             url: event.html_url,
-            created_at: moment(event.created_at).format('MMMM Do YYYY'),
-            is_pending: moment(event.created_at).isAfter(twoWeeksOld),
+            created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
+            is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
             user: {
               login: event.user.login,
               url: event.user.html_url
@@ -144,7 +145,16 @@ const findPrs = (github, username) => {
           _.assign(pr, { approved })
         )
       );
-    });
+    })
+    .then(prs =>
+      prs.filter(
+        pr =>
+          !pr.repo_must_have_topic ||
+          pr.merged ||
+          pr.approved ||
+          pr.has_hacktoberfest_label
+      )
+    );
 };
 
 module.exports = findPrs;
