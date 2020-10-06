@@ -21,6 +21,7 @@ PullRequestInfo.propTypes = {
     repo_name: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
+    is_pending: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired

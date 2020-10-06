@@ -20,11 +20,15 @@ PullRequest.propTypes = {
   pullRequest: PropTypes.shape({
     number: PropTypes.number.isRequired,
     repo_name: PropTypes.string.isRequired,
+    repo_must_have_topic: PropTypes.bool.isRequired,
+    repo_has_hacktoberfest_topic: PropTypes.bool,
     title: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
+    is_pending: PropTypes.bool.isRequired,
     has_hacktoberfest_label: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     merged: PropTypes.bool.isRequired,
+    approved: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired
