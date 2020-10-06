@@ -20,7 +20,7 @@ const RegisterReminder = () => (
       >
         register
       </a>{' '}
-      to be eligible for the tee!
+      to be eligible for the tee or tree!
     </span>
   </div>
 );
