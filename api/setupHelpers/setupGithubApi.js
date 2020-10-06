@@ -10,14 +10,14 @@ const setupGithubApi = () => {
     host: 'api.github.com',
     timeout: 5000,
     headers: {
-      'user-agent': 'Hacktoberfest Checker'
-    }
+      'user-agent': 'Hacktoberfest Checker',
+    },
   });
 
   if (process.env.GITHUB_TOKEN) {
     github.authenticate({
       type: 'oauth',
-      token: process.env.GITHUB_TOKEN
+      token: process.env.GITHUB_TOKEN,
     });
   } else {
     console.log('No GITHUB_TOKEN specified, do so to increase rate limit');

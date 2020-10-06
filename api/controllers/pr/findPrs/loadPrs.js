@@ -16,7 +16,7 @@ const loadPrs = (github, username) =>
       {
         q: buildQuery(username, searchYear),
         // 30 is the default but this makes it clearer/allows it to be tweaked
-        per_page: 100
+        per_page: 100,
       },
       (err, res) => {
         if (err) {
@@ -25,7 +25,7 @@ const loadPrs = (github, username) =>
 
         const pullRequestData = res.data.items;
         if (github.hasNextPage(res)) {
-          getNextPage(res, github, pullRequestData).then(pullRequestData =>
+          getNextPage(res, github, pullRequestData).then((pullRequestData) =>
             resolve(pullRequestData)
           );
           return;

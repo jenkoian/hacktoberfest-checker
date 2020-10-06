@@ -6,11 +6,11 @@ const ErrorText = ({ errorMessage }) => (
 );
 
 ErrorText.propTypes = {
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
 };
 
 ErrorText.defaultProps = {
-  errorMessage: "Couldn't find any data or we hit an error, err try again?"
+  errorMessage: "Couldn't find any data or we hit an error, err try again?",
 };
 
 export default ErrorText;

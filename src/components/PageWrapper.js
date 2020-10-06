@@ -8,7 +8,7 @@ const PageWrapper = ({ children, ...props }) => (
 );
 
 PageWrapper.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default PageWrapper;

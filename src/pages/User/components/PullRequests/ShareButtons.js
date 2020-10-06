@@ -5,7 +5,7 @@ import pullRequestAmount from './pullRequestAmount';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter as twitterIcon,
-  faFacebookSquare as facebookIcon
+  faFacebookSquare as facebookIcon,
 } from '@fortawesome/free-brands-svg-icons';
 
 const ShareButtons = ({ username, pullRequestCount }) => (
@@ -42,7 +42,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
 
 ShareButtons.propTypes = {
   username: PropTypes.string.isRequired,
-  pullRequestCount: PropTypes.number.isRequired
+  pullRequestCount: PropTypes.number.isRequired,
 };
 
 export default ShareButtons;

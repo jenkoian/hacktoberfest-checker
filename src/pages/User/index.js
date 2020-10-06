@@ -7,8 +7,8 @@ import PullRequests from './components/PullRequests';
 
 const User = ({
   match: {
-    params: { username }
-  }
+    params: { username },
+  },
 }) => (
   <Fragment>
     <Helmet>
@@ -23,9 +23,9 @@ const User = ({
 User.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      username: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      username: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default User;

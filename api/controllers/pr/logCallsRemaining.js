@@ -1,6 +1,6 @@
 'use strict';
 
-const logCallsRemaining = res => {
+const logCallsRemaining = (res) => {
   const callsRemaining = res.meta['x-ratelimit-remaining'];
 
   if (process.env.NODE_ENV !== 'production' || callsRemaining < 100) {

@@ -10,7 +10,7 @@ const PullRequestCount = ({ pullRequestCount }) => (
 );
 
 PullRequestCount.propTypes = {
-  pullRequestCount: PropTypes.number.isRequired
+  pullRequestCount: PropTypes.number.isRequired,
 };
 
 export default PullRequestCount;

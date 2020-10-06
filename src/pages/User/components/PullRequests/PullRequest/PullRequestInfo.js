@@ -28,9 +28,9 @@ PullRequestInfo.propTypes = {
     is_pending: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired
-    }).isRequired
-  })
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+  }),
 };
 
 export default PullRequestInfo;

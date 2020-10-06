@@ -31,9 +31,9 @@ PullRequest.propTypes = {
     approved: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       login: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      url: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default PullRequest;
