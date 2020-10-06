@@ -28,10 +28,6 @@ body {
  * Render the `main` element consistently in IE.
  */
 
-main {
-  display: block;
-}
-
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -75,8 +71,7 @@ a {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-b,
-strong {
+b {
   font-weight: bolder;
 }
 
@@ -190,15 +185,6 @@ button:-moz-focusring,
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
-
-legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
-}
 
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
@@ -454,8 +440,7 @@ input {
  */
 
 img,
-svg,
-canvas {
+svg {
   display: block;
   vertical-align: middle;
 }
@@ -484,6 +469,14 @@ body {
   padding: 0;
 }
 
+@media (prefers-color-scheme: light) {
+  body {
+    --bg-opacity: 1;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+}
+
 h1 {
   font-family: 'squealerregular', serif;
   font-weight: normal;
@@ -496,6 +489,13 @@ h1 span {
   font-weight: normal;
   text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue,
     0 -1px lightblue;
+}
+
+@media (prefers-color-scheme: light) {
+  h1 span {
+    text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
+      0 -1px darkblue;
+  }
 }
 
 small {
@@ -512,6 +512,20 @@ a:hover {
   --text-opacity: 1;
   color: #ff8ae2;
   color: rgba(255, 138, 226, var(--text-opacity));
+}
+
+@media (prefers-color-scheme: light) {
+  a {
+    --text-opacity: 1;
+    color: #9c4668;
+    color: rgba(156, 70, 104, var(--text-opacity));
+  }
+
+  a:hover {
+    --text-opacity: 1;
+    color: #93c2db;
+    color: rgba(147, 194, 219, var(--text-opacity));
+  }
 }
 
 .bg-dark-blue-alt {
@@ -924,6 +938,11 @@ a:hover {
   width: 83.333333%;
 }
 
+.transition {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+}
+
 @-webkit-keyframes spin {
   to {
     transform: rotate(360deg);
@@ -936,14 +955,6 @@ a:hover {
   }
 }
 
-@-webkit-keyframes ping {
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
 @keyframes ping {
   75%,
   100% {
@@ -952,30 +963,9 @@ a:hover {
   }
 }
 
-@-webkit-keyframes pulse {
-  50% {
-    opacity: 0.5;
-  }
-}
-
 @keyframes pulse {
   50% {
     opacity: 0.5;
-  }
-}
-
-@-webkit-keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-
-  50% {
-    transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
@@ -1049,13 +1039,19 @@ a:hover {
   transition: all 0.3s ease-out;
 }
 
+@media (prefers-color-scheme: light) {
+  .pull-request,
+  .faqs {
+    --bg-opacity: 1;
+    background-color: #93c2db;
+    background-color: rgba(147, 194, 219, var(--bg-opacity));
+    display: block;
+  }
+}
+
 .pull-request:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transform: scale(1.04, 1.04);
-}
-
-.transition {
-  transition: all 0.3s ease-out;
 }
 
 @media (min-width: 768px) {
@@ -1097,5 +1093,61 @@ a:hover {
 
   .lg\:w-1\/3 {
     width: 33.333333%;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .light-mode\:bg-light-blue {
+    --bg-opacity: 1;
+    background-color: #93c2db;
+    background-color: rgba(147, 194, 219, var(--bg-opacity));
+  }
+
+  .light-mode\:bg-light-grey {
+    --bg-opacity: 1;
+    background-color: #e3e4e4;
+    background-color: rgba(227, 228, 228, var(--bg-opacity));
+  }
+
+  .light-mode\:border-light-pink {
+    --border-opacity: 1;
+    border-color: #ff8ae2;
+    border-color: rgba(255, 138, 226, var(--border-opacity));
+  }
+
+  .light-mode\:placeholder-soft-blue::-webkit-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #7c99a9;
+    color: rgba(124, 153, 169, var(--placeholder-opacity));
+  }
+
+  .light-mode\:placeholder-soft-blue::-ms-input-placeholder {
+    --placeholder-opacity: 1;
+    color: #7c99a9;
+    color: rgba(124, 153, 169, var(--placeholder-opacity));
+  }
+
+  .light-mode\:placeholder-soft-blue::placeholder {
+    --placeholder-opacity: 1;
+    color: #7c99a9;
+    color: rgba(124, 153, 169, var(--placeholder-opacity));
+  }
+
+  .light-mode\:text-dark-blue {
+    --text-opacity: 1;
+    color: #072540;
+    color: rgba(7, 37, 64, var(--text-opacity));
+  }
+
+  .light-mode\:text-white-grey {
+    --text-opacity: 1;
+    color: #f5f5f5;
+    color: rgba(245, 245, 245, var(--text-opacity));
+  }
+
+  .light-mode\:text-dark-grey {
+    --text-opacity: 1;
+    color: #333333;
+    color: rgba(51, 51, 51, var(--text-opacity));
   }
 }

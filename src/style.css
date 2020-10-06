@@ -6,16 +6,31 @@ body {
   padding: 0;
 }
 
+@screen light-mode {
+  body {
+    @apply bg-white;
+  }
+}
+
 h1 {
-  font-family: "squealerregular", serif;
+  font-family: 'squealerregular', serif;
   font-weight: normal;
-  text-shadow: -1px 0 lightpink, 0 1px lightpink, 1px 0 lightpink, 0 -1px lightpink;
+  text-shadow: -1px 0 lightpink, 0 1px lightpink, 1px 0 lightpink,
+    0 -1px lightpink;
 }
 
 h1 span {
   font-family: 'Press Start 2P', monospace;
   font-weight: normal;
-  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue,
+    0 -1px lightblue;
+}
+
+@screen light-mode {
+  h1 span {
+    text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
+      0 -1px darkblue;
+  }
 }
 
 small {
@@ -28,6 +43,16 @@ a {
 
 a:hover {
   @apply text-light-pink;
+}
+
+@screen light-mode {
+  a {
+    @apply text-dark-pink;
+  }
+
+  a:hover {
+    @apply text-light-blue;
+  }
 }
 
 @tailwind components;
@@ -49,13 +74,12 @@ a:hover {
   font-family: 'lazer84regular';
   src: url('./fonts/lazer84-webfont.eot');
   src: url('./fonts/lazer84-webfont.eot?#iefix') format('embedded-opentype'),
-  url('./fonts/lazer84-webfont.woff2') format('woff2'),
-  url('./fonts/lazer84-webfont.woff') format('woff'),
-  url('./fonts/lazer84-webfont.ttf') format('truetype'),
-  url('./fonts/lazer84-webfont.svg#lazer84regular') format('svg');
+    url('./fonts/lazer84-webfont.woff2') format('woff2'),
+    url('./fonts/lazer84-webfont.woff') format('woff'),
+    url('./fonts/lazer84-webfont.ttf') format('truetype'),
+    url('./fonts/lazer84-webfont.svg#lazer84regular') format('svg');
   font-weight: normal;
   font-style: normal;
-
 }
 
 .dim {
@@ -79,9 +103,15 @@ a:hover {
 .hexagon {
   position: relative;
   width: 128px;
-  height: 73.90px;
+  height: 73.9px;
   margin: 36.95px 0;
   border: solid 5px #fefcff;
+}
+
+@screen light-mode {
+  .hexagon {
+    border: solid 5px #333333;
+  }
 }
 
 .hexTop,
@@ -100,9 +130,9 @@ a:hover {
 /*counter transform the bg image on the caps*/
 .hexTop:after,
 .hexBottom:after {
-  content: "";
+  content: '';
   position: absolute;
-  width: 118.0000px;
+  width: 118px;
   height: 68.12733176437585px;
   transform: rotate(45deg) scaleY(1.7321) translateY(-34.0637px);
   transform-origin: 0 0;
@@ -130,11 +160,11 @@ a:hover {
 }
 
 .hexagon:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 2.8868px;
   left: 0;
-  width: 118.0000px;
+  width: 118px;
   height: 68.1273px;
   z-index: 2;
   background: inherit;
@@ -144,7 +174,14 @@ a:hover {
 .faqs {
   @apply bg-dark-blue-alt block;
 
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+@screen light-mode {
+  .pull-request,
+  .faqs {
+    @apply bg-light-blue block;
+  }
 }
 
 .pull-request:hover {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RegisterReminder = () => (
-  <div className="flex flex-none items-center justify-center p-2 pl-4 bg-dark-blue-alt text-mid-grey">
+  <div className="flex flex-none items-center justify-center p-2 pl-4 bg-dark-blue-alt light-mode:bg-light-blue text-mid-grey light-mode:text-dark-grey">
     <svg
       className="w-4 h-4"
       data-icon="info"

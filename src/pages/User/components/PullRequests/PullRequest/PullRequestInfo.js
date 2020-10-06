@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
     <div className="mb-4">
-      <span className="text-light-blue">
+      <span className="text-light-blue light-mode:text-dark-blue">
         {pullRequest.repo_name}#{pullRequest.number}
       </span>
       {pullRequest.is_pending && (
