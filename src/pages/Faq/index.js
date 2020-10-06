@@ -8,7 +8,7 @@ const Faq = () => (
     <SiteTitle />
     <h2 className="text-white text-center text-4xl font-extrabold">FAQS</h2>
     <div className="mx-auto w-5/6 lg:w-1/2 mb-4 mt-5">
-      {faqData.map(data => (
+      {faqData.map((data) => (
         <FaqEntry key={data.question} data={data}></FaqEntry>
       ))}
     </div>

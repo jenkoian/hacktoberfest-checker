@@ -54,7 +54,7 @@
     "postcss": "^8.1.1",
     "postcss-cli": "^8.0.0",
     "postcss-easy-import": "^3.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "pretty-quick": "^3.0.2",
     "serialize-javascript": "^5.0.1",
     "tailwindcss": "^1.8.10",

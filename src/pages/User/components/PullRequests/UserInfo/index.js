@@ -19,7 +19,7 @@ const UserInfo = ({ username, userImage, pullRequestCount }) => (
 UserInfo.propTypes = {
   username: PropTypes.string.isRequired,
   userImage: PropTypes.string.isRequired,
-  pullRequestCount: PropTypes.number.isRequired
+  pullRequestCount: PropTypes.number.isRequired,
 };
 
 export default UserInfo;

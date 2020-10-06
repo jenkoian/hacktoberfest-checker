@@ -53,7 +53,7 @@ const MergeStatus = ({ open, merged }) => (
 
 MergeStatus.propTypes = {
   open: PropTypes.bool.isRequired,
-  merged: PropTypes.bool.isRequired
+  merged: PropTypes.bool.isRequired,
 };
 
 export default MergeStatus;

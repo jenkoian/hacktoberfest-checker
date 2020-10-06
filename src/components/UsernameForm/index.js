@@ -10,21 +10,21 @@ class UsernameForm extends Component {
     username: PropTypes.string,
     // Provided by withRouter()
     history: PropTypes.shape({
-      push: PropTypes.func.isRequired
-    }).isRequired
+      push: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
-    username: ''
+    username: '',
   };
 
   state = {
-    username: this.props.username
+    username: this.props.username,
   };
 
-  handleUsernameChange = e => this.setState({ username: e.target.value });
+  handleUsernameChange = (e) => this.setState({ username: e.target.value });
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const username = this.state.username;
@@ -37,7 +37,7 @@ class UsernameForm extends Component {
     this.props.history.push(userUrl);
   };
 
-  getUserUrl = username => `/user/${username}`;
+  getUserUrl = (username) => `/user/${username}`;
 
   render = () => (
     <div className="pb-4 md:pt-16">

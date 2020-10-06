@@ -9,7 +9,7 @@ const ResultMessage = ({ pullRequestCount }) => (
 );
 
 ResultMessage.propTypes = {
-  pullRequestCount: PropTypes.number
+  pullRequestCount: PropTypes.number,
 };
 
 export default ResultMessage;

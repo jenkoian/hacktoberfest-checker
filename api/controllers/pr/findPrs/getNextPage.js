@@ -10,7 +10,7 @@ const getNextPage = (response, github, pullRequestData) =>
       const newPullRequestData = pullRequestData.concat(res.data.items);
 
       if (github.hasNextPage(res)) {
-        getNextPage(res, github, newPullRequestData).then(pullRequestData =>
+        getNextPage(res, github, newPullRequestData).then((pullRequestData) =>
           resolve(pullRequestData)
         );
         return;

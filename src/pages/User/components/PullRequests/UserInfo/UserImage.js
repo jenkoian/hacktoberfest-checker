@@ -6,7 +6,7 @@ class UserImage extends Component {
     super(props);
 
     this.divStyle = {
-      backgroundImage: 'url(' + this.props.userImage + ')'
+      backgroundImage: 'url(' + this.props.userImage + ')',
     };
   }
 
@@ -19,7 +19,7 @@ class UserImage extends Component {
 
 UserImage.propTypes = {
   username: PropTypes.string.isRequired,
-  userImage: PropTypes.string.isRequired
+  userImage: PropTypes.string.isRequired,
 };
 
 export default UserImage;

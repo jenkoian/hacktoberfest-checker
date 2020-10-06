@@ -11,13 +11,13 @@ import MeLinkInfo from './MeLinkInfo';
 
 export default class PullRequests extends Component {
   static defaultProps = {
-    username: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
   };
 
   state = {
     loading: true,
     data: null,
-    error: null
+    error: null,
   };
 
   componentDidMount = () => {
@@ -25,7 +25,7 @@ export default class PullRequests extends Component {
     this.fetchPullRequests();
   };
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (prevProps.username === this.props.username) return;
     this.fetchPullRequests();
   };
@@ -45,23 +45,23 @@ export default class PullRequests extends Component {
     const apiUrl = process.env.REACT_APP_API_URL;
 
     this.setState({
-      loading: true
+      loading: true,
     });
 
     fetch(`${apiUrl}/prs?username=${username}`, {
-      method: 'GET'
+      method: 'GET',
     })
-      .then(response => response.json())
-      .then(pullRequests =>
+      .then((response) => response.json())
+      .then((pullRequests) =>
         this.setState({
           loading: false,
-          data: pullRequests
+          data: pullRequests,
         })
       )
-      .catch(error =>
+      .catch((error) =>
         this.setState({
           loading: false,
-          error
+          error,
         })
       );
   };

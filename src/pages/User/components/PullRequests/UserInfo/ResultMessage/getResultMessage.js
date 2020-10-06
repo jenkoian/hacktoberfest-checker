@@ -6,10 +6,10 @@ const messages = [
   "Nice! Now, don't stop!",
   'So close!',
   'Way to go!',
-  "Now you're just showing off!"
+  "Now you're just showing off!",
 ];
 
-const getResultMessage = pullRequestCount => {
+const getResultMessage = (pullRequestCount) => {
   const currentMonth = new Date().getMonth();
 
   if (currentMonth < 9) {

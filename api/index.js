@@ -37,14 +37,14 @@ const start = () => {
   app.use(bodyParser.json());
 
   const corsOptions = {
-    origin: process.env.REACT_APP_HOSTNAME
+    origin: process.env.REACT_APP_HOSTNAME,
   };
 
   app.use(cors(corsOptions));
 
   app.use(
     compression({
-      filter: shouldCompress
+      filter: shouldCompress,
     })
   );
 

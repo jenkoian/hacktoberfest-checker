@@ -18,7 +18,7 @@ const UsernameInput = ({ value, onChange, ...props }) => (
 
 UsernameInput.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
 
 export default UsernameInput;

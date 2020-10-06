@@ -2,7 +2,7 @@
 
 const logger = require('morgan');
 
-const setupErrorHandling = app => {
+const setupErrorHandling = (app) => {
   // Production error handler
   if (process.env.NODE_ENV === 'production') {
     app.use((err, req, res, next) => {

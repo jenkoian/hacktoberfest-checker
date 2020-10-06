@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class MeLinkInfo extends Component {
   static propTypes = {
-    username: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
   };
 
   storeUsernameAsMe = () => {
