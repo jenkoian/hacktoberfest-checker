@@ -15,7 +15,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
         target="_blank"
         rel="noopener noreferrer"
         className="bg-mid-blue hover:bg-light-pink transition text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
-        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/user/${username}&hashtags=hacktoberfest, hacktoberfestchecker`}
+        href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/user/${username}&hashtags=hacktoberfest,hacktoberfestchecker`}
         data-size="large"
       >
         <FontAwesomeIcon icon={twitterIcon} size={'lg'} /> Tweet
