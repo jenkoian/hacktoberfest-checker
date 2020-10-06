@@ -12,6 +12,7 @@ const User = ({
 }) => (
   <Fragment>
     <Helmet>
+      <script src="/components/PullRequests/share.js" type="text/javascript" />
       <title>{username}</title>
     </Helmet>
     <SiteTitle />
