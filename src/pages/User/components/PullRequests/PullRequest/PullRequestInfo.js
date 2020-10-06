@@ -9,7 +9,7 @@ const PullRequestInfo = ({ pullRequest }) => (
       </span>
       {pullRequest.is_pending && (
         <div className="ml-4 rounded-full px-2 text-white bg-mid-blue inline text-xs">
-          <em>Pending</em>
+          <span>pending</span>
         </div>
       )}
     </div>
