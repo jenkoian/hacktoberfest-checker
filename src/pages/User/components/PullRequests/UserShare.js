@@ -1,17 +1,14 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-const UserShare = () => {
-
-  return <React.Fragment>
+const UserShare = () => (
+  <Fragment>
     <Twitter/>,
     <FbRoot/>,
     <Facebook/>
-  </React.Fragment>
-};
-
+  </Fragment>
+);
 
 const FbRoot = () => { 
-  console.log('yep')
   return <div id="fb-root"></div>;
 }
 
