@@ -11,6 +11,7 @@ const UserShare = () => {
 
 
 const FbRoot = () => { 
+  console.log('yep')
   return <div id="fb-root"></div>;
 }
 
@@ -46,6 +47,5 @@ const Facebook = () => {
   })(document, 'script', 'facebook-jssdk');
   return null;
 };
-
 
 export default UserShare;
