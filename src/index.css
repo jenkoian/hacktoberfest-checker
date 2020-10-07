@@ -1139,12 +1139,6 @@ a:hover {
     color: rgba(7, 37, 64, var(--text-opacity));
   }
 
-  .light-mode\:text-white-grey {
-    --text-opacity: 1;
-    color: #f5f5f5;
-    color: rgba(245, 245, 245, var(--text-opacity));
-  }
-
   .light-mode\:text-dark-grey {
     --text-opacity: 1;
     color: #333333;
