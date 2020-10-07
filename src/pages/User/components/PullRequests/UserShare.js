@@ -1,19 +1,7 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
-const UserShare = () => (
-  <Fragment>
-    <Twitter/>,
-    <FbRoot/>,
-    <Facebook/>
-  </Fragment>
-);
-
-const FbRoot = () => { 
-  return <div id="fb-root"></div>;
-}
-
-const Twitter = () => {
-   window.twttr = (function (d, s, id) {
+const UserShare = () => {
+  window.twttr = (function (d, s, id) {
     var js,
       fjs = d.getElementsByTagName(s)[0],
       t = window.twttr || {};
@@ -29,10 +17,7 @@ const Twitter = () => {
     };
     return t;
   })(document, 'script', 'twitter-wjs');
-  return null;
-};
 
-const Facebook = () => {
   (function (d, s, id) {
     var js,
       fjs = d.getElementsByTagName(s)[0];
@@ -42,7 +27,9 @@ const Facebook = () => {
     js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
     fjs.parentNode.insertBefore(js, fjs);
   })(document, 'script', 'facebook-jssdk');
-  return null;
+
+  return <div id="fb-root"></div>;
 };
 
 export default UserShare;
+
