@@ -37,14 +37,6 @@
       href="%REACT_APP_HOSTNAME%/img/favicon.ico"
     />
     <title>Hacktoberfest Checker</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body class="h-screen overflow-y-auto flex flex-col">
@@ -52,10 +44,10 @@
 
     <!-- Google Analytics -->
     <script>
-      (function(b, o, i, l, e, r) {
+      (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
         b[l] ||
-          (b[l] = function() {
+          (b[l] = function () {
             (b[l].q = b[l].q || []).push(arguments);
           });
         b[l].l = +new Date();
@@ -76,7 +68,7 @@
     </script>
     <!-- Twitter -->
     <script>
-      window.twttr = (function(d, s, id) {
+      window.twttr = (function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0],
           t = window.twttr || {};
@@ -87,7 +79,7 @@
         fjs.parentNode.insertBefore(js, fjs);
 
         t._e = [];
-        t.ready = function(f) {
+        t.ready = function (f) {
           t._e.push(f);
         };
         return t;
@@ -96,7 +88,7 @@
     <!-- Facebook -->
     <div id="fb-root"></div>
     <script>
-      (function(d, s, id) {
+      (function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -105,6 +97,23 @@
         js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
         fjs.parentNode.insertBefore(js, fjs);
       })(document, 'script', 'facebook-jssdk');
+    </script>
+    <!-- Load google fonts asynchonously to prevent render blocking  -->
+    <script type="text/javascript">
+      (function () {
+        const ffa = ['Space+Mono&display=swap', 'Press+Start+2P&display=swap'];
+        ffa.forEach((ff) => {
+          WebFontConfig = {
+            google: { families: [ff] },
+          };
+          const wf = document.createElement('script');
+          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          const s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        });
+      })();
     </script>
   </body>
 </html>
