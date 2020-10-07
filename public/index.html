@@ -45,6 +45,14 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <!-- preconnect -->
+    <link
+      rel="preconnect"
+      href="https://www.google-analytics.com"
+      crossorigin=""
+    />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
   </head>
 
   <body class="h-screen overflow-y-auto flex flex-col">
@@ -52,10 +60,10 @@
 
     <!-- Google Analytics -->
     <script>
-      (function(b, o, i, l, e, r) {
+      (function (b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
         b[l] ||
-          (b[l] = function() {
+          (b[l] = function () {
             (b[l].q = b[l].q || []).push(arguments);
           });
         b[l].l = +new Date();
@@ -76,7 +84,7 @@
     </script>
     <!-- Twitter -->
     <script>
-      window.twttr = (function(d, s, id) {
+      window.twttr = (function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0],
           t = window.twttr || {};
@@ -87,7 +95,7 @@
         fjs.parentNode.insertBefore(js, fjs);
 
         t._e = [];
-        t.ready = function(f) {
+        t.ready = function (f) {
           t._e.push(f);
         };
         return t;
@@ -96,7 +104,7 @@
     <!-- Facebook -->
     <div id="fb-root"></div>
     <script>
-      (function(d, s, id) {
+      (function (d, s, id) {
         var js,
           fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
