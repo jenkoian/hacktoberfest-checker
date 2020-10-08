@@ -9,7 +9,9 @@ const SiteTitle = () => (
           fest
         </span>
       </h1>
-      <small className="block text-light-blue uppercase block">Checker</small>
+      <small className="block text-light-blue light-mode:text-dark-blue uppercase block">
+        Checker
+      </small>
     </a>
   </div>
 );

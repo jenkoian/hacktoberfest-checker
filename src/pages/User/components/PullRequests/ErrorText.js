@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ErrorText = ({ errorMessage }) => (
-  <h2 className="text-center text-white">{errorMessage}</h2>
+  <h2 className="text-center text-white light-mode:text-dark-grey">
+    {errorMessage}
+  </h2>
 );
 
 ErrorText.propTypes = {
