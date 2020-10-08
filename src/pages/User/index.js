@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
 import PullRequests from './components/PullRequests';
+import UserShare from './components/PullRequests/UserShare.js';
 
 const User = ({
   match: {
@@ -17,6 +18,7 @@ const User = ({
     <SiteTitle />
     <UsernameForm username={username} />
     <PullRequests username={username} />
+    <UserShare />
   </Fragment>
 );
 
