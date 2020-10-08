@@ -37,6 +37,14 @@
       href="%REACT_APP_HOSTNAME%/img/favicon.ico"
     />
     <title>Hacktoberfest Checker</title>
+    <!-- preconnect -->
+    <link
+      rel="preconnect"
+      href="https://www.google-analytics.com"
+      crossorigin=""
+    />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
   </head>
 
   <body class="h-screen overflow-y-auto flex flex-col">
@@ -65,38 +73,6 @@
         ga('set', 'title', 'User | Hacktoberfest Checker');
       }
       ga('send', 'pageview');
-    </script>
-    <!-- Twitter -->
-    <script>
-      window.twttr = (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0],
-          t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://platform.twitter.com/widgets.js';
-        fjs.parentNode.insertBefore(js, fjs);
-
-        t._e = [];
-        t.ready = function (f) {
-          t._e.push(f);
-        };
-        return t;
-      })(document, 'script', 'twitter-wjs');
-    </script>
-    <!-- Facebook -->
-    <div id="fb-root"></div>
-    <script>
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10';
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, 'script', 'facebook-jssdk');
     </script>
     <!-- Load google fonts asynchonously to prevent render blocking  -->
     <script type="text/javascript">

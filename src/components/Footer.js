@@ -5,7 +5,7 @@ import { faQuestion as questionIcon } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => (
   <footer className="text-sm px-8 text-center flex-none py-4">
-    <p className="text-white">
+    <p className="text-white light-mode:text-dark-grey">
       Disclaimer: This site is fan made and not affiliated with{' '}
       <a
         href="https://hacktoberfest.digitalocean.com/"
