@@ -15,6 +15,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "tailwind-gen": "node ./node_modules/.bin/postcss ./src/style.css -o ./src/index.css",
+    "tailwind-gen-watch": "node ./node_modules/.bin/postcss --watch ./src/style.css -o ./src/index.css",
     "prettier": "prettier --check \"{src,api}/**/*.js\"",
     "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
   },
@@ -43,7 +44,8 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.3",
+    "use-color-scheme": "^1.1.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.3.0",

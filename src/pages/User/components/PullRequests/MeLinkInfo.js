@@ -21,7 +21,7 @@ export default class MeLinkInfo extends Component {
       </button>
     );
     let infoStr = (
-      <p className="text-mid-grey mx-auto text-center my-4">
+      <p className="text-mid-grey light-mode:text-dark-grey mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
         <a
           href={`${process.env.REACT_APP_HOSTNAME}/me`}
@@ -38,7 +38,7 @@ export default class MeLinkInfo extends Component {
     if (savedUsername === this.props.username) {
       storeUsernameBtn = null;
       infoStr = (
-        <p className="text-mid-grey mx-auto text-center my-4">
+        <p className="text-mid-grey light-mode:text-dark-grey mx-auto text-center my-4">
           Username {this.props.username} saved! You can visit{' '}
           <a
             href={`${process.env.REACT_APP_HOSTNAME}/me`}
