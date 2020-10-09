@@ -19,11 +19,21 @@ const App = () => (
     <PageWrapper>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/user/:username" component={User} />
-          <Route exact path="/me" component={Me} />
-          <Route exact path="/faq" component={Faq} />
-          <Route component={NotFound} />
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/user/:username">
+            <User />
+          </Route>
+          <Route exact path="/me">
+            <Me />
+          </Route>
+          <Route exact path="/faq">
+            <Faq />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
       </Router>
     </PageWrapper>

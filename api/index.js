@@ -12,7 +12,7 @@ const compression = require('compression');
 
 const start = () => {
   // Load environment variables from .env file
-  dotenv.load();
+  dotenv.config();
 
   const app = express();
 
