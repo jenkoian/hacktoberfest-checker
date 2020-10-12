@@ -59,7 +59,7 @@ const findPrs = (github, username) => {
         const [owner, repo] = repo_name.split('/');
         const repoDetails = { owner, repo };
         return github.repos
-          .getTopics(repoDetails)
+          .getAllTopics(repoDetails)
           .then(logCallsRemaining)
           .then((res) => ({ repo_name, topics: res.data.names }));
       });
@@ -104,13 +104,13 @@ const findPrs = (github, username) => {
         const pullDetails = {
           owner: repoDetails[0],
           repo: repoDetails[1],
-          number: pr.number,
+          pull_number: pr.number,
         };
 
-        return github.pullRequests
-          .checkMerged(pullDetails)
+        return github.pulls
+          .checkIfMerged(pullDetails)
           .then(logCallsRemaining)
-          .then((res) => res.meta.status === '204 No Content')
+          .then((res) => res.headers.status === '204 No Content')
           .catch((err) => {
             // 404 means there wasn't a merge
             if (err.code === 404) {
@@ -131,11 +131,11 @@ const findPrs = (github, username) => {
         const pullDetails = {
           owner: repoDetails[0],
           repo: repoDetails[1],
-          number: pr.number,
+          pull_number: pr.number,
         };
 
-        return github.pullRequests
-          .getReviews(pullDetails)
+        return github.pulls
+          .listReviews(pullDetails)
           .then(logCallsRemaining)
           .then((res) =>
             res.data.some((review) => review.state === 'APPROVED')
