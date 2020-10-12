@@ -4,7 +4,7 @@ import { faInfoCircle as infoIcon } from '@fortawesome/free-solid-svg-icons';
 
 const RegisterReminder = () => (
   <div className="flex flex-none items-center justify-center p-2 pl-4 bg-dark-blue-alt light-mode:bg-light-blue text-mid-grey light-mode:text-dark-grey">
-    <FontAwesomeIcon icon={infoIcon} size={'m'} title="info" />
+    <FontAwesomeIcon icon={infoIcon} size={'sm'} title="info" />
 
     <span className="text-md leading-tight ml-4 mr-16 md:mr-8">
       Remember to{' '}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withRouter from 'react-router-dom/withRouter';
+import { withRouter } from 'react-router-dom';
 import TimeMessage from './TimeMessage';
 import UsernameInput from './UsernameInput';
 import CheckButton from './CheckButton';
