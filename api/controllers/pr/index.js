@@ -19,7 +19,7 @@ exports.index = (req, res) => {
 
   Promise.all([
     findPrs(github, username),
-    github.users.getForUser({ username }).then(logCallsRemaining),
+    github.users.getByUsername({ username }).then(logCallsRemaining),
   ])
     .then(([prs, user]) => {
       if (user.data.type !== 'User') {

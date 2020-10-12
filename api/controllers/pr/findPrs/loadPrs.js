@@ -1,5 +1,6 @@
 'use strict';
 
+const hasNextPage = require('./hasNextPage');
 const getNextPage = require('./getNextPage');
 
 const buildQuery = (username, searchYear) =>
@@ -11,20 +12,17 @@ const loadPrs = (github, username) =>
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();
     const searchYear = currentMonth < 9 ? currentYear - 1 : currentYear;
+    const perPage = 100;
 
-    github.search.issues(
-      {
+    github.search
+      .issuesAndPullRequests({
         q: buildQuery(username, searchYear),
         // 30 is the default but this makes it clearer/allows it to be tweaked
-        per_page: 100,
-      },
-      (err, res) => {
-        if (err) {
-          return reject();
-        }
-
+        per_page: perPage,
+      })
+      .then((res) => {
         const pullRequestData = res.data.items;
-        if (github.hasNextPage(res)) {
+        if (hasNextPage(res)) {
           getNextPage(res, github, pullRequestData).then((pullRequestData) =>
             resolve(pullRequestData)
           );
@@ -35,8 +33,11 @@ const loadPrs = (github, username) =>
           console.log(`Found ${pullRequestData.length} pull requests.`);
         }
         resolve(pullRequestData);
-      }
-    );
+      })
+      .catch((err) => {
+        console.log('Error: ' + err);
+        return reject();
+      });
   });
 
 module.exports = loadPrs;
