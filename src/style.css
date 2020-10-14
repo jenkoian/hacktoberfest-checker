@@ -177,6 +177,23 @@ a:hover {
   transition: all 0.3s ease-out;
 }
 
+.transition-btn {
+  transition: 0.3s;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.hero-title img {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.hero-title small {
+  font-size: 24px;
+}
+
 @screen light-mode {
   .pull-request,
   .faqs {

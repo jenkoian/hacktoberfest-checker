@@ -8,7 +8,7 @@ const PullRequest = ({ pullRequest }) => (
     <div
       className={`flex text-mid-grey light-mode:text-dark-grey mb-6 ${
         pullRequest.has_hacktoberfest_label ? 'hacktoberfest ' : ''
-      }p-4 break-words`}
+      }p-4 break-all`}
     >
       <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
       <PullRequestInfo pullRequest={pullRequest} />
