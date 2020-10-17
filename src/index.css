@@ -33,6 +33,11 @@ body {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
 /* Grouping content
    ========================================================================== */
 
@@ -250,6 +255,7 @@ progress {
  * Removes the default spacing and border for appropriate elements.
  */
 
+h1,
 h2,
 h3,
 p {
@@ -358,6 +364,7 @@ button {
   cursor: pointer;
 }
 
+h1,
 h2,
 h3 {
   font-size: inherit;
@@ -439,6 +446,27 @@ body {
     --bg-opacity: 1;
     background-color: #fff;
     background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+}
+
+h1 {
+  font-family: 'squealerregular', serif;
+  font-weight: normal;
+  text-shadow: -1px 0 lightpink, 0 1px lightpink, 1px 0 lightpink,
+    0 -1px lightpink;
+}
+
+h1 span {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: normal;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue,
+    0 -1px lightblue;
+}
+
+@media (prefers-color-scheme: light) {
+  h1 span {
+    text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
+      0 -1px darkblue;
   }
 }
 
@@ -630,6 +658,10 @@ a:hover {
   font-size: 3rem;
 }
 
+.text-6xl {
+  font-size: 4rem;
+}
+
 .leading-tight {
   line-height: 1.25;
 }
@@ -818,6 +850,12 @@ a:hover {
   color: rgba(153, 161, 179, var(--text-opacity));
 }
 
+.text-dark-pink {
+  --text-opacity: 1;
+  color: #9c4668;
+  color: rgba(156, 70, 104, var(--text-opacity));
+}
+
 .text-light-pink {
   --text-opacity: 1;
   color: #ff8ae2;
@@ -972,15 +1010,6 @@ a:hover {
   word-break: break-all;
 }
 
-.hero-title img {
-  width: 300px;
-  margin-bottom: 10px;
-}
-
-.hero-title small {
-  font-size: 24px;
-}
-
 @media (prefers-color-scheme: light) {
   .pull-request,
   .faqs {
@@ -997,8 +1026,12 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-  .md\:text-4xl {
-    font-size: 2.25rem;
+  .md\:text-5xl {
+    font-size: 3rem;
+  }
+
+  .md\:text-7xl {
+    font-size: 5rem;
   }
 
   .md\:mr-8 {
