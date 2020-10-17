@@ -14,7 +14,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-mid-blue hover:bg-light-pink transition-btn text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="bg-mid-blue hover:bg-light-pink transition duration-300 text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
         href={`https://twitter.com/intent/tweet?text=My progress on hacktoberfest ${pullRequestCount} / ${pullRequestAmount}&url=${process.env.REACT_APP_HOSTNAME}/user/${username}&hashtags=hacktoberfest,hacktoberfestchecker`}
         data-size="large"
       >
@@ -31,7 +31,7 @@ const ShareButtons = ({ username, pullRequestCount }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        className="fb-xfbml-parse-ignore bg-mid-blue hover:bg-light-pink transition-btn text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="fb-xfbml-parse-ignore bg-mid-blue hover:bg-light-pink transition duration-300 text-white hover:text-white px-2 py-1 pointer no-underline text-sm"
         href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.REACT_APP_HOSTNAME}/user/${username}`}
       >
         <FontAwesomeIcon icon={facebookIcon} size={'lg'} /> Share

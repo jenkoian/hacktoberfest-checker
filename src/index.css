@@ -906,6 +906,15 @@ a:hover {
   width: 83.333333%;
 }
 
+.transition {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 @-webkit-keyframes spin {
   to {
     transform: rotate(360deg);
@@ -1000,10 +1009,6 @@ a:hover {
   background-color: rgba(24, 61, 93, var(--bg-opacity));
   display: block;
   transition: all 0.3s ease-out;
-}
-
-.transition-btn {
-  transition: 0.3s;
 }
 
 .break-all {
