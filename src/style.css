@@ -177,10 +177,6 @@ a:hover {
   transition: all 0.3s ease-out;
 }
 
-.break-all {
-  word-break: break-all;
-}
-
 @screen light-mode {
   .pull-request,
   .faqs {
