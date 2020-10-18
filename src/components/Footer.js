@@ -19,7 +19,7 @@ const Footer = () => (
     <div className="p-2 my-4" id="faqs">
       <a
         rel="noopener noreferrer"
-        className="bg-mid-blue hover:bg-light-pink text-white transition hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="bg-mid-blue hover:bg-light-pink text-white transition duration-300 hover:text-white px-2 py-1 pointer no-underline text-sm"
         href="/Faq"
       >
         <FontAwesomeIcon icon={questionIcon} /> FAQs

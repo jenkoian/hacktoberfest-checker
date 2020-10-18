@@ -16,7 +16,7 @@ const GithubCorner = () => (
       style={{
         fill: '#ff8ae2',
         color: '#FFFFFF',
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         border: 0,
         right: 0,
