@@ -495,8 +495,8 @@ a:hover {
 
   a:hover {
     --text-opacity: 1;
-    color: #93c2db;
-    color: rgba(147, 194, 219, var(--text-opacity));
+    color: #7c99a9;
+    color: rgba(124, 153, 169, var(--text-opacity));
   }
 }
 
