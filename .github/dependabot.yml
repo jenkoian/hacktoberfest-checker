@@ -1,0 +1,24 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    # Look for `package.json` and `lock` files in the `root` directory
+    directory: "/"
+    # Check the npm registry for updates every day (weekdays)
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    allow:
+    - dependency-type: production
+    commit-message:
+        prefix: "[DEPS]"
+    # Specify labels for npm pull requests
+    labels:
+        - "npm"
+        - "dependencies"
+    target-brach: "master"
+    ignore:
+          # For express, ignore all updates. Since can be breaking
+        - dependency-name: "express"
+          # For Loadash, ignore all updates. Since can be breaking
+        - dependency-name: "loadash"
