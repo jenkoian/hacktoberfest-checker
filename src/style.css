@@ -51,7 +51,7 @@ a:hover {
   }
 
   a:hover {
-    @apply text-light-blue;
+    @apply text-soft-blue;
   }
 }
 
