@@ -16,4 +16,3 @@ updates:
     labels:
         - "npm"
         - "dependencies"
-    target-brach: "master"
