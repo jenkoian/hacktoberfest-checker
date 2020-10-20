@@ -41,7 +41,7 @@
     "morgan": "^1.10.0",
     "postcss-url": "^8.0.0",
     "prop-types": "^15.6.2",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
