@@ -17,8 +17,3 @@ updates:
         - "npm"
         - "dependencies"
     target-brach: "master"
-    ignore:
-          # For express, ignore all updates. Since can be breaking
-        - dependency-name: "express"
-          # For Loadash, ignore all updates. Since can be breaking
-        - dependency-name: "loadash"
