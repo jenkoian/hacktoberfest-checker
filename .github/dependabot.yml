@@ -14,5 +14,4 @@ updates:
         prefix: "[DEPS]"
     # Specify labels for npm pull requests
     labels:
-        - "npm"
         - "dependencies"
