@@ -45,7 +45,7 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^4.0.0",
     "use-color-scheme": "^1.1.1"
   },
   "devDependencies": {
