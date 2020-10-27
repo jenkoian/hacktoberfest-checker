@@ -45,6 +45,24 @@
     />
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin="" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <!-- Load google fonts asynchonously to prevent render blocking  -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
 
   <body class="h-screen overflow-y-auto flex flex-col">
@@ -73,23 +91,6 @@
         ga('set', 'title', 'User | Hacktoberfest Checker');
       }
       ga('send', 'pageview');
-    </script>
-    <!-- Load google fonts asynchonously to prevent render blocking  -->
-    <script type="text/javascript">
-      (function () {
-        const ffa = ['Space+Mono&display=swap', 'Press+Start+2P&display=swap'];
-        ffa.forEach((ff) => {
-          WebFontConfig = {
-            google: { families: [ff] },
-          };
-          const wf = document.createElement('script');
-          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          const s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-        });
-      })();
     </script>
   </body>
 </html>
