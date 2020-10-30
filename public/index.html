@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
+    <script>
+      performance.mark('Head Start');
+    </script>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,6 +32,7 @@
         });
       }
     </script>
+    <!-- / Google Analytics -->
 
     <meta
       name="description"
@@ -83,9 +87,53 @@
         rel="stylesheet"
       />
     </noscript>
+    <script>
+      performance.mark('Head End');
+    </script>
+    <script>
+      performance.measure('Head Time', 'Head Start', 'Head End');
+    </script>
   </head>
 
   <body class="h-screen overflow-y-auto flex flex-col">
     <div id="root"></div>
+    <script>
+      (function () {
+        // Only progress if the browser supports User Timings
+        if (window.performance) {
+          // Store URL params for debugging later
+          var params = new URL(document.location).searchParams;
+
+          // Loop through all performance entries we’ve captured
+          var perfEntries = performance.getEntries();
+          for (i = 0; i < perfEntries.length; i++) {
+            // Only act on mark or measure timings
+            if (
+              perfEntries[i].entryType === 'mark' ||
+              perfEntries[i].entryType === 'measure'
+            ) {
+              // For marks we need the startTime; for measures we need the duration
+              var timingType =
+                perfEntries[i].entryType === 'mark'
+                  ? perfEntries[i].startTime
+                  : perfEntries[i].duration;
+
+              // Send the data off to Google Analytics and store in our ‘Custom Timings’ category
+              //ga('send', 'timing', 'Custom Timings', perfEntries[i].name, timingType);
+              gtag('event', 'timing_complete', {
+                name: perfEntries[i].name,
+                value: timingType,
+                event_category: 'Custom Timings',
+              });
+
+              // Log the marks and measures if we have ?debug=true on the URL
+              if (params.get('debug')) {
+                console.log(perfEntries[i].name + ': ' + timingType);
+              }
+            }
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
