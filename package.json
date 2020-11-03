@@ -30,7 +30,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.0",
     "@fortawesome/free-solid-svg-icons": "^5.15.0",
     "@fortawesome/react-fontawesome": "^0.1.12",
-    "@octokit/rest": "^18.0.8",
+    "@octokit/rest": "^18.0.9",
     "body-parser": "^1.15.1",
     "compression": "^1.7.4",
     "cors": "^2.8.4",
