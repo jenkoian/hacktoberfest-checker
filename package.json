@@ -29,7 +29,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
     "@fortawesome/free-brands-svg-icons": "^5.15.0",
     "@fortawesome/free-solid-svg-icons": "^5.15.0",
-    "@fortawesome/react-fontawesome": "^0.1.13",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@octokit/rest": "^18.0.12",
     "body-parser": "^1.15.1",
     "compression": "^1.7.4",
