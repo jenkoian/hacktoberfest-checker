@@ -27,7 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
-    "@fortawesome/free-brands-svg-icons": "^5.15.0",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@octokit/rest": "^18.0.12",
