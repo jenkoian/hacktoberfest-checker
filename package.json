@@ -39,7 +39,7 @@
     "lodash": "^4.17.20",
     "moment": "^2.29.0",
     "morgan": "^1.10.0",
-    "postcss-url": "^9.0.0",
+    "postcss-url": "^10.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
