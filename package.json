@@ -47,7 +47,7 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
-    "use-color-scheme": "^1.1.1"
+    "use-color-scheme": "^1.1.3"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^3.0.0",
