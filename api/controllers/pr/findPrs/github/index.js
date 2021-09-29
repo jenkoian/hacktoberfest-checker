@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const moment = require('moment');
-const logCallsRemaining = require('../logCallsRemaining');
+const logCallsRemaining = require('../../logCallsRemaining');
 const loadPrs = require('./loadPrs');
 
 const findPrs = (github, username) => {
