@@ -1,7 +1,8 @@
 'use strict';
 
 const logCallsRemaining = require('./logCallsRemaining');
-const findPrs = require('./findPrs');
+const findGithubPrs = require('./findPrs/github');
+const findGitlabPrs = require('./findPrs/gitlab');
 const { getStatusCode, getErrorDescription } = require('./errors');
 
 /**
@@ -9,6 +10,7 @@ const { getStatusCode, getErrorDescription } = require('./errors');
  */
 exports.index = (req, res) => {
   const github = req.app.get('github');
+  const gitlab = req.app.get('gitlab');
   const username = req.query.username;
 
   if (!username) {
@@ -18,13 +20,17 @@ exports.index = (req, res) => {
   }
 
   Promise.all([
-    findPrs(github, username),
+    findGithubPrs(github, username),
+    findGitlabPrs(gitlab, username),
     github.users.getByUsername({ username }).then(logCallsRemaining),
   ])
-    .then(([prs, user]) => {
+    .then(([prs, mrs, user]) => {
       if (user.data.type !== 'User') {
         return Promise.reject('notUser');
       }
+
+      // Combine github PRs with the gitlab MRs.
+      prs = prs.concat(mrs);
 
       const data = {
         prs,
