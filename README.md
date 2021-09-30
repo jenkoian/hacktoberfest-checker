@@ -9,13 +9,13 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 ![Screenshot](hacktoberfest-checker-2020.png)
 
-## 2020!
+## 2021!
 
-Been really short on time this year, so just a quick reskin rather than any major tech advancements.
+Again I've left this until the last minute, which is why the site (and screenshot above) look the same as last year! ([help me fix that!](https://github.com/jenkoian/hacktoberfest-checker/issues/566))
 
-I will add some issues when I get chance of ideas that can be contributed, I'll continue to do this throughout the month.
+The big news this year is gitlab support! Which makes this app a bit tricky. I've added support for gitlab but as we only have one input it only accounts for both if the username matches. This should cover any accounts who work mostly in github _or_ gitlab exclusively or use the same username everywhere but for those people who work across both _and_ have different usernames on both, at the time of writing this app doesn't fully support you :scream:.
 
-Finally, I have to give a big shout out to [DigitalOcean](https://www.digitalocean.com/) and [Dev](https://dev.to/) for yet another awesome event and their support for this checker app.
+I'm trying to think of a nice way to support this use case, perhaps support for some special input format or something? e.g. `jenkoian|ianjenko` so if someone were to submit something like that we would use `jenkoian` for github and `ianjenko` for gitlab. Not sure, needs more thought but hopefully will get solved before October is out!
 
 ### Doesn't DigitalOcean have their progress checker now?
 
@@ -25,27 +25,31 @@ Happy hacking!
 
 ## Requirements
 
-* Node v10+
-> Recommended to use [NVM](https://github.com/creationix/nvm)
+- Node v10+
+  > Recommended to use [NVM](https://github.com/creationix/nvm)
 
 ## Running the app
 
-* [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
+- [Generate a GitHub personal access token](https://github.com/settings/tokens/new?scopes=&description=Hacktoberfest%20Checker) to ensure you don't get rate limited as often.
 
-* Create a `.env` file using `.env.example` as an example. Or export the GitHub token as an environment variable for Node.js to use:
-   * Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN`
-   * Windows (cmd.exe): `set GITHUB_TOKEN=YOUR TOKEN`
-   * Windows (PowerShell): `$env: GITHUB_TOKEN=YOUR TOKEN`
+- [Generate a Gitlab personal access token](https://gitlab.com/-/profile/personal_access_tokens?scopes=api&name=Hacktoberfest%20Checker) to ensure gitlab is supported.
 
-* `$ npm install`
+- Create a `.env` file using `.env.example` as an example. Or export the GitHub/Gitlab token as an environment variable for Node.js to use:
 
-* `$ npm run tailwind-gen`
+  - Mac/Linux: `export GITHUB_TOKEN=YOUR_TOKEN; export GITLAB_TOKEN=YOUR_TOKEN`
+  - Windows (cmd.exe): `set GITHUB_TOKEN=YOUR_TOKEN; set GITLAB_TOKEN=YOUR_TOKEN`
+  - Windows (PowerShell): `$env: GITHUB_TOKEN=YOUR_TOKEN; GITLAB_TOKEN=YOUR_TOKEN`
 
-* `$ npm start`
+- `$ npm install`
 
-* Point browser to [localhost:5000](http://localhost:5000)
+- `$ npm run tailwind-gen`
+
+- `$ npm start`
+
+- Point browser to [localhost:5000](http://localhost:5000)
 
 Want to run the API server and the frontend in their processes? Use this:
+
 ```bash
 $ npm run start-frontend
 $ npm run start-server
@@ -61,13 +65,13 @@ $ npm run start-development
 
 As an alternative to the section above, you can run the app within a Docker container:
 
-* `$ docker build -t hacktoberfest-checker .`
+- `$ docker build -t hacktoberfest-checker .`
 
-* `$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
+- `$ docker run -p 5000:5000 -e "GITHUB_TOKEN=YOUR_TOKEN" hacktoberfest-checker`
 
 or use the docker-compose
 
-* `$ docker-compose up --build`
+- `$ docker-compose up --build`
 
 ## Changing styling
 
@@ -79,4 +83,4 @@ and run `npm run tailwind-gen` to generate the new CSS file.
 
 ## License
 
-MIT © 2015-2020 [Ian Jenkins](https://github.com/jenkoian)
+MIT © 2015-2021 [Ian Jenkins](https://github.com/jenkoian)
