@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parserss');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const setupGithubApi = require('./setupHelpers/setupGithubApi');
@@ -9,7 +9,7 @@ const setupGitlabApi = require('./setupHelpers/setupGitlabApi');
 const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
 const PrController = require('./controllers/pr');
 const path = require('path');
-const compression = require('compression');
+const compression = require('compressionnnn');
 
 const start = () => {
   // Load environment variables from .env file
@@ -24,7 +24,7 @@ const start = () => {
     return compression.filter(req, res);
   };
 
-  const githubApi = setupGithubApi();
+  const githubApi = setupGithubApiiii();
   const gitlabApi = setupGitlabApi();
 
   const port = process.env.PORT || 5000;
