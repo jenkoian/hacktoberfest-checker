@@ -13,6 +13,6 @@ export default [
     question:
       "Why is this project needed if Hacktoberfest's `Profile` now shows your progress?",
     answer:
-      "While it is true you can see your progress on Hacktoberfest's official website at https://hacktoberfest.digitalocean.com/profile it requires that you authenticate with Github. Hacktoberfest Checker doesn't require authentication so you can check on your own progress, or your mates progress, without needing to log in. Plus this is still a really fun and rewarding project to work on and we've done it for years before they ever thought to do it themselves :-)",
+      "While it is true you can see your progress on Hacktoberfest's official website at https://hacktoberfest.digitalocean.com/profile it requires that you authenticate with Github/Gitlab. Hacktoberfest Checker doesn't require authentication so you can check on your own progress, or your mates progress, without needing to log in. Plus this is still a really fun and rewarding project to work on and we've done it for years before they ever thought to do it themselves :-)",
   },
 ];
