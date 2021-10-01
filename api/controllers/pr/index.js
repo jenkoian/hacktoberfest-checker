@@ -1,5 +1,6 @@
 'use strict';
 
+const moment = require('moment');
 const logCallsRemaining = require('./logCallsRemaining');
 const findGithubPrs = require('./findPrs/github');
 const findGitlabPrs = require('./findPrs/gitlab');
@@ -29,8 +30,15 @@ exports.index = (req, res) => {
         return Promise.reject('notUser');
       }
 
-      // Combine github PRs with the gitlab MRs.
-      prs = prs.concat(mrs);
+      // Combine github PRs with the gitlab MRs in sorted order.
+      // Most recent PRs/MRs will come first.
+      prs = prs.concat(mrs).sort((pr1, pr2) => {
+        const date1 = moment(pr1.created_at, 'MMMM Do YYYY');
+        const date2 = moment(pr2.created_at, 'MMMM Do YYYY');
+        if (date1.isSame(date2)) return 0;
+        else if (date1.isAfter(date2)) return -1;
+        return 1;
+      });
 
       // TODO: If user is empty, try looking them up on gitlab.
 
