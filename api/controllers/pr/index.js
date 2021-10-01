@@ -32,6 +32,8 @@ exports.index = (req, res) => {
       // Combine github PRs with the gitlab MRs.
       prs = prs.concat(mrs);
 
+      // TODO: If user is empty, try looking them up on gitlab.
+
       const data = {
         prs,
         username,
