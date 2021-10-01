@@ -110,10 +110,12 @@ const findPrs = (github, username) => {
         return github.pulls
           .checkIfMerged(pullDetails)
           .then(logCallsRemaining)
-          .then((res) => res.headers.status === '204 No Content')
+          .then((res) => {
+            return res.status === 204;
+          })
           .catch((err) => {
             // 404 means there wasn't a merge
-            if (err.code === 404) {
+            if (err.status === 404) {
               return false;
             }
 
