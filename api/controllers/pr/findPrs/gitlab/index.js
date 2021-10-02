@@ -61,7 +61,7 @@ const findPrs = async (gitlab, username) => {
     }));
   });
 
-  const repoTopics = Promise.all(repoTopicRequests);
+  const repoTopics = await Promise.all(repoTopicRequests);
   const repoTopicMap = _.reduce(
     repoTopics,
     (map, { repo_id, topics }) => ({
