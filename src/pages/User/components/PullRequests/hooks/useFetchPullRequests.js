@@ -8,12 +8,6 @@ const ACTIONS = {
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-// const fetchPullRequests = (username) =>
-//   fetch(`${API_URL}/prs?username=${username}`, {
-//     method: 'GET',
-//   }).then((response) => response.json());
-
-// Code by Georgey
 async function fetchPullRequests (username) {
   const response = await fetch(`${API_URL}/prs?username=${username}`, {
      method: 'GET'
@@ -43,22 +37,16 @@ export default function useFetchPullRequests(username) {
   useEffect(() => {
     if (username === '') return;
     dispatch({ type: ACTIONS.PULL_REQUESTS_LOADING });
-    // fetchPullRequests(username)
-    //   .then((pullRequests) =>
-    //     dispatch({
-    //       type: ACTIONS.PULL_REQUESTS_FETCHED,
-    //       payload: { pullRequests },
-    //     })
-    //   )
-    //   .catch((error) =>
-    //     dispatch({
-    //       type: ACTIONS.PULL_REQUESTS_FETCH_ERROR,
-    //       payload: { error },
-    //     })
-    //   );
 
-    // code by Georgey
-    const response = await fetchPullRequests(username);
+    let response;
+
+    const fetchPR = async () => {
+      const response = await fetchPullRequests(username);
+      return response;
+    }
+
+    response = fetchPR()
+
     const data = dispatch({ 
       type: ACTIONS.PULL_REQUESTS_FETCHED,
       payload: {response},
@@ -69,7 +57,7 @@ export default function useFetchPullRequests(username) {
       payload: {data}
     })
 
-    if(errors) {
+    if (errors) {
       throw new Error(errors);
     }
 
