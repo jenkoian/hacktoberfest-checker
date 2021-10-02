@@ -1,15 +1,13 @@
-'use strict';
-
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const setupGithubApi = require('./setupHelpers/setupGithubApi');
-const setupGitlabApi = require('./setupHelpers/setupGitlabApi');
-const setupErrorHandling = require('./setupHelpers/setupErrorHandling');
-const PrController = require('./controllers/pr');
-const path = require('path');
-const compression = require('compression');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
+import compression from 'compression';
+import setupGithubApi from './setupHelpers/setupGithubApi';
+import setupGitlabApi from './setupHelpers/setupGitlabApi';
+import setupErrorHandling from './setupHelpers/setupErrorHandling';
+import PrController from './controllers/pr';
 
 const start = () => {
   // Load environment variables from .env file
@@ -17,7 +15,7 @@ const start = () => {
 
   const app = express();
 
-  const shouldCompress = (req, res) => {
+  const shouldCompress: compression.CompressionFilter = (req, res) => {
     if (req.headers['x-no-compression']) {
       return false;
     }
@@ -53,7 +51,7 @@ const start = () => {
 
   app.get('/prs', PrController.index);
 
-  app.get('/*', (req, res) => {
+  app.get('/*', (_req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
 
