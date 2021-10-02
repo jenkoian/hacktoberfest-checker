@@ -1,6 +1,4 @@
-'use strict';
-
-const { Gitlab } = require('@gitbeaker/node');
+import { Gitlab } from '@gitbeaker/node';
 
 const setupGitlabApi = () => {
   const gitlab = new Gitlab({
@@ -18,4 +16,4 @@ const setupGitlabApi = () => {
   return gitlab;
 };
 
-module.exports = setupGitlabApi;
+export default setupGitlabApi;

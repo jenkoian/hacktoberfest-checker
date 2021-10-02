@@ -1,6 +1,4 @@
-'use strict';
-
-const { Octokit } = require('@octokit/rest');
+import { Octokit } from '@octokit/rest';
 
 const setupGithubApi = () => {
   const github = new Octokit({
@@ -22,4 +20,4 @@ const setupGithubApi = () => {
   return github;
 };
 
-module.exports = setupGithubApi;
+export default setupGithubApi;
