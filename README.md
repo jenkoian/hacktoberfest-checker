@@ -9,6 +9,7 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 ![Screenshot](hacktoberfest-checker-2020.png)
 
+
 ## 2021!
 
 Again I've left this until the last minute, which is why the site (and screenshot above) look the same as last year! ([help me fix that!](https://github.com/jenkoian/hacktoberfest-checker/issues/566))
