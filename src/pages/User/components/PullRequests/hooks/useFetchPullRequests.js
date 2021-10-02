@@ -8,10 +8,19 @@ const ACTIONS = {
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const fetchPullRequests = (username) =>
-  fetch(`${API_URL}/prs?username=${username}`, {
-    method: 'GET',
-  }).then((response) => response.json());
+// const fetchPullRequests = (username) =>
+//   fetch(`${API_URL}/prs?username=${username}`, {
+//     method: 'GET',
+//   }).then((response) => response.json());
+
+// Code by Georgey
+async function fetchPullRequests (username) {
+  const response = await fetch(`${API_URL}/prs?username=${username}`, {
+     method: 'GET'
+  });
+  const data = response.json();
+  return data;
+}
 
 const pullRequestsReducer = (state, action) => {
   switch (action.type) {
@@ -34,19 +43,36 @@ export default function useFetchPullRequests(username) {
   useEffect(() => {
     if (username === '') return;
     dispatch({ type: ACTIONS.PULL_REQUESTS_LOADING });
-    fetchPullRequests(username)
-      .then((pullRequests) =>
-        dispatch({
-          type: ACTIONS.PULL_REQUESTS_FETCHED,
-          payload: { pullRequests },
-        })
-      )
-      .catch((error) =>
-        dispatch({
-          type: ACTIONS.PULL_REQUESTS_FETCH_ERROR,
-          payload: { error },
-        })
-      );
+    // fetchPullRequests(username)
+    //   .then((pullRequests) =>
+    //     dispatch({
+    //       type: ACTIONS.PULL_REQUESTS_FETCHED,
+    //       payload: { pullRequests },
+    //     })
+    //   )
+    //   .catch((error) =>
+    //     dispatch({
+    //       type: ACTIONS.PULL_REQUESTS_FETCH_ERROR,
+    //       payload: { error },
+    //     })
+    //   );
+
+    // code by Georgey
+    const response = await fetchPullRequests(username);
+    const data = dispatch({ 
+      type: ACTIONS.PULL_REQUESTS_FETCHED,
+      payload: {response},
+    })
+
+    const errors = dispatch({ 
+      type: ACTIONS.PULL_REQUESTS_FETCH_ERROR,
+      payload: {data}
+    })
+
+    if(errors) {
+      throw new Error(errors);
+    }
+
   }, [username]);
 
   return { loading, data, error };
