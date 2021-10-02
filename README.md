@@ -1,7 +1,6 @@
 # Hacktoberfest Checker
 
 [![Build Status](https://img.shields.io/github/workflow/status/jenkoian/hacktoberfest-checker/Build?logo=github)](https://github.com/jenkoian/hacktoberfest-checker/actions?query=workflow%3ABuild)
-
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 Useful checker web app to see how close you are to achieving the requirements for a free t-shirt as part of [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
