@@ -1,9 +1,7 @@
-'use strict';
-
-const _ = require('lodash');
-const moment = require('moment');
-const logCallsRemaining = require('../../logCallsRemaining');
-const loadPrs = require('./loadPrs');
+import _ from 'lodash';
+import moment from 'moment';
+import logCallsRemaining from '../../logCallsRemaining';
+import loadPrs from './loadPrs';
 
 const findPrs = (github, username) => {
   return loadPrs(github, username)
@@ -163,4 +161,4 @@ const findPrs = (github, username) => {
     );
 };
 
-module.exports = findPrs;
+export default findPrs;

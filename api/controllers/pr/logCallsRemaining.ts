@@ -1,5 +1,3 @@
-'use strict';
-
 const logCallsRemaining = (res) => {
   const callsRemaining = res.headers['x-ratelimit-remaining'];
 
@@ -10,4 +8,4 @@ const logCallsRemaining = (res) => {
   return res;
 };
 
-module.exports = logCallsRemaining;
+export default logCallsRemaining;

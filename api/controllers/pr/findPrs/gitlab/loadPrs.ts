@@ -1,36 +1,33 @@
-'use strict';
+import hasNextPage from './hasNextPage';
+import getNextPage from './getNextPage';
 
-const hasNextPage = require('./hasNextPage');
-
-const getNextPage = (
-  pagination,
-  gitlab,
-  username,
-  searchYear,
-  pullRequestData
-) =>
+const loadPrs = (gitlab, username) =>
   new Promise((resolve, reject) => {
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const searchYear = currentMonth < 9 ? currentYear - 1 : currentYear;
+    const perPage = 100;
+
     gitlab.MergeRequests.all({
       scope: 'all',
       author_username: username,
-      //created_after: `${searchYear}-08-30T00:00:00-12:00`,
-      //created_before: `${searchYear}-10-31T23:59:59-12:00`,
+      created_after: `${searchYear}-09-30T00:00:00-12:00`,
+      created_before: `${searchYear}-10-31T23:59:59-12:00`,
       // 30 is the default but this makes it clearer/allows it to be tweaked
-      per_page: pagination.perPage,
-      page: pagination.next,
+      per_page: perPage,
       showExpanded: true,
     })
       .then((res) => {
-        const newPullRequestData = pullRequestData.concat(res.data);
+        const pullRequestData = res.data || res;
         const pagination = res.paginationInfo;
-
-        if (hasNextPage(pagination)) {
+        if (pagination && hasNextPage(pagination)) {
           getNextPage(
             pagination,
             gitlab,
             username,
             searchYear,
-            newPullRequestData
+            pullRequestData
           ).then((pullRequestData) => resolve(pullRequestData));
           return;
         }
@@ -38,7 +35,8 @@ const getNextPage = (
         if (process.env.NODE_ENV !== 'production') {
           console.log(`Found ${pullRequestData.length} pull requests.`);
         }
-        resolve(newPullRequestData);
+
+        resolve(pullRequestData);
       })
       .catch((err) => {
         console.log('Error: ' + err);
@@ -46,4 +44,4 @@ const getNextPage = (
       });
   });
 
-module.exports = getNextPage;
+export default loadPrs;

@@ -1,7 +1,5 @@
-'use strict';
-
-const getPageLinks = require('./getPageLinks');
-const hasNextPage = require('./hasNextPage');
+import getPageLinks from './getPageLinks';
+import hasNextPage from './hasNextPage';
 
 const getNextPage = (response, github, pullRequestData) =>
   new Promise((resolve, reject) => {
@@ -33,4 +31,4 @@ const getNextPage = (response, github, pullRequestData) =>
       });
   });
 
-module.exports = getNextPage;
+export default getNextPage;

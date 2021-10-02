@@ -1,8 +1,6 @@
-'use strict';
-
-const _ = require('lodash');
-const moment = require('moment');
-const loadPrs = require('./loadPrs');
+import _ from 'lodash';
+import moment from 'moment';
+import loadPrs from './loadPrs';
 
 const findPrs = (gitlab, username) => {
   return loadPrs(gitlab, username)
@@ -139,4 +137,4 @@ const findPrs = (gitlab, username) => {
     });
 };
 
-module.exports = findPrs;
+export default findPrs;

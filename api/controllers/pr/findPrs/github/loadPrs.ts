@@ -1,7 +1,5 @@
-'use strict';
-
-const hasNextPage = require('./hasNextPage');
-const getNextPage = require('./getNextPage');
+import hasNextPage from './hasNextPage';
+import getNextPage from './getNextPage';
 
 const buildQuery = (username, searchYear) =>
   `+created:${searchYear}-09-30T00:00:00-12:00..${searchYear}-10-31T23:59:59-12:00+type:pr+is:public+draft:false+author:${username}`;
@@ -40,4 +38,4 @@ const loadPrs = (github, username) =>
       });
   });
 
-module.exports = loadPrs;
+export default loadPrs;

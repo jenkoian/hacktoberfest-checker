@@ -10,6 +10,7 @@ const setupGithubApi = () => {
     },
     userAgent: 'Hacktoberfest Checker',
     auth: process.env.GITHUB_TOKEN ? process.env.GITHUB_TOKEN : '',
+    // @ts-ignore
     log: 'console',
   });
 

@@ -1,5 +1,3 @@
-'use strict';
-
 const getPageLinks = (link) => {
   link = link.link || link.headers.link || '';
 
@@ -14,4 +12,4 @@ const getPageLinks = (link) => {
   return links;
 };
 
-module.exports = getPageLinks;
+export default getPageLinks;
