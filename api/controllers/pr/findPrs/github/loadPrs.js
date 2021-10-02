@@ -3,7 +3,8 @@
 const hasNextPage = require('./hasNextPage');
 const getNextPage = require('./getNextPage');
 
-const buildQuery = (username, searchYear) => `+created:${searchYear}-09-30T00:00:00-12:00..${searchYear}-10-31T23:59:59-12:00+type:pr+is:public+draft:false+author:${username}`;
+const buildQuery = (username, searchYear) =>
+  `+created:${searchYear}-09-30T00:00:00-12:00..${searchYear}-10-31T23:59:59-12:00+type:pr+is:public+draft:false+author:${username}`;
 
 const loadPrs = async (github, username) => {
   try {
@@ -33,6 +34,6 @@ const loadPrs = async (github, username) => {
     console.log('Error: ' + Error);
     return error;
   }
-}
+};
 
 module.exports = loadPrs;

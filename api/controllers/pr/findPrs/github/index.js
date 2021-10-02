@@ -50,7 +50,11 @@ const findPrs = async (github, username) => {
     };
   });
 
-  const repoTopicRequests = _.uniq(pullRequestData.filter((pr) => pr.repo_must_have_topic).map((pr) => pr.repo_name)).map((repo_name) => {
+  const repoTopicRequests = _.uniq(
+    pullRequestData
+      .filter((pr) => pr.repo_must_have_topic)
+      .map((pr) => pr.repo_name)
+  ).map((repo_name) => {
     const [owner, repo] = repo_name.split('/');
     const repoDetails = { owner, repo };
     return github.repos
@@ -60,17 +64,25 @@ const findPrs = async (github, username) => {
   });
 
   const repoTopics = await Promise.all(repoTopicRequests);
-  const repoTopicMap = _.reduce(repoTopics, (map, { repo_name, topics }) => ({
+  const repoTopicMap = _.reduce(
+    repoTopics,
+    (map, { repo_name, topics }) => ({
       ...map,
       [repo_name]: topics,
-    }), {}
+    }),
+    {}
   );
 
-  const repoTopicsAfter = _.map(pullRequestData, (pr) => _.assign(pr, pr.repo_must_have_topic ? {
-          repo_has_hacktoberfest_topic: repoTopicMap[
-            pr.repo_name
-            ].some((topic) => topic.toLowerCase() === 'hacktoberfest'),
-        } : {}
+  const repoTopicsAfter = _.map(pullRequestData, (pr) =>
+    _.assign(
+      pr,
+      pr.repo_must_have_topic
+        ? {
+            repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_name].some(
+              (topic) => topic.toLowerCase() === 'hacktoberfest'
+            ),
+          }
+        : {}
     )
   );
 
@@ -106,7 +118,9 @@ const findPrs = async (github, username) => {
   });
 
   const mergeStatus = await Promise.all(checkMergeStatus);
-  pullRequests = _.zipWith(pullRequests, mergeStatus, (pr, merged) => _.assign(pr, { merged }));
+  pullRequests = _.zipWith(pullRequests, mergeStatus, (pr, merged) =>
+    _.assign(pr, { merged })
+  );
 
   const checkApproval = _.map(pullRequests, (pr) => {
     const repoDetails = pr.repo_name.split('/');
@@ -119,9 +133,7 @@ const findPrs = async (github, username) => {
     return github.pulls
       .listReviews(pullDetails)
       .then(logCallsRemaining)
-      .then((res) =>
-        res.data.some((review) => review.state === 'APPROVED')
-      );
+      .then((res) => res.data.some((review) => review.state === 'APPROVED'));
   });
 
   const approvalStatus = await Promise.all(checkApproval);
@@ -138,6 +150,6 @@ const findPrs = async (github, username) => {
       (pr.repo_has_hacktoberfest_topic && (pr.merged || pr.approved))
     );
   });
-}
+};
 
 module.exports = findPrs;

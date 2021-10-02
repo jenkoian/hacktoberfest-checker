@@ -24,7 +24,13 @@ const loadPrs = async (gitlab, username) => {
     const pullRequestData = mergeRequestResults.data || mergeRequestResults;
     const pagination = mergeRequestResults.paginationInfo;
     if (pagination && hasNextPage(pagination)) {
-      return await getNextPage(pagination, gitlab, username, searchYear, pullRequestData)
+      return await getNextPage(
+        pagination,
+        gitlab,
+        username,
+        searchYear,
+        pullRequestData
+      );
     }
 
     if (process.env.NODE_ENV !== 'production') {
@@ -35,6 +41,6 @@ const loadPrs = async (gitlab, username) => {
   } catch (error) {
     console.log('Error: ' + err);
   }
-}
+};
 
 module.exports = loadPrs;

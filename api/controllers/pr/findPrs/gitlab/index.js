@@ -7,15 +7,14 @@ const loadPrs = require('./loadPrs');
 const findPrs = async (gitlab, username) => {
   let pullRequestData = await loadPrs(gitlab, username);
   pullRequestData = pullRequestData.filter((event) => {
-      const isInvalid = event.labels.some((label) => {
-        return (
-          label.toLowerCase() === 'invalid' ||
-          label.toLowerCase() === 'spam'
-        );
-      });
+    const isInvalid = event.labels.some((label) => {
+      return (
+        label.toLowerCase() === 'invalid' || label.toLowerCase() === 'spam'
+      );
+    });
 
-      return !isInvalid;
-    })
+    return !isInvalid;
+  });
 
   pullRequestData = pullRequestData.map((event) => {
     const repo = event.web_url.substring(
@@ -51,7 +50,11 @@ const findPrs = async (gitlab, username) => {
   });
 
   // Ensure each repo only gets one request for their topics
-  const repoTopicRequests = _.uniq(pullRequestData.filter((pr) => pr.repo_must_have_topic).map((pr) => pr.repo_id)).map((repo_id) => {
+  const repoTopicRequests = _.uniq(
+    pullRequestData
+      .filter((pr) => pr.repo_must_have_topic)
+      .map((pr) => pr.repo_id)
+  ).map((repo_id) => {
     return gitlab.Projects.show(repo_id).then((res) => ({
       repo_id,
       topics: res.topics,
@@ -59,19 +62,27 @@ const findPrs = async (gitlab, username) => {
   });
 
   const repoTopics = Promise.all(repoTopicRequests);
-  const repoTopicMap = _.reduce(repoTopics, (map, { repo_id, topics }) => ({
+  const repoTopicMap = _.reduce(
+    repoTopics,
+    (map, { repo_id, topics }) => ({
       ...map,
       [repo_id]: topics,
-    }), {}
-  )
+    }),
+    {}
+  );
 
-  const repoTopicsAfter = _.map(pullRequestData, (pr) => _.assign(pr, pr.repo_must_have_topic ? {
-          repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_id].some(
-            (topic) => topic.toLowerCase() === 'hacktoberfest'
-          ),
-        } : {}
+  const repoTopicsAfter = _.map(pullRequestData, (pr) =>
+    _.assign(
+      pr,
+      pr.repo_must_have_topic
+        ? {
+            repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_id].some(
+              (topic) => topic.toLowerCase() === 'hacktoberfest'
+            ),
+          }
+        : {}
     )
-  )
+  );
 
   let pullRequests = repoTopicsAfter.filter((pr) => {
     // Operating under initial rules
@@ -87,7 +98,9 @@ const findPrs = async (gitlab, username) => {
   });
 
   const mergeStatus = await Promise.all(checkMergeStatus);
-  pullRequests = _.zipWith(pullRequests, mergeStatus, (pr, merged) => _.assign(pr, { merged }));
+  pullRequests = _.zipWith(pullRequests, mergeStatus, (pr, merged) =>
+    _.assign(pr, { merged })
+  );
 
   const checkApproval = _.map(pullRequests, (pr) => {
     return gitlab.MergeRequestApprovals.approvalState(
@@ -103,8 +116,8 @@ const findPrs = async (gitlab, username) => {
 
   const approvalStatus = await Promise.all(checkApproval);
   pullRequests = _.zipWith(pullRequests, approvalStatus, (pr, approved) =>
-      _.assign(pr, { approved })
-    );
+    _.assign(pr, { approved })
+  );
 
   return pullRequests.filter((pr) => {
     // Operating under initial rules
@@ -115,7 +128,6 @@ const findPrs = async (gitlab, username) => {
       (pr.repo_has_hacktoberfest_topic && (pr.merged || pr.approved))
     );
   });
-
 };
 
 module.exports = findPrs;
