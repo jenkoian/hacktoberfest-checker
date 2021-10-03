@@ -1,5 +1,5 @@
 'use strict';
 
-const start = require('./api/index');
+const start = require('./api/build/index');
 
 start();
