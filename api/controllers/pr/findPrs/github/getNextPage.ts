@@ -1,7 +1,7 @@
 import getPageLinks from './getPageLinks';
 import hasNextPage from './hasNextPage';
 
-const getNextPage = (response, github, pullRequestData) =>
+const getNextPage = (response: any, github: any, pullRequestData: any) =>
   new Promise((resolve, reject) => {
     const baseUrl = process.env.GITHUB_API_BASE_URL
       ? process.env.GITHUB_API_BASE_URL
@@ -10,7 +10,7 @@ const getNextPage = (response, github, pullRequestData) =>
 
     github
       .request('GET ' + nextPageLink)
-      .then((res) => {
+      .then((res: any) => {
         const newPullRequestData = pullRequestData.concat(res.data.items);
 
         if (hasNextPage(res)) {
@@ -25,7 +25,7 @@ const getNextPage = (response, github, pullRequestData) =>
         }
         resolve(newPullRequestData);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log('Error: ' + err);
         return reject();
       });

@@ -3,12 +3,12 @@ import moment from 'moment';
 import logCallsRemaining from '../../logCallsRemaining';
 import loadPrs from './loadPrs';
 
-const findPrs = (github, username) => {
+const findPrs = (github: any, username: any) => {
   return loadPrs(github, username)
-    .then((pullRequestData) =>
+    .then((pullRequestData: any) =>
       pullRequestData
-        .filter((event) => {
-          const isInvalid = event.labels.some((label) => {
+        .filter((event: any) => {
+          const isInvalid = event.labels.some((label: any) => {
             return (
               label.name.toLowerCase() === 'invalid' ||
               label.name.toLowerCase() === 'spam'
@@ -17,7 +17,7 @@ const findPrs = (github, username) => {
 
           return !isInvalid;
         })
-        .map((event) => {
+        .map((event: any) => {
           const repo = event.pull_request.html_url.substring(
             0,
             event.pull_request.html_url.search('/pull/')
@@ -52,14 +52,16 @@ const findPrs = (github, username) => {
     .then((prs) => {
       // Ensure each repo only gets one request for their topics
       const repoTopicRequests = _.uniq(
-        prs.filter((pr) => pr.repo_must_have_topic).map((pr) => pr.repo_name)
-      ).map((repo_name) => {
+        prs
+          .filter((pr: any) => pr.repo_must_have_topic)
+          .map((pr: any) => pr.repo_name)
+      ).map((repo_name: any) => {
         const [owner, repo] = repo_name.split('/');
         const repoDetails = { owner, repo };
         return github.repos
           .getAllTopics(repoDetails)
           .then(logCallsRemaining)
-          .then((res) => ({ repo_name, topics: res.data.names }));
+          .then((res: any) => ({ repo_name, topics: res.data.names }));
       });
 
       return Promise.all(repoTopicRequests)
@@ -73,7 +75,7 @@ const findPrs = (github, username) => {
             {}
           )
         )
-        .then((repoTopicMap) =>
+        .then((repoTopicMap: any) =>
           _.map(prs, (pr) =>
             _.assign(
               pr,
@@ -81,7 +83,9 @@ const findPrs = (github, username) => {
                 ? {
                     repo_has_hacktoberfest_topic: repoTopicMap[
                       pr.repo_name
-                    ].some((topic) => topic.toLowerCase() === 'hacktoberfest'),
+                    ].some(
+                      (topic: any) => topic.toLowerCase() === 'hacktoberfest'
+                    ),
                   }
                 : {}
             )
@@ -108,10 +112,10 @@ const findPrs = (github, username) => {
         return github.pulls
           .checkIfMerged(pullDetails)
           .then(logCallsRemaining)
-          .then((res) => {
+          .then((res: any) => {
             return res.status === 204;
           })
-          .catch((err) => {
+          .catch((err: any) => {
             // 404 means there wasn't a merge
             if (err.status === 404) {
               return false;
@@ -137,8 +141,8 @@ const findPrs = (github, username) => {
         return github.pulls
           .listReviews(pullDetails)
           .then(logCallsRemaining)
-          .then((res) =>
-            res.data.some((review) => review.state === 'APPROVED')
+          .then((res: any) =>
+            res.data.some((review: any) => review.state === 'APPROVED')
           );
       });
 

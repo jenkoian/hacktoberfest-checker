@@ -1,13 +1,13 @@
 import hasNextPage from './hasNextPage';
 
 const getNextPage = (
-  pagination,
-  gitlab,
-  username,
-  searchYear,
-  pullRequestData
+  pagination: any,
+  gitlab: any,
+  username: any,
+  searchYear: any,
+  pullRequestData: any
 ) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve: any, reject: any) => {
     gitlab.MergeRequests.all({
       scope: 'all',
       author_username: username,
@@ -18,7 +18,7 @@ const getNextPage = (
       page: pagination.next,
       showExpanded: true,
     })
-      .then((res) => {
+      .then((res: any) => {
         const newPullRequestData = pullRequestData.concat(res.data);
         const pagination = res.paginationInfo;
 
@@ -38,7 +38,7 @@ const getNextPage = (
         }
         resolve(newPullRequestData);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log('Error: ' + err);
         return reject();
       });

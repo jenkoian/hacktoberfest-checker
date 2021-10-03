@@ -1,7 +1,7 @@
 import hasNextPage from './hasNextPage';
 import getNextPage from './getNextPage';
 
-const loadPrs = (gitlab, username) =>
+const loadPrs = (gitlab: any, username: string) =>
   new Promise((resolve, reject) => {
     const today = new Date();
     const currentMonth = today.getMonth();
@@ -18,7 +18,7 @@ const loadPrs = (gitlab, username) =>
       per_page: perPage,
       showExpanded: true,
     })
-      .then((res) => {
+      .then((res: any) => {
         const pullRequestData = res.data || res;
         const pagination = res.paginationInfo;
         if (pagination && hasNextPage(pagination)) {
@@ -38,7 +38,7 @@ const loadPrs = (gitlab, username) =>
 
         resolve(pullRequestData);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log('Error: ' + err);
         return reject();
       });

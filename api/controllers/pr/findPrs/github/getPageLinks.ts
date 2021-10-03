@@ -1,11 +1,11 @@
-const getPageLinks = (link) => {
+const getPageLinks = (link: any) => {
   link = link.link || link.headers.link || '';
 
-  const links = {};
+  const links: any = {};
 
   // link format:
   // '<https://api.github.com/users/aseemk/followers?page=2>; rel="next", <https://api.github.com/users/aseemk/followers?page=2>; rel="last"'
-  link.replace(/<([^>]*)>;\s*rel="([\w]*)"/g, (m, uri, type) => {
+  link.replace(/<([^>]*)>;\s*rel="([\w]*)"/g, (m: any, uri: any, type: any) => {
     links[type] = uri;
   });
 

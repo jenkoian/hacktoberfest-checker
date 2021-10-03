@@ -1,4 +1,4 @@
-const logCallsRemaining = (res) => {
+const logCallsRemaining = (res: any) => {
   const callsRemaining = res.headers['x-ratelimit-remaining'];
 
   if (process.env.NODE_ENV !== 'production' || callsRemaining < 100) {

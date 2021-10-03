@@ -2,12 +2,12 @@ import _ from 'lodash';
 import moment from 'moment';
 import loadPrs from './loadPrs';
 
-const findPrs = (gitlab, username) => {
+const findPrs = (gitlab: any, username: any) => {
   return loadPrs(gitlab, username)
-    .then((pullRequestData) =>
+    .then((pullRequestData: any) =>
       pullRequestData
-        .filter((event) => {
-          const isInvalid = event.labels.some((label) => {
+        .filter((event: any) => {
+          const isInvalid = event.labels.some((label: any) => {
             return (
               label.toLowerCase() === 'invalid' ||
               label.toLowerCase() === 'spam'
@@ -16,7 +16,7 @@ const findPrs = (gitlab, username) => {
 
           return !isInvalid;
         })
-        .map((event) => {
+        .map((event: any) => {
           const repo = event.web_url.substring(
             0,
             event.web_url.search('/-/merge_requests/')
@@ -52,9 +52,11 @@ const findPrs = (gitlab, username) => {
     .then((prs) => {
       // Ensure each repo only gets one request for their topics
       const repoTopicRequests = _.uniq(
-        prs.filter((pr) => pr.repo_must_have_topic).map((pr) => pr.repo_id)
-      ).map((repo_id) => {
-        return gitlab.Projects.show(repo_id).then((res) => ({
+        prs
+          .filter((pr: any) => pr.repo_must_have_topic)
+          .map((pr: any) => pr.repo_id)
+      ).map((repo_id: any) => {
+        return gitlab.Projects.show(repo_id).then((res: any) => ({
           repo_id,
           topics: res.topics,
         }));
@@ -71,14 +73,14 @@ const findPrs = (gitlab, username) => {
             {}
           )
         )
-        .then((repoTopicMap) =>
+        .then((repoTopicMap: any) =>
           _.map(prs, (pr) =>
             _.assign(
               pr,
               pr.repo_must_have_topic
                 ? {
                     repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_id].some(
-                      (topic) => topic.toLowerCase() === 'hacktoberfest'
+                      (topic: any) => topic.toLowerCase() === 'hacktoberfest'
                     ),
                   }
                 : {}
@@ -97,7 +99,7 @@ const findPrs = (gitlab, username) => {
     .then((prs) => {
       const checkMergeStatus = _.map(prs, (pr) => {
         return gitlab.MergeRequests.show(pr.repo_id, pr.number).then(
-          (res) => res.state === 'merged'
+          (res: any) => res.state === 'merged'
         );
       });
 
@@ -110,11 +112,11 @@ const findPrs = (gitlab, username) => {
         return gitlab.MergeRequestApprovals.approvalState(
           pr.repo_id,
           pr.number
-        ).then((res) => {
+        ).then((res: any) => {
           if (!res.rules) {
             return [];
           }
-          return res.rules.some((review) => review.approved === true);
+          return res.rules.some((review: any) => review.approved === true);
         });
       });
 

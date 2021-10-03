@@ -1,4 +1,4 @@
-const hasNextPage = (pagination) => {
+const hasNextPage = (pagination: any) => {
   return pagination.next;
 };
 

@@ -1,6 +1,6 @@
 import getPageLinks from './getPageLinks';
 
-const hasNextPage = (link) => {
+const hasNextPage = (link: any) => {
   return getPageLinks(link).next;
 };
 
