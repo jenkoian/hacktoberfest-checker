@@ -2,8 +2,8 @@
 
 const moment = require('moment');
 const logCallsRemaining = require('./logCallsRemaining');
-const findGithubPrs = require('./findPrs/github');
-const findGitlabPrs = require('./findPrs/gitlab');
+const [findGithubPrs, searchGithubUser] = require('./findPrs/github');
+const [findGitlabPrs, searchGitlabUser] = require('./findPrs/gitlab');
 const { getStatusCode, getErrorDescription } = require('./errors');
 
 /**
@@ -23,32 +23,57 @@ exports.index = (req, res) => {
   Promise.all([
     findGithubPrs(github, username),
     findGitlabPrs(gitlab, username),
-    github.users.getByUsername({ username }).then(logCallsRemaining),
+    searchGithubUser(github, username),
+    searchGitlabUser(gitlab, username),
   ])
-    .then(([prs, mrs, user]) => {
-      if (user.data.type !== 'User') {
+    .then(([prs, mrs, user, gitlab_user]) => {
+      let isGitHubUser = true;
+      if (user == null) isGitHubUser = false;
+      let isGitLabUser = true;
+      if (JSON.stringify(gitlab_user) == JSON.stringify([]))
+        isGitLabUser = false;
+
+      if (
+        (!isGitHubUser || (isGitHubUser && user.data.type !== 'User')) &&
+        !isGitLabUser
+      ) {
         return Promise.reject('notUser');
       }
 
       // Combine github PRs with the gitlab MRs in sorted order.
       // Most recent PRs/MRs will come first.
-      prs = prs.concat(mrs).sort((pr1, pr2) => {
-        const date1 = moment(pr1.created_at, 'MMMM Do YYYY');
-        const date2 = moment(pr2.created_at, 'MMMM Do YYYY');
-        if (date1.isSame(date2)) return 0;
-        else if (date1.isAfter(date2)) return -1;
-        return 1;
-      });
+      if (prs) {
+        prs = prs.concat(mrs).sort((pr1, pr2) => {
+          const date1 = moment(pr1.created_at, 'MMMM Do YYYY');
+          const date2 = moment(pr2.created_at, 'MMMM Do YYYY');
+          if (date1.isSame(date2)) return 0;
+          else if (date1.isAfter(date2)) return -1;
+          return 1;
+        });
+      }
 
       // TODO: If user is empty, try looking them up on gitlab.
+      if (!isGitHubUser && isGitLabUser) {
+        user = gitlab_user;
+      }
 
-      const data = {
-        prs,
-        username,
-        userImage: user.data.avatar_url,
-      };
+      if (isGitHubUser) {
+        const data = {
+          prs,
+          username,
+          userImage: user.data.avatar_url,
+        };
 
-      res.json(data);
+        res.json(data);
+      } else if (isGitLabUser) {
+        const data = {
+          mrs,
+          username,
+          userImage: user[0].avatar_url,
+        };
+
+        res.json(data);
+      }
     })
     .catch((err) => {
       console.log('Error: ' + err);

@@ -35,24 +35,36 @@ export default function PullRequests({ username }) {
   if (error || data.error_description) {
     return <ErrorText errorMessage={getErrorMessage()} />;
   }
-
-  const isComplete = data.prs.length >= pullRequestAmount;
+  let isComplete;
+  if (data.prs) {
+    isComplete = data.prs.length >= pullRequestAmount;
+  } else if (data.mrs) {
+    isComplete = data.mrs.length >= pullRequestAmount;
+  }
 
   return (
     <Fragment>
       <div className="text-center text-white">
-        <ShareButtons username={username} pullRequestCount={data.prs.length} />
+        <ShareButtons
+          username={username}
+          pullRequestCount={data.prs ? data.prs.length : data.mrs.length}
+        />
         <UserInfo
           username={username}
           userImage={data.userImage}
-          pullRequestCount={data.prs.length}
+          pullRequestCount={data.prs ? data.prs.length : data.mrs.length}
         />
       </div>
       <div className="mx-auto w-5/6 lg:w-1/2 mb-4">
-        {data.prs.length > 0 &&
-          data.prs.map((pullRequest, i) => (
-            <PullRequest pullRequest={pullRequest} key={i} />
-          ))}
+        {data.prs
+          ? data.prs.length > 0 &&
+            data.prs.map((pullRequest, i) => (
+              <PullRequest pullRequest={pullRequest} key={i} />
+            ))
+          : data.mrs.length > 0 &&
+            data.mrs.map((pullRequest, i) => (
+              <PullRequest pullRequest={pullRequest} key={i} />
+            ))}
       </div>
       {!isComplete && <IssuesLink />}
       <MeLinkInfo username={username} />
