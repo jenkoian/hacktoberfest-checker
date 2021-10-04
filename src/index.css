@@ -466,6 +466,8 @@ h1 span {
 
 small {
   font-family: 'Press Start 2P', monospace;
+  font-weight: 600;
+  margin: 20px;
 }
 
 a {
@@ -640,10 +642,6 @@ a:hover {
   font-size: 0.875rem;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-}
-
 .text-4xl {
   font-size: 2.25rem;
 }
@@ -658,6 +656,10 @@ a:hover {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.-m-8 {
+  margin: -2rem;
 }
 
 .mx-0 {
@@ -1044,10 +1046,6 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-  .md\:text-5xl {
-    font-size: 3rem;
-  }
-
   .md\:text-7xl {
     font-size: 5rem;
   }

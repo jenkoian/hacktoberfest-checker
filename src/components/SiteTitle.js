@@ -5,7 +5,7 @@ const SiteTitle = () => (
     <a className="no-underline inline-block py-12 md:py-8" href="/">
       <h1 className="text-hack-logo text-6xl md:text-7xl">
         hacktober
-        <span className="block text-hack-alt-logo text-3xl md:text-5xl">
+        <span className="block text-hack-alt-logo text-6xl md:text-7xl -m-8">
           fest
         </span>
       </h1>
