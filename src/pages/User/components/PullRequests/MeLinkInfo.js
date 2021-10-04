@@ -14,14 +14,14 @@ export default class MeLinkInfo extends Component {
   render = () => {
     let storeUsernameBtn = (
       <button
-        className="bg-mid-purple text-white hover:bg-light-blue hover:text-mid-blue mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser"
+        className="bg-hack-logo text-hack-fg hover:bg-hack-alt-logo hover:text-hack-fg mx-auto mt-2 h-8 border-none pointer rounded-sm px-4 block saveUser"
         onClick={this.storeUsernameAsMe}
       >
         This is Me
       </button>
     );
     let infoStr = (
-      <p className="text-mid-grey light-mode:text-dark-grey mx-auto text-center my-4">
+      <p className="text-hack-fg light-mode:text-hack-dark-title mx-auto text-center my-4">
         In the future, you can find your PRs by visiting{' '}
         <a
           href={`${process.env.REACT_APP_HOSTNAME}/me`}
@@ -38,7 +38,7 @@ export default class MeLinkInfo extends Component {
     if (savedUsername === this.props.username) {
       storeUsernameBtn = null;
       infoStr = (
-        <p className="text-mid-grey light-mode:text-dark-grey mx-auto text-center my-4">
+        <p className="text-hack-fg light-mode:text-hack-dark-title mx-auto text-center my-4">
           Username {this.props.username} saved! You can visit{' '}
           <a
             href={`${process.env.REACT_APP_HOSTNAME}/me`}

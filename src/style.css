@@ -1,35 +1,34 @@
 @tailwind base;
 
 body {
-  @apply bg-dark-blue p-12 text-mid-grey;
+  @apply bg-hack-dark-bg p-12 text-hack-fg;
   font-family: 'Space Mono', monospace;
   padding: 0;
 }
 
 @screen light-mode {
   body {
-    @apply bg-white;
+    @apply bg-hack-fg;
   }
 }
 
 h1 {
   font-family: 'squealerregular', serif;
   font-weight: normal;
-  text-shadow: -1px 0 lightpink, 0 1px lightpink, 1px 0 lightpink,
-    0 -1px lightpink;
+  text-shadow: -1px 0 hack-fg, 0 1px hack-fg, 1px 0 hack-fg, 0 -1px hack-fg;
 }
 
 h1 span {
   font-family: 'Press Start 2P', monospace;
   font-weight: normal;
-  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue,
-    0 -1px lightblue;
+  text-shadow: -1px 0 hack-logo, 0 1px hack-logo, 1px 0 hack-logo,
+    0 -1px hack-logo;
 }
 
 @screen light-mode {
   h1 span {
-    text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
-      0 -1px darkblue;
+    text-shadow: -1px 0 hack-dark-title, 0 1px hack-dark-title,
+      1px 0 hack-dark-title, 0 -1px hack-dark-title;
   }
 }
 
@@ -38,20 +37,20 @@ small {
 }
 
 a {
-  @apply text-light-blue;
+  @apply text-hack-logo;
 }
 
 a:hover {
-  @apply text-light-pink;
+  @apply text-hack-alt-logo;
 }
 
 @screen light-mode {
   a {
-    @apply text-dark-pink;
+    @apply text-hack-logo;
   }
 
   a:hover {
-    @apply text-soft-blue;
+    @apply text-hack-alt-logo;
   }
 }
 
@@ -172,7 +171,7 @@ a:hover {
 
 .pull-request,
 .faqs {
-  @apply bg-dark-blue-alt block;
+  @apply bg-hack-alt-bg block;
 
   transition: all 0.3s ease-out;
 }
@@ -180,7 +179,7 @@ a:hover {
 @screen light-mode {
   .pull-request,
   .faqs {
-    @apply bg-light-blue block;
+    @apply bg-hack-alt-bg block;
   }
 }
 
