@@ -8,7 +8,7 @@ body {
 
 @screen light-mode {
   body {
-    @apply bg-hack-fg;
+    @apply bg-hack-light-bg;
   }
 }
 

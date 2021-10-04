@@ -440,8 +440,8 @@ body {
 @media (prefers-color-scheme: light) {
   body {
     --bg-opacity: 1;
-    background-color: #f0fdf4;
-    background-color: rgba(240, 253, 244, var(--bg-opacity));
+    background-color: #f4f0e1;
+    background-color: rgba(244, 240, 225, var(--bg-opacity));
   }
 }
 
