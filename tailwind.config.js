@@ -14,7 +14,7 @@ module.exports = {
         'hack-dark-title': '#2B3531',
         'hack-logo': '#F74700',
         'hack-alt-logo': '#B53A25',
-        'hack-mid-fg': '#A88771'
+        'hack-mid-fg': '#A88771',
       },
       fontSize: {
         '7xl': '5rem',
