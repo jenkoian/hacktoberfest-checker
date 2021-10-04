@@ -133,10 +133,9 @@ const findPrs = async (gitlab, username) => {
 const searchGitlabUser = async (gitlab, username) => {
   try {
     let user_data = await gitlab.Users.search(username);
-    return user_data;
-    // return null;
+    return user_data === null ? [] : user_data;
   } catch (error) {
-    return null;
+    return [];
   }
 };
 module.exports = [findPrs, searchGitlabUser];

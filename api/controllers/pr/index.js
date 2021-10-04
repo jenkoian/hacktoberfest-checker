@@ -28,52 +28,43 @@ exports.index = (req, res) => {
   ])
     .then(([prs, mrs, user, gitlab_user]) => {
       let isGitHubUser = true;
-      if (user == null) isGitHubUser = false;
       let isGitLabUser = true;
+
+      if (JSON.stringify(user) == JSON.stringify([])) isGitHubUser = false;
+
       if (JSON.stringify(gitlab_user) == JSON.stringify([]))
         isGitLabUser = false;
 
-      if (
-        (!isGitHubUser || (isGitHubUser && user.data.type !== 'User')) &&
-        !isGitLabUser
-      ) {
+      if (!isGitHubUser && !isGitLabUser) {
         return Promise.reject('notUser');
       }
 
       // Combine github PRs with the gitlab MRs in sorted order.
       // Most recent PRs/MRs will come first.
-      if (prs) {
-        prs = prs.concat(mrs).sort((pr1, pr2) => {
-          const date1 = moment(pr1.created_at, 'MMMM Do YYYY');
-          const date2 = moment(pr2.created_at, 'MMMM Do YYYY');
-          if (date1.isSame(date2)) return 0;
-          else if (date1.isAfter(date2)) return -1;
-          return 1;
-        });
+      if (prs == null) {
+        prs = [];
       }
+
+      prs = prs.concat(mrs).sort((pr1, pr2) => {
+        const date1 = moment(pr1.created_at, 'MMMM Do YYYY');
+        const date2 = moment(pr2.created_at, 'MMMM Do YYYY');
+        if (date1.isSame(date2)) return 0;
+        else if (date1.isAfter(date2)) return -1;
+        return 1;
+      });
 
       // TODO: If user is empty, try looking them up on gitlab.
       if (!isGitHubUser && isGitLabUser) {
         user = gitlab_user;
       }
 
-      if (isGitHubUser) {
-        const data = {
-          prs,
-          username,
-          userImage: user.data.avatar_url,
-        };
+      const data = {
+        prs,
+        username,
+        userImage: isGitHubUser ? user.data.avatar_url : user[0].avatar_url,
+      };
 
-        res.json(data);
-      } else if (isGitLabUser) {
-        const data = {
-          mrs,
-          username,
-          userImage: user[0].avatar_url,
-        };
-
-        res.json(data);
-      }
+      res.json(data);
     })
     .catch((err) => {
       console.log('Error: ' + err);

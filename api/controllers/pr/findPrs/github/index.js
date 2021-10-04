@@ -169,9 +169,9 @@ const searchGithubUser = async (github, username) => {
     let user_data = await github.users
       .getByUsername({ username })
       .then(logCallsRemaining);
-    return user_data;
+    return user_data === null ? [] : user_data;
   } catch (error) {
-    return null;
+    return [];
   }
 };
 module.exports = [findPrs, searchGithubUser];
