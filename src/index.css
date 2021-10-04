@@ -452,7 +452,6 @@ h1 {
 }
 
 h1 span {
-  font-family: 'Press Start 2P', monospace;
   font-weight: normal;
   text-shadow: -1px 0 hack-logo, 0 1px hack-logo, 1px 0 hack-logo,
     0 -1px hack-logo;
