@@ -30,10 +30,9 @@ exports.index = (req, res) => {
       let isGitHubUser = true;
       let isGitLabUser = true;
 
-      if (JSON.stringify(user) == JSON.stringify([])) isGitHubUser = false;
+      if (user.length === 0) isGitHubUser = false;
 
-      if (JSON.stringify(gitlab_user) == JSON.stringify([]))
-        isGitLabUser = false;
+      if (gitlab_user.length === 0) isGitLabUser = false;
 
       if (!isGitHubUser && !isGitLabUser) {
         return Promise.reject('notUser');
