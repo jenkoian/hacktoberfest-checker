@@ -130,4 +130,12 @@ const findPrs = async (gitlab, username) => {
   });
 };
 
-module.exports = findPrs;
+const searchGitlabUser = async (gitlab, username) => {
+  try {
+    let user_data = await gitlab.Users.search(username);
+    return user_data === null ? [] : user_data;
+  } catch (error) {
+    return [];
+  }
+};
+module.exports = [findPrs, searchGitlabUser];

@@ -19,20 +19,23 @@ const loadPrs = async (github, username) => {
       // 30 is the default but this makes it clearer/allows it to be tweaked
       per_page: perPage,
     });
+    if (githubPullRequest) {
+      const pullRequestData = githubPullRequest.data.items;
+      if (hasNextPage(githubPullRequest)) {
+        return await getNextPage(githubPullRequest, github, pullRequestData);
+      }
 
-    const pullRequestData = githubPullRequest.data.items;
-    if (hasNextPage(githubPullRequest)) {
-      return await getNextPage(githubPullRequest, github, pullRequestData);
+      if (process.env.NODE_ENV !== 'production') {
+        if (pullRequestData) {
+          console.log(`Found ${pullRequestData.length} pull requests.`);
+        }
+      }
+
+      return pullRequestData;
     }
-
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`Found ${pullRequestData.length} pull requests.`);
-    }
-
-    return pullRequestData;
   } catch (error) {
     console.log('Error: ' + Error);
-    return error;
+    return null;
   }
 };
 

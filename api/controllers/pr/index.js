@@ -2,8 +2,8 @@
 
 const moment = require('moment');
 const logCallsRemaining = require('./logCallsRemaining');
-const findGithubPrs = require('./findPrs/github');
-const findGitlabPrs = require('./findPrs/gitlab');
+const [findGithubPrs, searchGithubUser] = require('./findPrs/github');
+const [findGitlabPrs, searchGitlabUser] = require('./findPrs/gitlab');
 const { getStatusCode, getErrorDescription } = require('./errors');
 
 /**
@@ -23,15 +23,27 @@ exports.index = (req, res) => {
   Promise.all([
     findGithubPrs(github, username),
     findGitlabPrs(gitlab, username),
-    github.users.getByUsername({ username }).then(logCallsRemaining),
+    searchGithubUser(github, username),
+    searchGitlabUser(gitlab, username),
   ])
-    .then(([prs, mrs, user]) => {
-      if (user.data.type !== 'User') {
+    .then(([prs, mrs, user, gitlab_user]) => {
+      let isGitHubUser = true;
+      let isGitLabUser = true;
+
+      if (user.length === 0) isGitHubUser = false;
+
+      if (gitlab_user.length === 0) isGitLabUser = false;
+
+      if (!isGitHubUser && !isGitLabUser) {
         return Promise.reject('notUser');
       }
 
       // Combine github PRs with the gitlab MRs in sorted order.
       // Most recent PRs/MRs will come first.
+      if (prs == null) {
+        prs = [];
+      }
+
       prs = prs.concat(mrs).sort((pr1, pr2) => {
         const date1 = moment(pr1.created_at, 'MMMM Do YYYY');
         const date2 = moment(pr2.created_at, 'MMMM Do YYYY');
@@ -41,11 +53,14 @@ exports.index = (req, res) => {
       });
 
       // TODO: If user is empty, try looking them up on gitlab.
+      if (!isGitHubUser && isGitLabUser) {
+        user = gitlab_user;
+      }
 
       const data = {
         prs,
         username,
-        userImage: user.data.avatar_url,
+        userImage: isGitHubUser ? user.data.avatar_url : user[0].avatar_url,
       };
 
       res.json(data);
