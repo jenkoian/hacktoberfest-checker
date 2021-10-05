@@ -39,7 +39,7 @@ const findPrs = (gitlab, username) => {
             repo_name: repo.replace('https://gitlab.com/', ''),
             repo_must_have_topic: moment
               .utc(event.created_at)
-              .isAfter('2020-10-03T12:00:00.000Z'),
+              .isAfter('2021-09-30T10:00:00.000Z'),
             title: event.title,
             url: event.web_url,
             created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
