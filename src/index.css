@@ -518,10 +518,20 @@ a:hover {
   background-color: rgba(181, 58, 37, var(--bg-opacity));
 }
 
+.border-transparent {
+  border-color: transparent;
+}
+
 .border-hack-logo {
   --border-opacity: 1;
   border-color: #f74700;
   border-color: rgba(247, 71, 0, var(--border-opacity));
+}
+
+.hover\:border-hack-alt-logo:hover {
+  --border-opacity: 1;
+  border-color: #b53a25;
+  border-color: rgba(181, 58, 37, var(--border-opacity));
 }
 
 .rounded-sm {
@@ -550,6 +560,10 @@ a:hover {
 
 .border {
   border-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
 }
 
 .block {

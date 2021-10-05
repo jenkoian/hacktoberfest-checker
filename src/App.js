@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import User from './pages/User';
 import Me from './pages/Me';
+import Team from './pages/Team';
 import NotFound from './pages/NotFound';
 import Faq from './pages/Faq';
 
@@ -27,6 +28,9 @@ const App = () => (
           </Route>
           <Route exact path="/me">
             <Me />
+          </Route>
+          <Route exact path="/team">
+            <Team />
           </Route>
           <Route exact path="/faq">
             <Faq />

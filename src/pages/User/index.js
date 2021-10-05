@@ -6,6 +6,7 @@ import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
 import PullRequests from './components/PullRequests';
 import UserShare from './components/PullRequests/UserShare.js';
+import Navbar from '../../components/Navbar';
 
 const User = () => {
   let { username } = useParams();
@@ -16,6 +17,7 @@ const User = () => {
         <title>{username}</title>
       </Helmet>
       <SiteTitle />
+      <Navbar />
       <UsernameForm username={username} />
       <PullRequests username={username} />
       <UserShare />
