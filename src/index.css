@@ -612,6 +612,10 @@ a:hover {
   font-weight: 500;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
 .font-extrabold {
   font-weight: 800;
 }
@@ -654,6 +658,10 @@ a:hover {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.m-5 {
+  margin: 1.25rem;
 }
 
 .-m-8 {

@@ -9,7 +9,7 @@ const SiteTitle = () => (
           fest
         </span>
       </h1>
-      <small className="block text-hack-alt-fg light-mode:text-hack-dark-title uppercase">
+      <small className="block text-hack-alt-fg light-mode:text-hack-dark-title font-semibold m-5 uppercase">
         Checker
       </small>
     </a>
