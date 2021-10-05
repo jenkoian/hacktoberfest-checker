@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import getResultMessage from './getResultMessage';
 
 const ResultMessage = ({ pullRequestCount }) => (
-  <h3 className="my-1 font-light text-gray-light light-mode:text-dark-grey">
+  <h3 className="my-1 font-light text-hack-fg light-mode:text-hack-dark-title">
     {getResultMessage(pullRequestCount)}
   </h3>
 );

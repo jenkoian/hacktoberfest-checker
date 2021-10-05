@@ -6,7 +6,7 @@ import PullRequestInfo from './PullRequestInfo';
 const PullRequest = ({ pullRequest }) => (
   <a className="pull-request shadow-lg" href={pullRequest.url}>
     <div
-      className={`flex text-mid-grey light-mode:text-dark-grey mb-6 ${
+      className={`flex text-hack-fg light-mode:text-hack-dark-title mb-6 ${
         pullRequest.has_hacktoberfest_label ? 'hacktoberfest ' : ''
       }p-4 break-all`}
     >

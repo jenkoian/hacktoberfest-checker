@@ -40,7 +40,7 @@ export default function PullRequests({ username }) {
 
   return (
     <Fragment>
-      <div className="text-center text-white">
+      <div className="text-center text-hack-fg">
         <ShareButtons username={username} pullRequestCount={data.prs.length} />
         <UserInfo
           username={username}
