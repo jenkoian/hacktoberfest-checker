@@ -1,6 +1,8 @@
-import { OctokitResponse } from '@octokit/types/dist-types';
+import { RestEndpointMethodTypes } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/parameters-and-response-types';
 
-const logCallsRemaining = (res: OctokitResponse<any, number>) => {
+const logCallsRemaining = (
+  res: RestEndpointMethodTypes['users']['getByUsername']['response']
+) => {
   const callsRemaining = (res.headers[
     'x-ratelimit-remaining'
   ] as unknown) as number;
