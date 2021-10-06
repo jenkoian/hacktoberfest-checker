@@ -5,7 +5,7 @@ import { faQuestion as questionIcon } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => (
   <footer className="text-sm px-8 text-center flex-none py-4">
-    <p className="text-white light-mode:text-dark-grey">
+    <p className="text-hack-fg light-mode:text-hack-dark-title">
       Disclaimer: This site is fan made and not affiliated with{' '}
       <a
         href="https://hacktoberfest.digitalocean.com/"
@@ -19,7 +19,7 @@ const Footer = () => (
     <div className="p-2 my-4" id="faqs">
       <a
         rel="noopener noreferrer"
-        className="bg-mid-blue hover:bg-light-pink text-white transition duration-300 hover:text-white px-2 py-1 pointer no-underline text-sm"
+        className="bg-hack-alt-bg hover:bg-hack-alt-fg text-hack-fg transition duration-300 hover:text-hack-fg px-2 py-1 pointer no-underline text-sm"
         href="/Faq"
       >
         <FontAwesomeIcon icon={questionIcon} /> FAQs

@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 const PullRequestInfo = ({ pullRequest }) => (
   <div>
     <div className="mb-4">
-      <span className="text-light-blue light-mode:text-dark-blue">
+      <span className="text-hack-dark-title light-mode:text-hack-dark-title">
         {pullRequest.repo_name}#{pullRequest.number}
       </span>
       {pullRequest.is_pending && (
-        <div className="ml-4 rounded-full px-2 text-white bg-mid-blue inline text-xs">
+        <div className="ml-4 rounded-full px-2 text-hack-fg bg-hack-logo inline text-xs">
           <span>pending</span>
         </div>
       )}
     </div>
-    <div>
+    <div className="text-hack-fg">
       {pullRequest.title} on {pullRequest.created_at}
     </div>
   </div>

@@ -1,14 +1,14 @@
 import hasNextPage from './hasNextPage';
 
-const getNextPage = (
-  pagination: any,
-  gitlab: any,
-  username: any,
-  searchYear: any,
-  pullRequestData: any
-) =>
-  new Promise((resolve: any, reject: any) => {
-    gitlab.MergeRequests.all({
+const getNextPage = async (
+  pagination,
+  gitlab,
+  username,
+  searchYear,
+  pullRequestData
+) => {
+  try {
+    const mergeRequestResults = await gitlab.MergeRequests.all({
       scope: 'all',
       author_username: username,
       //created_after: `${searchYear}-08-30T00:00:00-12:00`,
@@ -17,31 +17,30 @@ const getNextPage = (
       per_page: pagination.perPage,
       page: pagination.next,
       showExpanded: true,
-    })
-      .then((res: any) => {
-        const newPullRequestData = pullRequestData.concat(res.data);
-        const pagination = res.paginationInfo;
+    });
 
-        if (hasNextPage(pagination)) {
-          getNextPage(
-            pagination,
-            gitlab,
-            username,
-            searchYear,
-            newPullRequestData
-          ).then((pullRequestData) => resolve(pullRequestData));
-          return;
-        }
+    const newPullRequestData = pullRequestData.concat(mergeRequestResults.data);
+    const pagination = mergeRequestResults.paginationInfo;
 
-        if (process.env.NODE_ENV !== 'production') {
-          console.log(`Found ${pullRequestData.length} pull requests.`);
-        }
-        resolve(newPullRequestData);
-      })
-      .catch((err: any) => {
-        console.log('Error: ' + err);
-        return reject();
-      });
-  });
+    if (hasNextPage(pagination)) {
+      return await getNextPage(
+        pagination,
+        gitlab,
+        username,
+        searchYear,
+        newPullRequestData
+      );
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`Found ${pullRequestData.length} pull requests.`);
+    }
+
+    return pullRequestData;
+  } catch (error) {
+    console.log('Error: ' + error);
+    return error;
+  }
+};
 
 export default getNextPage;

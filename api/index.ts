@@ -51,7 +51,7 @@ const start = () => {
 
   app.get('/prs', PrController.index);
 
-  app.get('/*', (_req, res) => {
+  app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
 

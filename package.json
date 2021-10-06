@@ -1,6 +1,6 @@
 {
   "name": "hacktoberfest-checker",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Small app to see if you have fulfilled the requirements for a Hacktoberfest t-shirt",
   "main": "index.js",
   "engines": {
@@ -16,8 +16,8 @@
     "build-server": "npx tsc --project ./api",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "tailwind-gen": "node ./node_modules/.bin/postcss ./src/style.css -o ./src/index.css",
-    "tailwind-gen-watch": "node ./node_modules/.bin/postcss --watch ./src/style.css -o ./src/index.css",
+    "tailwind-gen": "postcss ./src/style.css -o ./src/index.css",
+    "tailwind-gen-watch": "postcss --watch ./src/style.css -o ./src/index.css",
     "prettier": "prettier --check \"{src,api}/**/*.js\"",
     "prettier-fix": "prettier --write \"{src,api}/**/*.js\""
   },
