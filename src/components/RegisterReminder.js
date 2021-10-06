@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle as infoIcon } from '@fortawesome/free-solid-svg-icons';
 
 const RegisterReminder = () => (
-  <div className="flex flex-none items-center justify-center p-2 pl-4 bg-dark-blue-alt light-mode:bg-light-blue text-mid-grey light-mode:text-dark-grey">
+  <div className="flex flex-none items-center justify-center p-2 pl-4 bg-hack-alt-bg light-mode:bg-hack-alt-bg text-hack-title light-mode:text-hack-title">
     <FontAwesomeIcon icon={infoIcon} size={'sm'} title="info" />
 
     <span className="text-md leading-tight ml-4 mr-16 md:mr-8">
