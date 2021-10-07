@@ -7,6 +7,7 @@ import UsernameForm from '../../components/UsernameForm';
 import PullRequests from './components/PullRequests';
 import UserShare from './components/PullRequests/UserShare.js';
 import Navbar from '../../components/Navbar';
+import MeLinkInfo from './components/PullRequests/MeLinkInfo';
 
 const User = () => {
   let { username } = useParams();
@@ -20,6 +21,7 @@ const User = () => {
       <Navbar />
       <UsernameForm username={username} />
       <PullRequests username={username} />
+      <MeLinkInfo username={username} />
       <UserShare />
     </>
   );

@@ -13,7 +13,6 @@ import ShareButtons from './ShareButtons';
 import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
-import MeLinkInfo from './MeLinkInfo';
 
 export default function PullRequests({ username }) {
   const { loading, data, error } = useFetchPullRequests(username);
@@ -55,7 +54,6 @@ export default function PullRequests({ username }) {
           ))}
       </div>
       {!isComplete && <IssuesLink />}
-      <MeLinkInfo username={username} />
     </>
   );
 }
