@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MergeStatus from './MergeStatus';
 import PullRequestInfo from './PullRequestInfo';
-
+import PlatformIcon from './PlatformIcon';
 const PullRequest = ({ pullRequest }) => (
   <a className="pull-request shadow-lg" href={pullRequest.url}>
     <div
@@ -10,7 +10,13 @@ const PullRequest = ({ pullRequest }) => (
         pullRequest.has_hacktoberfest_label ? 'hacktoberfest ' : ''
       }p-4 break-all`}
     >
-      <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
+      {' '}
+      <div>
+        <MergeStatus open={pullRequest.open} merged={pullRequest.merged} />
+        <PlatformIcon
+          isGitLab={pullRequest.user.url.includes('https://gitlab.com/')}
+        />
+      </div>
       <PullRequestInfo pullRequest={pullRequest} />
     </div>
   </a>
