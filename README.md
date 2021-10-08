@@ -7,7 +7,7 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 [https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
 
-![Screenshot](hacktoberfest-checker-2020.png)
+![Screenshot](hacktoberfest-checker-2021.png)
 
 ## 2021!
 
