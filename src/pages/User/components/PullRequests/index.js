@@ -14,7 +14,7 @@ import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 
-export default function PullRequests({ username }) {
+export default function PullRequests({ username, condensed = false }) {
   const { loading, data, error } = useFetchPullRequests(username);
 
   useEffect(() => {
@@ -40,24 +40,31 @@ export default function PullRequests({ username }) {
   return (
     <>
       <div className="text-center text-hack-fg">
-        <ShareButtons username={username} pullRequestCount={data.prs.length} />
+        {!condensed && (
+          <ShareButtons
+            username={username}
+            pullRequestCount={data.prs.length}
+          />
+        )}
         <UserInfo
           username={username}
           userImage={data.userImage}
           pullRequestCount={data.prs.length}
         />
       </div>
+      {!condensed && (
       <div className="w-5/6 mx-auto mb-4 lg:w-1/2">
-        {data.prs.length > 0 &&
-          data.prs.map((pullRequest, i) => (
-            <PullRequest pullRequest={pullRequest} key={i} />
-          ))}
-      </div>
-      {!isComplete && <IssuesLink />}
+          {data.prs.length > 0 &&
+            data.prs.map((pullRequest, i) => (
+              <PullRequest pullRequest={pullRequest} key={i} />
+            ))}
+        </div>
+      )}
     </>
   );
 }
 
-PullRequests.defaultProps = {
+PullRequests.propTypes = {
   username: PropTypes.string.isRequired,
+  condensed: PropTypes.bool,
 };

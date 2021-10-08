@@ -4,6 +4,7 @@ import SiteTitle from '../../components/SiteTitle';
 import Navbar from '../../components/Navbar';
 import UsernameForm from '../../components/UsernameForm';
 import PullRequests from '../User/components/PullRequests';
+import IssuesLink from '../User/components/PullRequests/IssuesLink';
 
 const Team = () => {
   const [team, setTeam] = useState(
@@ -45,7 +46,7 @@ const Team = () => {
         )}
         {team.map((username) => (
           <div key={username}>
-            <PullRequests username={username} />
+            <PullRequests username={username} condensed />
             <button
               className="transition duration-300 bg-hack-alt-bg hover:bg-hack-alt-fg px-4 pointer text-hack-fg"
               onClick={() => removeTeamMember(username)}
@@ -54,6 +55,7 @@ const Team = () => {
             </button>
           </div>
         ))}
+        <IssuesLink />
       </div>
     </>
   );
