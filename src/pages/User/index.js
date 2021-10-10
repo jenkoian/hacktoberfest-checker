@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
-import SiteTitle from '../../components/SiteTitle';
-import UsernameForm from '../../components/UsernameForm';
+import SiteTitle from 'components/SiteTitle';
+import UsernameForm from 'components/UsernameForm';
 import PullRequests from './components/PullRequests';
 import UserShare from './components/PullRequests/UserShare.js';
 

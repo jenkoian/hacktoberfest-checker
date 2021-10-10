@@ -1,5 +1,5 @@
 import React from 'react';
-import SiteTitle from '../../components/SiteTitle';
+import SiteTitle from 'components/SiteTitle';
 import faqData from './data.js';
 import FaqEntry from './components/FaqEntry';
 
