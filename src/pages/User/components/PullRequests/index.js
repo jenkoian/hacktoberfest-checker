@@ -1,5 +1,5 @@
 // Libraries
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // Hooks
@@ -39,7 +39,7 @@ export default function PullRequests({ username }) {
   const isComplete = data.prs.length >= pullRequestAmount;
 
   return (
-    <Fragment>
+    <>
       <div className="text-center text-hack-fg">
         <ShareButtons username={username} pullRequestCount={data.prs.length} />
         <UserInfo
@@ -48,7 +48,7 @@ export default function PullRequests({ username }) {
           pullRequestCount={data.prs.length}
         />
       </div>
-      <div className="mx-auto w-5/6 lg:w-1/2 mb-4">
+      <div className="w-5/6 mx-auto mb-4 lg:w-1/2">
         {data.prs.length > 0 &&
           data.prs.map((pullRequest, i) => (
             <PullRequest pullRequest={pullRequest} key={i} />
@@ -56,7 +56,7 @@ export default function PullRequests({ username }) {
       </div>
       {!isComplete && <IssuesLink />}
       <MeLinkInfo username={username} />
-    </Fragment>
+    </>
   );
 }
 
