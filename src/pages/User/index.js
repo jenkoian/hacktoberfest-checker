@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
@@ -11,7 +11,7 @@ const User = () => {
   let { username } = useParams();
 
   return (
-    <Fragment>
+    <>
       <Helmet>
         <title>{username}</title>
       </Helmet>
@@ -19,7 +19,7 @@ const User = () => {
       <UsernameForm username={username} />
       <PullRequests username={username} />
       <UserShare />
-    </Fragment>
+    </>
   );
 };
 

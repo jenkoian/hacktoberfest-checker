@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {
@@ -10,7 +10,7 @@ import {
 import { Home, User, Me, NotFound, Faq } from './pages';
 
 const App = () => (
-  <Fragment>
+  <>
     <Helmet titleTemplate="%s | Hacktoberfest Checker" />
     <GithubCorner />
     <RegisterReminder />
@@ -36,7 +36,7 @@ const App = () => (
       </Router>
     </PageWrapper>
     <Footer />
-  </Fragment>
+  </>
 );
 
 export default App;
