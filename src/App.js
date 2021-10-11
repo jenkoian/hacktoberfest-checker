@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GithubCorner from './components/GithubCorner';
@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound';
 import Faq from './pages/Faq';
 
 const App = () => (
-  <Fragment>
+  <>
     <Helmet titleTemplate="%s | Hacktoberfest Checker" />
     <GithubCorner />
     <RegisterReminder />
@@ -38,7 +38,7 @@ const App = () => (
       </Router>
     </PageWrapper>
     <Footer />
-  </Fragment>
+  </>
 );
 
 export default App;

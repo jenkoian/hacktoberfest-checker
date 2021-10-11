@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 
 const NotFound = () => (
-  <Fragment>
+  <>
     <Helmet>
       <title>Page not found</title>
     </Helmet>
-    <h2 className="text-5xl md:text-xxl text-center text-hack-fg light-mode:text-hack-dark-title py-20">
+    <h2 className="py-20 text-5xl text-center md:text-xxl text-hack-fg light-mode:text-hack-dark-title">
       Oops!
     </h2>
-    <p className="text-center py-4 text-hack-fg light-mode:text-hack-dark-title">
+    <p className="py-4 text-center text-hack-fg light-mode:text-hack-dark-title">
       The page you are looking for does not exist.
     </p>
     <p className="text-center">
@@ -17,7 +17,7 @@ const NotFound = () => (
         Return to homepage
       </a>
     </p>
-  </Fragment>
+  </>
 );
 
 export default NotFound;
