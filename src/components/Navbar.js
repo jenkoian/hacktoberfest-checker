@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="text-center">
+      <nav className="text-center pb-4">
         {username && (
           <NavLink
             to="/me"

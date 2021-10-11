@@ -1,34 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import SiteTitle from '../../components/SiteTitle';
 import Navbar from '../../components/Navbar';
+import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
-import PullRequests from '../User/components/PullRequests';
 import IssuesLink from '../User/components/PullRequests/IssuesLink';
+import TeamPullRequests from './components/TeamPullRequests';
+import useTeam from './hooks/useTeam';
 
 const Team = () => {
-  const [team, setTeam] = useState(
-    JSON.parse(localStorage.getItem('myTeam') || '[]')
-  );
-
-  const addTeamMember = (username) => {
-    if (!team.includes(username)) {
-      const newTeam = [...team, username];
-      setTeam(newTeam);
-      localStorage.setItem('myTeam', JSON.stringify(newTeam));
-    }
-  };
-
-  const removeTeamMember = (username) => {
-    const newTeam = team.filter((member) => member !== username);
-    setTeam(newTeam);
-    localStorage.setItem('myTeam', JSON.stringify(newTeam));
-  };
-
-  const onCheckUser = (username) => {
-    console.log('check ', username);
-    addTeamMember(username);
-  };
+  const { team, addTeamMember, removeTeamMember } = useTeam();
 
   return (
     <>
@@ -37,24 +17,16 @@ const Team = () => {
       </Helmet>
       <SiteTitle />
       <Navbar />
-      <UsernameForm onCheckUser={onCheckUser} />
-      <div className="text-center">
-        {!team.length && (
-          <p className="text-hack-fg light-mode:text-hack-dark-title">
-            Start by checking some team members
-          </p>
-        )}
-        {team.map((username) => (
-          <div key={username}>
-            <PullRequests username={username} condensed />
-            <button
-              className="transition duration-300 bg-hack-alt-bg hover:bg-hack-alt-fg px-4 pointer text-hack-fg"
-              onClick={() => removeTeamMember(username)}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
+      <UsernameForm onCheckUser={addTeamMember} />
+      {!team.length && (
+        <p className="text-center text-hack-fg light-mode:text-hack-dark-title">
+          Start by checking some team members
+        </p>
+      )}
+      {team && !!team.length && (
+        <TeamPullRequests team={team} removeTeamMember={removeTeamMember} />
+      )}
+      <div className="mt-8">
         <IssuesLink />
       </div>
     </>

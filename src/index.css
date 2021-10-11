@@ -71,6 +71,10 @@ a {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
+b {
+  font-weight: bolder;
+}
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
@@ -582,10 +586,6 @@ a:hover {
   display: flex;
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -748,6 +748,10 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -817,6 +821,10 @@ a:hover {
 
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pb-4 {
