@@ -5,7 +5,7 @@ import {
   GithubCorner,
   RegisterReminder,
   PageWrapper,
-  Footer
+  Footer,
 } from './components';
 import { Home, User, Me, NotFound, Faq } from './pages';
 
