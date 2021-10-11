@@ -10,10 +10,18 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const fetchPullRequests = (usernames, cache) => {
   return usernames.map((username) => {
-    if (cache[username]) {
-      return Promise.resolve(cache[username]);
+    const cachedResponse = cache[username];
+    if (cachedResponse) {
+      // a pending request is already in progress
+      if (cachedResponse instanceof Promise) {
+        return cachedResponse;
+      }
+
+      return Promise.resolve(cachedResponse);
     }
-    return fetch(`${API_URL}/prs?username=${username}`, { method: 'GET' })
+    return (cache[username] = fetch(`${API_URL}/prs?username=${username}`, {
+      method: 'GET',
+    })
       .then((response) => {
         if (response.status !== 200) {
           return response.json().then((err) => Promise.reject(err));
@@ -27,7 +35,7 @@ const fetchPullRequests = (usernames, cache) => {
       })
       .catch((err) => {
         return { error: err, username };
-      });
+      }));
   });
 };
 
@@ -53,6 +61,10 @@ const pullRequestsReducer = (state, action) => {
     case ACTIONS.PULL_REQUESTS_LOADING:
       return { ...state, loading: true, data: [] };
     case ACTIONS.PULL_REQUESTS_FETCHED_ONE:
+      if (state.data.find((u) => u.username === action.payload.data.username)) {
+        // some race conditions can happen if the user types many usernames faster than we can fetch them
+        return state;
+      }
       return {
         ...state,
         data: sortByPullRequests([...state.data, action.payload.data]),
