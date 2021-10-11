@@ -12,21 +12,16 @@ const TeamPullRequests = ({ team, removeTeamMember }) => {
     val.error?.error_description ??
     "Couldn't find any data or we hit an error, err try again?";
 
-  let loadingInfo;
-  if (loading) {
-    loadingInfo = (
-      <div className="text-center">
-        <LoadingIcon />{' '}
-        <span className="text-hack-fg light-mode:text-hack-dark-title ">
-          Loading {data.length} / {team.length}
-        </span>
-      </div>
-    );
-  }
-
   return (
     <>
-      {loadingInfo}
+      {loading && (
+        <div className="text-center">
+          <LoadingIcon />{' '}
+          <span className="text-hack-fg light-mode:text-hack-dark-title ">
+            Loading {data.length} / {team.length}
+          </span>
+        </div>
+      )}
       <div className="text-center">
         {data.map((val) => (
           <div key={val.username}>
