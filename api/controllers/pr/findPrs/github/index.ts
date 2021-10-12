@@ -2,9 +2,42 @@ import _ from 'lodash';
 import moment from 'moment';
 import logCallsRemaining from '../../logCallsRemaining';
 import loadPrs from './loadPrs';
+import { Octokit } from '@octokit/rest';
+import { RestEndpointMethodTypes } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/parameters-and-response-types';
 
-const findPrs = async (github, username) => {
-  let pullRequestData = await loadPrs(github, username);
+interface IPullRequestUpdatedData {
+  has_hacktoberfest_label: boolean;
+  number: number;
+  open: boolean;
+  repo_name: string;
+  repo_must_have_topic: boolean;
+  title: string;
+  url: string;
+  created_at: string;
+  is_pending: boolean;
+  user: {
+    login: string;
+    url: string;
+  };
+}
+
+interface IPullRequestHacktoberfestTopicData extends IPullRequestUpdatedData {
+  repo_has_hacktoberfest_topic?: boolean | undefined;
+}
+
+interface IPullRequestMergedData extends IPullRequestHacktoberfestTopicData {
+  merged: boolean;
+}
+
+interface IPullRequestApprovedData extends IPullRequestMergedData {
+  approved: boolean;
+}
+
+export const findGithubPrs = async (github: Octokit, username: string) => {
+  let pullRequestData: RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items'] = await loadPrs(
+    github,
+    username
+  );
   if (pullRequestData) {
     pullRequestData = pullRequestData.filter((event) => {
       const isInvalid = event.labels.some((label) => {
@@ -19,40 +52,42 @@ const findPrs = async (github, username) => {
   }
 
   if (pullRequestData) {
-    pullRequestData = pullRequestData.map((event) => {
-      const repo = event.pull_request.html_url.substring(
-        0,
-        event.pull_request.html_url.search('/pull/')
-      );
+    const updatedPullRequestData: IPullRequestUpdatedData[] = pullRequestData.map(
+      (event) => {
+        const repo = event.pull_request.html_url.substring(
+          0,
+          event.pull_request.html_url.search('/pull/')
+        );
 
-      const hacktoberFestLabels = _.some(
-        event.labels,
-        (label) => label.name.toLowerCase() === 'hacktoberfest-accepted'
-      );
+        const hacktoberFestLabels = _.some(
+          event.labels,
+          (label) => label.name.toLowerCase() === 'hacktoberfest-accepted'
+        );
 
-      const twoWeeksOld = moment.utc().subtract(14, 'days').startOf('day');
+        const twoWeeksOld = moment.utc().subtract(14, 'days').startOf('day');
 
-      return {
-        has_hacktoberfest_label: hacktoberFestLabels,
-        number: event.number,
-        open: event.state === 'open',
-        repo_name: repo.replace('https://github.com/', ''),
-        repo_must_have_topic: moment
-          .utc(event.created_at)
-          .isAfter('2020-10-03T12:00:00.000Z'),
-        title: event.title,
-        url: event.html_url,
-        created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
-        is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
-        user: {
-          login: event.user.login,
-          url: event.user.html_url,
-        },
-      };
-    });
+        return {
+          has_hacktoberfest_label: hacktoberFestLabels,
+          number: event.number,
+          open: event.state === 'open',
+          repo_name: repo.replace('https://github.com/', ''),
+          repo_must_have_topic: moment
+            .utc(event.created_at)
+            .isAfter('2020-10-03T12:00:00.000Z'),
+          title: event.title,
+          url: event.html_url,
+          created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
+          is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
+          user: {
+            login: event.user.login,
+            url: event.user.html_url,
+          },
+        };
+      }
+    );
 
     const repoTopicRequests = _.uniq(
-      pullRequestData
+      updatedPullRequestData
         .filter((pr) => pr.repo_must_have_topic)
         .map((pr) => pr.repo_name)
     ).map((repo_name) => {
@@ -61,7 +96,11 @@ const findPrs = async (github, username) => {
       return github.repos
         .getAllTopics(repoDetails)
         .then(logCallsRemaining)
-        .then((res) => ({ repo_name, topics: res.data.names }));
+        .then(
+          (
+            res: RestEndpointMethodTypes['repos']['getAllTopics']['response']
+          ) => ({ repo_name, topics: res.data.names })
+        );
     });
 
     const repoTopics = await Promise.all(repoTopicRequests);
@@ -74,17 +113,19 @@ const findPrs = async (github, username) => {
       {}
     );
 
-    const repoTopicsAfter = _.map(pullRequestData, (pr) =>
-      _.assign(
-        pr,
-        pr.repo_must_have_topic
-          ? {
-              repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_name].some(
-                (topic) => topic.toLowerCase() === 'hacktoberfest'
-              ),
-            }
-          : {}
-      )
+    const repoTopicsAfter: IPullRequestHacktoberfestTopicData[] = _.map(
+      updatedPullRequestData,
+      (pr) =>
+        _.assign(
+          pr,
+          pr.repo_must_have_topic
+            ? {
+                repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_name].some(
+                  (topic: string) => topic.toLowerCase() === 'hacktoberfest'
+                ) as boolean,
+              }
+            : {}
+        )
     );
 
     if (repoTopicsAfter) {
@@ -121,11 +162,13 @@ const findPrs = async (github, username) => {
         });
 
         const mergeStatus = await Promise.all(checkMergeStatus);
-        pullRequests = _.zipWith(pullRequests, mergeStatus, (pr, merged) =>
-          _.assign(pr, { merged })
+        const pullRequestMergedData: IPullRequestMergedData[] = _.zipWith(
+          pullRequests,
+          mergeStatus,
+          (pr, merged) => _.assign(pr, { merged })
         );
 
-        const checkApproval = _.map(pullRequests, (pr) => {
+        const checkApproval = _.map(pullRequestMergedData, (pr) => {
           const repoDetails = pr.repo_name.split('/');
           const pullDetails = {
             owner: repoDetails[0],
@@ -136,17 +179,21 @@ const findPrs = async (github, username) => {
           return github.pulls
             .listReviews(pullDetails)
             .then(logCallsRemaining)
-            .then((res) =>
-              res.data.some((review) => review.state === 'APPROVED')
+            .then(
+              (
+                res: RestEndpointMethodTypes['pulls']['listReviews']['response']
+              ) => res.data.some((review) => review.state === 'APPROVED')
             );
         });
 
         const approvalStatus = await Promise.all(checkApproval);
-        pullRequests = _.zipWith(pullRequests, approvalStatus, (pr, approved) =>
-          _.assign(pr, { approved })
+        const pullRequestApprovedData: IPullRequestApprovedData[] = _.zipWith(
+          pullRequestMergedData,
+          approvalStatus,
+          (pr, approved) => _.assign(pr, { approved })
         );
 
-        return pullRequests.filter((pr) => {
+        return pullRequestApprovedData.filter((pr) => {
           // Operating under initial rules
           if (!pr.repo_must_have_topic) return true;
           // label OR (topic AND (merged OR approved))
@@ -162,7 +209,7 @@ const findPrs = async (github, username) => {
   }
 };
 
-const searchGithubUser = async (github, username) => {
+export const searchGithubUser = async (github: Octokit, username: string) => {
   try {
     let user_data = await github.users
       .getByUsername({ username })
@@ -172,5 +219,3 @@ const searchGithubUser = async (github, username) => {
     return [];
   }
 };
-
-module.exports = [findPrs, searchGithubUser];
