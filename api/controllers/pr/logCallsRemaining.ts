@@ -1,14 +1,16 @@
-import { RestEndpointMethodTypes } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/parameters-and-response-types';
+import { ResponseHeaders } from '@octokit/types/dist-types/ResponseHeaders';
 
-const logCallsRemaining = (
-  res: RestEndpointMethodTypes['users']['getByUsername']['response']
-) => {
-  const callsRemaining = (res.headers[
-    'x-ratelimit-remaining'
-  ] as unknown) as number;
+interface Response {
+  headers: Pick<ResponseHeaders, 'x-ratelimit-remaining'>;
+}
 
-  if (process.env.NODE_ENV !== 'production' || callsRemaining < 100) {
-    console.log(`API calls remaining: ${callsRemaining}`);
+const logCallsRemaining = <T extends Response>(res: T): T => {
+  if (typeof res.headers['x-ratelimit-remaining'] !== 'undefined') {
+    const callsRemaining = Number(res.headers['x-ratelimit-remaining']);
+
+    if (process.env.NODE_ENV !== 'production' || callsRemaining < 100) {
+      console.log(`API calls remaining: ${callsRemaining}`);
+    }
   }
 
   return res;
