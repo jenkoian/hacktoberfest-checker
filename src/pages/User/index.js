@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import SiteTitle from '../../components/SiteTitle';
 import UsernameForm from '../../components/UsernameForm';
 import PullRequests from './components/PullRequests';
-import UserShare from './components/PullRequests/UserShare.js';
+import UserShare from './components/PullRequests/UserShare';
 import Navbar from '../../components/Navbar';
 
 const User = () => {
