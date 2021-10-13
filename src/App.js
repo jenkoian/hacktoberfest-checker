@@ -7,8 +7,8 @@ import {
   RegisterReminder,
   PageWrapper,
   Footer,
-} from './components';
-import { Home, User, Me, NotFound, Faq } from './pages';
+} from 'components';
+import { Home, User, Me, NotFound, Faq } from 'pages';
 
 
 const App = () => (
