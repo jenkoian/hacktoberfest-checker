@@ -10,7 +10,6 @@ import {
 } from 'components';
 import { Home, User, Me, NotFound, Faq } from 'pages';
 
-
 const App = () => (
   <>
     <Helmet titleTemplate="%s | Hacktoberfest Checker" />
