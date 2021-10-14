@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../../components/Navbar';
-import SiteTitle from '../../components/SiteTitle';
-import UsernameForm from '../../components/UsernameForm';
+import Navbar from 'components/Navbar';
+import SiteTitle from 'components/SiteTitle';
+import UsernameForm from 'components/UsernameForm';
 
 const Home = () => (
   <>

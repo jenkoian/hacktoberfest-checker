@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Navbar from '../../components/Navbar';
-import SiteTitle from '../../components/SiteTitle';
-import UsernameForm from '../../components/UsernameForm';
+import Navbar from 'components/Navbar';
+import SiteTitle from 'components/SiteTitle';
+import UsernameForm from 'components/UsernameForm';
 import IssuesLink from '../User/components/PullRequests/IssuesLink';
 import TeamPullRequests from './components/TeamPullRequests';
 import useTeam from './hooks/useTeam';
