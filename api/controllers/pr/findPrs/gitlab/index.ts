@@ -15,8 +15,8 @@ interface GitlabPullRequestUpdatedData {
   created_at: string;
   is_pending: boolean;
   user: {
-    login: string | unknown;
-    url: string | unknown;
+    login: string;
+    url: string;
   };
 }
 
@@ -84,8 +84,8 @@ export const findGitlabPrs = async (
         created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
         is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
         user: {
-          login: event.author.username,
-          url: event.author.web_url,
+          login: event.author.username as string,
+          url: event.author.web_url as string,
         },
       };
     }

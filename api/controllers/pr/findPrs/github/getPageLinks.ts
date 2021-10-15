@@ -18,9 +18,9 @@ const getPageLinks = (link: GetPageLinksLink): HasNextPage => {
 
   // link format:
   // '<https://api.github.com/users/aseemk/followers?page=2>; rel="next", <https://api.github.com/users/aseemk/followers?page=2>; rel="last"'
-  // @ts-ignore
   extractedLink.replace(
     /<([^>]*)>;\s*rel="([\w]*)"/g,
+    // @ts-ignore
     (m: string, uri: string[], type: string) => {
       links[type] = uri;
     }
