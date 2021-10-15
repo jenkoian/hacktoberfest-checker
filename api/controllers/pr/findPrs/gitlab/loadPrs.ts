@@ -4,7 +4,10 @@ import { MergeRequestSchema } from '@gitbeaker/core/dist/types/resources/MergeRe
 import hasNextPage from './hasNextPage';
 import getNextPage from './getNextPage';
 
-const loadPrs = async (gitlab: Resources.Gitlab, username: string) => {
+const loadPrs = async (
+  gitlab: Resources.Gitlab,
+  username: string
+): Promise<MergeRequestSchema[]> => {
   try {
     const today = new Date();
     const currentMonth = today.getMonth();
