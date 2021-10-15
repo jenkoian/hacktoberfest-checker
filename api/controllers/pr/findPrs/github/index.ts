@@ -210,12 +210,14 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
 };
 
 export const searchGithubUser = async (github: Octokit, username: string) => {
+  const noUserFound = false;
+
   try {
-    let user_data = await github.users
+    let user_data: RestEndpointMethodTypes['users']['getByUsername']['response'] = await github.users
       .getByUsername({ username })
       .then(logCallsRemaining);
-    return user_data === null ? [] : user_data;
-  } catch (error) {
-    return [];
+    return user_data === null ? noUserFound : user_data;
+  } catch (error: unknown) {
+    return noUserFound;
   }
 };
