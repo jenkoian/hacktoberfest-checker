@@ -1,9 +1,49 @@
 import _ from 'lodash';
 import moment from 'moment';
 import loadPrs from './loadPrs';
+import { Resources } from '@gitbeaker/core';
 
-const findPrs = async (gitlab, username) => {
+interface IPullRequestUpdatedData {
+  has_hacktoberfest_label: boolean;
+  number: number;
+  open: boolean;
+  repo_id: number;
+  repo_name: string;
+  repo_must_have_topic: boolean;
+  title: string;
+  url: string;
+  created_at: string;
+  is_pending: boolean;
+  user: {
+    login: string | unknown;
+    url: string | unknown;
+  };
+}
+
+interface IPullRequestHacktoberfestTopicData extends IPullRequestUpdatedData {
+  repo_has_hacktoberfest_topic?: boolean | undefined;
+}
+
+interface IPullRequestMergedData extends IPullRequestHacktoberfestTopicData {
+  merged: boolean;
+}
+
+interface IPullRequestApprovedData extends IPullRequestMergedData {
+  approved: boolean;
+}
+
+interface IApprovalState {
+  rules: {
+    approved: boolean;
+  }[];
+}
+
+export const findGitlabPrs = async (
+  gitlab: Resources.Gitlab,
+  username: string
+) => {
   let pullRequestData = await loadPrs(gitlab, username);
+  // Remove invalid pull requests
   pullRequestData = pullRequestData.filter((event) => {
     const isInvalid = event.labels.some((label) => {
       return (
@@ -14,45 +54,47 @@ const findPrs = async (gitlab, username) => {
     return !isInvalid;
   });
 
-  pullRequestData = pullRequestData.map((event) => {
-    const repo = event.web_url.substring(
-      0,
-      event.web_url.search('/-/merge_requests/')
-    );
+  const updatedPullRequestData: IPullRequestUpdatedData[] = pullRequestData.map(
+    (event) => {
+      const repo = event.web_url.substring(
+        0,
+        event.web_url.search('/-/merge_requests/')
+      );
 
-    const hacktoberFestLabels = _.some(
-      event.labels,
-      (label) => label.toLowerCase() === 'hacktoberfest-accepted'
-    );
+      const hacktoberFestLabels = _.some(
+        event.labels,
+        (label) => label.toLowerCase() === 'hacktoberfest-accepted'
+      );
 
-    const twoWeeksOld = moment.utc().subtract(14, 'days').startOf('day');
+      const twoWeeksOld = moment.utc().subtract(14, 'days').startOf('day');
 
-    return {
-      has_hacktoberfest_label: hacktoberFestLabels,
-      number: event.iid,
-      open: event.state === 'opened',
-      repo_id: event.project_id,
-      repo_name: repo.replace('https://gitlab.com/', ''),
-      repo_must_have_topic: moment
-        .utc(event.created_at)
-        .isAfter('2020-10-03T12:00:00.000Z'),
-      title: event.title,
-      url: event.web_url,
-      created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
-      is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
-      user: {
-        login: event.author.username,
-        url: event.author.web_url,
-      },
-    };
-  });
+      return {
+        has_hacktoberfest_label: hacktoberFestLabels,
+        number: event.iid,
+        open: event.state === 'opened',
+        repo_id: event.project_id,
+        repo_name: repo.replace('https://gitlab.com/', ''),
+        repo_must_have_topic: moment
+          .utc(event.created_at)
+          .isAfter('2020-10-03T12:00:00.000Z'),
+        title: event.title,
+        url: event.web_url,
+        created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
+        is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
+        user: {
+          login: event.author.username,
+          url: event.author.web_url,
+        },
+      };
+    }
+  );
 
   // Ensure each repo only gets one request for their topics
   const repoTopicRequests = _.uniq(
-    pullRequestData
+    updatedPullRequestData
       .filter((pr) => pr.repo_must_have_topic)
       .map((pr) => pr.repo_id)
-  ).map((repo_id) => {
+  ).map((repo_id: number) => {
     return gitlab.Projects.show(repo_id).then((res) => ({
       repo_id,
       topics: res.topics,
@@ -69,17 +111,19 @@ const findPrs = async (gitlab, username) => {
     {}
   );
 
-  const repoTopicsAfter = _.map(pullRequestData, (pr) =>
-    _.assign(
-      pr,
-      pr.repo_must_have_topic
-        ? {
-            repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_id].some(
-              (topic) => topic.toLowerCase() === 'hacktoberfest'
-            ),
-          }
-        : {}
-    )
+  const repoTopicsAfter: IPullRequestHacktoberfestTopicData[] = _.map(
+    updatedPullRequestData,
+    (pr) =>
+      _.assign(
+        pr,
+        pr.repo_must_have_topic
+          ? {
+              repo_has_hacktoberfest_topic: repoTopicMap[pr.repo_id].some(
+                (topic) => topic.toLowerCase() === 'hacktoberfest'
+              ),
+            }
+          : {}
+      )
   );
 
   let pullRequests = repoTopicsAfter.filter((pr) => {
@@ -96,28 +140,33 @@ const findPrs = async (gitlab, username) => {
   });
 
   const mergeStatus = await Promise.all(checkMergeStatus);
-  pullRequests = _.zipWith(pullRequests, mergeStatus, (pr, merged) =>
-    _.assign(pr, { merged })
+  const pullRequestMergedData: IPullRequestMergedData[] = _.zipWith(
+    pullRequests,
+    mergeStatus,
+    (pr, merged) => _.assign(pr, { merged })
   );
 
-  const checkApproval = _.map(pullRequests, (pr) => {
+  const checkApproval = _.map(pullRequestMergedData, (pr) => {
     return gitlab.MergeRequestApprovals.approvalState(
       pr.repo_id,
       pr.number
     ).then((res) => {
-      if (!res.rules) {
+      const response = (res as unknown) as IApprovalState;
+      if (!response.rules) {
         return [];
       }
-      return res.rules.some((review) => review.approved === true);
+      return response.rules.some((review) => review.approved === true);
     });
-  });
+  }) as Promise<boolean>[];
 
   const approvalStatus = await Promise.all(checkApproval);
-  pullRequests = _.zipWith(pullRequests, approvalStatus, (pr, approved) =>
-    _.assign(pr, { approved })
+  const pullRequestApprovedData: IPullRequestApprovedData[] = _.zipWith(
+    pullRequestMergedData,
+    approvalStatus,
+    (pr, approved) => _.assign(pr, { approved })
   );
 
-  return pullRequests.filter((pr) => {
+  return pullRequestApprovedData.filter((pr) => {
     // Operating under initial rules
     if (!pr.repo_must_have_topic) return true;
     // label OR (topic AND (merged OR approved))
@@ -128,13 +177,16 @@ const findPrs = async (gitlab, username) => {
   });
 };
 
-const searchGitlabUser = async (gitlab, username) => {
+export const searchGitlabUser = async (
+  gitlab: Resources.Gitlab,
+  username: string
+) => {
+  const noUserFound = false;
+
   try {
     let user_data = await gitlab.Users.search(username);
-    return user_data === null ? [] : user_data;
-  } catch (error) {
-    return [];
+    return user_data === null ? noUserFound : user_data;
+  } catch (error: unknown) {
+    return noUserFound;
   }
 };
-
-module.exports = [findPrs, searchGitlabUser];
