@@ -5,7 +5,7 @@ import loadPrs from './loadPrs';
 import { Octokit } from '@octokit/rest';
 import { RestEndpointMethodTypes } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/parameters-and-response-types';
 
-interface IPullRequestUpdatedData {
+interface GithubPullRequestUpdatedData {
   has_hacktoberfest_label: boolean;
   number: number;
   open: boolean;
@@ -21,15 +21,15 @@ interface IPullRequestUpdatedData {
   };
 }
 
-interface IPullRequestHacktoberfestTopicData extends IPullRequestUpdatedData {
+interface GithubPullRequestHacktoberfest extends GithubPullRequestUpdatedData {
   repo_has_hacktoberfest_topic?: boolean | undefined;
 }
 
-interface IPullRequestMergedData extends IPullRequestHacktoberfestTopicData {
+interface GithubPullRequestMerged extends GithubPullRequestHacktoberfest {
   merged: boolean;
 }
 
-interface IPullRequestApprovedData extends IPullRequestMergedData {
+export interface GithubPullRequestApproved extends GithubPullRequestMerged {
   approved: boolean;
 }
 
@@ -52,7 +52,7 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
   }
 
   if (pullRequestData) {
-    const updatedPullRequestData: IPullRequestUpdatedData[] = pullRequestData.map(
+    const updatedPullRequestData: GithubPullRequestUpdatedData[] = pullRequestData.map(
       (event) => {
         const repo = event.pull_request.html_url.substring(
           0,
@@ -113,7 +113,7 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
       {}
     );
 
-    const repoTopicsAfter: IPullRequestHacktoberfestTopicData[] = _.map(
+    const repoTopicsAfter: GithubPullRequestHacktoberfest[] = _.map(
       updatedPullRequestData,
       (pr) =>
         _.assign(
@@ -162,7 +162,7 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
         });
 
         const mergeStatus = await Promise.all(checkMergeStatus);
-        const pullRequestMergedData: IPullRequestMergedData[] = _.zipWith(
+        const pullRequestMergedData: GithubPullRequestMerged[] = _.zipWith(
           pullRequests,
           mergeStatus,
           (pr, merged) => _.assign(pr, { merged })
@@ -187,7 +187,7 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
         });
 
         const approvalStatus = await Promise.all(checkApproval);
-        const pullRequestApprovedData: IPullRequestApprovedData[] = _.zipWith(
+        const pullRequestApprovedData: GithubPullRequestApproved[] = _.zipWith(
           pullRequestMergedData,
           approvalStatus,
           (pr, approved) => _.assign(pr, { approved })

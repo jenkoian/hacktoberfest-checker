@@ -1,15 +1,15 @@
-export interface IGetPageLinksLink {
+export interface GetPageLinksLink {
   link?: string;
   headers?: {
     link?: string;
   };
 }
 
-interface IHasNextPage {
+interface HasNextPage {
   next?: string;
 }
 
-const getPageLinks = (link: IGetPageLinksLink): IHasNextPage => {
+const getPageLinks = (link: GetPageLinksLink): HasNextPage => {
   const extractedLink: string = link.link || link.headers.link || '';
 
   const links: {

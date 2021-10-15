@@ -3,7 +3,7 @@ import moment from 'moment';
 import loadPrs from './loadPrs';
 import { Resources } from '@gitbeaker/core';
 
-interface IPullRequestUpdatedData {
+interface GitlabPullRequestUpdatedData {
   has_hacktoberfest_label: boolean;
   number: number;
   open: boolean;
@@ -20,22 +20,24 @@ interface IPullRequestUpdatedData {
   };
 }
 
-interface IPullRequestHacktoberfestTopicData extends IPullRequestUpdatedData {
+interface GitlabPullRequestHacktoberfest extends GitlabPullRequestUpdatedData {
   repo_has_hacktoberfest_topic?: boolean | undefined;
 }
 
-interface IPullRequestMergedData extends IPullRequestHacktoberfestTopicData {
+interface GitlabPullRequestMerged extends GitlabPullRequestHacktoberfest {
   merged: boolean;
 }
 
-interface IPullRequestApprovedData extends IPullRequestMergedData {
+export interface GitlabPullRequestApproved extends GitlabPullRequestMerged {
   approved: boolean;
 }
 
-interface IApprovalState {
-  rules: {
-    approved: boolean;
-  }[];
+interface ApprovalRule {
+  approved: boolean;
+}
+
+interface ApprovalState {
+  rules: ApprovalRule[];
 }
 
 export const findGitlabPrs = async (
@@ -54,7 +56,7 @@ export const findGitlabPrs = async (
     return !isInvalid;
   });
 
-  const updatedPullRequestData: IPullRequestUpdatedData[] = pullRequestData.map(
+  const updatedPullRequestData: GitlabPullRequestUpdatedData[] = pullRequestData.map(
     (event) => {
       const repo = event.web_url.substring(
         0,
@@ -111,7 +113,7 @@ export const findGitlabPrs = async (
     {}
   );
 
-  const repoTopicsAfter: IPullRequestHacktoberfestTopicData[] = _.map(
+  const repoTopicsAfter: GitlabPullRequestHacktoberfest[] = _.map(
     updatedPullRequestData,
     (pr) =>
       _.assign(
@@ -140,7 +142,7 @@ export const findGitlabPrs = async (
   });
 
   const mergeStatus = await Promise.all(checkMergeStatus);
-  const pullRequestMergedData: IPullRequestMergedData[] = _.zipWith(
+  const pullRequestMergedData: GitlabPullRequestMerged[] = _.zipWith(
     pullRequests,
     mergeStatus,
     (pr, merged) => _.assign(pr, { merged })
@@ -151,7 +153,7 @@ export const findGitlabPrs = async (
       pr.repo_id,
       pr.number
     ).then((res) => {
-      const response = (res as unknown) as IApprovalState;
+      const response = (res as unknown) as ApprovalState;
       if (!response.rules) {
         return [];
       }
@@ -160,7 +162,7 @@ export const findGitlabPrs = async (
   }) as Promise<boolean>[];
 
   const approvalStatus = await Promise.all(checkApproval);
-  const pullRequestApprovedData: IPullRequestApprovedData[] = _.zipWith(
+  const pullRequestApprovedData: GitlabPullRequestApproved[] = _.zipWith(
     pullRequestMergedData,
     approvalStatus,
     (pr, approved) => _.assign(pr, { approved })

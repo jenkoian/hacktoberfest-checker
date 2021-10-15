@@ -1,6 +1,6 @@
-import getPageLinks, { IGetPageLinksLink } from './getPageLinks';
+import getPageLinks, { GetPageLinksLink } from './getPageLinks';
 
-const hasNextPage = (link: IGetPageLinksLink) => {
+const hasNextPage = (link: GetPageLinksLink) => {
   return getPageLinks(link).next;
 };
 
