@@ -14,11 +14,17 @@ const TeamPullRequests = ({ team, removeTeamMember }) => {
 
   return (
     <>
-      {loading && (
+      {loading ? (
         <div className="text-center">
           <LoadingIcon />{' '}
-          <span className="text-hack-fg light-mode:text-hack-dark-title ">
+          <span className="text-hack-fg light-mode:text-hack-dark-title">
             Loading {data.length} / {team.length}
+          </span>
+        </div>
+      ) : (
+        <div className="text-center">
+          <span className="text-hack-fg light-mode:text-hack-dark-title">
+            Comparing {team.length} friends
           </span>
         </div>
       )}
