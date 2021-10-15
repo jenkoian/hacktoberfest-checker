@@ -8,35 +8,53 @@ const ACTIONS = {
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const fetchPullRequests = (usernames, cache) => {
-  return usernames.map((username) => {
-    const cachedResponse = cache[username];
-    if (cachedResponse) {
-      // a pending request is already in progress
-      if (cachedResponse instanceof Promise) {
-        return cachedResponse;
-      }
-
-      return Promise.resolve(cachedResponse);
-    }
-    return (cache[username] = fetch(`${API_URL}/prs?username=${username}`, {
+const fetchPullRequests = async (username) => {
+  try {
+    const res = await fetch(`${API_URL}/prs?username=${username}`, {
       method: 'GET',
-    })
-      .then((response) => {
-        if (response.status !== 200) {
-          return response.json().then((err) => Promise.reject(err));
-        }
-        return response.json();
-      })
-      .then((res) => {
-        // cache only successful responses
-        cache[username] = res;
-        return res;
-      })
-      .catch((err) => {
-        return { error: err, username };
-      }));
-  });
+    });
+    const data = await res.json();
+
+    if (res.status === 200) {
+      return data;
+    }
+
+    return { error: data, username };
+  } catch (error) {
+    return { error, username };
+  }
+};
+
+const fetchPullRequestsWithCache = async (username, cache) => {
+  const cachedData = cache[username];
+
+  // if we have a pendig promise in cache, await on it
+  if (cachedData instanceof Promise) {
+    return await cachedData;
+  }
+
+  // if we have a completed value in cache, just return it
+  if (cachedData) {
+    return cachedData;
+  }
+
+  // fetch the data
+  // Note: we do not await on the fetch here because we want to put the Promise in the cache as soon as possible,
+  // so if the user retriggers the fetch we can reuse the existing promise and not generate a new request
+  const pendingData = fetchPullRequests(username);
+  cache[username] = pendingData;
+
+  // after adding the promise to the cache, we can safely await on it
+  const data = await pendingData;
+  if (!data.error) {
+    // cache only successful results
+    cache[username] = data;
+  } else {
+    // clear the cache, maybe the next fetch will not have errors
+    delete cache[username];
+  }
+
+  return data;
 };
 
 const sortByPullRequests = (results) => {
@@ -92,7 +110,9 @@ export default function useFetchTeamPullRequests(usernames) {
 
     dispatch({ type: ACTIONS.PULL_REQUESTS_LOADING });
 
-    const requests = fetchPullRequests(usernames, cache.current);
+    const requests = usernames.map((username) =>
+      fetchPullRequestsWithCache(username, cache.current)
+    );
 
     // track incremental progress
     requests.forEach((request) =>
