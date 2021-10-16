@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { MeContext } from 'context/Me';
 
 const Navbar = () => {
-  const username = localStorage.getItem('myGithub');
+  const { me } = useContext(MeContext);
 
   const isMeActive = (match, location) => {
     const pathname = location.pathname;
-    return pathname === '/me' || pathname === `/user/${username}`;
+    return pathname === '/me' || pathname === `/user/${me}`;
   };
 
   const isUserActive = (match, location) => {
@@ -20,7 +21,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="text-center pb-4">
-        {username && (
+        {me && (
           <NavLink
             to="/me"
             isActive={isMeActive}
