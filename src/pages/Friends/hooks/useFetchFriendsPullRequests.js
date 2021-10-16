@@ -96,7 +96,7 @@ const pullRequestsReducer = (state, action) => {
   }
 };
 
-export default function useFetchTeamPullRequests(usernames) {
+export default function useFetchFriendsPullRequests(usernames) {
   // cache the results of the fetch to avoid multiple requests for users already loaded
   // otherwise every time you add one username, it will fetch again the entire list
   const cache = useRef({});

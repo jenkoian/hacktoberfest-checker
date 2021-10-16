@@ -8,7 +8,7 @@ import {
   PageWrapper,
   Footer,
 } from 'components';
-import { Home, User, Me, NotFound, Faq, Team } from 'pages';
+import { Home, User, Me, NotFound, Faq, Friends } from 'pages';
 
 const App = () => (
   <>
@@ -27,8 +27,8 @@ const App = () => (
           <Route exact path="/me">
             <Me />
           </Route>
-          <Route exact path="/team">
-            <Team />
+          <Route exact path="/friends">
+            <Friends />
           </Route>
           <Route exact path="/faq">
             <Faq />

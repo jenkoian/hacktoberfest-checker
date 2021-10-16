@@ -39,11 +39,11 @@ const Navbar = () => {
           User
         </NavLink>
         <NavLink
-          to="/team"
+          to="/friends"
           className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo"
           activeClassName="border-hack-logo"
         >
-          Team
+          Compare with friends
         </NavLink>
       </nav>
     </>

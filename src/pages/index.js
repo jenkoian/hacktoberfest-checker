@@ -3,6 +3,6 @@ import User from './User';
 import Me from './Me';
 import NotFound from './NotFound';
 import Faq from './Faq';
-import Team from './Team';
+import Friends from './Friends';
 
-export { Home, User, Me, NotFound, Faq, Team };
+export { Home, User, Me, NotFound, Faq, Friends };

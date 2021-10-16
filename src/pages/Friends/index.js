@@ -4,27 +4,27 @@ import Navbar from 'components/Navbar';
 import SiteTitle from 'components/SiteTitle';
 import UsernameForm from 'components/UsernameForm';
 import IssuesLink from '../User/components/PullRequests/IssuesLink';
-import TeamPullRequests from './components/TeamPullRequests';
-import useTeam from './hooks/useTeam';
+import FriendsPullRequests from './components/FriendsPullRequests';
+import useFriends from './hooks/useFriends';
 
-const Team = () => {
-  const { team, addTeamMember, removeTeamMember } = useTeam();
+const Friends = () => {
+  const { friends, addFriend, removeFriend } = useFriends();
 
   return (
     <>
       <Helmet>
-        <title>My Team and Friends</title>
+        <title>Compare with Friends</title>
       </Helmet>
       <SiteTitle />
       <Navbar />
-      <UsernameForm onCheckUser={addTeamMember} />
-      {!team.length && (
+      <UsernameForm onCheckUser={addFriend} />
+      {!friends.length && (
         <p className="text-center text-hack-fg light-mode:text-hack-dark-title">
-          Start by checking some team members
+          Start by checking some friends to compare with
         </p>
       )}
-      {team && !!team.length && (
-        <TeamPullRequests team={team} removeTeamMember={removeTeamMember} />
+      {friends && !!friends.length && (
+        <FriendsPullRequests friends={friends} removeFriend={removeFriend} />
       )}
       <div className="mt-8">
         <IssuesLink />
@@ -33,4 +33,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Friends;

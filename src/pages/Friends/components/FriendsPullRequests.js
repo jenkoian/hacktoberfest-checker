@@ -3,10 +3,12 @@ import React from 'react';
 import ErrorText from '../../User/components/PullRequests/ErrorText';
 import LoadingIcon from '../../User/components/PullRequests/LoadingIcon';
 import UserInfo from '../../User/components/PullRequests/UserInfo';
-import useFetchTeamPullRequests from '../hooks/useFetchTeamPullRequests';
+import useFetchFriendsPullRequests from '../hooks/useFetchFriendsPullRequests';
 
-const TeamPullRequests = ({ team, removeTeamMember }) => {
-  const { loading, data, removeUserFromCache } = useFetchTeamPullRequests(team);
+const FriendsPullRequests = ({ friends, removeFriend }) => {
+  const { loading, data, removeUserFromCache } = useFetchFriendsPullRequests(
+    friends
+  );
 
   const getErrorMessage = (val) =>
     val.error?.error_description ??
@@ -18,13 +20,13 @@ const TeamPullRequests = ({ team, removeTeamMember }) => {
         <div className="text-center">
           <LoadingIcon />{' '}
           <span className="text-hack-fg light-mode:text-hack-dark-title">
-            Loading {data.length} / {team.length}
+            Loading {data.length} / {friends.length}
           </span>
         </div>
       ) : (
         <div className="text-center">
           <span className="text-hack-fg light-mode:text-hack-dark-title">
-            Comparing {team.length} friends
+            Comparing {friends.length} friends
           </span>
         </div>
       )}
@@ -49,7 +51,7 @@ const TeamPullRequests = ({ team, removeTeamMember }) => {
               className="transition duration-300 bg-hack-alt-bg hover:bg-hack-alt-fg px-4 pointer text-hack-fg"
               onClick={() => {
                 removeUserFromCache(val.username);
-                removeTeamMember(val.username);
+                removeFriend(val.username);
               }}
             >
               Remove
@@ -61,9 +63,9 @@ const TeamPullRequests = ({ team, removeTeamMember }) => {
   );
 };
 
-TeamPullRequests.propTypes = {
-  team: PropTypes.arrayOf(PropTypes.string).isRequired,
-  removeTeamMember: PropTypes.func.isRequired,
+FriendsPullRequests.propTypes = {
+  friends: PropTypes.arrayOf(PropTypes.string).isRequired,
+  removeFriend: PropTypes.func.isRequired,
 };
 
-export default TeamPullRequests;
+export default FriendsPullRequests;
