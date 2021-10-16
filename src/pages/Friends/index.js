@@ -5,10 +5,11 @@ import SiteTitle from 'components/SiteTitle';
 import UsernameForm from 'components/UsernameForm';
 import IssuesLink from '../User/components/PullRequests/IssuesLink';
 import FriendsPullRequests from './components/FriendsPullRequests';
-import useFriends from './hooks/useFriends';
+import { useContext } from 'react/cjs/react.development';
+import { FriendsContext } from 'context/Friends';
 
 const Friends = () => {
-  const { friends, addFriend, removeFriend } = useFriends();
+  const { friends, addFriend, removeFriend } = useContext(FriendsContext);
 
   return (
     <>
