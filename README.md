@@ -75,7 +75,7 @@ or use the docker-compose
 
 ## Changing styling
 
-Styling is done through [tailwind](https://tailwindcss.com/) as much as possible no CSS should be added and class names favoured.
+Styling is done through [tailwind](https://tailwindcss.com/) as much as possible, no CSS should be added and class names favoured.
 However, there will be occasions where custom CSS is required, in this case you need to edit `style.css`
 and run `npm run tailwind-gen` to generate the new CSS file.
 
