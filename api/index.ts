@@ -33,15 +33,16 @@ const start = () => {
 
   setupErrorHandling(app);
 
-  app.use(express.static(path.join(__dirname, '../build')));
+  app.use(express.static(path.join(__dirname, '../../build')));
 
   app.use(bodyParser.json());
 
   const corsOptions = {
-    origin: process.env.REACT_APP_HOSTNAME,
+    origin: [process.env.REACT_APP_HOSTNAME],
   };
 
   app.use(cors(corsOptions));
+  app.options('*', cors(corsOptions));
 
   app.use(
     compression({
@@ -52,7 +53,7 @@ const start = () => {
   app.get('/prs', PrController.index);
 
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../../build', 'index.html'));
   });
 
   app.listen(port, () => {
