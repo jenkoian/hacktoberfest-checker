@@ -14,8 +14,8 @@ const getNextPage = async (
     const mergeRequestResults = ((await gitlab.MergeRequests.all({
       scope: 'all',
       author_username: username,
-      //created_after: `${searchYear}-08-30T00:00:00-12:00`,
-      //created_before: `${searchYear}-10-31T23:59:59-12:00`,
+      created_after: `${searchYear}-09-30T00:00:00-12:00`,
+      created_before: `${searchYear}-10-31T23:59:59-12:00`,
       // 30 is the default but this makes it clearer/allows it to be tweaked
       per_page: pagination.perPage,
       page: pagination.next,

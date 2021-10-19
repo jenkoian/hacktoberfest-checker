@@ -12,7 +12,7 @@ const getNextPage = async (
     const baseUrl = process.env.GITHUB_API_BASE_URL
       ? process.env.GITHUB_API_BASE_URL
       : 'https://api.github.com';
-    const nextPageLink = await getPageLinks(response).next.replace(baseUrl, '');
+    const nextPageLink = getPageLinks(response).next.replace(baseUrl, '');
 
     const githubResults = (await github.request(
       'GET ' + nextPageLink
