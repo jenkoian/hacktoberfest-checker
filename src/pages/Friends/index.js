@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from 'components/Navbar';
 import SiteTitle from 'components/SiteTitle';
 import UsernameForm from 'components/UsernameForm';
 import IssuesLink from '../User/components/PullRequests/IssuesLink';
 import FriendsPullRequests from './components/FriendsPullRequests';
-import { useContext } from 'react/cjs/react.development';
 import { FriendsContext } from 'context/Friends';
 
 const Friends = () => {
