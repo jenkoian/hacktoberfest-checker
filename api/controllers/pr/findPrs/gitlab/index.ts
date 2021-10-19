@@ -128,7 +128,7 @@ export const findGitlabPrs = async (
       )
   );
 
-  let pullRequests = repoTopicsAfter.filter((pr) => {
+  const pullRequests = repoTopicsAfter.filter((pr) => {
     // Operating under initial rules
     if (!pr.repo_must_have_topic) return true;
     // label OR topic
@@ -186,7 +186,7 @@ export const searchGitlabUser = async (
   const noUserFound = false;
 
   try {
-    let user_data = await gitlab.Users.search(username);
+    const user_data = await gitlab.Users.username(username);
     return user_data === null ? noUserFound : user_data;
   } catch (error: unknown) {
     return noUserFound;
