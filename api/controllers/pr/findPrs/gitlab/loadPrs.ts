@@ -1,9 +1,13 @@
-'use strict';
+import { Resources } from '@gitbeaker/core';
+import { PaginationResponse } from '@gitbeaker/core/dist/types/infrastructure/RequestHelper';
+import { MergeRequestSchema } from '@gitbeaker/core/dist/types/resources/MergeRequests';
+import hasNextPage from './hasNextPage';
+import getNextPage from './getNextPage';
 
-const hasNextPage = require('./hasNextPage');
-const getNextPage = require('./getNextPage');
-
-const loadPrs = async (gitlab, username) => {
+const loadPrs = async (
+  gitlab: Resources.Gitlab,
+  username: string
+): Promise<MergeRequestSchema[]> => {
   try {
     const today = new Date();
     const currentMonth = today.getMonth();
@@ -11,7 +15,7 @@ const loadPrs = async (gitlab, username) => {
     const searchYear = currentMonth < 9 ? currentYear - 1 : currentYear;
     const perPage = 100;
 
-    const mergeRequestResults = await gitlab.MergeRequests.all({
+    const mergeRequestResults = ((await gitlab.MergeRequests.all({
       scope: 'all',
       author_username: username,
       created_after: `${searchYear}-09-30T00:00:00-12:00`,
@@ -19,9 +23,11 @@ const loadPrs = async (gitlab, username) => {
       // 30 is the default but this makes it clearer/allows it to be tweaked
       per_page: perPage,
       showExpanded: true,
-    });
+    })) as unknown) as PaginationResponse<MergeRequestSchema[]>;
 
-    const pullRequestData = mergeRequestResults.data || mergeRequestResults;
+    const pullRequestData =
+      mergeRequestResults.data ||
+      ((mergeRequestResults as unknown) as MergeRequestSchema[]);
     const pagination = mergeRequestResults.paginationInfo;
     if (pagination && hasNextPage(pagination)) {
       return await getNextPage(
@@ -38,9 +44,9 @@ const loadPrs = async (gitlab, username) => {
     }
 
     return pullRequestData;
-  } catch (error) {
-    console.log('Error: ' + err);
+  } catch (error: unknown) {
+    console.log('Error: ' + error);
   }
 };
 
-module.exports = loadPrs;
+export default loadPrs;
