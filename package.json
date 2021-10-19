@@ -31,7 +31,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "@gitbeaker/node": "^34.2.0",
+    "@gitbeaker/node": "^34.4.1",
     "@octokit/rest": "^18.12.0",
     "body-parser": "^1.15.1",
     "compression": "^1.7.4",
