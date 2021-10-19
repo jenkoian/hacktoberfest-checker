@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import SiteTitle from 'components/SiteTitle';
 import UsernameForm from 'components/UsernameForm';
+import Navbar from 'components/Navbar';
 import PullRequests from './components/PullRequests';
 import UserShare from './components/PullRequests/UserShare';
 
@@ -16,6 +17,7 @@ const User = () => {
         <title>{username}</title>
       </Helmet>
       <SiteTitle />
+      <Navbar />
       <UsernameForm username={username} />
       <PullRequests username={username} />
       <UserShare />

@@ -27,10 +27,14 @@ export default function UsernameForm(props) {
         return;
       }
 
-      const userUrl = getUserUrl(username);
-      history.push(userUrl);
+      if (props.onCheckUser) {
+        props.onCheckUser(username);
+      } else {
+        const userUrl = getUserUrl(username);
+        history.push(userUrl);
+      }
     },
-    [username, history]
+    [username, history, props.onCheckUser]
   );
 
   return (
@@ -51,6 +55,7 @@ export default function UsernameForm(props) {
 
 UsernameForm.propTypes = {
   username: PropTypes.string,
+  onCheckUser: PropTypes.func,
 };
 
 UsernameForm.defaultProps = {

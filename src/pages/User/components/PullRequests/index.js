@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // Hooks
@@ -14,13 +14,16 @@ import UserInfo from './UserInfo';
 import PullRequest from './PullRequest';
 import IssuesLink from './IssuesLink';
 import MeLinkInfo from './MeLinkInfo';
+import { MeContext } from 'context/Me';
 
 export default function PullRequests({ username }) {
   const { loading, data, error } = useFetchPullRequests(username);
+  const { me, setMe } = useContext(MeContext);
 
   useEffect(() => {
-    if (localStorage.getItem('myGithub')) return;
-    localStorage.setItem('myGithub', username);
+    if (!me) {
+      setMe(username);
+    }
   }, []);
 
   const getErrorMessage = () =>

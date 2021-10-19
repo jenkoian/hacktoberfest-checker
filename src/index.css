@@ -71,6 +71,10 @@ a {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
+b {
+  font-weight: bolder;
+}
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
@@ -518,10 +522,20 @@ a:hover {
   background-color: rgba(181, 58, 37, var(--bg-opacity));
 }
 
+.border-transparent {
+  border-color: transparent;
+}
+
 .border-hack-logo {
   --border-opacity: 1;
   border-color: #f74700;
   border-color: rgba(247, 71, 0, var(--border-opacity));
+}
+
+.hover\:border-hack-alt-logo:hover {
+  --border-opacity: 1;
+  border-color: #b53a25;
+  border-color: rgba(181, 58, 37, var(--border-opacity));
 }
 
 .rounded-sm {
@@ -550,6 +564,10 @@ a:hover {
 
 .border {
   border-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
 }
 
 .block {
@@ -730,6 +748,10 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -799,6 +821,10 @@ a:hover {
 
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pb-4 {

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { MeContext } from '../../../../context/Me';
 
 export default class MeLinkInfo extends Component {
   static propTypes = {
     username: PropTypes.string.isRequired,
   };
 
+  static contextType = MeContext;
+
   storeUsernameAsMe = () => {
-    localStorage.setItem('myGithub', this.props.username);
-    this.forceUpdate();
+    this.context.setMe(this.props.username);
   };
 
   render = () => {
@@ -34,8 +36,7 @@ export default class MeLinkInfo extends Component {
         on this device.
       </p>
     );
-    const savedUsername = localStorage.getItem('myGithub');
-    if (savedUsername === this.props.username) {
+    if (this.context.me === this.props.username) {
       storeUsernameBtn = null;
       infoStr = (
         <p className="text-hack-fg light-mode:text-hack-dark-title mx-auto text-center my-4">

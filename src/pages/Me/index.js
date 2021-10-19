@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import { MeContext } from 'context/Me';
 
 const Me = () => {
-  const username = localStorage.getItem('myGithub');
+  const { me } = useContext(MeContext);
 
-  if (!username) {
+  if (!me) {
     return <Redirect to="/" />;
   }
 
-  return <Redirect to={`/user/${username}`} />;
+  return <Redirect to={`/user/${me}`} />;
 };
 
 export default Me;

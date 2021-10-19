@@ -4,6 +4,7 @@ import PageWrapper from './PageWrapper';
 import Footer from './Footer';
 import SiteTitle from './SiteTitle';
 import UsernameForm from './UsernameForm';
+import Navbar from './Navbar';
 
 export {
   GithubCorner,
@@ -12,4 +13,5 @@ export {
   Footer,
   SiteTitle,
   UsernameForm,
+  Navbar,
 };
