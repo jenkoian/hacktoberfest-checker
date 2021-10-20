@@ -7,11 +7,11 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "npm run build; npm run start-server",
+    "start": "npm run build && npm run start-server",
     "start-development": "npm-run-all -l -p  \"start-frontend\" \"start-server\"",
     "dev": "npm run start-development",
     "start-frontend": "react-scripts start",
-    "start-server": "npm run build-server; node index.js",
+    "start-server": "npm run build-server && node index.js",
     "build": "react-scripts build",
     "build-server": "npx tsc --project ./api",
     "test": "react-scripts test --env=jsdom",
