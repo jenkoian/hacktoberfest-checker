@@ -45,10 +45,11 @@ const FriendsPullRequests = ({ friends, removeFriend }) => {
                 username={val.username}
                 userImage={val.userImage}
                 pullRequestCount={val.prs.length}
+                showUsernameLink
               />
             )}
             <button
-              className="transition duration-300 bg-hack-alt-bg hover:bg-hack-alt-fg px-4 pointer text-hack-fg"
+              className="transition duration-300 bg-hack-alt-bg hover:bg-hack-alt-fg px-4 -mt-4 mb-4 pointer text-hack-fg"
               onClick={() => {
                 removeUserFromCache(val.username);
                 removeFriend(val.username);
