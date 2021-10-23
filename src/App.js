@@ -36,7 +36,7 @@ const App = () => (
         </Switch>
       </Router>
     </PageWrapper>
-    <Footer />
+    <Footer path="/faq" />
   </>
 );
 
