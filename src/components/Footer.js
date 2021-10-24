@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
-  const isFAQ = location.pathname === '/faq';
+  const isFAQ = location.pathname.toLowerCase() === '/faq';
   return (
     <footer className="text-sm px-8 text-center flex-none py-4">
       <p className="text-hack-fg light-mode:text-hack-dark-title">
