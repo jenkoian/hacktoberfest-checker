@@ -33,7 +33,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@gitbeaker/node": "^35.1.0",
     "@octokit/rest": "^18.12.0",
-    "body-parser": "^1.15.1",
+    "body-parser": "^1.19.1",
     "compression": "^1.7.4",
     "cors": "^2.8.4",
     "dotenv": "^10.0.0",
