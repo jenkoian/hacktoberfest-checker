@@ -32,7 +32,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@gitbeaker/node": "^35.6.0",
-    "@octokit/rest": "^19.0.1",
+    "@octokit/rest": "^19.0.3",
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
     "cors": "^2.8.4",
