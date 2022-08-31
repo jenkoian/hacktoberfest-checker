@@ -36,7 +36,7 @@
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
     "cors": "^2.8.4",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "immer": ">=9.0.15",
     "lodash": "^4.17.21",
