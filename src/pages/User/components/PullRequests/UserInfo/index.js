@@ -16,7 +16,7 @@ const UserInfo = ({
   return (
     <>
       {showUsernameLink && (
-        <div className="mt-8 text-hack-logo">
+        <div className="mt-8 text-hack-logo light-mode:text-hack-dark-title">
           {username === me && (
             <span
               className="text-2xl inline-block mr-2 -mt-2 align-middle"

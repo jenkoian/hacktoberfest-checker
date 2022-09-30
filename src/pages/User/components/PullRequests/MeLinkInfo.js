@@ -43,7 +43,7 @@ export default class MeLinkInfo extends Component {
           Username {this.props.username} saved! You can visit{' '}
           <a
             href={`${process.env.REACT_APP_HOSTNAME}/me`}
-            className="link saveUser"
+            className="link saveUser text-hack-logo light-mode:text-hack-dark-title"
             id="melink"
           >
             {process.env.REACT_APP_HOSTNAME}
