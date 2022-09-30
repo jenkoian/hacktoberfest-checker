@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-  font-family: 'squealerregular', serif;
+  font-family: 'goodtimesregular', serif;
   font-weight: normal;
   text-shadow: -1px 0 hack-fg, 0 1px hack-fg, 1px 0 hack-fg, 0 -1px hack-fg;
 }
@@ -45,6 +45,16 @@ a:hover {
 
 @screen light-mode {
   a {
+    @apply text-hack-dark-title;
+  }
+
+  a:hover {
+    @apply text-hack-dark-title;
+  }
+}
+
+@screen light-mode {
+  a {
     @apply text-hack-logo;
   }
 
@@ -55,6 +65,13 @@ a:hover {
 
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'goodtimesregular';
+  src: url('./fonts/good-times-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: 'squealerregular';

@@ -6,9 +6,8 @@ import UserInfo from '../../User/components/PullRequests/UserInfo';
 import useFetchFriendsPullRequests from '../hooks/useFetchFriendsPullRequests';
 
 const FriendsPullRequests = ({ friends, removeFriend }) => {
-  const { loading, data, removeUserFromCache } = useFetchFriendsPullRequests(
-    friends
-  );
+  const { loading, data, removeUserFromCache } =
+    useFetchFriendsPullRequests(friends);
 
   const getErrorMessage = (val) =>
     val.error?.error_description ??

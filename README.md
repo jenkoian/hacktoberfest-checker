@@ -7,15 +7,12 @@ Useful checker web app to see how close you are to achieving the requirements fo
 
 [https://hacktoberfestchecker.jenko.me/](https://hacktoberfestchecker.jenko.me/)
 
-![Screenshot](hacktoberfest-checker-2021.png)
+![Screenshot](hacktoberfest-checker-2022.png)
 
-## 2021!
+## 2022!
 
-Again I've left this until the last minute, which is why the site (and screenshot above) look the same as last year! ([help me fix that!](https://github.com/jenkoian/hacktoberfest-checker/issues/566))
-
-The big news this year is gitlab support! Which makes this app a bit tricky. I've added support for gitlab but as we only have one input it only accounts for both if the username matches. This should cover any accounts who work mostly in github _or_ gitlab exclusively or use the same username everywhere but for those people who work across both _and_ have different usernames on both, at the time of writing this app doesn't fully support you :scream:.
-
-I'm trying to think of a nice way to support this use case, perhaps support for some special input format or something? e.g. `jenkoian|ianjenko` so if someone were to submit something like that we would use `jenkoian` for github and `ianjenko` for gitlab. Not sure, needs more thought but hopefully will get solved before October is out!
+Well I've had next to no time to do anything really other than a very light (and probably broken) re-skin.
+As far as I'm aware nothing has changed in terms of rules this year, so only a re-skin that was required (if there are new rules, feel free to submit a PR - it'll count towards your total!)
 
 ### Doesn't DigitalOcean have their progress checker now?
 

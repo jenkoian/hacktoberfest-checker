@@ -25,7 +25,7 @@ const Navbar = () => {
           <NavLink
             to="/me"
             isActive={isMeActive}
-            className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo"
+            className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
             activeClassName="border-hack-logo"
           >
             Me
@@ -34,14 +34,14 @@ const Navbar = () => {
         <NavLink
           to="/"
           isActive={isUserActive}
-          className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo"
+          className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
           activeClassName="border-hack-logo"
         >
           User
         </NavLink>
         <NavLink
           to="/friends"
-          className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo"
+          className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
           activeClassName="border-hack-logo"
         >
           Compare with friends
