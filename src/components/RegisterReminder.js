@@ -9,7 +9,7 @@ const RegisterReminder = () => (
     <span className="text-md leading-tight ml-4 mr-16 md:mr-8">
       Remember to{' '}
       <a
-        href="https://hacktoberfest.digitalocean.com/profile"
+        href="https://hacktoberfest.com/profile"
         target="_blank"
         rel="noopener noreferrer"
       >
