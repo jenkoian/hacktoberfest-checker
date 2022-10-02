@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { MeContext } from 'context/Me';
 
 const Me = () => {
   const { me } = useContext(MeContext);
 
   if (!me) {
-    return <Redirect to="/" />;
+    return <Navigate to="/" />;
   }
 
-  return <Redirect to={`/user/${me}`} />;
+  return <Navigate to={`/user/${me}`} />;
 };
 
 export default Me;
