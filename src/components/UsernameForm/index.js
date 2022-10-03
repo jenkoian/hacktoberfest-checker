@@ -1,7 +1,7 @@
 // Libraries
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Components
 import TimeMessage from './TimeMessage';
@@ -12,7 +12,7 @@ const getUserUrl = (username) => `/user/${username}`;
 
 export default function UsernameForm(props) {
   const [username, setUsername] = useState(props.username);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleUsernameChange = useCallback(
     (e) => setUsername(e.target.value),
@@ -31,10 +31,10 @@ export default function UsernameForm(props) {
         props.onCheckUser(username);
       } else {
         const userUrl = getUserUrl(username);
-        history.push(userUrl);
+        navigate(userUrl);
       }
     },
-    [username, history, props.onCheckUser]
+    [username, navigate, props.onCheckUser]
   );
 
   return (
