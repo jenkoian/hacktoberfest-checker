@@ -15,7 +15,7 @@ export default function UsernameForm(props) {
   const navigate = useNavigate();
 
   const handleUsernameChange = useCallback(
-    (e) => setUsername(e.target.value),
+    (e) => setUsername(e.target.value.trim()),
     []
   );
 
