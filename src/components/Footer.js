@@ -8,7 +8,8 @@ const Footer = () => (
     <p className="text-hack-fg light-mode:text-hack-dark-title">
       Disclaimer: This site is fan made and not affiliated with{' '}
       <a
-        href="https://hacktoberfest.com/"
+        className="light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
+        href="https://hacktoberfest.digitalocean.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
