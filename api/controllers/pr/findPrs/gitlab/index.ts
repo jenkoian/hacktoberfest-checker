@@ -68,7 +68,7 @@ export const findGitlabPrs = async (
         (label) => label.toLowerCase() === 'hacktoberfest-accepted'
       );
 
-      const twoWeeksOld = moment.utc().subtract(14, 'days').startOf('day');
+      const weekOld = moment.utc().subtract(7, 'days').startOf('day');
 
       return {
         has_hacktoberfest_label: hacktoberFestLabels,
@@ -82,7 +82,7 @@ export const findGitlabPrs = async (
         title: event.title,
         url: event.web_url,
         created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
-        is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
+        is_pending: moment.utc(event.created_at).isAfter(weekOld),
         user: {
           login: event.author.username as string,
           url: event.author.web_url as string,
