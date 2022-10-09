@@ -28,9 +28,9 @@ export default function UsernameForm(props) {
       }
 
       if (props.onCheckUser) {
-        props.onCheckUser(username);
+        props.onCheckUser(username.trim());
       } else {
-        const userUrl = getUserUrl(username);
+        const userUrl = getUserUrl(username.trim());
         navigate(userUrl);
       }
     },
