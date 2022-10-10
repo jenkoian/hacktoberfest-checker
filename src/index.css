@@ -471,7 +471,7 @@ a {
 
 a:hover {
   --tw-text-opacity: 1;
-  color: rgb(229 225 230 / var(--tw-text-opacity));
+/*   color: rgb(229 225 230 / var(--tw-text-opacity)); */
 }
 
 @media (prefers-color-scheme: light) {
@@ -491,7 +491,7 @@ a:hover {
 
   a:hover {
     --tw-text-opacity: 1;
-    color: rgb(229 225 230 / var(--tw-text-opacity));
+/*     color: rgb(229 225 230 / var(--tw-text-opacity)); */
   }
 }
 .static {
