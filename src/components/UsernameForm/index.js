@@ -38,7 +38,7 @@ export default function UsernameForm(props) {
   );
 
   return (
-    <div className="pb-4 md:pt-16">
+    <div className="pb-4 md:pt-16 username-form">
       <TimeMessage />
       <form
         action="/"
