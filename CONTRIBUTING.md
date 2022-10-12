@@ -1,7 +1,7 @@
 # Contribute
 
 ### Step 1
--  Fork the repository
+-  Fork the repository and clone it to your local machine.
 
 ### Step 2
 - Create a feature branch. Example: (`git checkout -b your-new-feature`)
