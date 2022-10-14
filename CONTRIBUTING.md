@@ -12,7 +12,7 @@ git clone https://github.com/<your-username>/hacktoberfest-checker.git
 ### Step 3
 - Create a feature branch.
 ```
-git checkout -b your-new-feature
+git checkout -b my-new-feature
 ```
 
 ### Step 4
