@@ -1,16 +1,31 @@
 # Contribute
 
 ### Step 1
--  Fork the repository and clone it to your local machine.
+- Fork the repository.
 
 ### Step 2
-- Create a feature branch. Example: (`git checkout -b your-new-feature`)
+- Clone the repository to your local machine.
+```
+git clone https://github.com/<your-username>/hacktoberfest-checker.git
+``` 
 
 ### Step 3
-- Commit the changes: (`git commit -am 'Add some feature'`) (will additionally add the new changes)
+- Create a feature branch.
+```
+git checkout -b your-new-feature
+```
 
 ### Step 4
-- Push to the branch: (`git push origin my-new-feature`)
+- Commit the changes (will additionally add the new changes).
+ ```
+ git commit -am 'Add some feature'
+ ``` 
 
 ### Step 5
-- Create pull request (And you are all set)
+- Push to the branch. 
+```
+git push origin my-new-feature
+```
+
+### Step 6
+- Create pull request and you are all set!
