@@ -28,4 +28,4 @@ git push origin my-new-feature
 ```
 
 ### Step 6
-- Create pull request and you are all set!
+- Create a pull request and you are all set!
