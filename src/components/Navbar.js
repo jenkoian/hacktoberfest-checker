@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="text-center pb-4">
+      <nav className="text-center pb-4 nav">
         {me && (
           <NavLink
             to="/me"
@@ -41,7 +41,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/friends"
-          className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
+          className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title "
           activeClassName="border-hack-logo"
         >
           Compare with friends

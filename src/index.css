@@ -1098,3 +1098,23 @@ a:hover {
     color: rgb(43 53 49 / var(--tw-text-opacity));
   }
 }
+.nav {
+  padding: 0;
+}
+.title {
+  padding: 0.5rem 0;
+}
+.username-form {
+  padding-top: 1.6rem;
+}
+@media only screen and (max-width: 860px) {
+  .nav {
+    padding: 0.5rem;
+  }
+  .title {
+    padding: 3rem 0;
+  }
+  .username-form {
+    padding-top: 4rem;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SiteTitle = () => (
   <div className="text-center">
-    <a className="no-underline inline-block py-12 md:py-8" href="/">
+    <a className="no-underline inline-block py-12 md:py-8 title" href="/">
       <h1 className="text-hack-logo light-mode:text-hack-dark-title text-5xl md:text-7xl">
         hack
         <span className="block">tober</span>
