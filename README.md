@@ -70,6 +70,10 @@ or use the docker-compose
 
 - `$ docker-compose up --build`
 
+## Contributing
+
+Check out the [Contributing guidelines](https://github.com/jenkoian/hacktoberfest-checker/blob/master/CONTRIBUTING.md) to get started on contributing.
+
 ## Changing styling
 
 Styling is done through [tailwind](https://tailwindcss.com/) as much as possible, no CSS should be added and class names favoured.
