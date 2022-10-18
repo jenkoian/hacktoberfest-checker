@@ -64,7 +64,7 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
           (label) => label.name.toLowerCase() === 'hacktoberfest-accepted'
         );
 
-        const twoWeeksOld = moment.utc().subtract(14, 'days').startOf('day');
+        const weekOld = moment.utc().subtract(7, 'days').startOf('day');
 
         return {
           has_hacktoberfest_label: hacktoberFestLabels,
@@ -77,7 +77,7 @@ export const findGithubPrs = async (github: Octokit, username: string) => {
           title: event.title,
           url: event.html_url,
           created_at: moment.utc(event.created_at).format('MMMM Do YYYY'),
-          is_pending: moment.utc(event.created_at).isAfter(twoWeeksOld),
+          is_pending: moment.utc(event.created_at).isAfter(weekOld),
           user: {
             login: event.user.login,
             url: event.user.html_url,
