@@ -55,11 +55,11 @@ a:hover {
 
 @screen light-mode {
   a {
-    @apply text-hack-logo;
+    @apply text-hack-dark-title;
   }
 
   a:hover {
-    @apply text-hack-alt-logo;
+    @apply text-hack-dark-title;
   }
 }
 
