@@ -573,15 +573,6 @@ a:hover {
     --tw-text-opacity: 1;
     color: rgb(43 53 49 / var(--tw-text-opacity));
   }
-  a {
-    --tw-text-opacity: 1;
-    color: rgb(43 53 49 / var(--tw-text-opacity));
-  }
-
-  a:hover {
-    --tw-text-opacity: 1;
-    color: rgb(43 53 49 / var(--tw-text-opacity));
-  }
 }
 .static {
   position: static;
@@ -607,13 +598,13 @@ a:hover {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
-.mx-0 {
-  margin-left: 0px;
-  margin-right: 0px;
-}
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .my-1 {
   margin-top: 0.25rem;
