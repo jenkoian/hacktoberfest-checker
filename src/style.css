@@ -53,16 +53,6 @@ a:hover {
   }
 }
 
-@screen light-mode {
-  a {
-    @apply text-hack-dark-title;
-  }
-
-  a:hover {
-    @apply text-hack-dark-title;
-  }
-}
-
 @tailwind components;
 @tailwind utilities;
 
