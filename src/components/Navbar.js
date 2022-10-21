@@ -31,6 +31,7 @@ const Navbar = () => {
             Me
           </NavLink>
         )}
+        <span>|| </span>
         <NavLink
           to="/"
           isActive={isUserActive}
@@ -39,6 +40,7 @@ const Navbar = () => {
         >
           User
         </NavLink>
+        <span>|| </span>
         <NavLink
           to="/friends"
           className="p-2 border-b-2 border-transparent hover:border-hack-alt-logo light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
