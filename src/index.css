@@ -394,7 +394,7 @@ video {
   --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-color: rgba(17, 65, 141, 0.5);
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
@@ -441,7 +441,7 @@ video {
   --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-color: rgba(32, 79, 153, 0.5);
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
@@ -598,13 +598,13 @@ a:hover {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .my-1 {
   margin-top: 0.25rem;
@@ -766,7 +766,7 @@ a:hover {
 }
 .bg-hack-alt-bg {
   --tw-bg-opacity: 1;
-  background-color: rgb(64 221 255 / var(--tw-bg-opacity));
+  background-color: rgb(155 153 153 / var(--tw-bg-opacity));
 }
 .bg-hack-logo {
   --tw-bg-opacity: 1;
