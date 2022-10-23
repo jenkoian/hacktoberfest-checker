@@ -5,7 +5,7 @@ import { faQuestion as questionIcon } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => (
   <footer className="text-sm px-8 text-center flex-none py-4">
-    <p className="text-hack-fg light-mode:text-hack-dark-title">
+    <p className="text-hack-fg disc light-mode:text-hack-dark-title">
       Disclaimer: This site is fan made and not affiliated with{' '}
       <a
         className="light-mode:text-hack-dark-title light-mode:hover:text-hack-dark-title"
