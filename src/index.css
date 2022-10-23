@@ -868,6 +868,9 @@ a:hover {
 .leading-tight {
   line-height: 1.25;
 }
+disc{
+  letter-spacing: 1px;
+}
 .text-hack-fg {
   --tw-text-opacity: 1;
   color: rgb(240 253 244 / var(--tw-text-opacity));
