@@ -45,7 +45,7 @@ class RemainTime extends React.Component {
       <div className="time">
         {timeMessage}
         <br />
-        {remainTime}
+        {this.state.days != null ? remainTime : ''}
       </div>
     );
   }
