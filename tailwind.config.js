@@ -23,7 +23,7 @@ module.exports = {
         'hack-alt-bg': 'rgb(64, 221, 255)',
         'hack-fg': '#F0FDF4',
         'hack-alt-fg': 'rgb(124, 127, 255)',
-        'hack-title': '#DBE8D9',
+        'hack-title': '#7d807d',
         'hack-dark-title': '#2B3531',
         'hack-logo': 'rgb(229, 225, 230)',
         'hack-alt-logo': 'rgb(229, 225, 230)',
