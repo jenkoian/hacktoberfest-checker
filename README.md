@@ -1,5 +1,9 @@
 # Hacktoberfest Checker
 
+:warning: Thanks for the memories, but it's time to sunset this little app, you can read more here: https://jenko.me/hacktoberfest/2022/11/21/hacktoberfest-checking-out
+
+---
+
 [![Build Status](https://img.shields.io/github/workflow/status/jenkoian/hacktoberfest-checker/Build?logo=github)](https://github.com/jenkoian/hacktoberfest-checker/actions?query=workflow%3ABuild)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
